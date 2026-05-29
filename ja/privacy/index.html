@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OneByOne プライバシーポリシー</title>
+    <meta name="description" content="OneByOne privacy policy.">
+    <link rel="stylesheet" href="../../assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../../">
+          <span class="brand-mark">1</span>
+          <span>OneByOne</span>
+        </a>
+        <nav class="nav" aria-label="Legal pages">
+          <a href="../privacy/">プライバシーポリシー</a>
+          <a href="../support/">サポート</a>
+          <a href="../../terms/">利用規約</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <article class="document">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>OneByOne プライバシーポリシー</h1>
+        <p class="updated">最終更新日: 2026年5月29日</p>
+
+        <p>OneByOne は、AI の支援により個人のルーティン、習慣、タスクを一つずつ実行して記録するための iPhone および Apple Watch アプリです。初回リリースでは OneByOne アカウントは必要ありません。ほとんどのアプリデータは Apple のアプリ保存技術を使って端末内に保存され、iCloud が有効な場合はユーザー自身の iCloud/CloudKit ストレージを通じて同期されることがあります。</p>
+
+        <h2>アプリに保存されるデータ</h2>
+        <p>OneByOne は、ユーザーがアプリ内で作成または使用するルーティン、習慣、タスク、ルーティン実行履歴、習慣ログ、数値ログ、振り返りログ、通知設定、カレンダー書き出し設定、購読権限のキャッシュを保存します。</p>
+        <p>これらのデータは Apple のアプリ保存技術を使って保存されます。ユーザーの Apple Account で iCloud が有効で、アプリが iCloud を利用できる場合、これらのデータはユーザー自身の iCloud/CloudKit ストレージを通じて同期されることがあります。</p>
+
+        <h2>リモート AI 処理</h2>
+        <p>AI 提案は OneByOne の中核機能です。AI 機能は、ユーザー入力を実行フローに変換するために OneByOne の Supabase Edge Function を呼び出し、サーバーから DeepSeek モデルへリクエストを送信する場合があります。</p>
+        <p>ユーザーが AI 機能を使用する際、入力した文章、フロー修正リクエスト、選択した候補情報、フロー生成に必要な最近のアプリ内文脈、アプリ言語、入力言語、タイムゾーンまたは時間帯の文脈、エネルギー基準、位置ベースの推薦を使う場合の保存済み場所の種類や場所名が送信されることがあります。OneByOne は正確な位置座標を AI プロンプトに意図的に含めません。</p>
+        <p>リクエスト制限、不正利用防止、エラー分析、安定性、品質確認のため、Supabase バックエンドは、認証トークンに含まれる場合のユーザー ID、IP アドレスまたは user-agent から派生した制限用識別子、制限範囲、関数名、操作種類、モデル、リクエスト状態、アプリ/入力言語、入力およびメモの文字数、入力ハッシュ、実行 ID、トークン数、処理時間、エラー情報、生成された構造化結果のメタデータを記録することがあります。</p>
+        <p>リモート AI 処理はアプリ機能の提供のみに使用されます。広告やクロスアプリトラッキングには使用されず、OneByOne はこのデータを販売しません。AI による Begin 生成とステップ調整は中核機能であるため、これらの機能を使用する場合、リモート AI 処理が既定で使用されます。</p>
+
+        <h2>iCloud 同期</h2>
+        <p>OneByOne は iCloud 同期のために Apple の private CloudKit データベースを使用します。ルーティン、習慣、タスク、ログデータはユーザー自身の iCloud アカウントに保存されることがあります。iCloud の利用可否とストレージは、ユーザーの Apple Account および iOS 設定によって管理されます。</p>
+        <p>OneByOne はこのデータのための別個の開発者運営同期サーバーを運営しません。</p>
+
+        <h2>購入</h2>
+        <p>OneByOne Pro の購読および買い切り購入は App Store を通じて Apple が処理します。OneByOne は StoreKit を使って現在の権限状態を確認し、購入および復元フローを提供します。支払い情報は Apple が処理し、OneByOne は収集しません。</p>
+
+        <h2>通知</h2>
+        <p>ユーザーがリマインダーを有効にすると、OneByOne は端末上でローカル通知を予約します。通知権限は iOS 設定で管理されます。</p>
+
+        <h2>カレンダー</h2>
+        <p>ユーザーがカレンダー書き出しを有効にすると、OneByOne はカレンダーへのアクセス権限を求め、完了したルーティンステップのイベントを OneByOne カレンダーに作成することがあります。OneByOne はユーザーの全カレンダーデータを Supabase、DeepSeek、または独自サーバーにアップロードしません。</p>
+
+        <h2>健康データ</h2>
+        <p>ユーザーが健康記録に基づくルーティン開始条件を選択した場合、OneByOne は睡眠またはワークアウト記録の更新後に選択したルーティンを通知するため、健康記録へのアクセス権限を求めることがあります。HealthKit データは端末上で処理され、元の HealthKit サンプルは Supabase や DeepSeek に送信されません。</p>
+
+        <h2>位置情報</h2>
+        <p>ユーザーが位置ベースの推薦を有効にすると、OneByOne は現在地をユーザーが保存した場所と照合するために位置情報権限を使用することがあります。AI 機能を使用する際、保存済みの場所名または大まかな場所の文脈が AI プロンプトに含まれることがあります。正確な座標は AI サービスに意図的に送信されません。</p>
+
+        <h2>分析、広告、トラッキング</h2>
+        <p>現在 OneByOne には、第三者分析 SDK、広告 SDK、クロスアプリトラッキングは含まれていません。上記のリモート AI 運用ログは、アプリ機能、リクエスト制限、不正利用防止、エラー分析、安定性、品質確認のために使用されます。</p>
+
+        <h2>お問い合わせ</h2>
+        <p>プライバシーに関するお問い合わせは、<a href="../support/">サポートページ</a>からご連絡ください。</p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">© 2026 OneByOne</div>
+    </footer>
+  </body>
+</html>
