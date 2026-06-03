@@ -11,3 +11,9 @@ Pages:
 - https://faithforone.github.io/onebyone-legal/privacy/
 - https://faithforone.github.io/onebyone-legal/support/
 - https://faithforone.github.io/onebyone-legal/terms/
+- https://faithforone.github.io/onebyone-legal/en/privacy/
+- https://faithforone.github.io/onebyone-legal/en/support/
+- https://faithforone.github.io/onebyone-legal/en/terms/
+- https://faithforone.github.io/onebyone-legal/ja/privacy/
+- https://faithforone.github.io/onebyone-legal/ja/support/
+- https://faithforone.github.io/onebyone-legal/ja/terms/

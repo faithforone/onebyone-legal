@@ -10,14 +10,14 @@
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="../../">
+        <a class="brand" href="../">
           <span class="brand-mark">1</span>
           <span>OneByOne</span>
         </a>
         <nav class="nav" aria-label="Legal pages">
           <a href="../privacy/">Privacy Policy</a>
           <a href="../support/">Support</a>
-          <a href="../../terms/">Terms</a>
+          <a href="../terms/">Terms of Use</a>
         </nav>
       </div>
     </header>
@@ -26,44 +26,41 @@
       <article class="document">
         <p class="eyebrow">Privacy Policy</p>
         <h1>OneByOne Privacy Policy</h1>
-        <p class="updated">Last updated: May 29, 2026</p>
+        <p class="updated">Last updated: June 4, 2026</p>
 
-        <p>OneByOne is an iPhone and Apple Watch app for running and recording personal routines, habits, and tasks one step at a time with AI assistance. The first release does not require a OneByOne account. Most app data is stored on device using Apple app storage technologies and may sync through the user's private iCloud/CloudKit storage when iCloud is enabled.</p>
+        <p>OneByOne is an iPhone and Apple Watch app that turns a stuck moment or short input into a small Begin flow with AI assistance. The first release does not require a OneByOne account. Most app data is stored on device using Apple's app storage technologies, and if iCloud is enabled it may sync through the user's private iCloud or CloudKit storage.</p>
 
-        <h2>Data stored in the app</h2>
-        <p>OneByOne stores routines, habits, tasks, routine run history, habit logs, metric logs, reflection logs, notification settings, calendar export settings, and a cached subscription entitlement state that users create or use in the app.</p>
-        <p>This data is stored using Apple app storage technologies. If iCloud is enabled for the user's Apple Account and the app can use iCloud, this data may sync through the user's private iCloud/CloudKit storage.</p>
+        <h2>Data Stored in the App</h2>
+        <p>OneByOne stores Begin flows, steps, execution records, notes, completion/skip/not-right feedback, notification settings, Calendar export settings, saved place labels or context, and subscription entitlement cache data that users create or use in the app.</p>
+        <p>This data is stored using Apple's app storage technologies. If the user's Apple Account has iCloud enabled and the app can use iCloud, the data may sync through the user's private iCloud or CloudKit storage.</p>
 
-        <h2>Remote AI processing</h2>
-        <p>AI suggestions are a core OneByOne feature. By default, AI-powered features may call a OneByOne Supabase Edge Function to turn user input into an execution flow, and the server may send the request to a DeepSeek model.</p>
-        <p>When a user uses AI-powered features, OneByOne may transmit text the user enters, flow edit requests, selected candidate information, recent app context needed to generate a flow, app language, input language, timezone or time context, energy preferences, and, when location-based recommendations are used, the saved place type or saved place name. OneByOne does not intentionally include precise location coordinates in AI prompts.</p>
-        <p>For rate limiting, abuse prevention, error analysis, reliability, and quality checks, the Supabase backend may log a user ID if present in an authentication token, a rate-limit identifier derived from IP address or user-agent, rate-limit scope, function name, operation type, model, request status, app/input language, input and note character counts, input hash, execution ID, token counts, processing time, error information, and generated structured-result metadata.</p>
-        <p>Remote AI processing is used only to provide app functionality. It is not used for advertising or cross-app tracking, and OneByOne does not sell this data. Because AI-powered Begin generation and step adjustment are core features, remote AI processing is used by default when those features are used.</p>
+        <h2>Remote AI Processing</h2>
+        <p>AI suggestions are a core OneByOne feature. By default, AI-backed features may call a Supabase Edge Function to turn input into an executable flow, and the server may send the prompt to a DeepSeek model.</p>
+        <p>When users use AI-backed features, the app may send user-entered text, flow feedback, selected candidate information, recent app context needed for flow generation, app language, input language, time zone and time context, energy baseline, and, when location-based recommendations are used, the selected place type or saved place name. OneByOne intentionally does not include precise location coordinates in AI prompts.</p>
+        <p>For request limits, abuse prevention, error analysis, reliability, and quality checks, the Supabase backend may record request metadata such as a user ID when an auth token contains one, an IP- or user-agent-derived rate-limit identifier, limit scope, function name, task type, model, request status, app and input language, input and note character counts, input hash, execution ID, token counts, processing duration, error information, and structured generation result metadata.</p>
+        <p>Remote AI processing is used only to provide app functionality. It is not used for advertising or cross-app tracking, and OneByOne does not sell this data. AI-backed Begin generation and step adjustment are core features, so remote AI processing is used by default when those features are used.</p>
 
-        <h2>iCloud sync</h2>
-        <p>OneByOne uses Apple's private CloudKit database for iCloud sync. Routine, habit, task, and log data may be stored in the user's private iCloud account. iCloud availability and storage are managed by the user's Apple Account and iOS settings.</p>
-        <p>OneByOne does not operate a separate developer-run sync server for this data.</p>
+        <h2>iCloud Sync</h2>
+        <p>OneByOne uses Apple's private CloudKit database for iCloud sync. Begin flow, step, execution record, note, setting, and saved context data may be stored in the user's private iCloud account. iCloud availability and storage are managed by the user's Apple Account and iOS settings.</p>
+        <p>OneByOne does not operate a separate developer-managed sync server for this app data.</p>
 
         <h2>Purchases</h2>
-        <p>OneByOne Pro subscriptions and lifetime purchases are processed by Apple through the App Store. OneByOne uses StoreKit to check the current entitlement state and provide purchase and restore flows. Payment information is handled by Apple and is not collected by OneByOne.</p>
+        <p>OneByOne Pro subscriptions and lifetime purchases are processed by Apple through the App Store. OneByOne uses StoreKit to check the current entitlement and provide purchase and restore flows. Payment information is handled by Apple and is not collected by OneByOne.</p>
 
         <h2>Notifications</h2>
-        <p>If the user enables reminders, OneByOne schedules local notifications on the device. Notification permission is managed in iOS Settings.</p>
+        <p>If users enable reminders, OneByOne schedules local notifications on device. Notification permission is managed in iOS Settings.</p>
 
         <h2>Calendar</h2>
-        <p>If the user enables calendar export, OneByOne may request calendar access and create completed routine step events in a OneByOne calendar. OneByOne does not upload the user's full calendar data to Supabase, DeepSeek, or its own server.</p>
-
-        <h2>Health data</h2>
-        <p>If the user chooses a routine start condition based on health records, OneByOne may request access to health records so it can notify the user after sleep or workout updates. HealthKit data is processed on device, and raw HealthKit samples are not sent to Supabase or DeepSeek.</p>
+        <p>If users enable Calendar export, OneByOne may request Calendar access and create events for completed Begin steps in a OneByOne calendar. OneByOne does not upload the user's full Calendar data to Supabase, DeepSeek, or its own server.</p>
 
         <h2>Location</h2>
-        <p>If the user enables location-based recommendations, OneByOne may use location permission to match the current location with places saved by the user. When AI-powered features are used, a saved place name or broad place context may be included in the AI prompt. Precise coordinates are not intentionally sent to AI services.</p>
+        <p>If users enable location-based recommendations, OneByOne may use location permission to match the current location with saved places. When AI-backed features are used, saved place names or broad place context may be included in the AI prompt. Precise coordinates are intentionally not sent to the AI service.</p>
 
-        <h2>Analytics, advertising, and tracking</h2>
-        <p>OneByOne currently does not include third-party analytics SDKs, advertising SDKs, or cross-app tracking. The remote AI operational logs described above are used for app functionality, rate limiting, abuse prevention, error analysis, reliability, and quality checks.</p>
+        <h2>Analytics, Advertising, and Tracking</h2>
+        <p>OneByOne currently does not include third-party analytics SDKs, advertising SDKs, or cross-app tracking. The remote AI operational records described above are used for app functionality, request limits, abuse prevention, error analysis, reliability, and quality checks.</p>
 
         <h2>Contact</h2>
-        <p>For privacy questions, please contact us through the <a href="../support/">support page</a>.</p>
+        <p>For privacy questions, use the <a href="../support/">support page</a>.</p>
       </article>
     </main>
 
