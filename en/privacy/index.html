@@ -26,9 +26,9 @@
       <article class="document">
         <p class="eyebrow">Privacy Policy</p>
         <h1>One by One Privacy Policy</h1>
-        <p class="updated">Last updated: June 5, 2026</p>
+        <p class="updated">Last updated: September 24, 2026</p>
 
-        <p>One by One is an iPhone and Apple Watch app that turns a stuck moment or short input into a small Begin flow with AI assistance. The first release does not require a One by One account. Most app data is stored on device using Apple's app storage technologies, and if iCloud is enabled it may sync through the user's private iCloud or CloudKit storage.</p>
+        <p>One by One is an iPhone and Apple Watch app that turns a stuck moment or short input into a small Begin flow with AI assistance. Personal features can be used without signing in; account and AI connection features use a One by One account. Most app data is stored on device using Apple's app storage technologies, and if iCloud is enabled it may sync through the user's private iCloud or CloudKit storage.</p>
 
         <h2>Data Stored in the App</h2>
         <p>One by One stores Begin flows, steps, execution records, notes, completion/skip/not-right feedback, notification settings, Calendar export settings, saved place labels or context, and subscription entitlement cache data that users create or use in the app.</p>
@@ -45,7 +45,12 @@
 
         <h2>iCloud Sync</h2>
         <p>One by One uses Apple's private CloudKit database for iCloud sync. Begin flow, step, execution record, note, setting, and saved context data may be stored in the user's private iCloud account. iCloud availability and storage are managed by the user's Apple Account and iOS settings.</p>
-        <p>One by One does not operate a separate developer-managed sync server for this app data.</p>
+        <p>This private iCloud data is managed by Apple. Signed-in account features also use the Supabase backend described below.</p>
+
+        <h2>Account Data and Deletion</h2>
+        <p>When you sign in, One by One stores your account, workspace and device associations, shared plans and activity, AI connection permissions, delivery records, and related operational data on its Supabase backend.</p>
+        <p>You can select <strong>Delete Account</strong> on the Account screen. After you confirm and the server accepts the request, deletion is immediate, with no grace period. The server deletes your account and sign-in sessions; account-owned workspaces, AI connections and grants, devices, shared plans, activity and execution records, delivery and receipt records, push endpoints, and account-linked AI usage logs. The app then erases its One by One records, saved session, and notifications on this iPhone. For Sign in with Apple, the app asks Apple to confirm again and the server attempts to revoke the Apple authorization; a revocation failure does not delay account deletion.</p>
+        <p>Deleting the account does not remove legacy NextKan data, files or Calendar events you exported, copies already saved in AI chats or other external services, or data in your Apple-managed private iCloud or CloudKit storage. It does not cancel an App Store subscription; manage that separately through Apple.</p>
 
         <h2>Purchases</h2>
         <p>One by One Pro subscriptions are processed by Apple through the App Store. One by One uses StoreKit to check the current entitlement and provide purchase and restore flows. Payment information is handled by Apple and is not collected by One by One.</p>
