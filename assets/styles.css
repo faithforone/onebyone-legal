@@ -45,7 +45,8 @@ a { color: inherit; text-underline-offset: 4px; }
 
 /* Header: the wordmark only, identical on every page. */
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand img { width: 30px; height: 30px; display: block; border-radius: 7px; }
+/* The icon's background matches the page, so a hairline keeps its app-icon shape. */
+.brand img { width: 30px; height: 30px; display: block; border-radius: 7px; box-shadow: 0 0 0 1px var(--line); }
 .wordmark { font-size: 21px; font-weight: 700; letter-spacing: -.6px; line-height: 1; }
 
 main { flex: 1; }
@@ -81,7 +82,7 @@ li + li { margin-top: 6px; }
 
 /* Product home */
 .home { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 72px; }
-.home .mark { width: 88px; height: 88px; border-radius: 20px; margin-bottom: 28px; }
+.home .mark { width: 88px; height: 88px; border-radius: 20px; margin-bottom: 28px; box-shadow: 0 0 0 1px var(--line), 0 10px 28px rgba(26, 28, 32, .08); }
 .home h1 { font-size: clamp(40px, 8vw, 64px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
 .home .soon { color: var(--muted); font-size: 19px; margin: 0; }
 
