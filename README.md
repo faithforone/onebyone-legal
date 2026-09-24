@@ -2,9 +2,7 @@
 
 Static legal and support pages for OneByOne App Store submission.
 
-GitHub Pages URL:
-
-https://faithforone.github.io/onebyone-legal/
+Served at https://one-by.one/ (Cloudflare Pages project `onebyone-site`) and at the original GitHub Pages URL https://faithforone.github.io/onebyone-legal/. The English home is the site root; the Korean home is `/ko/`. Page URLs below are unchanged.
 
 Pages:
 
