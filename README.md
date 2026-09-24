@@ -2,16 +2,12 @@
 
 Static legal and support pages for OneByOne App Store submission.
 
-Served at https://one-by.one/ (Cloudflare Pages project `onebyone-site`) and at the original GitHub Pages URL https://faithforone.github.io/onebyone-legal/. The English home is the site root; the Korean home is `/ko/`. Page URLs below are unchanged.
+Served at https://one-by.one/ (Cloudflare Pages project `onebyone-site`, auto-deploys from `main`).
 
-Pages:
+- `/` — OneByOne product page (placeholder until the landing page)
+- `/privacy/`, `/terms/`, `/support/` — English
+- `/ko/privacy/`, `/ko/terms/`, `/ko/support/` — Korean (home `/ko/`)
+- `/ja/privacy/`, `/ja/terms/`, `/ja/support/` — Japanese (home `/ja/`)
+- `/en/*` redirects to the English root paths (`_redirects`, Cloudflare only)
 
-- https://faithforone.github.io/onebyone-legal/privacy/
-- https://faithforone.github.io/onebyone-legal/support/
-- https://faithforone.github.io/onebyone-legal/terms/
-- https://faithforone.github.io/onebyone-legal/en/privacy/
-- https://faithforone.github.io/onebyone-legal/en/support/
-- https://faithforone.github.io/onebyone-legal/en/terms/
-- https://faithforone.github.io/onebyone-legal/ja/privacy/
-- https://faithforone.github.io/onebyone-legal/ja/support/
-- https://faithforone.github.io/onebyone-legal/ja/terms/
+GitHub Pages (https://faithforone.github.io/onebyone-legal/) serves the same files but ignores `_redirects`.
