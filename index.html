@@ -6,56 +6,31 @@
     <meta name="color-scheme" content="light dark">
     <title>OneByOne</title>
     <meta name="description" content="OneByOne is coming soon to iPhone.">
-    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
-    <style>
-      /* Same palette and type as connect.one-by.one: charcoal and lime. */
-      :root {
-        --text: #1a1c20; --muted: #5f6570; --line: #dadde2; --bg: #f3f4f5; --focus: #1a1c20;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-        font-synthesis: none; color: var(--text); background: var(--bg);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root { --text: #f3f4f5; --muted: #9ba1aa; --line: #2e3137; --bg: #0e0f11; --focus: #c6ef4e; }
-      }
-      * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
-      a { color: inherit; text-underline-offset: 4px; }
-      :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-      .shell { width: 100%; max-width: 1040px; margin: 0 auto; padding: 28px 40px; }
-      .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-      .brand img { width: 30px; height: 30px; display: block; border-radius: 7px; }
-      .wordmark { font-size: 21px; font-weight: 700; letter-spacing: -.6px; }
-      main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 0; padding-bottom: 0; }
-      .mark { width: 88px; height: 88px; border-radius: 20px; margin-bottom: 28px; }
-      h1 { font-size: clamp(40px, 8vw, 64px); line-height: 1.05; letter-spacing: -2px; margin: 0 0 14px; font-weight: 700; }
-      .soon { color: var(--muted); font-size: 19px; margin: 0; }
-      footer .shell { border-top: 1px solid var(--line); padding-top: 22px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-      footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
-      footer a { text-decoration: none; }
-      footer a:hover { text-decoration: underline; }
-      @media (max-width: 520px) { .shell { padding: 20px 16px; } }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   </head>
   <body>
     <header class="shell">
-      <a class="brand" href="/" aria-label="OneByOne">
-        <img src="/assets/icon.svg" alt="">
+      <a class="brand" href="./" aria-label="OneByOne">
+        <img src="assets/icon.svg" alt="">
         <span class="wordmark">one-by.one</span>
       </a>
     </header>
-    <main class="shell">
-      <img class="mark" src="/assets/icon.svg" alt="">
+
+    <main class="home shell">
+      <img class="mark" src="assets/icon.svg" alt="">
       <h1>OneByOne</h1>
       <p class="soon">Coming soon to iPhone.</p>
     </main>
+
     <footer>
-      <div class="shell">
+      <div class="shell footer-inner">
         <nav aria-label="Legal">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-          <a href="/support/">Support</a>
-          <a href="/ko/" lang="ko">한국어</a>
-          <a href="/ja/" lang="ja">日本語</a>
+          <a href="privacy/">Privacy</a>
+          <a href="terms/">Terms</a>
+          <a href="support/">Support</a>
+          <a href="ko/" lang="ko">한국어</a>
+          <a href="ja/" lang="ja">日本語</a>
         </nav>
         <span>© 2026 OneByOne</span>
       </div>

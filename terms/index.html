@@ -3,27 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <title>One by One Terms of Use</title>
     <meta name="description" content="One by One terms of use.">
     <link rel="stylesheet" href="../assets/styles.css">
-    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="../">
-          <span class="brand-mark">1</span>
-          <span>One by One</span>
-        </a>
-        <nav class="nav" aria-label="Legal pages">
-          <a href="../privacy/">Privacy Policy</a>
-          <a href="../support/">Support</a>
-          <a href="../terms/">Terms of Use</a>
-        </nav>
-      </div>
+    <header class="shell">
+      <a class="brand" href="../" aria-label="OneByOne">
+        <img src="../assets/icon.svg" alt="">
+        <span class="wordmark">one-by.one</span>
+      </a>
     </header>
 
-    <main class="page">
+    <main class="page shell">
       <article class="document">
         <p class="eyebrow">Terms of Use</p>
         <h1>One by One Terms of Use</h1>
@@ -52,8 +46,17 @@
       </article>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">© 2026 One by One</div>
+    <footer>
+      <div class="shell footer-inner">
+        <nav aria-label="Legal">
+          <a href="../privacy/">Privacy</a>
+          <a href="../terms/" aria-current="page">Terms</a>
+          <a href="../support/">Support</a>
+          <a href="../ko/terms/" lang="ko">한국어</a>
+          <a href="../ja/terms/" lang="ja">日本語</a>
+        </nav>
+        <span>© 2026 OneByOne</span>
+      </div>
     </footer>
   </body>
 </html>

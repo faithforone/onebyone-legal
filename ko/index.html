@@ -3,32 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <title>원바이원</title>
     <meta name="description" content="원바이원 legal and support pages.">
     <link rel="stylesheet" href="../assets/styles.css">
-    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="./">
-          <span class="brand-mark">1</span>
-          <span>원바이원</span>
-        </a>
-        <nav class="nav" aria-label="Legal pages">
-          <a href="privacy/">개인정보 처리방침</a>
-          <a href="support/">지원</a>
-          <a href="terms/">이용약관</a>
-        </nav>
-      </div>
+    <header class="shell">
+      <a class="brand" href="../" aria-label="OneByOne">
+        <img src="../assets/icon.svg" alt="">
+        <span class="wordmark">one-by.one</span>
+      </a>
     </header>
 
-    <main class="page">
+    <main class="page shell">
       <article class="document">
         <p class="eyebrow">원바이원</p>
         <h1>막힌 시작을 짧은 Begin 흐름으로</h1>
         <p class="muted">이 페이지는 App Store 제출과 사용자 안내를 위한 원바이원의 공개 문서입니다.</p>
-        <p class="muted">Languages: <a href="./">한국어</a> · <a href="../">English</a> · <a href="../ja/">日本語</a></p>
 
         <div class="link-list" aria-label="원바이원 documents">
           <a class="link-card" href="privacy/">
@@ -47,8 +40,17 @@
       </article>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">© 2026 원바이원</div>
+    <footer>
+      <div class="shell footer-inner">
+        <nav aria-label="약관 및 정책">
+          <a href="../ko/privacy/">개인정보 처리방침</a>
+          <a href="../ko/terms/">이용약관</a>
+          <a href="../ko/support/">지원</a>
+          <a href="../" lang="en">English</a>
+          <a href="../ja/" lang="ja">日本語</a>
+        </nav>
+        <span>© 2026 OneByOne</span>
+      </div>
     </footer>
   </body>
 </html>

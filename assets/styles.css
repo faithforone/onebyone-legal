@@ -1,200 +1,107 @@
+/* one-by.one site: the same palette, type and wordmark as connect.one-by.one.
+   Light: charcoal on light grey. Dark: light text with the icon's lime accent. */
 :root {
-  color-scheme: light;
-  --bg: #f6f9fc;
-  --surface: #ffffff;
-  --text: #172033;
-  --muted: #667085;
-  --line: #d8e0ea;
-  --blue: #1677d2;
-  --blue-soft: #e8f3ff;
-  --radius: 8px;
+  color-scheme: light dark;
+  --text: #1a1c20;
+  --muted: #5f6570;
+  --line: #dadde2;
+  --bg: #f3f4f5;
+  --surface: #fff;
+  --accent: #1a1c20;
+  --focus: #1a1c20;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans KR", "Noto Sans JP", sans-serif;
+  font-synthesis: none;
+  color: var(--text);
+  background: var(--bg);
 }
 
-* {
-  box-sizing: border-box;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f3f4f5;
+    --muted: #9ba1aa;
+    --line: #2e3137;
+    --bg: #0e0f11;
+    --surface: #1a1c20;
+    --accent: #c6ef4e;
+    --focus: #c6ef4e;
+  }
 }
+
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   line-height: 1.65;
 }
 
-a {
-  color: var(--blue);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
+a { color: inherit; text-underline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-.site-header {
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.86);
-}
+.shell { width: 100%; max-width: 1040px; margin: 0 auto; padding: 28px 40px; }
 
-.header-inner,
-.page {
-  width: min(920px, calc(100% - 32px));
-  margin: 0 auto;
-}
+/* Header: the wordmark only, identical on every page. */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { width: 30px; height: 30px; display: block; border-radius: 7px; }
+.wordmark { font-size: 21px; font-weight: 700; letter-spacing: -.6px; line-height: 1; }
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0;
-}
+main { flex: 1; }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text);
-  font-weight: 700;
-  text-decoration: none;
-}
+/* Documents */
+.page { padding-top: 32px; padding-bottom: 72px; }
+.document { max-width: 680px; }
+.eyebrow { margin: 0 0 10px; color: var(--muted); font-size: 13px; font-weight: 600; }
+h1 { margin: 0 0 12px; font-size: clamp(32px, 6vw, 44px); line-height: 1.12; letter-spacing: -1px; font-weight: 700; overflow-wrap: anywhere; }
+h2 { margin: 40px 0 10px; font-size: 20px; line-height: 1.3; letter-spacing: -.3px; }
+p, li { font-size: 16px; }
+p { margin: 0 0 14px; }
+ul { margin: 0 0 14px; padding-left: 1.25em; }
+li + li { margin-top: 6px; }
+.updated, .muted { color: var(--muted); font-size: 14px; }
+.callout { margin: 22px 0; padding: 14px 16px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; }
+.callout p { margin: 0; }
 
-.brand-mark {
-  display: inline-grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border-radius: 7px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 17px;
-  line-height: 1;
-}
-
-.nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  font-size: 14px;
-}
-
-.nav a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.nav a:hover {
-  color: var(--blue);
-}
-
-.page {
-  padding: 48px 0 64px;
-}
-
-.document {
+.link-list { display: grid; gap: 12px; margin-top: 28px; }
+.link-card {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: clamp(24px, 5vw, 48px);
-}
-
-.eyebrow {
-  margin: 0 0 8px;
-  color: var(--blue);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-h1 {
-  margin: 0 0 10px;
-  font-size: clamp(30px, 6vw, 46px);
-  line-height: 1.14;
-  letter-spacing: 0;
-}
-
-h2 {
-  margin: 34px 0 10px;
-  font-size: 21px;
-  line-height: 1.3;
-  letter-spacing: 0;
-}
-
-p {
-  margin: 0 0 14px;
-}
-
-ul {
-  margin: 8px 0 18px;
-  padding-left: 22px;
-}
-
-li + li {
-  margin-top: 6px;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-.updated {
-  margin-bottom: 28px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.callout {
-  margin: 28px 0;
-  padding: 16px 18px;
-  border: 1px solid #b9d9f8;
-  border-radius: var(--radius);
-  background: var(--blue-soft);
-}
-
-.link-list {
-  display: grid;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.link-card {
-  display: block;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  color: var(--text);
+  border-radius: 16px;
   text-decoration: none;
-  background: #fff;
+  transition: transform .08s ease-out, border-color .12s ease-out;
 }
+.link-card span { color: var(--muted); font-size: 14px; }
+.link-card:hover { border-color: var(--muted); }
+.link-card:active { transform: scale(.985); border-color: var(--text); }
 
-.link-card strong {
-  display: block;
-  margin-bottom: 3px;
-}
+/* Product home */
+.home { display: flex; flex-direction: column; justify-content: center; }
+.home .mark { width: 88px; height: 88px; border-radius: 20px; margin-bottom: 28px; }
+.home h1 { font-size: clamp(40px, 8vw, 64px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+.home .soon { color: var(--muted); font-size: 19px; margin: 0; }
 
-.link-card span {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.site-footer {
+/* Footer: legal and language links, identical on every page. */
+.footer-inner {
   border-top: 1px solid var(--line);
+  padding-top: 22px;
   color: var(--muted);
   font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
 }
+.footer-inner nav { display: flex; gap: 8px 18px; flex-wrap: wrap; }
+.footer-inner a { text-decoration: none; }
+.footer-inner a:hover { text-decoration: underline; }
+.footer-inner a[aria-current="page"] { color: var(--text); }
 
-.footer-inner {
-  width: min(920px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 22px 0;
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .nav {
-    justify-content: flex-start;
-  }
+@media (max-width: 520px) {
+  .shell { padding: 20px 16px; }
+  .page { padding-top: 16px; }
 }
