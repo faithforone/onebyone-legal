@@ -21,49 +21,86 @@
       <article class="document">
         <p class="eyebrow">Privacy Policy</p>
         <h1>one-by.one Privacy Policy</h1>
-        <p class="updated">Last updated: September 24, 2026</p>
-
-        <p>One by One is an iPhone and Apple Watch app that turns a stuck moment or short input into a small Begin flow with AI assistance. Personal features can be used without signing in; account and AI connection features use a One by One account. Most app data is stored on device using Apple's app storage technologies, and if iCloud is enabled it may sync through the user's private iCloud or CloudKit storage.</p>
-
-        <h2>Data Stored in the App</h2>
-        <p>One by One stores Begin flows, steps, execution records, notes, completion/skip/not-right feedback, notification settings, Calendar export settings, saved place labels or context, and subscription entitlement cache data that users create or use in the app.</p>
-        <p>This data is stored using Apple's app storage technologies. If the user's Apple Account has iCloud enabled and the app can use iCloud, the data may sync through the user's private iCloud or CloudKit storage.</p>
-
-        <h2>Remote AI Processing</h2>
-        <p>AI suggestions are a core One by One feature. By default, AI-backed features may call a Supabase Edge Function to turn input into an executable flow, and the server may send the prompt to a DeepSeek model.</p>
-        <p>When users use AI-backed features, the app may send user-entered text, flow feedback, selected candidate information, recent app context needed for flow generation, app language, input language, time zone and time context, energy baseline, and, when location-based recommendations are used, the selected place type or saved place name. One by One intentionally does not include precise location coordinates in AI prompts.</p>
-        <p>For request limits, abuse prevention, error analysis, reliability, and quality checks, the Supabase backend may record request metadata such as a user ID when an auth token contains one, an IP- or user-agent-derived rate-limit identifier, limit scope, function name, task type, model, request status, app and input language, input and note character counts, input hash, execution ID, token counts, processing duration, error information, and structured generation result metadata.</p>
-        <p>Remote AI processing is used only to provide app functionality. It is not used for advertising or cross-app tracking, and One by One does not sell this data. AI-backed Begin generation and step adjustment are core features, so remote AI processing is used by default when those features are used.</p>
-
-        <h2>App Store Privacy Summary</h2>
-        <p>For the first release, the App Store privacy answers disclose Other User Content, Coarse Location, User ID, Product Interaction, Performance Data, and Other Diagnostic Data for App Functionality. These categories are marked as linked to the user conservatively because remote AI request logs can be associated with quota or auth identifiers. They are not used for tracking.</p>
-
-        <h2>iCloud Sync</h2>
-        <p>One by One uses Apple's private CloudKit database for iCloud sync. Begin flow, step, execution record, note, setting, and saved context data may be stored in the user's private iCloud account. iCloud availability and storage are managed by the user's Apple Account and iOS settings.</p>
-        <p>This private iCloud data is managed by Apple. Signed-in account features also use the Supabase backend described below.</p>
-
-        <h2>Account Data and Deletion</h2>
-        <p>When you sign in, One by One stores your account, workspace and device associations, shared plans and activity, AI connection permissions, delivery records, and related operational data on its Supabase backend.</p>
-        <p>You can select <strong>Delete Account</strong> on the Account screen. After you confirm and the server accepts the request, deletion is immediate, with no grace period. The server deletes your account and sign-in sessions; account-owned workspaces, AI connections and grants, devices, shared plans, activity and execution records, delivery and receipt records, push endpoints, and account-linked AI usage logs. The app then erases its One by One records, saved session, and notifications on this iPhone. For Sign in with Apple, the app asks Apple to confirm again and the server attempts to revoke the Apple authorization; a revocation failure does not delay account deletion.</p>
-        <p>Deleting the account does not remove legacy NextKan data, files or Calendar events you exported, copies already saved in AI chats or other external services, or data in your Apple-managed private iCloud or CloudKit storage. It does not cancel an App Store subscription; manage that separately through Apple.</p>
-
-        <h2>Purchases</h2>
-        <p>One by One Pro subscriptions are processed by Apple through the App Store. One by One uses StoreKit to check the current entitlement and provide purchase and restore flows. Payment information is handled by Apple and is not collected by One by One.</p>
-
-        <h2>Notifications</h2>
-        <p>If users enable reminders, One by One schedules local notifications on device. Notification permission is managed in iOS Settings.</p>
-
-        <h2>Calendar</h2>
-        <p>If users enable Calendar export, One by One may request Calendar access and create events for completed Begin steps in a One by One calendar. One by One does not upload the user's full Calendar data to Supabase, DeepSeek, or its own server.</p>
-
-        <h2>Location</h2>
-        <p>If users enable location-based recommendations, One by One may use location permission to match the current location with saved places. When AI-backed features are used, saved place names or broad place context may be included in the AI prompt. Precise coordinates are intentionally not sent to the AI service.</p>
-
-        <h2>Analytics, Advertising, and Tracking</h2>
-        <p>One by One currently does not include third-party analytics SDKs, advertising SDKs, or cross-app tracking. The remote AI operational records described above are used for app functionality, request limits, abuse prevention, error analysis, reliability, and quality checks.</p>
-
-        <h2>Contact</h2>
-        <p>For privacy questions, email <a href="mailto:support@one-by.one">support@one-by.one</a>.</p>
+        <p class="updated">Last updated: October 4, 2026</p>
+    <p>This policy covers the one-by.one iPhone app and MCP connection service, provided by salad76, doing business as one-by.one.</p>
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Account:</strong> account ID, email when available, provider identity and sessions, to sign you in and link your records. Apple sign-in requests email. Google sign-in requests <code>openid email profile</code>. Google identity and access tokens are sent to Supabase Auth for sign-in. The app keeps its session in device-only Keychain storage; web authorization uses browser session storage.</li>
+      <li><strong>Plans and results:</strong> full task titles, notes, steps, dates, time zones, estimates, targets, measurements, progress, execution records, corrections and versions. These show your day plan and what to do now, record results and support synchronization.</li>
+      <li><strong>Interests and memories:</strong> titles, planning notes, memory text, user reports, AI summaries and inferences, sources and timestamps. These provide saved planning context. Corrections and withdrawals retain originals.</li>
+      <li><strong>Connections and operation:</strong> device and AI connection IDs, credential references, hashed server credentials, permissions, approvals, expiry, revocation, synchronization records, write requests and receipts, request-limit records and local startup/sign-in diagnostics. These control access and support retries and operation.</li>
+      <li><strong>Support:</strong> messages you email us and account-linked bug descriptions, submission IDs, hashes, received times and selected app version, iOS version or error code. Bug-report tools add no automatic attachments.</li>
+      <li><strong>Subscription:</strong> Apple handles the paid, auto-renewing App Store subscription. We do not collect payment-card details.</li>
+    </ul>
+    <p>If you sign in with Google, our sign-in provider stores what Google shares for that sign-in: your email address and whether Google verified it, your name, your profile picture link and your Google account identifier.</p>
+    <p>Text you enter may contain health, work, location or other sensitive details. Share only what you want stored and available to your connected AI.</p>
+    <p>The current v3 app does not register for remote push or send a push token to the server. Its Notifications entry shows the system permission state and opens iOS notification settings. Older AI-usage and request logs are not collected by the current app.</p>
+    <p>Plans: $5.99 per month or $39.99 per year in the United States; the App Store shows the price for your country. New subscribers get a 14-day free trial, once per Apple Account. If you do not cancel at least 24 hours before the trial or a period ends, the subscription renews and your Apple Account is charged. After the trial, a subscription is needed to keep using the app and its AI connections.</p>
+    <h2 id="calendar">Calendar (optional)</h2>
+    <p>Calendar sharing is optional and is off until you choose calendars to share. When you turn it on, one-by.one uploads the next seven days of event titles, start and end times, and all-day status from the calendars you choose, together with hashed event and calendar identifiers. These events are shared with your connected AI to help it plan around your fixed commitments.</p>
+    <p>We do not upload calendar notes, attendees, locations, or URLs, and one-by.one does not write to your calendars. We keep only the latest uploaded calendar snapshot for your account and refresh it when you return to the app, at most once every 15 minutes unless you change your calendar selection.</p>
+    <p>Turning calendar sharing off deletes the uploaded snapshot; if your iPhone cannot reach the server, deletion finishes when you next open the app while connected. Deleting your account also deletes its uploaded calendar snapshot.</p>
+    <h2 id="connected-ai">What your AI app receives</h2>
+    <p>When tools read your records, full saved task, result and memory text is sent to your chosen AI client. Replies can include targets, measurements, retained originals, sources, IDs, versions, permissions, write tokens and receipts.</p>
+    <p>AI connection permissions are <code>context:read</code>, <code>activity:read</code> and <code>activity:write</code>, as requested and approved on the consent page. These control planning context, activity reads and changes. Tools do not return your sign-in email or personal profile, provider tokens, push tokens or device secrets. Text you put in a task, memory or report can still contain those details.</p>
+    <p>ChatGPT is provided by OpenAI; Claude by Anthropic. The AI client's handling of chats and tool data is governed by that provider's policy and settings. Check those before connecting.</p>
+    <p>Write instructions require your explicit request. The server checks granted permissions but cannot prove what you agreed to in chat. Some changes cannot be undone; corrections can preserve originals.</p>
+    <details>
+      <summary>The 20 tools</summary>
+      <dl>
+        <dt>Read plans and tasks</dt>
+        <dd><code>get_planning_context</code>, <code>list_current_work</code>, <code>get_current_work</code>: read planning context, task lists and task/result records.</dd>
+        <dt>Plan days and edit unstarted tasks</dt>
+        <dd><code>open_or_plan_day</code>, <code>edit_day_plan</code>, <code>replace_plan</code>: open or plan days, change queued cards and replace unstarted plans.</dd>
+        <dt>Start and correct work</dt>
+        <dd><code>start_work</code>, <code>undo_start</code>, <code>correct_work_time</code>: start a task, undo an eligible mistaken start, or amend or withdraw a recorded time while retaining its original. Time correction does not control execution.</dd>
+        <dt>Save and correct results</dt>
+        <dd><code>record_past_result</code>, <code>correct_recorded_result</code>, <code>complete_work</code>: record separate past work, correct or withdraw a result's interpretation, or mark work complete.</dd>
+        <dt>Read interests and memories</dt>
+        <dd><code>list_interests</code>, <code>get_interest</code>: read saved interests, context and memories, including retained originals.</dd>
+        <dt>Save and change interests and memories</dt>
+        <dd><code>create_interest</code>, <code>replace_interest_context</code>, <code>save_interest_memory</code>, <code>correct_interest_memory</code>: save interests and memories, replace context or correct or withdraw a memory while retaining its original.</dd>
+        <dt>Connection and support</dt>
+        <dd><code>get_connection_info</code>: read permissions and supported features, and receive a write token when available. <code>submit_bug_report</code>: send an approved report to one-by.one support and receive a receipt.</dd>
+      </dl>
+    </details>
+    <p>Reads may be limited or paginated; they do not establish a complete lifetime history.</p>
+    <h2>Storage and providers</h2>
+    <ul>
+      <li><strong>Supabase:</strong> account identity, sessions, product content, reports and server processing. Production data will be hosted in the United States, on AWS us-east-1. Content is readable text/JSON for the service, protected by account access restrictions.</li>
+      <li><strong>Cloudflare:</strong> the MCP proxy carries authorized requests and replies between the AI client and Supabase.</li>
+      <li><strong>Apple:</strong> sign-in, App Store subscriptions and device services.</li>
+      <li><strong>Google:</strong> Google sign-in and identity tokens passed to Supabase Auth.</li>
+      <li><strong>Your chosen AI client:</strong> the requests and replies described above.</li>
+    </ul>
+    <p>These providers process data to operate their services. Their own policies apply to their handling. Data may be processed outside your country of residence.</p>
+    <p>The iPhone keeps local records and credentials. The current app does not automatically sync its local database through CloudKit and does not upload private CloudKit backups.</p>
+    <h2>Advertising and tracking</h2>
+    <p>We do not sell personal data, use it for advertising or track users across other companies' apps or websites.</p>
+    <h2>Retention</h2>
+    <p>Account content is kept while the account exists. Corrections preserve originals and history. Deleting the account removes its content from the live database immediately; database backups roll off within 30 days.</p>
+    <p>Bug reports are kept for up to 2 years, or deleted earlier with the account.</p>
+    <p>AI write receipts have a 24-hour replay window; device write receipts have a 7-day replay window. Expiry ends replay, not automatic deletion. Account-linked receipts, delivery copies, request-limit records and history preparation records are deleted with the account; no automatic production cleanup schedule is established in the current code.</p>
+    <h2 id="deletion">Deletion and disconnection</h2>
+    <p>To delete your account in the app, open the menu, tap <strong>Delete account</strong> below Sign out and confirm. For deletion help, email <a href="mailto:privacy@one-by.one">privacy@one-by.one</a>.</p>
+    <p>Accepted account deletion removes the sign-in account and its linked plans, results, interests, memories, connections, device records, technical records and bug reports in a database transaction. There is no grace period.</p>
+    <p>The app's deletion cleanup removes its local one-by.one records, session, that account's device credentials and notifications on this iPhone after server confirmation. Cleanup can fail and require a retry. Apple authorization revocation is attempted where applicable.</p>
+    <p>Deletion does not erase exported files, Calendar events, legacy app data, other-device or operating-system backup copies, support email or AI chats. Manage independently held copies through the relevant provider, or contact us for help. Account deletion does not cancel an Apple subscription.</p>
+    <p>The current app creates no private CloudKit backup. If earlier app data appears in iCloud, manage it in <strong>iOS Settings › Apple Account › iCloud › Manage Storage</strong>. Account deletion does not remove separate CloudKit copies or synchronizing backup keys; deleting iCloud app data does not establish that those keys are removed.</p>
+    <p>Disconnecting an AI app revokes future tool access. It does not erase records or copies that app already received.</p>
+    <h2>Children</h2>
+    <p>You must be at least 16 to use one-by.one. The service is not directed to anyone under 16. If we learn an account belongs to someone under 16, we delete it. Contact <a href="mailto:support@one-by.one">support@one-by.one</a> about an under-age account.</p>
+    <h2>Policy changes</h2>
+    <p>We may update this policy. Updates will appear here with a revised effective date.</p>
+    <h2>Contact</h2>
+    <p>Email to <a href="mailto:support@one-by.one">support@one-by.one</a> and <a href="mailto:privacy@one-by.one">privacy@one-by.one</a> is forwarded to the owner. Only the owner reads it. We do not promise a response time.</p>
+    <p>We keep support and privacy email for up to 2 years, then delete it. You can ask us to delete your messages sooner.</p>
+  
+        <div class="publisher">
+          <p>Publisher: salad76, doing business as one-by.one</p>
+  <p class="address">Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea</p>
+  <p><a href="mailto:support@one-by.one">support@one-by.one</a> · <a href="mailto:privacy@one-by.one">privacy@one-by.one</a></p>
+        </div>
       </article>
     </main>
 
@@ -73,8 +110,6 @@
           <a href="../privacy/" aria-current="page">Privacy</a>
           <a href="../terms/">Terms</a>
           <a href="../support/">Support</a>
-          <a href="../ko/privacy/" lang="ko">한국어</a>
-          <a href="../ja/privacy/" lang="ja">日本語</a>
         </nav>
         <span>© 2026 one-by.one</span>
       </div>

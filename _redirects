@@ -1,3 +1,17 @@
 # Old English URLs moved to the site root on 2026-09-24.
 /en /  301
 /en/* /:splat 301
+
+# Legal pages are English-only from 2026-10-04 (translations were for the earlier app).
+/ko/privacy /privacy/ 302
+/ko/privacy/ /privacy/ 302
+/ko/terms /terms/ 302
+/ko/terms/ /terms/ 302
+/ko/support /support/ 302
+/ko/support/ /support/ 302
+/ja/privacy /privacy/ 302
+/ja/privacy/ /privacy/ 302
+/ja/terms /terms/ 302
+/ja/terms/ /terms/ 302
+/ja/support /support/ 302
+/ja/support/ /support/ 302
