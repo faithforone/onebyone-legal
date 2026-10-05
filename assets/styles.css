@@ -120,3 +120,6 @@ li + li { margin-top: 6px; }
   .shell { padding: 20px 16px; }
   .page { padding-top: 16px; }
 }
+.footer-end { display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; }
+.footer-end .language-links { display: flex; gap: 12px; }
+.footer-end .language-links a { min-height: 0; font-size: 13px; }
