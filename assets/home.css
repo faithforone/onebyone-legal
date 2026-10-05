@@ -148,6 +148,16 @@
 .t-more svg { width: 15px; height: 15px; fill: var(--paper); }
 .ticket .t-clock { margin-top: 6px !important; font-size: 46px; font-weight: 600; letter-spacing: -.03em; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .ticket .t-clock.sm { margin-top: 4px !important; font-size: 15px; letter-spacing: 0; color: var(--soft); }
+/* "Ready" replaces the number: smaller so it stays on one line in every language, in the same line box so nothing below it moves. */
+.ticket .t-clock:not(.sm) { min-height: 48px; white-space: nowrap; }
+.ticket .t-clock.done { font-size: 30px; line-height: 48px; letter-spacing: -.01em; }
+.t-over { display: inline-block; min-width: 4.4ch; margin-left: 8px; font-size: 16px; font-weight: 500; letter-spacing: 0; color: var(--soft); }
+/* The tile paragraph rule gives Korean paragraphs room (line-height 1.65); a card's own lines keep the card's rhythm. */
+html:lang(ko) .home .tile .ticket .t-title { line-height: 1.12; }
+html:lang(ko) .home .tile .ticket .t-clock { line-height: 1.05; }
+html:lang(ko) .home .tile .ticket .t-clock.sm { line-height: 1.3; }
+html:lang(ko) .home .tile .ticket .t-clock.done { line-height: 48px; }
+html:lang(ko) .home .tile .ticket .t-note { line-height: 1.35; }
 .ticket .t-amt { margin-top: 8px !important; padding: 4px 4px 4px 10px; border-radius: 14px; background: rgba(243,244,245,.07); --row: 44px; }
 .ticket .t-amt.two { margin-top: 7px !important; padding-block: 3px; --row: 28px; }
 .a-row { display: flex; align-items: center; height: var(--row); }
@@ -228,7 +238,7 @@ button.upnext { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .m-skip[hidden] { display: none; }
 .m-skip svg { flex: none; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .mrow .pair { flex: none; }
-.ticket .t-pause { display: none; margin-top: 4px !important; font-size: 15px; color: var(--soft); }
+.ticket .t-pause { display: none; margin-top: 4px !important; font-size: 15px; color: var(--soft); font-variant-numeric: tabular-nums; }
 .ticket.paused .t-pause { display: block; }
 .ticket.paused .t-note { display: none; }
 .ticket.paused .t-clock { opacity: .55; }

@@ -10,7 +10,7 @@
     skip: "건너뛰기", notToday: "오늘은 넘기기", remove: "삭제", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
     ready: "준비 완료", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     dueAria: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
-    left: (c) => `${c} 남음`, speed: "여기서는 빠르게 보여 줘요: 1분 = 2초",
+    left: (c) => `${c} 남음`, speed: "여기서는 시간을 건너뛰어 보여 줘요",
     min: (m) => `${m}분`, sec: (s) => `${s}초`, under: "1분 미만",
     trayLabel: (n) => `타이머 ${n}개 실행 중`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)}분` : "1분 미만"} 남음`,
     timerStarted: (n, m) => `${n} 타이머를 ${m}분으로 시작했어요.`, confirm: (n) => `${n} 확인`,
@@ -26,7 +26,7 @@
     skip: "Skip", notToday: "Not today", remove: "Remove", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
     ready: "Ready", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
     dueAria: (n, next) => `${n}, due. ${next} is next.`,
-    left: (c) => `${c} left`, speed: "Sped up here: 1 min = 2 s",
+    left: (c) => `${c} left`, speed: "Time skips ahead in this demo",
     min: (m) => `${m}m`, sec: (s) => `${s}s`, under: "under a minute",
     trayLabel: (n) => `Timers, ${n} running`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)} minutes` : "under a minute"} left`,
     timerStarted: (n, m) => `${n} timer started, ${m} minutes.`, confirm: (n) => `Confirm: ${n}`,
@@ -183,6 +183,21 @@
   const skipIcon = icon("M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"), moonIcon = icon("M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"), trashIcon = icon("M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5");
   const playIcon = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l10 6.5-10 6.5z"/></svg>';
   const clockText = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;
+  // Demo timers are decorative, and no visible number ever changes faster than once per real second.
+  // A short timer simply runs. A long one is shown as time passing: it prints its full time, the pill fill sweeps
+  // (SWEEP ms), the digits cross-fade once to a near-end value (tail seconds), then real 1 Hz seconds run to zero.
+  const SWEEP = 700, BALL_TAIL = 5;
+  const timeline = (P, tail) => (P > tail + 1 ? { P, S: SWEEP, tail, k0: 1 - tail / P, total: SWEEP + tail * 1000 } : { P, S: 0, tail: P, k0: 0, total: P * 1000 });
+  const easeIO = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+  // At e ms into a timeline: the seconds the number shows (disp), how much of the time is gone (k, 0..1), and whether it is still the full time.
+  const at = (L, e) => {
+    e = Math.max(0, Math.min(L.total, e));
+    if (!L.S) return { disp: L.P - e / 1000, k: e / L.total, full: false };
+    if (e < L.S) return { disp: L.P, k: easeIO(e / L.S) * L.k0, full: true };
+    return { disp: L.tail - (e - L.S) / 1000, k: L.k0 + (1 - L.k0) * ((e - L.S) / (L.tail * 1000)), full: false };
+  };
+  const whole = (d) => Math.max(0, Math.ceil(d - 0.05));
+  const cardLine = (c) => timeline(c.clock, Math.max(2, Math.round((c.ms || 4000) / 1000)));
   const shift = (k) => `${((k - 1) * 100).toFixed(2)}%`;
   const fmt = (n) => String(Math.round(n * 100) / 100);
   // The pill is two layers: the track, and the lime Start/Done laid over it, uncovered by k (0..1).
@@ -206,7 +221,7 @@
   const bodyHTML = (c, running, vals = (c.amt || []).map((r) => r.v), menu = true) =>
     `<div class="t-head"><p class="t-title">${esc(c.t)}</p>${moreHTML(menu, c)}</div>` +
     `<p class="t-pause">${T.paused}</p>` +
-    (c.clock ? `<p class="t-clock${c.rest || running ? "" : " sm"}">${clockText(c.clock)}</p>` : "") +
+    (c.clock ? `<p class="t-clock${c.rest || running ? "" : " sm"}" role="timer">${clockText(c.clock)}</p>` : "") +
     (c.amt ? amtHTML(c.amt, vals) : "") +
     (c.note ? `<p class="t-note">${esc(c.note).replace(/ · /g, "\u00a0· ").replace(/(\d) (min|s|kg|reps)\b/g, "$1\u00a0$2")}</p>` : "");
   const ticketHTML = (c, start, vals, menu = true) =>
@@ -215,8 +230,9 @@
 
   // A wait is a card that is short to do; its pill reads Keep track, and the app keeps track of the wait (the app's timer balls, planned for 1.1).
   // The demo runs one real minute in two seconds; the ball and panel always say real minutes.
-  const MIN_MS = 2000, RING = 2 * Math.PI * 13, LAND = 920, MAX_BALLS = 3;
-  const leftLabel = (s) => (s >= 60 ? T.min(Math.ceil(s / 60)) : T.sec(Math.ceil(s)));
+  const RING = 2 * Math.PI * 13, LAND = 920, MAX_BALLS = 3;
+  const leftLabel = (s) => (s >= 60 ? T.min(Math.ceil(s / 60)) : T.sec(s));
+  const leftText = (d) => { const s = whole(d); return T.left(s >= 60 ? T.min(Math.ceil(s / 60)) : clockText(s)); };
   const ballHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)"/></svg><b></b>';
 
   // Done, as the app does it (Now ticket: crack, fall, print):
@@ -237,7 +253,7 @@
     const cur = () => slot.querySelector(".ticket:not(.inc)");
     const card = () => st.cards[st.i];
     const startsHere = () => !chain && st.i === 0;
-    const stop = () => cancelAnimationFrame(st.raf);
+    const stop = () => { cancelAnimationFrame(st.raf); clearTimeout(st.over); };
     const setFill = (t, k) => {
       $(".go-lit", t).style.transform = `translateX(${shift(k)})`;
       $(".go-lit .go-lay", t).style.transform = `translateX(${shift(2 - k)})`;
@@ -256,18 +272,40 @@
     // A timed card's pill fills with the time, and the number counts down.
     const play = (t, from = 0) => {
       stop();
-      const c = card(), num = $(".t-clock", t), t0 = performance.now() - from;
+      const c = card(), num = $(".t-clock", t);
+      if (c.idle) { st.t0 = performance.now() - from; setFill(t, 0); return; }
+      if (!c.clock || !num) { st.t0 = performance.now() - from; setFill(t, 1); return; }
+      const L = cardLine(c);
+      // Reduced motion: no sweep and no cross-fade; the card starts at its near-end value.
+      const t0 = performance.now() - (still() ? Math.max(from, L.S) : from);
       st.t0 = t0;
-      if (c.idle) { setFill(t, 0); return; }
-      if (!c.clock || !num) { setFill(t, 1); return; }
-      const ms = c.ms || 4000;
-      setFill(t, 0);
-      const tick = (now) => {
-        const k = Math.max(0, Math.min(1, (now - t0) / ms));
-        setFill(t, k);
-        num.textContent = k < 1 ? clockText(Math.ceil(c.clock * (1 - k))) : T.ready;
-        if (k < 1) st.raf = requestAnimationFrame(tick); else if (onReady) onReady();
+      let shown = -1, full = true;
+      const ready = () => {
+        num.classList.add("done");
+        num.innerHTML = `<span class="t-ready">${T.ready}</span><span class="t-over"></span>`;
+        const over = $(".t-over", num), end = t0 + L.total;
+        const count = () => {
+          if (!num.isConnected) return;
+          const d = performance.now() - end;
+          over.textContent = `+${clockText(Math.max(0, Math.floor(d / 1000)))}`;
+          st.over = setTimeout(count, 1005 - (d % 1000));
+        };
+        count();
+        if (onReady) onReady();
       };
+      const tick = (now) => {
+        const e = now - t0, a = at(L, e);
+        setFill(t, a.k);
+        if (e >= L.total) { ready(); return; }
+        const sec = whole(a.disp);
+        if (sec !== shown) {
+          if (full && !a.full && shown >= 0 && !still() && num.animate) num.animate([{ opacity: 0.15 }, { opacity: 1 }], { duration: 200, easing: "ease-out" });
+          num.textContent = clockText(sec); shown = sec;
+        }
+        full = a.full;
+        st.raf = requestAnimationFrame(tick);
+      };
+      setFill(t, 0);
       st.raf = requestAnimationFrame(tick);
     };
 
@@ -286,7 +324,7 @@
 
     // The tray: up to three balls, one fixed slot each, soonest to end nearest the edge.
     // Tap a ball for the list of timers; press and hold it (0.35 s) for a small peek at that one.
-    const remaining = (tm, now) => Math.max(0, tm.min * 60 * (1 - Math.max(0, (now - tm.t0) / tm.ms)));
+    const remaining = (tm, now) => at(tm.L, now - tm.t0).disp;
     const soonest = () => st.timers.find((x) => !x.ending);
     // Everything about the balls pops, scales or slides; nothing fades.
     const spring = "cubic-bezier(.34,1.56,.64,1)";
@@ -307,7 +345,7 @@
       if (!rows.length) { setOpen(false); return; }
       const now = performance.now();
       panel.innerHTML = "<ul>" + rows.map((tm) =>
-        `<li><p class="tp-top"><b>${esc(tm.name)}</b><span data-left="${tm.id}">${tm.due ? T.due : T.left(clockText(Math.ceil(remaining(tm, now))))}</span></p><p class="tp-then">→ ${esc(tm.then.t)}</p></li>`).join("") +
+        `<li><p class="tp-top"><b>${esc(tm.name)}</b><span data-left="${tm.id}">${tm.due ? T.due : leftText(remaining(tm, now))}</span></p><p class="tp-then">→ ${esc(tm.then.t)}</p></li>`).join("") +
         `</ul><p class="tp-note">${T.speed}</p>`;
     };
     const setOpen = (on, refocus) => {
@@ -319,7 +357,7 @@
     };
     // The peek: a small card that grows out of the held ball and goes when the finger lifts.
     let peekAnim = null;
-    const peekHTML = (tm) => `<p class="pk-top"><b>${esc(tm.name)}</b><span data-pk>${T.left(clockText(Math.ceil(remaining(tm, performance.now()))))}</span></p><p class="pk-then">→ ${esc(tm.then.t)}</p>`;
+    const peekHTML = (tm) => `<p class="pk-top"><b>${esc(tm.name)}</b><span data-pk>${leftText(remaining(tm, performance.now()))}</span></p><p class="pk-then">→ ${esc(tm.then.t)}</p>`;
     const showPeek = (tm) => {
       if (st.open || tm.ending || !tm.el.isConnected) return;
       st.peek = tm; peek.innerHTML = peekHTML(tm); peek.hidden = false;
@@ -348,14 +386,17 @@
       if (st.open) renderPanel();
     };
     const paintBall = (tm, now) => {
-      const s = remaining(tm, now), label = leftLabel(s), num = $("b", tm.el);
-      $(".b-pr", tm.el).style.strokeDashoffset = String(-RING * (1 - s / (tm.min * 60)));
+      const a = at(tm.L, now - tm.t0), s = a.disp, sec = whole(s), label = leftLabel(sec), num = $("b", tm.el);
+      $(".b-pr", tm.el).style.strokeDashoffset = String(-RING * a.k);
       if (num.textContent !== label) {
+        if (tm.full && !a.full && !still() && num.animate) num.animate([{ opacity: 0.15 }, { opacity: 1 }], { duration: 200, easing: "ease-out" });
         num.textContent = label;
-        tm.el.setAttribute("aria-label", T.ballLabel(tm.name, s));
+        tm.el.setAttribute("aria-label", T.ballLabel(tm.name, sec));
       }
-      if (st.peek === tm) { const el = $("[data-pk]", peek); if (el) el.textContent = T.left(clockText(Math.ceil(s))); }
-      if (st.open) { const el = $(`[data-left="${tm.id}"]`, panel); if (el) el.textContent = T.left(clockText(Math.ceil(s))); }
+      tm.full = a.full;
+      const text = leftText(s);
+      if (st.peek === tm) { const el = $("[data-pk]", peek); if (el && el.textContent !== text) el.textContent = text; }
+      if (st.open) { const el = $(`[data-left="${tm.id}"]`, panel); if (el && el.textContent !== text) el.textContent = text; }
       return s;
     };
     const tick = (now) => {
@@ -371,7 +412,8 @@
       const el = document.createElement("button");
       el.type = "button"; el.className = "ball pending"; el.innerHTML = ballHTML; el.setAttribute("inert", "");
       el.setAttribute("aria-expanded", String(st.open)); el.setAttribute("aria-controls", panel.id);
-      const tm = { id: ++st.tid, name: w.name, min: w.min, then: w.then, t0: performance.now() + lag, ms: w.min * MIN_MS, el };
+      const L = timeline(w.min * 60, BALL_TAIL);
+      const tm = { id: ++st.tid, name: w.name, min: w.min, then: w.then, L, full: true, t0: performance.now() + lag - (still() ? L.S : 0), ms: L.total, el };
       st.timers.push(tm);
       st.timers.sort((a, b) => (a.t0 + a.ms) - (b.t0 + b.ms));
       paintBall(tm, performance.now());
@@ -455,9 +497,9 @@
     };
     // The held card prints back frozen where it was: "Held · m:ss" and a Resume pill. Nothing resumes by itself.
     const paintHeld = (t, h) => {
-      const c = card(), ms = c.ms || 4000;
+      const c = card();
       let secs = Math.floor(h.elapsed / 1000);
-      if (c.clock) { const k = Math.min(1, h.elapsed / ms); secs = Math.ceil(c.clock * (1 - k)); setFill(t, k); $(".t-clock", t).textContent = clockText(secs); } else setFill(t, 1);
+      if (c.clock) { const a = at(cardLine(c), h.elapsed); secs = whole(a.disp); setFill(t, a.k); $(".t-clock", t).classList.remove("done"); $(".t-clock", t).textContent = clockText(secs); } else setFill(t, 1);
       t.classList.add("paused"); setLabel(t, T.resume);
       $$(".go b", t).forEach((b) => { b.innerHTML = playIcon; });
       $(".t-pause", t).textContent = `${T.held} · ${clockText(secs)}`;
@@ -976,43 +1018,27 @@
       "c": "#e5658a",
       "segs": [
         [
-          "머릿속이 복잡해요. ",
+          "머리 복잡하다. ",
           0
         ],
         [
-          "내일 발표 자료를 시작해야 하는데",
+          "내일 발표 자료 시작해야 되는데",
           "today"
         ],
         [
-          " 자꾸 미루고 있고, ",
+          " 계속 미루는 중이고, ",
           0
         ],
         [
-          "집주인에게 누수 얘기를 보내야 하고",
+          "집주인한테 누수 얘기 보내야 되고",
           "today"
         ],
         [
-          " 엄마한테도 ",
+          " 엄마한테 ",
           0
         ],
         [
-          "전화해야 해요",
-          "today"
-        ],
-        [
-          ". ",
-          0
-        ],
-        [
-          "운동도 하고 싶은데 어깨가 좀 뻐근해요",
-          "today"
-        ],
-        [
-          ". 그리고 ",
-          0
-        ],
-        [
-          "치과 예약도 해야 해요",
+          "전화도 해야 돼",
           "today"
         ],
         [
@@ -1020,15 +1046,31 @@
           0
         ],
         [
-          "달걀이랑 커피도 다 떨어졌고",
+          "운동하고 싶은데 어깨가 좀 뻐근해",
+          "today"
+        ],
+        [
+          ". 아 ",
+          0
+        ],
+        [
+          "치과 예약도 해야 됨",
+          "today"
+        ],
+        [
+          ". ",
+          0
+        ],
+        [
+          "달걀이랑 커피 다 떨어졌고",
           "later"
         ],
         [
-          " 언젠가는 ",
+          " 언젠간 ",
           0
         ],
         [
-          "스페인어도 배워 보고 싶네요",
+          "스페인어도 배워보고 싶다",
           "interest"
         ]
       ],
@@ -1055,7 +1097,7 @@
     "workout": {
       "title": "오늘 저녁 운동",
       "c": "#3fb6a8",
-      "me": "오늘은 짧게 운동하고 파스타를 만들고 싶어요.",
+      "me": "오늘은 짧게 운동하고 파스타 만들 거야",
       "ai": "월요일에 하체 운동을 했으니 오늘은 상체를 해 봐요. 어깨가 뻐근하다고 했으니 푸시업 횟수는 지난번보다 줄일게요.",
       "list": [
         [
@@ -1076,7 +1118,7 @@
     "pasta": {
       "title": "마늘 파스타",
       "c": "#f2a33a",
-      "me": "30분 안에 2인분 마늘 파스타를 만들고 싶어요.",
+      "me": "30분 안에 마늘 파스타 2인분 만들고 싶어",
       "ai": "충분해요. 물이 끓는 동안 재료를 준비해요.",
       "list": [
         [
@@ -1101,7 +1143,7 @@
     "focus": {
       "title": "제안서 초안",
       "c": "#6d5df5",
-      "me": "5시까지 제안서 초안을 끝내야 해요.",
+      "me": "5시까지 제안서 초안 끝내야 돼",
       "ai": "쉬는 시간을 넣어 세 구간으로 나눌게요. 4시 40분에 마치는 계획이에요.",
       "list": [
         [
@@ -1122,7 +1164,7 @@
     "reset": {
       "title": "20분 집 정리",
       "c": "#3b82f6",
-      "me": "집이 엉망인데 20분밖에 없어요.",
+      "me": "집 엉망인데 20분밖에 없어",
       "ai": "가장 눈에 띄는 것부터요. 설거지하고, 주변을 정리해요.",
       "list": [
         [
@@ -1314,12 +1356,12 @@
     const deck = screen && makeDeck(screen, { chain: true, menu: false });
     const cards = ko ? [
       { t: "푸시업", note: "손은 어깨 아래에 · 내려갈 땐 2초" },
-      { t: "휴식", clock: 60, rest: true, ms: 3000 },
+      { t: "휴식", clock: 60, rest: true, ms: 2000 },
       { t: "푸시업", note: "몸은 일직선으로 · 내려갈 땐 2초" },
       { t: "물 올리기", note: "큰 냄비에 뚜껑을 덮고 · 8분" },
     ] : [
       { t: "Push-ups", note: "Hands under shoulders · 2 s down" },
-      { t: "Rest", clock: 60, rest: true, ms: 3000 },
+      { t: "Rest", clock: 60, rest: true, ms: 2000 },
       { t: "Push-ups", note: "Body in one line · 2 s down" },
       { t: "Put the water on", note: "Big pot, lid on · 8 min" },
     ];
@@ -1337,7 +1379,7 @@
 
   // Waits: "Put the water on" is short to do; Keep track tears the stub, the card shrinks into a ball in the tray,
   // the next card comes while the ring drains, the ball turns red when due, and tapping it brings "Add the pasta" now:
-  // the garlic card is held, and comes back with Resume. Two minutes here is four seconds.
+  // the garlic card is held, and comes back with Resume. Two minutes here is a short sweep and five real seconds.
   {
     const tile = $('[data-tile="timer"]'), screen = $(".now", tile);
     const deck = screen && makeDeck(screen, { chain: true, menu: false });
@@ -1361,9 +1403,9 @@
     if (deck) loopWhileVisible(tile, (later) => {
       deck.load(cards, { print: !first }); first = false;
       later(tap, 1300);
-      later(() => deck.tapDue(), 7600);
-      later(tap, 10400);
-      return 14500;
+      later(() => deck.tapDue(), 9300);
+      later(tap, 12100);
+      return 16200;
     });
   }
 
