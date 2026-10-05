@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- Source for assets/og.png (English) and assets/og-ko.png (Korean). 1200x630.
+     Regenerate: node assets/og-src/render.mjs   (needs Google Chrome; Pretendard loads from jsDelivr).
+     Key content sits in the centre 630x630 square, so chat apps that crop to ~2:1 or a square keep it. -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>one-by.one share image</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
+<style>
+  :root { --page:#F3F4F5; --ink:#1A1C20; --lime:#C6EF4E; --line:#DADDE2; --muted:#5B6068; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--page); }
+  body { position: relative; font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; color: var(--ink); text-align: center; }
+  svg { position: absolute; inset: 0; }
+  .headline { position: absolute; left: 0; right: 0; top: 254px; font-size: 84px; line-height: 1.06; font-weight: 800; letter-spacing: -3px; word-break: keep-all; }
+  html[lang=en] .headline { font-size: 80px; letter-spacing: -3px; }
+  .sub { position: absolute; left: 0; right: 0; top: 454px; font-size: 34px; font-weight: 500; letter-spacing: -.6px; color: var(--muted); word-break: keep-all; }
+  .brand { position: absolute; left: 0; right: 0; top: 556px; font-size: 28px; font-weight: 700; letter-spacing: -.8px; color: var(--ink); }
+  .brand i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--lime); margin-right: 10px; vertical-align: 1px; box-shadow: 0 0 0 1px #A9CE36; }
+  html[lang=ko] .en, html[lang=en] .ko { display: none; }
+</style>
+</head>
+<body>
+<svg width="1200" height="630" viewBox="0 0 1200 630" aria-hidden="true">
+  <!-- Cards, one by one: done cards fade out to the left, the current card is dark with the lime bar, next cards wait on the right. -->
+  <g>
+    <rect x="218" y="82" width="98" height="98" rx="26" fill="#fff" stroke="#DADDE2" stroke-width="2"/>
+    <rect x="346" y="67" width="127" height="127" rx="33" fill="#DADDE2"/>
+    <rect x="505" y="36" width="190" height="190" rx="48" fill="#1A1C20"/>
+    <rect x="552" y="171" width="96" height="14" rx="7" fill="#C6EF4E"/>
+    <rect x="727" y="67" width="127" height="127" rx="33" fill="#E7E9EC"/>
+    <rect x="884" y="82" width="98" height="98" rx="26" fill="#fff" stroke="#DADDE2" stroke-width="2"/>
+    <!-- quiet bars on the side cards -->
+    <rect x="368" y="163" width="46" height="8" rx="4" fill="#C3C7CE"/>
+    <rect x="749" y="163" width="46" height="8" rx="4" fill="#D0D3D9"/>
+    <rect x="240" y="146" width="32" height="6" rx="3" fill="#DADDE2"/>
+    <rect x="906" y="146" width="32" height="6" rx="3" fill="#DADDE2"/>
+  </g>
+</svg>
+<div class="headline"><span class="ko">할 일은<br>하나씩</span><span class="en">One thing<br>at a time</span></div>
+<div class="sub"><span class="ko">AI가 나눈 카드를 iPhone에서 한 장씩</span><span class="en">Plan with your AI. Do it on iPhone.</span></div>
+<div class="brand"><i></i>one-by.one</div>
+<script>
+  const l = new URLSearchParams(location.search).get("lang") === "ko" ? "ko" : "en";
+  document.documentElement.lang = l;
+</script>
+</body>
+</html>

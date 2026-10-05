@@ -1405,41 +1405,28 @@
     $("[data-price]").textContent = price; $("[data-per]").textContent = per; $("[data-unit]").textContent = unit;
   }));
 
-  // Sign-up opens one small dialog.
-  const dialog = $("[data-signup-dialog]");
-  $$("[data-open-signup]").forEach((b) => b.addEventListener("click", () => {
-    if (dialog?.showModal) dialog.showModal(); else location.hash = "notify";
-  }));
-  dialog?.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  // Launch switch. Before launch every [data-cta] opens the small "launch updates" dialog.
+  // TODO(launch): when the app is on the App Store, set LAUNCH = true and put the real App Store URL below.
+  // This is the only place to change: each [data-cta] becomes a link to the App Store and
+  // each [data-launch-text] (button, section heading, hero pill) shows the text in its attribute.
+  const LAUNCH = false;
+  const APP_STORE_URL = "https://apps.apple.com/app/id0000000000";
 
-  // Sign-up with Apple or Google: the same account as the app. Until the
-  // production project is configured, the buttons say so instead of failing.
-  const authConfig = document.querySelector('meta[name="obo-auth"]');
-  let client = null;
-  const supabaseClient = async () => {
-    if (client) return client;
-    const url = authConfig?.dataset.url, key = authConfig?.dataset.key;
-    if (!url || !key) return null;
-    const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
-    client = createClient(url, key, { auth: { flowType: "pkce", persistSession: true } });
-    return client;
-  };
-  document.querySelectorAll("[data-signup]").forEach((box) => {
-    const status = box.querySelector(".signup-status");
-    box.querySelectorAll("[data-provider]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        status.textContent = "";
-        const sb = await supabaseClient().catch(() => null);
-        if (!sb) { status.textContent = (ko ? "가입은 곧 열립니다. 조금 뒤에 다시 방문해 주세요." : "Sign-up opens soon. Please check back."); return; }
-        button.disabled = true;
-        const { error } = await sb.auth.signInWithOAuth({
-          provider: button.dataset.provider,
-          options: { redirectTo: new URL("/welcome/", location.href).href },
-        });
-        if (error) { status.textContent = (ko ? "로그인 화면을 열지 못했습니다. 다시 시도해 주세요." : "Couldn’t open sign-in. Please try again."); button.disabled = false; }
-      });
+  const dialog = $("[data-notify-dialog]");
+  if (LAUNCH) {
+    $$("[data-cta]").forEach((b) => {
+      const a = document.createElement("a");
+      a.className = b.className; a.href = APP_STORE_URL; a.textContent = b.dataset.launchText || b.textContent;
+      b.replaceWith(a);
     });
-  });
+    $$("[data-launch-text]").forEach((el) => { el.textContent = el.dataset.launchText; });
+    dialog?.remove();
+  } else {
+    $$("[data-cta]").forEach((b) => b.addEventListener("click", () => {
+      if (dialog?.showModal) dialog.showModal(); else location.hash = "notify";
+    }));
+    dialog?.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  }
 
   // The wait the server asked for, in words; never a guess.
   const tooMany = (seconds) => {
@@ -1449,7 +1436,7 @@
       : (ko ? `${minutes}분 뒤에 다시 시도해 주세요.` : `Too many tries. Please try again in ${minutes} minutes.`);
   };
 
-  // Waitlist (hero and footer forms): posts to the configured endpoint; without one, says so plainly.
+  // Waitlist (launch-updates dialog): posts to the configured endpoint; without one, says so plainly.
   document.querySelectorAll("[data-waitlist]").forEach((form) => {
     const status = form.querySelector(".notify-status");
     form.addEventListener("submit", async (event) => {
