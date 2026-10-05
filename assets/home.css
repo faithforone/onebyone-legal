@@ -421,7 +421,8 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .dlg-close button:focus-visible { outline: 2px solid #555d6d; outline-offset: 2px; }
 /* Opening focuses the heading (not the close button), so no ring appears on open. */
 .notify-dialog h2:focus { outline: none; }
-.notify-form input[type=email]:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+/* Focus shows as a firmer border, not a second ring around the pill. */
+.notify-form input[type=email]:focus-visible { outline: none; border-color: var(--focus); box-shadow: 0 0 0 1px var(--focus); }
 .dlg-fine { margin: 8px 0 0; font-size: 13px; color: var(--hush); }
 .notify-form { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 /* 16px: iOS Safari zooms the page when a focused field is smaller. */
@@ -510,6 +511,10 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .day { width: 260px; }
   /* The launch-updates dialog is a sheet from the bottom edge. */
   .notify-dialog { width: 100%; max-width: none; margin: auto 0 0; border-radius: 24px 24px 0 0; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+  /* When the iOS keyboard opens, Safari lifts the sheet off the bottom edge.
+     The sheet's own surface continues below it, so the page never shows in the gap. */
+  .notify-dialog { overflow: visible; }
+  .notify-dialog::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100% - 1px); height: 100vh; background: var(--page); pointer-events: none; }
   .notify-dialog[open] { animation: sheet-in .28s cubic-bezier(.22,.8,.26,1); }
 }
 @keyframes sheet-in { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
