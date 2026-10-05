@@ -3,6 +3,42 @@
 (function () {
   "use strict";
   const ko = document.documentElement.lang === "ko";
+  // <i18n>
+  // The demo's own words (buttons, menu, labels, announcements). English is the default; <html lang="ko"> swaps the table.
+  const T = ko ? {
+    start: "시작", done: "완료", track: "맡기기", waiting: "대기 중", paused: "일시정지됨", resume: "다시 시작", held: "보류 중",
+    skip: "건너뛰기", notToday: "오늘은 넘기기", remove: "삭제", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
+    ready: "준비 완료", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
+    dueAria: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
+    left: (c) => `${c} 남음`, speed: "여기서는 빠르게 보여 줘요: 1분 = 2초",
+    min: (m) => `${m}분`, sec: (s) => `${s}초`, under: "1분 미만",
+    trayLabel: (n) => `타이머 ${n}개 실행 중`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)}분` : "1분 미만"} 남음`,
+    timerStarted: (n, m) => `${n} 타이머를 ${m}분으로 시작했어요.`, confirm: (n) => `${n} 확인`,
+    stepLabel: (r, dir) => `${r.l} ${dir < 0 ? "줄이기" : "늘리기"}`,
+    skipped: "건너뛰었어요. 다음 카드 뒤에 다시 나와요.", removed: "삭제했어요. 왼쪽 위의 되돌리기로 취소할 수 있어요.", aside: "오늘은 넘겼어요",
+    paused2: "일시정지했어요.", resumed: "다시 시작했어요.",
+    idleT: "지금 할 일이 없어요", idleNote: (n, then) => `${n} 타이머가 끝나면 ‘${then}’ 차례예요.`,
+    waitT: "아직 없어요", waitNote: "AI에게 지금 생각나는 일을 말해 보세요. 카드가 여기로 와요.",
+    greet: (h) => (h >= 5 && h < 12 ? "좋은 아침이에요" : h >= 12 && h < 18 ? "좋은 오후예요" : "좋은 저녁이에요"),
+    suggested: "제안", added: "추가됨",
+  } : {
+    start: "Start", done: "Done", track: "Keep track", waiting: "Waiting", paused: "Paused", resume: "Resume", held: "Held",
+    skip: "Skip", notToday: "Not today", remove: "Remove", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
+    ready: "Ready", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
+    dueAria: (n, next) => `${n}, due. ${next} is next.`,
+    left: (c) => `${c} left`, speed: "Sped up here: 1 min = 2 s",
+    min: (m) => `${m}m`, sec: (s) => `${s}s`, under: "under a minute",
+    trayLabel: (n) => `Timers, ${n} running`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)} minutes` : "under a minute"} left`,
+    timerStarted: (n, m) => `${n} timer started, ${m} minutes.`, confirm: (n) => `Confirm: ${n}`,
+    stepLabel: (r, dir) => `${dir < 0 ? (r.u === "reps" ? "Fewer" : "Less") : "More"} ${r.l.toLowerCase()}`,
+    skipped: "Skipped. It comes back after the next card.", removed: "Removed. Undo is at the top left.", aside: "Set aside for today",
+    paused2: "Paused.", resumed: "Resumed.",
+    idleT: "Nothing to do now", idleNote: (n, then) => `${then} comes when the ${n.toLowerCase()} is ready.`,
+    waitT: "Nothing yet", waitNote: "Tell your AI what’s on your mind. The cards land here.",
+    greet: (h) => (h >= 5 && h < 12 ? "Good morning" : h >= 12 && h < 18 ? "Good afternoon" : "Good evening"),
+    suggested: "Suggested", added: "Added",
+  };
+  // </i18n>
   const motion = matchMedia("(prefers-reduced-motion: reduce)");
   const still = () => motion.matches;
   const $ = (sel, root = document) => root?.querySelector(sel) || null;
@@ -154,33 +190,33 @@
     `<button class="go" type="button" aria-label="${label}"${off ? ' aria-disabled="true"' : ""}><span class="go-lay" aria-hidden="true"><span class="go-t">${label}</span><b>${glyph}</b></span>` +
     `<span class="go-lit" aria-hidden="true" style="transform:translateX(${shift(k)})"><span class="go-lay" style="transform:translateX(${shift(2 - k)})"><span class="go-t">${label}</span><b>${glyph}</b></span></span></button>`;
   // Not today and Remove sit side by side; the first tap joins them into one named button, the second does it.
-  const pairHTML = `<div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today">${moonIcon}<span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove">${trashIcon}<span>Remove</span></button></div>`;
+  const pairHTML = `<div class="pair"><button class="ab nt" type="button" data-name="${T.notToday}" aria-label="${T.notToday}">${moonIcon}<span>${T.notToday}</span></button><button class="ab rm" type="button" data-name="${T.remove}" aria-label="${T.remove}">${trashIcon}<span>${T.remove}</span></button></div>`;
   // The ⋯ opens the stub split: Skip, Not today, Remove, with the pill slid aside.
   const moreHTML = (menu, c) => menu && !c.idle
-    ? `<button class="t-more" type="button" aria-label="More" aria-expanded="false">${dots}${xIcon}</button>`
+    ? `<button class="t-more" type="button" aria-label="${T.more}" aria-expanded="false">${dots}${xIcon}</button>`
     : `<span class="t-more${c.idle ? " off" : ""}" aria-hidden="true">${dots}</span>`;
-  const menuHTML = `<div class="mrow" inert><button class="m-skip" type="button">${skipIcon}<span>Skip</span></button>${pairHTML}</div>`;
+  const menuHTML = `<div class="mrow" inert><button class="m-skip" type="button">${skipIcon}<span>${T.skip}</span></button>${pairHTML}</div>`;
   // The amounts: one row per quantity, each with real − / + buttons (44 px wide to touch, 26 px to look at).
   const stepHTML = (r, n, dir, vals) =>
-    `<button class="a-step" type="button" data-n="${n}" data-d="${dir}" aria-label="${dir < 0 ? (r.u === "reps" ? "Fewer" : "Less") : "More"} ${esc(r.l.toLowerCase())}"${dir < 0 && vals[n] <= 0 ? " disabled" : ""}>${dir < 0 ? minus : plus}</button>`;
+    `<button class="a-step" type="button" data-n="${n}" data-d="${dir}" aria-label="${esc(T.stepLabel(r, dir))}"${dir < 0 && vals[n] <= 0 ? " disabled" : ""}>${dir < 0 ? minus : plus}</button>`;
   const amtHTML = (rows, vals) =>
     `<div class="t-amt${rows.length > 1 ? " two" : ""}">` + rows.map((r, n) =>
       `<div class="a-row" role="group" aria-label="${esc(r.l)}"><p class="a-label">${esc(r.l)}</p>${stepHTML(r, n, -1, vals)}<output class="a-val"><b>${fmt(vals[n])}</b>${esc(r.u)}</output>${stepHTML(r, n, 1, vals)}</div>`).join("") + `</div>`;
   // A card: its title, then one measure of time or its amounts, then its note.
   const bodyHTML = (c, running, vals = (c.amt || []).map((r) => r.v), menu = true) =>
     `<div class="t-head"><p class="t-title">${esc(c.t)}</p>${moreHTML(menu, c)}</div>` +
-    '<p class="t-pause">Paused</p>' +
+    `<p class="t-pause">${T.paused}</p>` +
     (c.clock ? `<p class="t-clock${c.rest || running ? "" : " sm"}">${clockText(c.clock)}</p>` : "") +
     (c.amt ? amtHTML(c.amt, vals) : "") +
     (c.note ? `<p class="t-note">${esc(c.note).replace(/ · /g, "\u00a0· ").replace(/(\d) (min|s|kg|reps)\b/g, "$1\u00a0$2")}</p>` : "");
   const ticketHTML = (c, start, vals, menu = true) =>
-    `<div class="t-body">${bodyHTML(c, !start, vals, menu)}</div><div class="t-stub"><div class="stub-a"><div class="stub-in">${pillHTML(c.idle ? "Waiting" : start ? "Start" : c.wait ? "Keep track" : "Done", c.idle ? 0 : start || !c.clock ? 1 : 0, c.idle)}${menu && !c.idle ? menuHTML : ""}</div></div></div><span class="t-shadow" aria-hidden="true"></span>`;
+    `<div class="t-body">${bodyHTML(c, !start, vals, menu)}</div><div class="t-stub"><div class="stub-a"><div class="stub-in">${pillHTML(c.idle ? T.waiting : start ? T.start : c.wait ? T.track : T.done, c.idle ? 0 : start || !c.clock ? 1 : 0, c.idle)}${menu && !c.idle ? menuHTML : ""}</div></div></div><span class="t-shadow" aria-hidden="true"></span>`;
   // </tpl>
 
   // A wait is a card that is short to do; its pill reads Keep track, and the app keeps track of the wait (the app's timer balls, planned for 1.1).
   // The demo runs one real minute in two seconds; the ball and panel always say real minutes.
   const MIN_MS = 2000, RING = 2 * Math.PI * 13, LAND = 920, MAX_BALLS = 3;
-  const leftLabel = (s) => (s >= 60 ? `${Math.ceil(s / 60)}m` : `${Math.ceil(s)}s`);
+  const leftLabel = (s) => (s >= 60 ? T.min(Math.ceil(s / 60)) : T.sec(Math.ceil(s)));
   const ballHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)"/></svg><b></b>';
 
   // Done, as the app does it (Now ticket: crack, fall, print):
@@ -229,7 +265,7 @@
       const tick = (now) => {
         const k = Math.max(0, Math.min(1, (now - t0) / ms));
         setFill(t, k);
-        num.textContent = k < 1 ? clockText(Math.ceil(c.clock * (1 - k))) : "Ready";
+        num.textContent = k < 1 ? clockText(Math.ceil(c.clock * (1 - k))) : T.ready;
         if (k < 1) st.raf = requestAnimationFrame(tick); else if (onReady) onReady();
       };
       st.raf = requestAnimationFrame(tick);
@@ -271,8 +307,8 @@
       if (!rows.length) { setOpen(false); return; }
       const now = performance.now();
       panel.innerHTML = "<ul>" + rows.map((tm) =>
-        `<li><p class="tp-top"><b>${esc(tm.name)}</b><span data-left="${tm.id}">${tm.due ? "Due" : `${clockText(Math.ceil(remaining(tm, now)))} left`}</span></p><p class="tp-then">→ ${esc(tm.then.t)}</p></li>`).join("") +
-        '</ul><p class="tp-note">Sped up here: 1 min = 2 s</p>';
+        `<li><p class="tp-top"><b>${esc(tm.name)}</b><span data-left="${tm.id}">${tm.due ? T.due : T.left(clockText(Math.ceil(remaining(tm, now))))}</span></p><p class="tp-then">→ ${esc(tm.then.t)}</p></li>`).join("") +
+        `</ul><p class="tp-note">${T.speed}</p>`;
     };
     const setOpen = (on, refocus) => {
       if (!hasTray) return;
@@ -283,7 +319,7 @@
     };
     // The peek: a small card that grows out of the held ball and goes when the finger lifts.
     let peekAnim = null;
-    const peekHTML = (tm) => `<p class="pk-top"><b>${esc(tm.name)}</b><span data-pk>${clockText(Math.ceil(remaining(tm, performance.now())))} left</span></p><p class="pk-then">→ ${esc(tm.then.t)}</p>`;
+    const peekHTML = (tm) => `<p class="pk-top"><b>${esc(tm.name)}</b><span data-pk>${T.left(clockText(Math.ceil(remaining(tm, performance.now()))))}</span></p><p class="pk-then">→ ${esc(tm.then.t)}</p>`;
     const showPeek = (tm) => {
       if (st.open || tm.ending || !tm.el.isConnected) return;
       st.peek = tm; peek.innerHTML = peekHTML(tm); peek.hidden = false;
@@ -304,7 +340,7 @@
       $$(".ball", tray).forEach((b) => { if (!st.timers.some((tm) => tm.el === b)) b.remove(); });
       st.timers.forEach((tm) => tray.append(tm.el));
       tray.hidden = !st.timers.length;
-      tray.setAttribute("aria-label", `Timers, ${st.timers.length} running`);
+      tray.setAttribute("aria-label", T.trayLabel(st.timers.length));
       if (animate && !still()) st.timers.forEach((tm) => {
         const x = was.get(tm.el), dx = x == null ? 0 : x - tm.el.getBoundingClientRect().left;
         if (Math.abs(dx) > 0.5 && tm.el.animate) tm.el.animate([{ transform: `translateX(${dx}px)` }, { transform: "none" }], { duration: 240, easing: "cubic-bezier(.22,.8,.26,1)" });
@@ -316,10 +352,10 @@
       $(".b-pr", tm.el).style.strokeDashoffset = String(-RING * (1 - s / (tm.min * 60)));
       if (num.textContent !== label) {
         num.textContent = label;
-        tm.el.setAttribute("aria-label", `${tm.name}, ${s >= 60 ? `${Math.ceil(s / 60)} minutes` : "under a minute"} left`);
+        tm.el.setAttribute("aria-label", T.ballLabel(tm.name, s));
       }
-      if (st.peek === tm) { const el = $("[data-pk]", peek); if (el) el.textContent = `${clockText(Math.ceil(s))} left`; }
-      if (st.open) { const el = $(`[data-left="${tm.id}"]`, panel); if (el) el.textContent = `${clockText(Math.ceil(s))} left`; }
+      if (st.peek === tm) { const el = $("[data-pk]", peek); if (el) el.textContent = T.left(clockText(Math.ceil(s))); }
+      if (st.open) { const el = $(`[data-left="${tm.id}"]`, panel); if (el) el.textContent = T.left(clockText(Math.ceil(s))); }
       return s;
     };
     const tick = (now) => {
@@ -340,7 +376,7 @@
       st.timers.sort((a, b) => (a.t0 + a.ms) - (b.t0 + b.ms));
       paintBall(tm, performance.now());
       layoutTray(true);
-      say(`${w.name} timer started, ${w.min} minutes.`);
+      say(T.timerStarted(w.name, w.min));
       if (!st.loop) st.loop = requestAnimationFrame(tick);
       return tm;
     };
@@ -388,11 +424,11 @@
     const endTimer = (tm) => {
       if (tm.ending) return;
       tm.ending = true; tm.due = true;
-      tm.el.classList.add("due"); $("b", tm.el).textContent = "due";
+      tm.el.classList.add("due"); $("b", tm.el).textContent = T.dueBall;
       $(".b-pr", tm.el).style.strokeDashoffset = "0";
-      tm.el.setAttribute("aria-label", `${tm.name}, due. ${tm.then.t} is next.`);
+      tm.el.setAttribute("aria-label", T.dueAria(tm.name, tm.then.t));
       tm.card = { ...tm.then, due: true };
-      say(`${tm.name} is due. ${tm.then.t} is next.`);
+      say(T.dueSay(tm.name, tm.then.t));
       if (st.open) renderPanel();
       popEl(tm.el);
       inject(tm.card, tm);
@@ -422,14 +458,14 @@
       const c = card(), ms = c.ms || 4000;
       let secs = Math.floor(h.elapsed / 1000);
       if (c.clock) { const k = Math.min(1, h.elapsed / ms); secs = Math.ceil(c.clock * (1 - k)); setFill(t, k); $(".t-clock", t).textContent = clockText(secs); } else setFill(t, 1);
-      t.classList.add("paused"); setLabel(t, "Resume");
+      t.classList.add("paused"); setLabel(t, T.resume);
       $$(".go b", t).forEach((b) => { b.innerHTML = playIcon; });
-      $(".t-pause", t).textContent = `Held · ${clockText(secs)}`;
+      $(".t-pause", t).textContent = `${T.held} · ${clockText(secs)}`;
     };
     const holdState = (h) => { st.paused = true; st.elapsed = h.elapsed; st.t0 = performance.now() - h.elapsed; };
     const idleCard = () => {
       const s = soonest();
-      return { idle: true, t: "Nothing to do now", note: s ? `${s.then.t} comes when the ${s.name.toLowerCase()} is ready.` : "" };
+      return { idle: true, t: T.idleT, note: s ? T.idleNote(s.name, s.then.t) : "" };
     };
     const resetTimers = () => {
       if (!hasTray) return;
@@ -495,7 +531,7 @@
       nextAnims.forEach((a) => a.cancel()); nextAnims = [];
       if (upBtn) upBtn.setAttribute("aria-disabled", String(!qrows().length));
       const after = st.cards[st.i + 1], pending = soonest(), here = card();
-      const text = st.held && here === st.held.by ? `Held · ${st.held.c.t}` : after ? after.t : pending ? pending.then.t : hasTray && here.wait ? here.wait.then.t : st.cards.length === 1 && here.idle ? "–" : st.cards[0].t;
+      const text = st.held && here === st.held.by ? `${T.held} · ${st.held.c.t}` : after ? after.t : pending ? pending.then.t : hasTray && here.wait ? here.wait.then.t : st.cards.length === 1 && here.idle ? "–" : st.cards[0].t;
       if (!animate || still() || !nextEl.animate) { nextEl.textContent = text; return; }
       if (pop) {
         nextEl.textContent = text;
@@ -548,13 +584,13 @@
       disarm(); st.armed = { host, remove };
       host.classList.add(remove ? "arm-rm" : "arm-nt");
       const b = $(remove ? ".ab.rm" : ".ab.nt", host);
-      b.setAttribute("aria-label", `Confirm: ${b.dataset.name}`);
+      b.setAttribute("aria-label", T.confirm(b.dataset.name));
     };
     const setMenu = (on) => {
       const t = cur(), more = t && $("button.t-more", t), row = t && $(".mrow", t);
       if (!more || !row) return;
       disarm(); st.menu = on; t.classList.toggle("menu", on);
-      more.setAttribute("aria-expanded", String(on)); more.setAttribute("aria-label", on ? "Close" : "More");
+      more.setAttribute("aria-expanded", String(on)); more.setAttribute("aria-label", on ? T.close : T.more);
       inertOf(row, !on); inertOf($(".go", t), on);
       if (on) { closeQueue(); setOpen(false); $(".m-skip", t).hidden = st.cards.length - st.i < 2 || (!!st.held && st.held.by === card()); }
     };
@@ -571,14 +607,14 @@
     const skip = () => {
       if (st.cards.length - st.i < 2) return;
       st.cards.splice(st.i + 1, 0, st.cards.splice(st.i, 1)[0]);
-      say("Skipped. It comes back after the next card."); advance();
+      say(T.skipped); advance();
     };
     const putAside = (c, remove) => {
       const at = st.cards.indexOf(c);
       if (at < 0) return;
       st.cards.splice(at, 1); st.gone.add(c); st.sel = null;
       st.timers.filter((x) => x.card === c).forEach((x) => closeBall(x));
-      if (remove) { setUndo({ c, at }); say("Removed. Undo is at the top left."); } else toast("Set aside for today");
+      if (remove) { setUndo({ c, at }); say(T.removed); } else toast(T.aside);
       if (at === st.i) advance(); else { showNext(true); refreshQueue(); }
     };
     const restore = () => {
@@ -601,7 +637,7 @@
     const queue = document.createElement("div");
     if (menu && sheet && upBtn) {
       queue.className = "queue"; queue.hidden = true; queue.id = `q-${root.dataset.deck}`;
-      queue.setAttribute("role", "group"); queue.setAttribute("aria-label", "Up next"); sheet.append(queue);
+      queue.setAttribute("role", "group"); queue.setAttribute("aria-label", T.upNext); sheet.append(queue);
       upBtn.setAttribute("aria-controls", queue.id); upBtn.setAttribute("aria-expanded", "false");
     }
     const syncSel = () => $$(".qrow", queue).forEach((r) => {
@@ -613,7 +649,7 @@
       if (!st.qcards.length) { closeQueue(); return; }
       disarm();
       queue.innerHTML = st.qcards.map((c, n) =>
-        `<div class="qrow armable" data-n="${n}"><button class="q-t" type="button" aria-expanded="false"><span>${esc(c.t)}</span></button><div class="q-act" inert><button class="q-now" type="button">Do now</button>${pairHTML}</div></div>`).join("");
+        `<div class="qrow armable" data-n="${n}"><button class="q-t" type="button" aria-expanded="false"><span>${esc(c.t)}</span></button><div class="q-act" inert><button class="q-now" type="button">${T.doNow}</button>${pairHTML}</div></div>`).join("");
       syncSel();
       if (roll && !still() && queue.animate) $$(".qrow", queue).forEach((r, n) => r.animate([{ opacity: 0, transform: "translateY(28px) scale(.96)" }, { opacity: 1, transform: "none" }], { duration: 260, delay: n * 45, easing: "cubic-bezier(.22,.8,.26,1)", fill: "backwards" }));
     };
@@ -641,17 +677,17 @@
       const t = cur();
       if (st.paused || st.phase !== "run" || card().idle || st.settle) return;
       st.paused = true; st.elapsed = performance.now() - st.t0; stop();
-      t.classList.add("paused"); setLabel(t, "Resume"); $(".t-pause", t).textContent = "Paused";
+      t.classList.add("paused"); setLabel(t, T.resume); $(".t-pause", t).textContent = T.paused;
       $$(".go b", t).forEach((b) => { b.innerHTML = playIcon; });
-      if (pauseBtn) pauseBtn.setAttribute("aria-pressed", "true"); say("Paused.");
+      if (pauseBtn) pauseBtn.setAttribute("aria-pressed", "true"); say(T.paused2);
     };
     const resume = () => {
       const t = cur();
       if (!st.paused) return;
       st.paused = false; t.classList.remove("paused");
-      setLabel(t, card().wait ? "Keep track" : "Done");
+      setLabel(t, card().wait ? T.track : T.done);
       $$(".go b", t).forEach((b) => { b.innerHTML = arrow; });
-      if (pauseBtn) pauseBtn.setAttribute("aria-pressed", "false"); say("Resumed.");
+      if (pauseBtn) pauseBtn.setAttribute("aria-pressed", "false"); say(T.resumed);
       play(t, st.elapsed);
     };
     if (menu) {
@@ -788,7 +824,7 @@
       if (st.phase === "ready") {
         st.phase = "run"; delete c.notStarted;
         $(".t-body", t).innerHTML = bodyHTML(c, true, st.vals, menu);
-        setLabel(t, c.wait ? "Keep track" : "Done"); play(t); syncPause();
+        setLabel(t, c.wait ? T.track : T.done); play(t); syncPause();
         return;
       }
       root.dispatchEvent(new CustomEvent("deck:done", { detail: { title: c.t, amounts: (c.amt || []).map((r, n) => ({ label: r.l, value: st.vals[n], unit: r.u })) } }));
@@ -862,8 +898,44 @@
       { t: "Laundry in", clock: 180, note: "Pockets empty · don’t pack the drum", ms: 4000 },
     ],
   };
+  if (ko) Object.assign(sets, {
+    workout: [
+      { t: "푸시업", amt: [{ l: "횟수", v: 8, u: "회", s: 1 }], note: "손은 어깨 아래에 · 가슴은 바닥 가까이 · 내려갈 땐 2초" },
+      { t: "휴식", clock: 60, rest: true, note: "팔을 털어 주세요 · 숨은 천천히", ms: 5000 },
+      { t: "푸시업", amt: [{ l: "횟수", v: 8, u: "회", s: 1 }], note: "몸은 일직선으로 · 가슴은 바닥 가까이 · 내려갈 땐 2초" },
+      { t: "로우", amt: [{ l: "횟수", v: 12, u: "회", s: 1 }, { l: "무게", v: 20, u: "kg", s: 2.5 }], note: "팔꿈치를 뒤로, 1초 조이기 · 내려갈 땐 2초" },
+    ],
+    pasta: set([
+      { t: "물 올리기", note: "큰 냄비에 뚜껑을 덮고 · 소금은 바닷물 정도로 · 8분",
+        wait: { name: "물", min: 8, then: { t: "면 넣기", note: "푹 담그고 한 번 저어요 · 9분",
+          wait: { name: "면", min: 9, then: { t: "버무려서 담기", note: "기름, 마늘, 고추 · 면수 조금" } } } } },
+      { t: "마늘 썰기", note: "4쪽을 얇게 · 손끝은 안쪽으로 말아요" },
+      { t: "마늘 볶기", note: "약불에서 연한 황금색이 되게 · 3분",
+        wait: { name: "마늘", min: 3, then: { t: "팬 내리기", note: "고추를 넣고 저어요 · 기름은 따뜻하게" } } },
+      { t: "파르메산 갈기", note: "고운 쪽으로 · 약 ½컵" },
+    ], "요리"),
+    focus: [
+      { t: "개요 쓰기", clock: 900, note: "구간마다 한 줄 · 문장은 아직 쓰지 않아요", ms: 5000 },
+      { t: "본문 1–3 쓰기", clock: 3000, note: "쓰기만 하고 고치지 않아요 · 빈칸은 그대로", ms: 5000 },
+      { t: "휴식", clock: 600, rest: true, note: "일어나서 물 마시기 · 화면은 끄고", ms: 4000 },
+      { t: "검토", clock: 1200, note: "소리 내어 읽기 · 걸리는 곳에 표시", ms: 4000 },
+    ],
+    dump: [
+      { t: "발표 자료 열기", note: "파일만 열어요 · 제목만 쓰고 멈추기" },
+      { t: "발표 자료 쓰기", clock: 1500, note: "1–3번 슬라이드만 · 휴대폰은 엎어 두세요", ms: 5000 },
+      { t: "집주인에게 메일 쓰기", clock: 300, note: "세 줄이면 돼요: 누수, 언제부터, 수리 날짜", ms: 4000 },
+      { t: "엄마에게 전화하기", note: "일요일 부재중 전화에 답해요 · 10분 통화하고 굿나잇" },
+      { t: "치과 예약하기", note: "전화 한 통 · 다음 주 가장 빠른 시간으로" },
+      { t: "밴드 당기기", amt: [{ l: "횟수", v: 15, u: "회", s: 1 }], note: "가벼운 밴드, 팔꿈치는 몸 쪽으로 · 아프면 멈춰요" },
+    ],
+    reset: [
+      { t: "설거지", clock: 480, note: "컵부터 · 뜨거운 물로, 싱크대에서 건조대로", ms: 5000 },
+      { t: "조리대 닦기", clock: 240, note: "먼저 치우고 · 왼쪽에서 오른쪽으로 닦아요", ms: 4000 },
+      { t: "빨래 돌리기", clock: 180, note: "주머니는 비우고 · 세탁기는 가득 채우지 마세요", ms: 4000 },
+    ],
+  });
   // </sets>
-  const greeting = (h) => (h >= 5 && h < 12 ? "Good morning" : h >= 12 && h < 18 ? "Good afternoon" : "Good evening");
+  const greeting = T.greet;
   $$("[data-greet]").forEach((g) => { g.textContent = greeting(new Date().getHours()); });
 
   // Product window: each thread is a plan; the phone shows its first card.
@@ -1078,7 +1150,7 @@
   const tryScreen = $('[data-deck="try"]');
   if (thread && tryScreen) {
     const tryDeck = makeDeck(tryScreen);
-    const waiting = [{ idle: true, t: "Nothing yet", note: "Tell your AI what’s on your mind. The cards land here." }];
+    const waiting = [{ idle: true, t: T.waitT, note: T.waitNote }];
     const tabs = $$("[data-plan]");
     // The dump, in about two seconds: the AI answers, each group of pieces lights up as its row appears, then the first card prints.
     let timers = [];
@@ -1141,6 +1213,19 @@
   const own = $("[data-own]"), ownText = $("[data-own-text]"), ownLabel = $("[data-own-label]");
   // Free text into cards: split on sentences, commas and "then", drop the filler words and feelings.
   const fromText = (text) => {
+    if (ko) {
+      // Korean: split on sentences, commas and "그리고 / 그다음", drop the connectives and the feelings.
+      const lead = /^(?:(?:그리고|그래서|그런데|또|아|음|일단|우선|그다음에?)[,\s]+)+/;
+      const noise = /^(?:근데|하지만|ㅋㅋ+|너무|머릿속|언젠가)/;
+      const parts = text.split(/[.,;\n。]|\s그리고\s|\s그다음에?\s|\s그러고 나서\s/).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 2 && !noise.test(x)).slice(0, 4);
+      if (!parts.length) return [{ t: "첫 번째 카드", note: "위에 적으면 카드로 나뉘어요" }, { t: "두 번째 카드" }];
+      const short = (x) => (x.length > 18 ? x.slice(0, 18).replace(/\s\S*$/, "") + "…" : x);
+      const cards = parts.map((x, n) => {
+        const min = x.match(/(\d+)\s*분/);
+        return { t: short(x), note: `${n + 1} / ${parts.length}`, ...(min ? { clock: Number(min[1]) * 60, ms: 4000 } : {}) };
+      });
+      return parts.length < 2 ? cards.concat([{ t: "나머지는 AI가 채워요" }]) : cards;
+    }
     const lead = /^(?:(?:ok(?:ay)?|so|and|also|oh|then|well|plus|i (?:really )?(?:have|need|want|should|gotta|got) to|i keep (?:forgetting|not \w+ing)|need to|gotta|have to)\b[,\s]*)+/i;
     const noise = /^(?:which|but|lol|too|my head|it’s|i’m|someday)\b/i;
     const parts = text.split(/[.,;\n]|\bthen\b|\band then\b/i).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 3 && !noise.test(x)).slice(0, 4);
@@ -1227,7 +1312,12 @@
   {
     const tile = $('[data-tile="next"]'), screen = $(".viz-next", tile);
     const deck = screen && makeDeck(screen, { chain: true, menu: false });
-    const cards = [
+    const cards = ko ? [
+      { t: "푸시업", note: "손은 어깨 아래에 · 내려갈 땐 2초" },
+      { t: "휴식", clock: 60, rest: true, ms: 3000 },
+      { t: "푸시업", note: "몸은 일직선으로 · 내려갈 땐 2초" },
+      { t: "물 올리기", note: "큰 냄비에 뚜껑을 덮고 · 8분" },
+    ] : [
       { t: "Push-ups", note: "Hands under shoulders · 2 s down" },
       { t: "Rest", clock: 60, rest: true, ms: 3000 },
       { t: "Push-ups", note: "Body in one line · 2 s down" },
@@ -1251,7 +1341,11 @@
   {
     const tile = $('[data-tile="timer"]'), screen = $(".now", tile);
     const deck = screen && makeDeck(screen, { chain: true, menu: false });
-    const cards = set([
+    const cards = ko ? set([
+      { t: "물 올리기", note: "큰 냄비에 뚜껑을 덮고 · 2분", wait: { name: "물", min: 2, then: { t: "면 넣기", note: "한 번 저어요" } } },
+      { t: "마늘 썰기", note: "4쪽을 얇게" },
+      { t: "파르메산 갈기", note: "고운 쪽으로" },
+    ], "요리") : set([
       { t: "Put the water on", note: "Big pot, lid on · 2 min", wait: { name: "Water", min: 2, then: { t: "Add the pasta", note: "Stir once" } } },
       { t: "Slice the garlic", note: "4 cloves, sliced thin" },
       { t: "Grate the parmesan", note: "Fine side of the grater" },
@@ -1295,10 +1389,10 @@
   {
     const tile = $('[data-tile="cal"]'), before = $("[data-c-before]"), after = $("[data-c-after]");
     loopWhileVisible(tile, (later) => {
-      [before, after].forEach((x) => { x.classList.remove("shown", "added"); $("em", x).textContent = "Suggested"; });
+      [before, after].forEach((x) => { x.classList.remove("shown", "added"); $("em", x).textContent = T.suggested; });
       later(() => before.classList.add("shown"), 500);
       later(() => after.classList.add("shown"), 900);
-      later(() => [before, after].forEach((x) => { x.classList.add("added"); $("em", x).textContent = "Added"; }), 2200);
+      later(() => [before, after].forEach((x) => { x.classList.add("added"); $("em", x).textContent = T.added; }), 2200);
       return 4800;
     });
   }

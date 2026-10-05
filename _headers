@@ -1,13 +1,13 @@
 # Cloudflare Pages response headers (Sol security audit, 2026-10-04).
 # Pages has no inline scripts; JSON-LD blocks are data, not script.
-# cdn.jsdelivr.net stays only until the auth SDK is self-hosted.
+# cdn.jsdelivr.net stays only until the auth SDK is self-hosted; it also serves Pretendard (stylesheet + woff2) to lang="ko" pages only.
 /*
   Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
 
 # Markdown twin of /connect/ for AI agents (linked via rel="alternate" type="text/markdown").
 /connect/index.md

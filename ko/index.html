@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=2b07d92775">
+    <link rel="stylesheet" href="/assets/styles.css?v=5ae713202e">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
     <title>one-by.one — AI와 계획하고, 하나씩 실행하세요</title>
     <meta name="description" content="AI에게 오늘 할 일을 말하세요. one-by.one이 iPhone에서 다음 카드 한 장을 보여 줍니다. 할 일은 하나씩, 해낸 일은 기록으로. 곧 iPhone에서 만나요.">
     <link rel="canonical" href="https://one-by.one/ko/">
@@ -31,7 +33,7 @@
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
     <meta name="obo-auth" data-url="" data-key="">
     <link rel="stylesheet" href="/assets/home.css?v=81">
-    <script src="/assets/home.js?v=86" defer></script>
+    <script src="/assets/home.js?v=9b5c5f02a7" defer></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -128,20 +130,20 @@
           <button class="btn" type="button" data-open-signup>가입하기</button>
           <a class="btn soft" href="#jobs">예시 보기</a>
         </div>
-        <p class="app-language">앱은 현재 영어로 제공됩니다. 아래 iPhone 화면도 영어 UI를 보여 줍니다.</p>
+        <p class="app-language">앱은 현재 영어로 제공됩니다. 아래 iPhone 화면은 이해를 돕기 위해 한국어로 옮겨 보여 드려요.</p>
       </section>
 
-      <section class="product" id="try" aria-label="A plan, from your AI to your iPhone">
+      <section class="product" id="try" aria-label="AI에서 iPhone까지, 하나의 계획">
         <div class="window">
           <aside class="win-side">
             <div class="win-top"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="win-plus" aria-hidden="true">+</span></div>
             <p class="win-search" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>검색</p>
-            <div class="threads" role="tablist" aria-label="Example plans">
-              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>머릿속 정리</b><time>10:05 PM</time><em>카드 6장 · 타이머 2개</em></button>
-              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="workout"><span class="av" style="--c:#3fb6a8"></span><b>오늘 저녁 운동</b><time>7:30 PM</time><em>카드 9장 · 첫 카드 준비됨</em></button>
-              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="pasta"><span class="av" style="--c:#f2a33a"></span><b>마늘 파스타</b><time>6:05 PM</time><em>카드 7장 · 타이머 3개</em></button>
-              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="focus"><span class="av" style="--c:#6d5df5"></span><b>제안서 초안</b><time>1:10 PM</time><em>카드 4장 · 휴식 포함</em></button>
-              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="reset"><span class="av" style="--c:#3b82f6"></span><b>20분 집 정리</b><time>11:40 AM</time><em>카드 4장 · 설거지부터</em></button>
+            <div class="threads" role="tablist" aria-label="예시 계획">
+              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>머릿속 정리</b><time>오후 10:05</time><em>카드 6장 · 타이머 2개</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="workout"><span class="av" style="--c:#3fb6a8"></span><b>오늘 저녁 운동</b><time>오후 7:30</time><em>카드 9장 · 첫 카드 준비됨</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="pasta"><span class="av" style="--c:#f2a33a"></span><b>마늘 파스타</b><time>오후 6:05</time><em>카드 7장 · 타이머 3개</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="focus"><span class="av" style="--c:#6d5df5"></span><b>제안서 초안</b><time>오후 1:10</time><em>카드 4장 · 휴식 포함</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="reset"><span class="av" style="--c:#3b82f6"></span><b>20분 집 정리</b><time>오전 11:40</time><em>카드 4장 · 설거지부터</em></button>
             </div>
             <p class="win-you"><span>Y</span>나</p>
           </aside>
@@ -151,18 +153,18 @@
             <div class="composer" aria-hidden="true"><span class="c-plus">+</span><span class="c-field">AI에게 메시지 보내기</span><span class="c-mic"><svg viewBox="0 0 16 16"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5"/><path d="M3 8a5 5 0 0 0 10 0M8 13v2"/></svg></span></div>
           </div>
         </div>
-        <div class="device" role="group" aria-label="one-by.one on iPhone">
+        <div class="device" role="group" aria-label="iPhone의 one-by.one">
           <div class="now" data-deck="try">
             <div class="sheet">
-              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
-              <p class="greet" data-greet>Good morning</p>
-              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-try" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
-              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+              <div class="bar"><button class="ic undo" type="button" aria-label="되돌리기" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">되돌리기</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="일시정지" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>좋은 아침이에요</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="타이머" hidden></div><div class="tpanel" id="tp-try" data-tpanel role="group" aria-label="실행 중인 타이머" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>다음 카드</span><b data-next>발표 자료 쓰기</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
             </div>
             <div class="slot">
               <div class="ticket">
-                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
-                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <div class="t-body"><div class="t-head"><p class="t-title">발표 자료 열기</p><button class="t-more" type="button" aria-label="더 보기" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">일시정지됨</p><p class="t-note">파일만 열어요 · 제목만 쓰고 멈추기</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="시작"><span class="go-lay" aria-hidden="true"><span class="go-t">시작</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">시작</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>건너뛰기</span></button><div class="pair"><button class="ab nt" type="button" data-name="오늘은 넘기기" aria-label="오늘은 넘기기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>오늘은 넘기기</span></button><button class="ab rm" type="button" data-name="삭제" aria-label="삭제"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>삭제</span></button></div></div></div></div></div>
                 <span class="t-shadow" aria-hidden="true"></span>
               </div>
             </div>
@@ -184,14 +186,14 @@
         <div class="bento">
           <article class="tile" data-reveal data-tile="next">
             <h3>지금 할 카드 한 장만</h3>
-            <p>나머지는 잠시 보이지 않아도 괜찮아요. Done을 누르면 다음 카드가 옵니다.</p>
+            <p>나머지는 잠시 보이지 않아도 괜찮아요. 완료를 누르면 다음 카드가 옵니다.</p>
             <div class="viz viz-next" aria-hidden="true" inert>
               <div class="now mini">
-                <div class="sheet"><p class="upnext"><span>Up next</span><b data-next>Rest</b></p></div>
+                <div class="sheet"><p class="upnext"><span>다음 카드</span><b data-next>휴식</b></p></div>
                 <div class="slot">
                   <div class="ticket">
-                    <div class="t-body"><div class="t-head"><p class="t-title">Push-ups</p><span class="t-more" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-note">Hands under shoulders · 2 s down</p></div>
-                    <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div>
+                    <div class="t-body"><div class="t-head"><p class="t-title">푸시업</p><span class="t-more" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-note">손은 어깨 아래에 · 내려갈 땐 2초</p></div>
+                    <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="완료"><span class="go-lay" aria-hidden="true"><span class="go-t">완료</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">완료</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div>
                     <span class="t-shadow" aria-hidden="true"></span>
                   </div>
                 </div>
@@ -204,12 +206,12 @@
             <div class="viz viz-wait" aria-hidden="true" inert>
               <div class="now mini">
                 <div class="sheet">
-                  <div class="sit" data-sit><p class="chip-s" data-sit-chip>Cooking</p><div class="tray" data-tray role="group" aria-label="Timers"><button class="ball" type="button" tabindex="-1" aria-label="Water, 1 minute left"><svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)" style="stroke-dashoffset:-49"/></svg><b>1m</b></button></div><div class="tpanel" id="tp-wait" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
-                  <p class="upnext"><span>Up next</span><b data-next>Grate the parmesan</b></p>
+                  <div class="sit" data-sit><p class="chip-s" data-sit-chip>요리</p><div class="tray" data-tray role="group" aria-label="타이머"><button class="ball" type="button" tabindex="-1" aria-label="물, 1분 남음"><svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)" style="stroke-dashoffset:-49"/></svg><b>1분</b></button></div><div class="tpanel" id="tp-wait" data-tpanel role="group" aria-label="실행 중인 타이머" hidden></div></div>
+                  <p class="upnext"><span>다음 카드</span><b data-next>파르메산 갈기</b></p>
                 </div>
                 <div class="slot">
                   <div class="ticket armable">
-                    <div class="t-body"><div class="t-head"><p class="t-title">Slice the garlic</p><span class="t-more" aria-hidden="true"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-pause">Paused</p><p class="t-note">4 cloves, sliced thin</p></div><div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div><span class="t-shadow" aria-hidden="true"></span>
+                    <div class="t-body"><div class="t-head"><p class="t-title">마늘 썰기</p><span class="t-more" aria-hidden="true"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-pause">일시정지됨</p><p class="t-note">4쪽을 얇게</p></div><div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="완료"><span class="go-lay" aria-hidden="true"><span class="go-t">완료</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">완료</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div><span class="t-shadow" aria-hidden="true"></span>
                   </div>
                 </div>
               </div>
@@ -217,23 +219,23 @@
           </article>
           <article class="tile" data-reveal data-tile="share">
             <h3>오늘 해낸 일, 나누고 싶다면</h3>
-            <p>Done을 누를 때마다 단위와 함께 기록이 쌓입니다. 오늘 하루를 공유할 이미지 한 장으로 남겨 보세요.</p>
+            <p>완료를 누를 때마다 단위와 함께 기록이 쌓입니다. 오늘 하루를 공유할 이미지 한 장으로 남겨 보세요.</p>
             <div class="viz viz-share" aria-hidden="true">
               <div class="share-stage">
               <div class="share-img">
-                <div class="si-top"><span>Tuesday, Oct 6</span><b>one-by.one</b></div>
+                <div class="si-top"><span>10월 6일 화요일</span><b>one-by.one</b></div>
                 <div class="si-mid">
-                  <div class="si-count"><b data-s-count="7">7</b><span>Completed cards</span></div>
+                  <div class="si-count"><b data-s-count="7">7</b><span>완료한 카드</span></div>
                   <div class="si-grid">
-                    <p><i>Push-ups</i><b data-s-n="30">30</b><em>reps</em></p>
-                    <p><i>Distance</i><b data-s-n="4.2" data-s-dec="1">4.2</b><em>km</em></p>
-                    <p><i>Focus</i><b data-s-n="75">75</b><em>min</em></p>
-                    <p><i>Water</i><b data-s-n="5">5</b><em>cups</em></p>
+                    <p><i>푸시업</i><b data-s-n="30">30</b><em>회</em></p>
+                    <p><i>거리</i><b data-s-n="4.2" data-s-dec="1">4.2</b><em>km</em></p>
+                    <p><i>집중</i><b data-s-n="75">75</b><em>분</em></p>
+                    <p><i>물</i><b data-s-n="5">5</b><em>잔</em></p>
                   </div>
                 </div>
-                <p class="si-foot">Planned with my AI · made with one-by.one</p>
+                <p class="si-foot">내 AI와 계획하고, one-by.one으로 실행했어요</p>
               </div>
-              <div class="sheet-up"><span class="su-handle"></span><span class="su-apps"><span><i style="--c:#34c759"></i>Messages</span><span><i style="--c:#3b82f6"></i>Mail</span><span><i style="--c:#f5b83d"></i>Notes</span><span><i style="--c:#9ba1aa"></i>Save</span></span></div>
+              <div class="sheet-up"><span class="su-handle"></span><span class="su-apps"><span><i style="--c:#34c759"></i>메시지</span><span><i style="--c:#3b82f6"></i>메일</span><span><i style="--c:#f5b83d"></i>메모</span><span><i style="--c:#9ba1aa"></i>저장</span></span></div>
               </div>
             </div>
           </article>
@@ -242,10 +244,10 @@
             <p>회의 전엔 준비를, 끝난 뒤엔 후속 작업을. AI가 제안하고, 결정은 내가 합니다.</p>
             <div class="viz viz-cal" aria-hidden="true">
               <div class="day">
-                <span class="hr" style="--y:0">1 PM</span><span class="hr" style="--y:1">2 PM</span><span class="hr" style="--y:2">3 PM</span>
-                <div class="evt"><b>Design review</b><i>2:00 – 3:00</i></div>
-                <div class="sug before" data-c-before><b>Reread notes</b><i>1:40 · 10 min</i><em>Suggested</em></div>
-                <div class="sug after" data-c-after><b>Send notes</b><i>3:00 · 5 min</i><em>Suggested</em></div>
+                <span class="hr" style="--y:0">오후 1시</span><span class="hr" style="--y:1">오후 2시</span><span class="hr" style="--y:2">오후 3시</span>
+                <div class="evt"><b>디자인 리뷰</b><i>2:00 – 3:00</i></div>
+                <div class="sug before" data-c-before><b>메모 다시 읽기</b><i>1:40 · 10분</i><em>제안</em></div>
+                <div class="sug after" data-c-after><b>메모 보내기</b><i>3:00 · 5분</i><em>제안</em></div>
               </div>
             </div>
           </article>
@@ -271,18 +273,18 @@
             <p class="own-note">카드가 어떻게 나뉘는지 보는 예시입니다. 실제 계획은 연결한 AI가 만들어 줍니다.</p>
           </div>
         </div>
-        <div class="device" role="group" aria-label="Cards for this example">
+        <div class="device" role="group" aria-label="이 예시의 카드">
           <div class="now" data-deck="jobs">
             <div class="sheet">
-              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
-              <p class="greet" data-greet>Good morning</p>
-              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-jobs" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
-              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+              <div class="bar"><button class="ic undo" type="button" aria-label="되돌리기" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">되돌리기</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="일시정지" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>좋은 아침이에요</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="타이머" hidden></div><div class="tpanel" id="tp-jobs" data-tpanel role="group" aria-label="실행 중인 타이머" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>다음 카드</span><b data-next>발표 자료 쓰기</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
             </div>
             <div class="slot">
               <div class="ticket">
-                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
-                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <div class="t-body"><div class="t-head"><p class="t-title">발표 자료 열기</p><button class="t-more" type="button" aria-label="더 보기" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">일시정지됨</p><p class="t-note">파일만 열어요 · 제목만 쓰고 멈추기</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="시작"><span class="go-lay" aria-hidden="true"><span class="go-t">시작</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">시작</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>건너뛰기</span></button><div class="pair"><button class="ab nt" type="button" data-name="오늘은 넘기기" aria-label="오늘은 넘기기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>오늘은 넘기기</span></button><button class="ab rm" type="button" data-name="삭제" aria-label="삭제"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>삭제</span></button></div></div></div></div></div>
                 <span class="t-shadow" aria-hidden="true"></span>
               </div>
             </div>
@@ -356,7 +358,7 @@
     <footer>
       <div class="shell publisher"><p>서비스 제공자: 대한민국 개인사업자 salad76(대표 김승은), one-by.one이라는 이름으로 서비스를 제공합니다.</p><p>주소: 대한민국 서울특별시 서초구 동광로 173, 302호.</p><p>개인정보 보호 책임자: 김승은 · <a href="mailto:privacy@one-by.one">privacy@one-by.one</a><br>지원 문의: <a href="mailto:support@one-by.one">support@one-by.one</a></p><p>앱은 현재 영어로 제공됩니다. 이용 가능한 국가는 <a href="/terms/#launch-scope">이용약관의 출시 범위(영어)</a>를 확인하세요. 국가별 결제 금액은 App Store에 표시됩니다.</p><p>법적 문서는 영어본이 기준입니다.</p></div>
       <div class="shell footer-inner">
-        <nav aria-label="Legal">
+        <nav aria-label="법적 고지">
           <a href="/ko/connect/">AI 연결</a>
           <a href="/manifesto/">만드는 이유(영어)</a>
           <a href="/privacy/">개인정보 처리방침(영어)</a>
@@ -364,7 +366,7 @@
           <a href="/support/">지원(영어)</a>
         </nav>
 
-        <div class="footer-end"><nav class="language-links" aria-label="Language"><a href="/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/?lang=ko" data-language="ko" lang="ko">한국어</a></nav><span>© 2026 one-by.one</span></div>
+        <div class="footer-end"><nav class="language-links" aria-label="언어"><a href="/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/?lang=ko" data-language="ko" lang="ko">한국어</a></nav><span>© 2026 one-by.one</span></div>
       </div>
 </footer>
     <dialog class="signup-dialog" data-signup-dialog aria-labelledby="signup-title">
