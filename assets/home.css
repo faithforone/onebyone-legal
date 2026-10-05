@@ -414,8 +414,13 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .notify-dialog::backdrop { background: rgba(10, 12, 14, .35); backdrop-filter: blur(4px); }
 .notify-dialog h2 { font-size: 24px; margin: 0 0 8px; }
 .dlg-sub { margin: 0 0 22px; color: var(--muted); font-size: 15px; }
-.dlg-close { position: absolute; top: 12px; right: 12px; margin: 0; }
-.dlg-close button { width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--panel); color: var(--muted); font-size: 18px; cursor: pointer; }
+/* Centered on the title's first line, inset like the sheet's padding. */
+.dlg-close { position: absolute; top: 28px; right: 20px; margin: 0; }
+.dlg-close button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 0; background: var(--panel); color: var(--muted); font-size: 18px; line-height: 1; cursor: pointer; }
+.dlg-close button:focus { outline: none; }
+.dlg-close button:focus-visible { outline: 2px solid #555d6d; outline-offset: 2px; }
+/* Opening focuses the heading (not the close button), so no ring appears on open. */
+.notify-dialog h2:focus { outline: none; }
 .dlg-fine { margin: 8px 0 0; font-size: 13px; color: var(--hush); }
 .notify-form { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .notify-form input[type=email] { flex: 1 1 200px; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--page); color: var(--text); font: inherit; font-size: 15px; }

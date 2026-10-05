@@ -8,7 +8,7 @@
   const T = ko ? {
     start: "시작", done: "완료", track: "맡기기", waiting: "대기 중", paused: "일시정지됨", resume: "다시 시작", held: "보류 중",
     skip: "건너뛰기", notToday: "오늘은 넘기기", remove: "삭제", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
-    ready: "준비 완료", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
+    ready: "시간 됐어요", restOver: "휴식 끝", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     dueAria: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     left: (c) => `${c} 남음`, speed: "여기서는 시간을 건너뛰어 보여 줘요",
     min: (m) => `${m}분`, sec: (s) => `${s}초`, under: "1분 미만",
@@ -24,7 +24,7 @@
   } : {
     start: "Start", done: "Done", track: "Keep track", waiting: "Waiting", paused: "Paused", resume: "Resume", held: "Held",
     skip: "Skip", notToday: "Not today", remove: "Remove", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
-    ready: "Ready", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
+    ready: "Time’s up", restOver: "Rest’s over", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
     dueAria: (n, next) => `${n}, due. ${next} is next.`,
     left: (c) => `${c} left`, speed: "Time skips ahead in this demo",
     min: (m) => `${m}m`, sec: (s) => `${s}s`, under: "under a minute",
@@ -276,18 +276,25 @@
       if (c.idle) { st.t0 = performance.now() - from; setFill(t, 0); return; }
       if (!c.clock || !num) { st.t0 = performance.now() - from; setFill(t, 1); return; }
       const L = cardLine(c);
+      num.style.fontSize = "";
       // Reduced motion: no sweep and no cross-fade; the card starts at its near-end value.
       const t0 = performance.now() - (still() ? Math.max(from, L.S) : from);
       st.t0 = t0;
       let shown = -1, full = true;
       const ready = () => {
         num.classList.add("done");
-        num.innerHTML = `<span class="t-ready">${T.ready}</span><span class="t-over"></span>`;
+        num.innerHTML = `<span class="t-ready">${c.rest ? T.restOver : T.ready}</span><span class="t-over"></span>`;
         const over = $(".t-over", num), end = t0 + L.total;
+        // The label never wraps or spills: in a narrow card it steps its size down.
+        let size = 30;
+        const fitReady = () => {
+          while (num.scrollWidth > num.clientWidth + 0.5 && size > 18) num.style.fontSize = `${--size}px`;
+        };
         const count = () => {
           if (!num.isConnected) return;
           const d = performance.now() - end;
           over.textContent = `+${clockText(Math.max(0, Math.floor(d / 1000)))}`;
+          fitReady();
           st.over = setTimeout(count, 1005 - (d % 1000));
         };
         count();
@@ -499,7 +506,7 @@
     const paintHeld = (t, h) => {
       const c = card();
       let secs = Math.floor(h.elapsed / 1000);
-      if (c.clock) { const a = at(cardLine(c), h.elapsed); secs = whole(a.disp); setFill(t, a.k); $(".t-clock", t).classList.remove("done"); $(".t-clock", t).textContent = clockText(secs); } else setFill(t, 1);
+      if (c.clock) { const a = at(cardLine(c), h.elapsed); secs = whole(a.disp); setFill(t, a.k); $(".t-clock", t).classList.remove("done"); $(".t-clock", t).style.fontSize = ""; $(".t-clock", t).textContent = clockText(secs); } else setFill(t, 1);
       t.classList.add("paused"); setLabel(t, T.resume);
       $$(".go b", t).forEach((b) => { b.innerHTML = playIcon; });
       $(".t-pause", t).textContent = `${T.held} · ${clockText(secs)}`;
