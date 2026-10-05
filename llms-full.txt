@@ -15,7 +15,7 @@ Results can be recorded with units: weight, repetitions, distance, duration, vol
 Interests hold ongoing practices, such as guitar, and recurring duties as plain schedule lines, such as “Mondays: ...” or “Last day of month: ...”. Saved context, memories, corrections and retained originals can be included in tool replies. Reads may be limited or paginated and do not establish a complete lifetime history.
 
 ## AI connection and changes
-The custom MCP connector address is https://mcp.one-by.one/mcp. The authorization web is https://connect.one-by.one. Sign in with Apple or Google and follow Settings › AI apps. Email sign-in is for existing accounts; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
+The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is https://one-by.one/connect/ (Korean: https://one-by.one/ko/connect/). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is https://connect.one-by.one. Sign in with Apple or Google and follow Settings › AI apps. Email sign-in is for existing accounts; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
 
 OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can plan days, edit unstarted cards, save interests and memories, and record or correct results within approved permissions.
 
@@ -313,12 +313,44 @@ Support messages are accessed by the service operator for support and privacy re
 
 We keep support and privacy email for 12 months after the last message in the conversation, then delete it. You can ask us to delete your messages sooner. If a specific legal obligation requires longer retention, we limit the retained information to what that obligation requires and explain the applicable exception when responding to your request. Server backup copies follow the maximum 30-day backup period above; independently held provider copies are subject to the provider's policy and applicable law.
 
+## Connect instructions for AI agents
+Machine-readable copy: https://one-by.one/connect/index.md. Human pages: https://one-by.one/connect/ and https://one-by.one/ko/connect/. Commands were checked against each tool's official documentation on October 5, 2026; menus can vary by version.
+
+Server URL: https://mcp.one-by.one/mcp. Transport: remote streamable HTTP. Authentication: OAuth sign-in in the browser with dynamic client registration; local loopback redirects are allowed; no API key, token or client secret. Suggested server name: onebyone. Permissions: context:read, activity:read, activity:write. Limit: 3 AI connections per account. Clients that are not verified appear as Unverified app on the approval screen. Do not ask the user for a token. Merge the entry into existing settings. Do not create or change plans until the user asks.
+
+Instruction a user can paste into an agent:
+```text
+Add the one-by.one MCP server to yourself and connect it.
+
+- Server URL: https://mcp.one-by.one/mcp
+- Transport: remote streamable HTTP. Name the server "onebyone".
+- Auth: OAuth sign-in with dynamic client registration. There is no API key or token, so do not ask me for one.
+
+Steps:
+1. Add the server to your MCP configuration and keep my existing servers. If you cannot change your own configuration, give me the exact command or setting for this client.
+2. Start the OAuth sign-in. If you cannot open a browser, show me the sign-in link.
+3. I will sign in to my one-by.one account and approve the permissions: context:read, activity:read and activity:write. The approval screen may label you "Unverified app"; that is normal for unverified clients.
+4. When I am back, confirm that the onebyone tools are listed. Do not create or change any plans until I ask. If the connection is refused because the limit of 3 AI connections is reached, tell me.
+
+Instructions for each client: https://one-by.one/connect/index.md
+```
+
+Per-tool commands (name onebyone, source = official documentation):
+- Claude Code (https://code.claude.com/docs/en/mcp): `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`; then run `/mcp` inside a session and authenticate.
+- Codex CLI (https://developers.openai.com/codex/mcp): `codex mcp add onebyone --url https://mcp.one-by.one/mcp` then `codex mcp login onebyone`. TOML alternative in ~/.codex/config.toml: [mcp_servers.onebyone] with url = "https://mcp.one-by.one/mcp".
+- Cursor (https://cursor.com/docs/mcp): in .cursor/mcp.json or ~/.cursor/mcp.json, {"mcpServers": {"onebyone": {"url": "https://mcp.one-by.one/mcp"}}}. Save, restart, complete OAuth.
+- VS Code with GitHub Copilot (https://code.visualstudio.com/docs/agents/reference/mcp-configuration): in .vscode/mcp.json, {"servers": {"onebyone": {"type": "http", "url": "https://mcp.one-by.one/mcp"}}}. Start the server in the editor and sign in.
+- Gemini CLI (https://geminicli.com/docs/tools/mcp-server/): in ~/.gemini/settings.json or .gemini/settings.json, {"mcpServers": {"onebyone": {"httpUrl": "https://mcp.one-by.one/mcp"}}}; then run `/mcp auth onebyone` inside a Gemini CLI session.
+- Windsurf / Cascade (https://docs.windsurf.com/windsurf/cascade/mcp): Cascade "..." Actions > MCPs > Open MCP config file; in mcp_config.json, {"mcpServers": {"onebyone": {"serverUrl": "https://mcp.one-by.one/mcp"}}}. The official guide covers the legacy Cascade agent.
+- ChatGPT (https://developers.openai.com/plugins/deploy/connect-chatgpt): enable Developer mode if the account allows it, open Plugins, select +, name it one-by.one, enter the server URL, finish the OAuth sign-in, then select it in a new chat. Availability depends on plan and workspace policy.
+- Claude web and Desktop (https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp): Customize > Connectors > add a custom web connector, name it one-by.one, paste the server URL, choose sign-in authentication and automatic client registration if shown, complete OAuth, then enable it in the conversation.
+
 ## Publisher, age and help
 Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
 
 Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu and tap Delete account below Sign out, then confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
 
-To disconnect an AI, use Disconnect on its one-by.one authorization page or remove the connector through the AI service’s controls. The native AI apps list does not itself revoke access. Revocation blocks future tool calls but does not delete records or copies the AI has already received.
+To disconnect an AI, tap Disconnect in the iPhone app under Settings › AI apps, use Disconnect on its one-by.one authorization page, or remove the connector through the AI service’s controls. Revocation blocks future tool calls but does not delete records or copies the AI has already received.
 
 ## Canonical sources
 - Product and FAQ: https://one-by.one/
@@ -327,5 +359,6 @@ To disconnect an AI, use Disconnect on its one-by.one authorization page or remo
 - Support: https://one-by.one/support/
 - Concise overview: https://one-by.one/llms.txt
 - MCP custom connector: https://mcp.one-by.one/mcp
+- Connect instructions (Markdown): https://one-by.one/connect/index.md
 
 The ko/ja paths are English fallback mirrors, not translated versions. Use the canonical English pages above.

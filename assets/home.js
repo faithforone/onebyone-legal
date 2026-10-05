@@ -2,10 +2,11 @@
 // is ever held. The page is complete without this script.
 (function () {
   "use strict";
+  const ko = document.documentElement.lang === "ko";
   const motion = matchMedia("(prefers-reduced-motion: reduce)");
   const still = () => motion.matches;
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+  const $ = (sel, root = document) => root?.querySelector(sel) || null;
+  const $$ = (sel, root = document) => [...(root?.querySelectorAll(sel) || [])];
   const ck = '<svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>';
   const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -897,6 +898,181 @@
       list: [["Dishes", "8 min"], ["Counter", "4 min"], ["Laundry", "in the machine · 3 min"], ["Floor", "5 min"]],
       end: "4 cards, 20 minutes. stop when the last one’s done." },
   };
+  if (ko) Object.assign(plans, {
+    "dump": {
+      "title": "머릿속 정리",
+      "c": "#e5658a",
+      "segs": [
+        [
+          "머릿속이 복잡해요. ",
+          0
+        ],
+        [
+          "내일 발표 자료를 시작해야 하는데",
+          "today"
+        ],
+        [
+          " 자꾸 미루고 있고, ",
+          0
+        ],
+        [
+          "집주인에게 누수 얘기를 보내야 하고",
+          "today"
+        ],
+        [
+          " 엄마한테도 ",
+          0
+        ],
+        [
+          "전화해야 해요",
+          "today"
+        ],
+        [
+          ". ",
+          0
+        ],
+        [
+          "운동도 하고 싶은데 어깨가 좀 뻐근해요",
+          "today"
+        ],
+        [
+          ". 그리고 ",
+          0
+        ],
+        [
+          "치과 예약도 해야 해요",
+          "today"
+        ],
+        [
+          ". ",
+          0
+        ],
+        [
+          "달걀이랑 커피도 다 떨어졌고",
+          "later"
+        ],
+        [
+          " 언젠가는 ",
+          0
+        ],
+        [
+          "스페인어도 배워 보고 싶네요",
+          "interest"
+        ]
+      ],
+      "ai": "하나씩 해 봐요. 가장 쉬운 첫걸음부터요.",
+      "list": [
+        [
+          "오늘",
+          "카드 6장 · 타이머 2개",
+          "today"
+        ],
+        [
+          "이번 주에",
+          "달걀과 커피, 나머지 발표 자료",
+          "later"
+        ],
+        [
+          "관심사",
+          "스페인어 · 여유가 생기면",
+          "interest"
+        ]
+      ],
+      "end": "첫 카드가 iPhone에 도착했어요."
+    },
+    "workout": {
+      "title": "오늘 저녁 운동",
+      "c": "#3fb6a8",
+      "me": "오늘은 짧게 운동하고 파스타를 만들고 싶어요.",
+      "ai": "월요일에 하체 운동을 했으니 오늘은 상체를 해 봐요. 어깨가 뻐근하다고 했으니 푸시업 횟수는 지난번보다 줄일게요.",
+      "list": [
+        [
+          "푸시업",
+          "8회씩 3세트 · 지난번엔 10회"
+        ],
+        [
+          "로우",
+          "12회씩 3세트 · 휴식 60초"
+        ],
+        [
+          "파스타",
+          "7단계 · 타이머 3개"
+        ]
+      ],
+      "end": "첫 카드가 iPhone에 도착했어요."
+    },
+    "pasta": {
+      "title": "마늘 파스타",
+      "c": "#f2a33a",
+      "me": "30분 안에 2인분 마늘 파스타를 만들고 싶어요.",
+      "ai": "충분해요. 물이 끓는 동안 재료를 준비해요.",
+      "list": [
+        [
+          "물",
+          "끓이기 8분 · 준비하는 동안 타이머로"
+        ],
+        [
+          "마늘",
+          "4쪽 썰기 · 기름에서 3분"
+        ],
+        [
+          "면",
+          "9분 · 타이머로"
+        ],
+        [
+          "섞기",
+          "기름, 마늘, 고추, 면수"
+        ]
+      ],
+      "end": "카드 7장이에요. 기다리는 시간은 앱이 챙겨 줄게요."
+    },
+    "focus": {
+      "title": "제안서 초안",
+      "c": "#6d5df5",
+      "me": "5시까지 제안서 초안을 끝내야 해요.",
+      "ai": "쉬는 시간을 넣어 세 구간으로 나눌게요. 4시 40분에 마치는 계획이에요.",
+      "list": [
+        [
+          "개요",
+          "15분"
+        ],
+        [
+          "본문 1–3",
+          "50분, 이후 10분 휴식"
+        ],
+        [
+          "검토",
+          "20분 · 소리 내어 읽기"
+        ]
+      ],
+      "end": "카드 4장이에요. 캘린더의 3시 통화는 그대로 비워 두었어요."
+    },
+    "reset": {
+      "title": "20분 집 정리",
+      "c": "#3b82f6",
+      "me": "집이 엉망인데 20분밖에 없어요.",
+      "ai": "가장 눈에 띄는 것부터요. 설거지하고, 주변을 정리해요.",
+      "list": [
+        [
+          "설거지",
+          "8분"
+        ],
+        [
+          "조리대",
+          "4분"
+        ],
+        [
+          "빨래",
+          "세탁기에 넣기 · 3분"
+        ],
+        [
+          "바닥",
+          "5분"
+        ]
+      ],
+      "end": "카드 4장, 20분이에요. 마지막 카드를 끝내면 오늘은 여기까지."
+    }
+  });
   // </plans>
   const thread = $("[data-thread]");
   const tryScreen = $('[data-deck="try"]');
@@ -956,6 +1132,12 @@
     cooking: { d: "<b>Steps and waits.</b> Recipes become one step at a time. When something has to wait, the app keeps track of it in the corner while you do the next thing.", cards: sets.pasta },
     focus: { d: "<b>Blocks with breaks.</b> A deadline becomes focused blocks with real breaks between them.", cards: sets.focus },
   };
+  if (ko) {
+    jobs.dump.d = "<b>두서없이 말해도 괜찮아요.</b> AI가 작은 카드로 정리해 가장 쉬운 첫걸음부터 보여 줍니다. 언젠가 해 보고 싶은 일은 여유가 생길 때를 위해 남겨 두고요.";
+    jobs.workout.d = "<b>세트와 휴식을 차례대로.</b> AI가 운동을 세트별로 나누고 쉬는 시간을 넣어 줍니다. 입력한 횟수도 기록해요.";
+    jobs.cooking.d = "<b>요리도 한 단계씩.</b> 레시피를 지금 할 일로 나눕니다. 기다릴 땐 앱이 시간을 챙기는 동안 다음 단계를 진행하세요.";
+    jobs.focus.d = "<b>집중할 시간, 쉴 시간.</b> 마감까지 할 일을 집중 구간으로 나누고, 사이사이 제대로 쉬는 시간을 넣어 줍니다.";
+  }
   const own = $("[data-own]"), ownText = $("[data-own-text]"), ownLabel = $("[data-own-label]");
   // Free text into cards: split on sentences, commas and "then", drop the filler words and feelings.
   const fromText = (text) => {
@@ -1003,11 +1185,11 @@
       const desc = $("[data-job-desc]");
       if (text) {
         ownText.value = drafts[job];
-        ownLabel.textContent = job === "dump" ? "Say it however it comes" : "What’s on your plate?";
+        ownLabel.textContent = ko ? "생각나는 대로 적어 보세요" : (job === "dump" ? "Say it however it comes" : "What’s on your plate?");
         fit();
       }
       if (job === "own") {
-        desc.innerHTML = "<b>Anything with steps.</b> Type what’s on your plate in your own words.";
+        desc.innerHTML = ko ? "<b>단계가 있는 일이라면 무엇이든.</b> 오늘 할 일을 편하게 적어 보세요." : "<b>Anything with steps.</b> Type what’s on your plate in your own words.";
         jobsDeck.load(cardsNow(), { print: true }); ownText.focus();
       } else {
         desc.innerHTML = jobs[job].d;
@@ -1095,7 +1277,7 @@
   {
     const tile = $('[data-tile="share"]'), sheet = $(".sheet-up", tile);
     const nums = $$("[data-s-n]", tile), count = $("[data-s-count]", tile);
-    const total = Number(count.dataset.sCount);
+    const total = Number(count?.dataset.sCount || 0);
     if (sheet && !still() && "IntersectionObserver" in window) sheet.classList.add("hide");
     loopWhileVisible(tile, (later) => {
       sheet.classList.add("hide");
@@ -1122,7 +1304,7 @@
   }
 
   // Pricing toggle: two options, one pressed.
-  const bills = { monthly: ["US$12.99", "/ month", "Billed monthly"], yearly: ["US$5", "/ month", "Billed annually · US$59.99 per year"] };
+  const bills = { monthly: ["US$12.99", ko ? "/ 월" : "/ month", ko ? "매월 결제" : "Billed monthly"], yearly: ["US$5", ko ? "/ 월" : "/ month", ko ? "연간 결제 · 1년에 US$59.99" : "Billed annually · US$59.99 per year"] };
   $$("[data-bill]").forEach((b) => b.addEventListener("click", () => {
     $$("[data-bill]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     const [price, per, unit] = bills[b.dataset.bill];
@@ -1154,23 +1336,23 @@
       button.addEventListener("click", async () => {
         status.textContent = "";
         const sb = await supabaseClient().catch(() => null);
-        if (!sb) { status.textContent = "Sign-up opens soon. Please check back."; return; }
+        if (!sb) { status.textContent = (ko ? "가입은 곧 열립니다. 조금 뒤에 다시 방문해 주세요." : "Sign-up opens soon. Please check back."); return; }
         button.disabled = true;
         const { error } = await sb.auth.signInWithOAuth({
           provider: button.dataset.provider,
-          options: { redirectTo: new URL("welcome/", location.href).href },
+          options: { redirectTo: new URL("/welcome/", location.href).href },
         });
-        if (error) { status.textContent = "Couldn’t open sign-in. Please try again."; button.disabled = false; }
+        if (error) { status.textContent = (ko ? "로그인 화면을 열지 못했습니다. 다시 시도해 주세요." : "Couldn’t open sign-in. Please try again."); button.disabled = false; }
       });
     });
   });
 
   // The wait the server asked for, in words; never a guess.
   const tooMany = (seconds) => {
-    if (!Number.isFinite(seconds) || seconds <= 0) return "Too many tries. Please try again later.";
+    if (!Number.isFinite(seconds) || seconds <= 0) return (ko ? "시도 횟수가 많습니다. 나중에 다시 시도해 주세요." : "Too many tries. Please try again later.");
     const minutes = Math.ceil(seconds / 60);
-    return minutes <= 1 ? "Too many tries. Please wait a minute."
-      : `Too many tries. Please try again in ${minutes} minutes.`;
+    return minutes <= 1 ? (ko ? "시도 횟수가 많습니다. 1분 뒤에 다시 시도해 주세요." : "Too many tries. Please wait a minute.")
+      : (ko ? `${minutes}분 뒤에 다시 시도해 주세요.` : `Too many tries. Please try again in ${minutes} minutes.`);
   };
 
   // Waitlist (hero and footer forms): posts to the configured endpoint; without one, says so plainly.
@@ -1179,19 +1361,19 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const email = form.email.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = "Please enter a valid email."; form.email.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = (ko ? "이메일 주소를 확인해 주세요." : "Please enter a valid email."); form.email.focus(); return; }
       const endpoint = form.dataset.endpoint;
-      if (!endpoint) { status.textContent = "The list opens soon. Please check back."; return; }
+      if (!endpoint) { status.textContent = (ko ? "출시 알림 신청은 곧 열립니다. 조금 뒤에 다시 방문해 주세요." : "The list opens soon. Please check back."); return; }
       const button = form.querySelector("button");
-      button.disabled = true; status.textContent = "Adding you…";
+      button.disabled = true; status.textContent = (ko ? "신청 중…" : "Adding you…");
       try {
         const res = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json" }, credentials: "omit",
           body: JSON.stringify({ email, source: location.pathname, website: form.website.value }) });
-        status.textContent = res.status === 202 ? "You’re on the list. We’ll email you once, at launch."
+        status.textContent = res.status === 202 ? (ko ? "신청되었습니다. 출시할 때 이메일 한 통을 보내 드릴게요." : "You’re on the list. We’ll email you once, at launch.")
           : res.status === 429 ? tooMany(Number(res.headers.get("retry-after")))
-          : res.status === 503 ? "The list is busy. Please try again shortly." : "Please check the email and try again.";
+          : res.status === 503 ? (ko ? "신청이 몰리고 있습니다. 잠시 후 다시 시도해 주세요." : "The list is busy. Please try again shortly.") : (ko ? "이메일 주소를 확인하고 다시 시도해 주세요." : "Please check the email and try again.");
         if (res.status === 202) form.reset();
-      } catch { status.textContent = "Couldn’t reach us. Please try again."; }
+      } catch { status.textContent = (ko ? "연결하지 못했습니다. 다시 시도해 주세요." : "Couldn’t reach us. Please try again."); }
       button.disabled = false;
     });
   });

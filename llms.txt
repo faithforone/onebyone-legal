@@ -8,7 +8,32 @@ Last updated: October 5, 2026. Worldwide launch except the entire EU/EEA (the 27
 ## How it works
 Tell ChatGPT, Claude or an MCP-capable personal assistant what you want to do. With your approval, the AI reads planning context and saves a queue of action cards through MCP. Your iPhone shows one card at a time with Start, Done, Not today and Undo for mistaken taps. AI changes require your explicit request and approved permissions.
 
-Custom MCP connector: https://mcp.one-by.one/mcp. OAuth sign-in and separate product permissions: context:read, activity:read, activity:write. Connector availability depends on the AI service; a directory listing is not assumed to be available.
+Custom MCP connector: https://mcp.one-by.one/mcp. Setup: https://one-by.one/connect/. Any agent with remote HTTP, OAuth discovery and dynamic client registration can connect, including local loopback callbacks. Up to three AI connections per account; unverified clients are labelled Unverified app on approval. OAuth sign-in and separate product permissions: context:read, activity:read, activity:write. Connector availability depends on the AI service; a directory listing is not assumed to be available.
+
+## Connect an AI agent (read this to connect)
+Full machine-readable instructions with per-tool commands: https://one-by.one/connect/index.md (human page: https://one-by.one/connect/).
+- Server: https://mcp.one-by.one/mcp
+- Transport: remote streamable HTTP. OAuth sign-in with dynamic client registration; no API key or token.
+- Permissions: context:read, activity:read, activity:write. Limit: 3 AI connections per account. Unverified clients show "Unverified app" on approval.
+- Claude Code: `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`, then `/mcp` in a session.
+- Codex CLI: `codex mcp add onebyone --url https://mcp.one-by.one/mcp`, then `codex mcp login onebyone`.
+- Cursor, VS Code, Gemini CLI, Windsurf, ChatGPT and Claude web/Desktop use a config entry or UI steps; see the index.md file above.
+Instruction a user can paste into an agent:
+```text
+Add the one-by.one MCP server to yourself and connect it.
+
+- Server URL: https://mcp.one-by.one/mcp
+- Transport: remote streamable HTTP. Name the server "onebyone".
+- Auth: OAuth sign-in with dynamic client registration. There is no API key or token, so do not ask me for one.
+
+Steps:
+1. Add the server to your MCP configuration and keep my existing servers. If you cannot change your own configuration, give me the exact command or setting for this client.
+2. Start the OAuth sign-in. If you cannot open a browser, show me the sign-in link.
+3. I will sign in to my one-by.one account and approve the permissions: context:read, activity:read and activity:write. The approval screen may label you "Unverified app"; that is normal for unverified clients.
+4. When I am back, confirm that the onebyone tools are listed. Do not create or change any plans until I ask. If the connection is refused because the limit of 3 AI connections is reached, tell me.
+
+Instructions for each client: https://one-by.one/connect/index.md
+```
 
 ## Pricing
 Launch pricing in the United States: US$12.99/month or US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. No free tier. The App Store shows local pricing, eligibility and renewal terms. Existing data stays readable when a subscription lapses; paid features and AI connections need a subscription. Cancel renewal through Apple at least 24 hours before the trial or period ends.
@@ -24,5 +49,8 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 - [Product and FAQ](https://one-by.one/): Product overview and frequently asked questions.
 - [Privacy Policy](https://one-by.one/privacy/): Data collection, connected AI, optional calendar sharing, encryption and deletion.
 - [Terms of Use](https://one-by.one/terms/): Accounts, subscriptions, trial eligibility and cancellation.
+- [Connect your AI](https://one-by.one/connect/): Official-documentation-based setup for web connectors, CLI tools and editors.
+- [Connect instructions (Markdown)](https://one-by.one/connect/index.md): Server URL, permissions, limits, per-tool commands and a paste-in agent instruction.
+- [한국어 홈](https://one-by.one/ko/) and [한국어 연결 안내](https://one-by.one/ko/connect/): Korean product pages; the app UI and authoritative legal documents remain English.
 - [Support](https://one-by.one/support/): Connection, subscription and deletion help.
 - [Full factual overview](https://one-by.one/llms-full.txt): More detailed product and policy context.

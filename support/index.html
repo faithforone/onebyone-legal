@@ -27,6 +27,8 @@
     <meta name="twitter:description" content="Get help with one-by.one sign-in, ChatGPT and Claude MCP connections, subscriptions, calendar sharing and deletion.">
     <meta name="twitter:image" content="https://one-by.one/assets/og.png">
     <meta name="twitter:image:alt" content="one-by.one — One action at a time on iPhone">
+      <link rel="stylesheet" href="/assets/connect.css?v=f7f38869fa">
+    <script src="/assets/language.js?v=15e6eb2491"></script>
   </head>
   <body>
     <header class="shell">
@@ -47,14 +49,11 @@
     <p>Support messages are accessed by the service operator for support and privacy requests. Hosting and email providers may process them to deliver and protect the service. Contact <a href="mailto:support@one-by.one">support@one-by.one</a> or <a href="mailto:privacy@one-by.one">privacy@one-by.one</a>. We do not promise a response time for ordinary support. Privacy-rights requests are handled within the periods required by applicable law.</p>
     <p>We keep support and privacy email for 12 months after the last message in the conversation, then delete it, unless a specific legal obligation requires longer retention. You can ask us to delete your messages sooner. Server backups are retained for a maximum of 30 days. Messages sent to support@one-by.one and privacy@one-by.one are forwarded by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other countries where these providers operate data centers; see the <a href="../privacy/#international-transfers">privacy policy</a> for provider and transfer details.</p>
     <p>Bug reports sent through your connected AI are linked to your account. They contain the description and diagnostics you agree to share, with no automatic attachments. A receipt means stored; it does not promise a reply or fix.</p>
-    <h2>Connect ChatGPT or Claude</h2>
-    <p>Sign in with Apple or Google. Email sign-in is for existing accounts; the app does not offer email account creation.</p>
-    <p>In the app, open <strong>Settings › AI apps</strong> and follow the connection guide. When the listing is available, search for <strong>one-by.one</strong> in the ChatGPT or Claude apps or connectors directory. Sign in to one-by.one and review the requested access before approving it.</p>
-    <p>If you need a custom connector address, use <code>https://mcp.one-by.one/mcp</code>. Ask the AI explicitly to save or change a plan, memory or result. Read <a href="../privacy/#connected-ai">what it receives</a> before connecting.</p>
-    <p>OAuth authenticates your identity. one-by.one separately records the product permissions you approve: <code>context:read</code>, <code>activity:read</code>, and <code>activity:write</code>.</p>
-    <p>AI connections use your existing one-by.one account entitlement. If you already have access but the connection is unavailable, restore purchases in one-by.one or check that you are signed in to the correct account.</p>
+    <h2>Connect your AI</h2>
+    <p>Connect any MCP agent that supports remote HTTP and OAuth. Our <a href="/connect/">Connect guide</a> has the server URL, permissions and setup instructions for web connectors, CLI tools and editors. You can have up to three AI connections per account.</p>
+    <p>AI connections use your existing one-by.one account entitlement. If you already have access but the connection is unavailable, restore purchases or check that you are signed in to the correct account.</p>
     <h2>Disconnect an AI app</h2>
-    <p>Use <strong>Disconnect</strong> on the connection's one-by.one authorization page. You can also remove the connector through your AI app's controls. The native AI apps list does not itself revoke access.</p>
+    <p>In the iPhone app, open <strong>Settings › AI apps</strong> and tap <strong>Disconnect</strong> next to the connection. You can also use <strong>Disconnect</strong> on the connection's one-by.one authorization page, or remove the connector through your AI app's controls.</p>
     <p>Revoking access blocks future tool calls. It does not delete your records or copies already received by the AI app.</p>
     <h2>Delete your account</h2>
     <p>To delete your account in the app, open the menu, tap <strong>Delete account</strong> below Sign out and confirm. For deletion help, email <a href="mailto:privacy@one-by.one">privacy@one-by.one</a>.</p>
@@ -81,12 +80,14 @@
     <footer>
       <div class="shell footer-inner">
         <nav aria-label="Legal">
+          <a href="/connect/">Connect</a>
           <a href="../privacy/">Privacy</a>
           <a href="../terms/">Terms</a>
           <a href="../support/" aria-current="page">Support</a>
         </nav>
         <span>© 2026 one-by.one</span>
       </div>
-    </footer>
+    <nav class="language-links" aria-label="Language"><a href="/support/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/?lang=ko" data-language="ko" lang="ko">한국어</a></nav>
+</footer>
   </body>
 </html>

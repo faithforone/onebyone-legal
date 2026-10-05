@@ -1,84 +1,393 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="../assets/styles.css?v=22b60a0b8f">
-    <title>one-by.one — AI day planning for iPhone | ko English mirror</title>
-    <meta name="description" content="Plan with ChatGPT or Claude through MCP, do one action at a time on iPhone, and record results with one-by.one. English copy: /ko/.">
-    <link rel="canonical" href="https://one-by.one/">
-    <meta name="robots" content="noindex,follow">
+    <link rel="stylesheet" href="/assets/styles.css?v=22b60a0b8f">
+    <title>one-by.one — AI와 계획하고, 하나씩 실행하세요</title>
+    <meta name="description" content="AI에게 오늘 할 일을 말하세요. one-by.one이 iPhone에서 다음 카드 한 장을 보여 줍니다. 할 일은 하나씩, 해낸 일은 기록으로. 곧 iPhone에서 만나요.">
+    <link rel="canonical" href="https://one-by.one/ko/">
     <meta name="theme-color" content="#F3F4F5">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/icon.svg">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="one-by.one">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="one-by.one — AI day planning for iPhone | ko English mirror">
-    <meta property="og:description" content="Plan with ChatGPT or Claude through MCP, do one action at a time on iPhone, and record results with one-by.one. English copy: /ko/.">
-    <meta property="og:url" content="https://one-by.one/">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:title" content="one-by.one — AI와 계획하고, 하나씩 실행하세요">
+    <meta property="og:description" content="AI에게 오늘 할 일을 말하세요. one-by.one이 iPhone에서 다음 카드 한 장을 보여 줍니다. 할 일은 하나씩, 해낸 일은 기록으로. 곧 iPhone에서 만나요.">
+    <meta property="og:url" content="https://one-by.one/ko/">
     <meta property="og:image" content="https://one-by.one/assets/og.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="one-by.one — One action at a time on iPhone">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="one-by.one — AI day planning for iPhone | ko English mirror">
-    <meta name="twitter:description" content="Plan with ChatGPT or Claude through MCP, do one action at a time on iPhone, and record results with one-by.one. English copy: /ko/.">
+    <meta name="twitter:title" content="one-by.one — AI와 계획하고, 하나씩 실행하세요">
+    <meta name="twitter:description" content="AI에게 오늘 할 일을 말하세요. one-by.one이 iPhone에서 다음 카드 한 장을 보여 줍니다. 할 일은 하나씩, 해낸 일은 기록으로. 곧 iPhone에서 만나요.">
     <meta name="twitter:image" content="https://one-by.one/assets/og.png">
     <meta name="twitter:image:alt" content="one-by.one — One action at a time on iPhone">
-  </head>
-  <body>
-    <header class="shell">
-      <a class="brand" href="../" aria-label="one by one">
-        <img src="../assets/icon.svg" alt="">
-        <span class="wordmark">one-by.one</span>
-      </a>
+
+    <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
+    <meta name="obo-auth" data-url="" data-key="">
+    <link rel="stylesheet" href="/assets/home.css?v=81">
+    <script src="/assets/home.js?v=86" defer></script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "one-by.one은 어떤 앱인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 오늘 하지 않을 일은 Not today로 넘기고, 잘못 누른 건 Undo로 되돌릴 수 있습니다. 곧 iPhone에서 출시되며, 만 16세 이상이 이용할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "어떤 AI를 연결할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "원격 HTTP와 OAuth 로그인을 지원하는 MCP 에이전트라면 연결할 수 있습니다. ChatGPT와 Claude뿐 아니라 CLI와 에디터에서도 사용할 수 있어요. 클라이언트 자동 등록을 지원하며 계정당 AI 연결은 최대 3개입니다. AI 연결 안내 페이지에서 도구별 설정을 확인하세요. 각 AI 서비스의 이용 조건과 개인정보 정책도 적용됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "요금과 무료 체험이 궁금해요.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "미국 출시 기준으로 월 US$12.99 또는 연 US$59.99입니다. 대상 신규 구독자에게는 14일 무료 체험이 제공되며, 자격 여부는 App Store가 결정합니다. 무료 요금제는 없습니다. 실제 결제 금액과 체험 자격, 갱신 조건은 해당 국가의 App Store에서 확인하세요. 체험 후 유료 기능과 AI 연결에는 구독이 필요하지만, 기존 데이터는 구독 없이도 읽을 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "어떤 기록을 남길 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "무게, 횟수, 거리, 시간, 부피, 열량, 영양소, 읽은 쪽수, 마신 잔 수처럼 단위가 있는 결과를 남길 수 있습니다. 이미 한 일도 AI를 통해 과거 기록으로 저장할 수 있어요. 식사 설명으로 추정한 영양 정보 등 AI의 추정값은 추정치로 표시해야 합니다. Records에서 오늘과 이번 주 합계를 보고, 기기에서 공유 이미지를 만들 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "캘린더도 AI와 공유하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "원하는 캘린더를 직접 선택하기 전까지는 공유하지 않습니다. 공유를 켜면 선택한 캘린더의 향후 7일 일정 제목, 시작·종료 시각, 종일 여부를 연결된 AI에 제공합니다. 시간만 공유하면 제목 대신 Busy로 표시됩니다. 메모, 참석자, 장소, URL은 업로드하지 않으며 캘린더에 일정을 쓰지도 않습니다. 공유 중단은 서버 확인 후 적용되고, 오프라인에서 요청하면 다시 연결될 때 재시도합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "내 데이터와 AI 공유 정보는 어떻게 관리하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "운영자가 평소에 사용자 내용을 들여다보지 않습니다. 신고한 문제 해결, 서비스 보안, 법적 의무를 위해 필요한 경우에만 접근합니다. 카드 제목, 메모, 관심사, 기억, 일정 제목 등 사용자가 적은 텍스트는 계정별 키로 암호화해 저장합니다. 계정을 삭제하면 키도 삭제합니다. 삭제 전 백업에는 키가 남아 있을 수 있으며, 백업이 만료된 뒤에는 삭제한 텍스트를 읽을 수 없습니다. 연결한 AI는 도구가 반환하는 계획과 기록, 기억 등의 내용을 받습니다. AI가 받은 사본에는 해당 서비스의 정책이 적용됩니다. 연결 해제는 이후 접근을 막지만 이미 받은 정보를 지우지는 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "구독은 어떻게 해지하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apple에서 자동 갱신 구독을 해지하세요. 갱신을 피하려면 체험 또는 구독 기간이 끝나기 최소 24시간 전에 해지해야 합니다. 구매, 갱신, 해지와 환불 요청은 Apple이 처리합니다. one-by.one 계정을 삭제해도 Apple 구독이 자동 해지되지는 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android에서도 쓸 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아직은 iPhone 전용입니다. 곧 iPhone에서 만나요."
+      }
+    }
+  ]
+}</script>
+    <link rel="stylesheet" href="/assets/connect.css?v=f7f38869fa">
+    <script src="/assets/language.js?v=15e6eb2491"></script>
+  <link rel="alternate" hreflang="en" href="https://one-by.one/">
+<link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
+<link rel="alternate" hreflang="x-default" href="https://one-by.one/">
+</head>
+  <body class="home">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/ko/" aria-label="one by one">
+          <img src="/assets/icon.svg" alt="">
+          <span class="wordmark">one-by.one</span>
+        </a>
+        <nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/connect/">AI 연결하기</a><button class="btn small" type="button" data-open-signup>가입하기</button></nav>
+      </div>
     </header>
 
-    <main class="manifesto shell">
-      <h1>Here’s to the overwhelmed.</h1>
+    <main>
+      <section class="hero">
+        <a class="pill" href="/manifesto/"><b>곧 iPhone에서 만나요</b><span class="pill-more"><span aria-hidden="true">·</span> 우리가 만드는 것</span><i aria-hidden="true">↗</i></a>
+        <h1>지금 뭘 하면 될까? <svg class="h1-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1a1c20"/><rect x="10" y="27" width="20" height="5.5" rx="2.75" fill="#c6ef4e"/></svg> 바로 이거.</h1>
+        <p class="lede">AI가 하루를 작은 카드로 나눠 줍니다. <br>iPhone에서는 하나씩, 눈앞의 일에 집중하세요.</p>
+        <div class="cta-row">
+          <button class="btn" type="button" data-open-signup>가입하기</button>
+          <a class="btn soft" href="#jobs">예시 보기</a>
+        </div>
+        <p class="app-language">앱은 현재 영어로 제공됩니다. 아래 iPhone 화면도 영어 UI를 보여 줍니다.</p>
+      </section>
 
-      <p>The overthinkers.<br>
-      The overplanners.<br>
-      The tab hoarders.</p>
+      <section class="product" id="try" aria-label="A plan, from your AI to your iPhone">
+        <div class="window">
+          <aside class="win-side">
+            <div class="win-top"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="win-plus" aria-hidden="true">+</span></div>
+            <p class="win-search" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>검색</p>
+            <div class="threads" role="tablist" aria-label="Example plans">
+              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>머릿속 정리</b><time>10:05 PM</time><em>카드 6장 · 타이머 2개</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="workout"><span class="av" style="--c:#3fb6a8"></span><b>오늘 저녁 운동</b><time>7:30 PM</time><em>카드 9장 · 첫 카드 준비됨</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="pasta"><span class="av" style="--c:#f2a33a"></span><b>마늘 파스타</b><time>6:05 PM</time><em>카드 7장 · 타이머 3개</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="focus"><span class="av" style="--c:#6d5df5"></span><b>제안서 초안</b><time>1:10 PM</time><em>카드 4장 · 휴식 포함</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="reset"><span class="av" style="--c:#3b82f6"></span><b>20분 집 정리</b><time>11:40 AM</time><em>카드 4장 · 설거지부터</em></button>
+            </div>
+            <p class="win-you"><span>Y</span>나</p>
+          </aside>
+          <div class="win-main" id="plan-panel" role="tabpanel">
+            <header class="win-head"><span class="av" data-plan-dot style="--c:#e5658a"></span><b data-plan-title>머릿속 정리</b><span class="win-tag">나의 AI</span></header>
+            <div class="thread" data-thread aria-live="polite"><p class="msg me">머릿속이 복잡해요. 내일 발표 자료를 시작해야 하는데 자꾸 미루고 있고, 집주인에게 누수 얘기를 보내야 하고 엄마한테도 전화해야 해요. 운동도 하고 싶은데 어깨가 좀 뻐근해요. 그리고 치과 예약도 해야 해요. 달걀이랑 커피도 다 떨어졌고 언젠가는 스페인어도 배워 보고 싶네요</p><p class="msg ai">하나씩 해 봐요. 가장 쉬운 첫걸음부터요.</p><ul class="msg ai list"><li><b>오늘</b> → 카드 6장 · 타이머 2개</li><li><b>이번 주에</b> → 달걀과 커피, 나머지 발표 자료</li><li><b>관심사</b> → 스페인어 · 여유가 생기면</li></ul><p class="msg ai">첫 카드가 iPhone에 도착했어요.</p></div>
+            <div class="composer" aria-hidden="true"><span class="c-plus">+</span><span class="c-field">AI에게 메시지 보내기</span><span class="c-mic"><svg viewBox="0 0 16 16"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5"/><path d="M3 8a5 5 0 0 0 10 0M8 13v2"/></svg></span></div>
+          </div>
+        </div>
+        <div class="device" role="group" aria-label="one-by.one on iPhone">
+          <div class="now" data-deck="try">
+            <div class="sheet">
+              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>Good morning</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-try" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+            </div>
+            <div class="slot">
+              <div class="ticket">
+                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <span class="t-shadow" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p>The ones with 47 things marked “important.”<br>
-      The ones who make a list of their lists.<br>
-      The ones who know exactly what they should be doing.</p>
+      <section class="talk" data-reveal>
+        <div class="talk-copy">
+          <h2>AI와 대화하던 그대로</h2>
+          <p>원격 HTTP와 OAuth를 지원하는 MCP 에이전트라면 연결할 수 있어요. 해야 할 일을 편하게 말하세요. AI가 작은 카드로 정리해 iPhone에 보내 줍니다.</p>
+        </div>
+        <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
+      </section>
 
-      <p class="beat">And still can’t start.</p>
+      <section class="values" aria-labelledby="values-heading">
+        <h2 id="values-heading">정리하는 데 힘 빼지 마세요</h2>
+        <p class="values-sub">목록을 관리할 필요도, 밀린 일을 쌓아 둘 필요도 없어요. 다음 카드 한 장, 그리고 해낸 일의 기록.</p>
+        <div class="bento">
+          <article class="tile" data-reveal data-tile="next">
+            <h3>지금 할 카드 한 장만</h3>
+            <p>나머지는 잠시 보이지 않아도 괜찮아요. Done을 누르면 다음 카드가 옵니다.</p>
+            <div class="viz viz-next" aria-hidden="true" inert>
+              <div class="now mini">
+                <div class="sheet"><p class="upnext"><span>Up next</span><b data-next>Rest</b></p></div>
+                <div class="slot">
+                  <div class="ticket">
+                    <div class="t-body"><div class="t-head"><p class="t-title">Push-ups</p><span class="t-more" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-note">Hands under shoulders · 2 s down</p></div>
+                    <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div>
+                    <span class="t-shadow" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="timer">
+            <h3>기다리는 동안엔 다음 일을</h3>
+            <p>물이 끓거나 쉬는 시간을 기다릴 땐, 앱에 맡기고 다음 일을 하세요.</p>
+            <div class="viz viz-wait" aria-hidden="true" inert>
+              <div class="now mini">
+                <div class="sheet">
+                  <div class="sit" data-sit><p class="chip-s" data-sit-chip>Cooking</p><div class="tray" data-tray role="group" aria-label="Timers"><button class="ball" type="button" tabindex="-1" aria-label="Water, 1 minute left"><svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)" style="stroke-dashoffset:-49"/></svg><b>1m</b></button></div><div class="tpanel" id="tp-wait" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+                  <p class="upnext"><span>Up next</span><b data-next>Grate the parmesan</b></p>
+                </div>
+                <div class="slot">
+                  <div class="ticket armable">
+                    <div class="t-body"><div class="t-head"><p class="t-title">Slice the garlic</p><span class="t-more" aria-hidden="true"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-pause">Paused</p><p class="t-note">4 cloves, sliced thin</p></div><div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div><span class="t-shadow" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="share">
+            <h3>오늘 해낸 일, 나누고 싶다면</h3>
+            <p>Done을 누를 때마다 단위와 함께 기록이 쌓입니다. 오늘 하루를 공유할 이미지 한 장으로 남겨 보세요.</p>
+            <div class="viz viz-share" aria-hidden="true">
+              <div class="share-stage">
+              <div class="share-img">
+                <div class="si-top"><span>Tuesday, Oct 6</span><b>one-by.one</b></div>
+                <div class="si-mid">
+                  <div class="si-count"><b data-s-count="7">7</b><span>Completed cards</span></div>
+                  <div class="si-grid">
+                    <p><i>Push-ups</i><b data-s-n="30">30</b><em>reps</em></p>
+                    <p><i>Distance</i><b data-s-n="4.2" data-s-dec="1">4.2</b><em>km</em></p>
+                    <p><i>Focus</i><b data-s-n="75">75</b><em>min</em></p>
+                    <p><i>Water</i><b data-s-n="5">5</b><em>cups</em></p>
+                  </div>
+                </div>
+                <p class="si-foot">Planned with my AI · made with one-by.one</p>
+              </div>
+              <div class="sheet-up"><span class="su-handle"></span><span class="su-apps"><span><i style="--c:#34c759"></i>Messages</span><span><i style="--c:#3b82f6"></i>Mail</span><span><i style="--c:#f5b83d"></i>Notes</span><span><i style="--c:#9ba1aa"></i>Save</span></span></div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="cal">
+            <h3>일정에 맞춰 움직이는 계획</h3>
+            <p>회의 전엔 준비를, 끝난 뒤엔 후속 작업을. AI가 제안하고, 결정은 내가 합니다.</p>
+            <div class="viz viz-cal" aria-hidden="true">
+              <div class="day">
+                <span class="hr" style="--y:0">1 PM</span><span class="hr" style="--y:1">2 PM</span><span class="hr" style="--y:2">3 PM</span>
+                <div class="evt"><b>Design review</b><i>2:00 – 3:00</i></div>
+                <div class="sug before" data-c-before><b>Reread notes</b><i>1:40 · 10 min</i><em>Suggested</em></div>
+                <div class="sug after" data-c-after><b>Send notes</b><i>3:00 · 5 min</i><em>Suggested</em></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <p>The ones who’ve tried every habit tracker.<br>
-      Losing a whole Sunday to a system<br>
-      that saves them ten minutes on Monday.</p>
+      <section class="jobs" id="jobs" aria-labelledby="jobs-heading">
+        <div class="jobs-copy">
+          <h2 id="jobs-heading">AI에게 오늘 할 일을 말해 보세요</h2>
+          <div class="chips">
+            <div class="chip-set" role="group" aria-label="활용 예시">
+              <button type="button" aria-pressed="true" data-job="dump">머릿속 정리</button>
+              <button type="button" aria-pressed="false" data-job="workout">운동</button>
+              <button type="button" aria-pressed="false" data-job="cooking">요리</button>
+              <button type="button" aria-pressed="false" data-job="focus">집중 작업</button>
+            </div>
+            <button type="button" class="chip-own" aria-pressed="false" data-job="own">직접 써 보기…</button>
+          </div>
+          <p class="job-desc" data-job-desc><b>두서없이 말해도 괜찮아요.</b> AI가 작은 카드로 정리해 가장 쉬운 첫걸음부터 보여 줍니다. 언젠가 해 보고 싶은 일은 여유가 생길 때를 위해 남겨 두고요.</p>
+          <div class="own" data-own>
+            <label for="own-text" data-own-label>생각나는 대로 적어 보세요</label>
+            <textarea id="own-text" rows="5" placeholder="예: 방 정리, 엄마에게 전화, 기타 연습 30분" data-own-text>머릿속이 복잡해요. 내일 발표 자료를 시작해야 하는데 자꾸 미루고 있고, 집주인에게 누수 얘기를 보내야 하고 엄마한테도 전화해야 해요. 운동도 하고 싶은데 어깨가 좀 뻐근해요. 그리고 치과 예약도 해야 해요. 달걀이랑 커피도 다 떨어졌고 언젠가는 스페인어도 배워 보고 싶네요</textarea>
+            <p class="own-note">카드가 어떻게 나뉘는지 보는 예시입니다. 실제 계획은 연결한 AI가 만들어 줍니다.</p>
+          </div>
+        </div>
+        <div class="device" role="group" aria-label="Cards for this example">
+          <div class="now" data-deck="jobs">
+            <div class="sheet">
+              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>Good morning</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-jobs" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+            </div>
+            <div class="slot">
+              <div class="ticket">
+                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <span class="t-shadow" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p>For the ones still asking:</p>
+      <section class="pricing" aria-labelledby="p-head">
+        <h2 id="p-head">이용 요금</h2>
+        <div class="price-card">
+          <div class="price-top">
+            <span class="p-name">one-by.one</span>
+            <div class="seg" role="group" aria-label="결제 주기"><button type="button" aria-pressed="false" data-bill="monthly">월간</button><button type="button" aria-pressed="true" data-bill="yearly">연간</button></div>
+          </div>
+          <p class="p-price"><b data-price>US$5</b><span data-per>/ 월</span></p>
+          <p class="p-unit" data-unit>연간 결제 · 1년에 US$59.99</p>
+          <button class="btn wide" type="button" data-open-signup>가입하기</button>
+          <p class="p-inc">함께 제공됩니다:</p>
+          <ul class="p-list">
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>ChatGPT, Claude 등 MCP 에이전트 연결</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>타이머, 휴식 시간, 알림</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>단위가 있는 기록과 공유 이미지</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>대상 신규 구독자에게 14일 무료 체험</li>
+          </ul>
+        </div>
+      </section>
 
-      <p class="beat">What should I do now?</p>
+      <section class="notify" id="notify" aria-labelledby="notify-heading">
+        <h2 id="notify-heading">출시 소식을 먼저 받아 보세요</h2>
+        <button class="btn" type="button" data-open-signup>가입하기</button>
+      </section>
 
-      <p class="answer"><strong>This.</strong>
-      Just this one.</p>
-
-      <div class="signoff">
-        <img src="../assets/icon.svg" alt="">
-        <span class="wordmark">one-by.one</span>
-      </div>
-      <p class="soon">Coming soon to iPhone.</p>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">궁금한 점</h2>
+      <details data-faq-item>
+        <summary><h3>one-by.one은 어떤 앱인가요?</h3></summary>
+        <p data-faq-answer>AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 오늘 하지 않을 일은 Not today로 넘기고, 잘못 누른 건 Undo로 되돌릴 수 있습니다. 곧 iPhone에서 출시되며, 만 16세 이상이 이용할 수 있습니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>어떤 AI를 연결할 수 있나요?</h3></summary>
+        <p data-faq-answer>원격 HTTP와 OAuth 로그인을 지원하는 MCP 에이전트라면 연결할 수 있습니다. ChatGPT와 Claude뿐 아니라 CLI와 에디터에서도 사용할 수 있어요. 클라이언트 자동 등록을 지원하며 계정당 AI 연결은 최대 3개입니다. AI 연결 안내 페이지에서 도구별 설정을 확인하세요. 각 AI 서비스의 이용 조건과 개인정보 정책도 적용됩니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>요금과 무료 체험이 궁금해요.</h3></summary>
+        <p data-faq-answer>미국 출시 기준으로 월 US$12.99 또는 연 US$59.99입니다. 대상 신규 구독자에게는 14일 무료 체험이 제공되며, 자격 여부는 App Store가 결정합니다. 무료 요금제는 없습니다. 실제 결제 금액과 체험 자격, 갱신 조건은 해당 국가의 App Store에서 확인하세요. 체험 후 유료 기능과 AI 연결에는 구독이 필요하지만, 기존 데이터는 구독 없이도 읽을 수 있습니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>어떤 기록을 남길 수 있나요?</h3></summary>
+        <p data-faq-answer>무게, 횟수, 거리, 시간, 부피, 열량, 영양소, 읽은 쪽수, 마신 잔 수처럼 단위가 있는 결과를 남길 수 있습니다. 이미 한 일도 AI를 통해 과거 기록으로 저장할 수 있어요. 식사 설명으로 추정한 영양 정보 등 AI의 추정값은 추정치로 표시해야 합니다. Records에서 오늘과 이번 주 합계를 보고, 기기에서 공유 이미지를 만들 수 있습니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>캘린더도 AI와 공유하나요?</h3></summary>
+        <p data-faq-answer>원하는 캘린더를 직접 선택하기 전까지는 공유하지 않습니다. 공유를 켜면 선택한 캘린더의 향후 7일 일정 제목, 시작·종료 시각, 종일 여부를 연결된 AI에 제공합니다. 시간만 공유하면 제목 대신 Busy로 표시됩니다. 메모, 참석자, 장소, URL은 업로드하지 않으며 캘린더에 일정을 쓰지도 않습니다. 공유 중단은 서버 확인 후 적용되고, 오프라인에서 요청하면 다시 연결될 때 재시도합니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>내 데이터와 AI 공유 정보는 어떻게 관리하나요?</h3></summary>
+        <p data-faq-answer>운영자가 평소에 사용자 내용을 들여다보지 않습니다. 신고한 문제 해결, 서비스 보안, 법적 의무를 위해 필요한 경우에만 접근합니다. 카드 제목, 메모, 관심사, 기억, 일정 제목 등 사용자가 적은 텍스트는 계정별 키로 암호화해 저장합니다. 계정을 삭제하면 키도 삭제합니다. 삭제 전 백업에는 키가 남아 있을 수 있으며, 백업이 만료된 뒤에는 삭제한 텍스트를 읽을 수 없습니다. 연결한 AI는 도구가 반환하는 계획과 기록, 기억 등의 내용을 받습니다. AI가 받은 사본에는 해당 서비스의 정책이 적용됩니다. 연결 해제는 이후 접근을 막지만 이미 받은 정보를 지우지는 않습니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>구독은 어떻게 해지하나요?</h3></summary>
+        <p data-faq-answer>Apple에서 자동 갱신 구독을 해지하세요. 갱신을 피하려면 체험 또는 구독 기간이 끝나기 최소 24시간 전에 해지해야 합니다. 구매, 갱신, 해지와 환불 요청은 Apple이 처리합니다. one-by.one 계정을 삭제해도 Apple 구독이 자동 해지되지는 않습니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Android에서도 쓸 수 있나요?</h3></summary>
+        <p data-faq-answer>아직은 iPhone 전용입니다. 곧 iPhone에서 만나요.</p>
+      </details>
+      <p class="faq-more">연결 방법과 AI로 할 수 있는 일: <a href="/ko/connect/">AI 연결하기</a> · <a href="/support/">지원(영어)</a></p>
+    </section>
     </main>
 
     <footer>
+      <div class="shell publisher"><p>서비스 제공자: 대한민국 개인사업자 salad76(대표 김승은), one-by.one이라는 이름으로 서비스를 제공합니다.</p><p>주소: 대한민국 서울특별시 서초구 동광로 173, 302호.</p><p>개인정보 보호 책임자: 김승은 · <a href="mailto:privacy@one-by.one">privacy@one-by.one</a><br>지원 문의: <a href="mailto:support@one-by.one">support@one-by.one</a></p><p>앱은 현재 영어로 제공됩니다. 이용 가능한 국가는 <a href="/terms/#launch-scope">이용약관의 출시 범위(영어)</a>를 확인하세요. 국가별 결제 금액은 App Store에 표시됩니다.</p><p>법적 문서는 영어본이 기준입니다.</p></div>
       <div class="shell footer-inner">
         <nav aria-label="Legal">
-          <a href="../privacy/">Privacy</a>
-          <a href="../terms/">Terms</a>
-          <a href="../support/">Support</a>
-          <a href="../ko/" lang="ko">한국어</a>
-          <a href="../ja/" lang="ja">日本語</a>
+          <a href="/ko/connect/">AI 연결</a>
+          <a href="/manifesto/">만드는 이유(영어)</a>
+          <a href="/privacy/">개인정보 처리방침(영어)</a>
+          <a href="/terms/">이용약관(영어)</a>
+          <a href="/support/">지원(영어)</a>
         </nav>
+
         <span>© 2026 one-by.one</span>
       </div>
-    </footer>
+    <nav class="language-links" aria-label="Language"><a href="/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/?lang=ko" data-language="ko" lang="ko">한국어</a></nav>
+</footer>
+    <dialog class="signup-dialog" data-signup-dialog aria-labelledby="signup-title">
+      <form method="dialog" class="dlg-close"><button aria-label="닫기">×</button></form>
+      <h2 id="signup-title">one-by.one에 가입하기</h2>
+      <p class="dlg-sub">앱에서도 같은 계정을 사용합니다.<br>출시할 때 이메일 한 통을 보내 드려요.</p>
+      <div class="signup" data-signup>
+        <button class="sso sso-apple" type="button" data-provider="apple"><svg class="sso-ico" viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.1 10.6c0-2.5 2.1-3.7 2.2-3.8-1.2-1.7-3-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.9 2 5.9 1.1 7.4c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-3-4.4zM11.6 3.1c.7-.9 1.2-2 1.1-3.1-1 0-2.3.7-3 1.6-.7.8-1.2 1.9-1.1 3 1.1.1 2.3-.6 3-1.5z"/></svg><span>Apple로 계속하기</span></button>
+        <button class="sso sso-google" type="button" data-provider="google"><svg class="sso-ico" viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72A5.4 5.4 0 0 1 3.68 9c0-.6.1-1.18.29-1.72V4.95H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.05l3.01-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg><span>Google로 계속하기</span></button>
+        <p class="signup-status" role="status" aria-live="polite"></p>
+        <details class="email-only">
+          <summary>출시 소식만 이메일로 받기</summary>
+          <form class="notify-form" data-waitlist data-endpoint="" novalidate>
+            <label class="visually-hidden" for="dlg-email">이메일</label>
+            <input id="dlg-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+            <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit">소식 받기</button>
+            <p class="notify-status" role="status" aria-live="polite"></p>
+          </form>
+        </details>
+        <p class="signup-fine"><a href="/privacy/">개인정보 처리방침(영어)</a> · <a href="/terms/">이용약관(영어)</a></p>
+      </div>
+    </dialog>
   </body>
 </html>

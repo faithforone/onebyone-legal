@@ -139,7 +139,7 @@
           "name": "Which AI assistants can I connect?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can connect ChatGPT or Claude to your one-by.one account. Other assistants can connect if they support custom MCP connectors with sign-in; the support page has the setup steps. ChatGPT and Claude are separate services with their own access requirements, terms and privacy policies."
+            "text": "You can connect any MCP agent that supports remote HTTP and OAuth sign-in, including ChatGPT, Claude, CLI tools and editors. one-by.one supports dynamic client registration and up to three AI connections per account. The Connect page has setup steps. AI services have their own access requirements, terms and privacy policies."
           }
         },
         {
@@ -198,8 +198,13 @@
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
     <meta name="obo-auth" data-url="" data-key="">
     <link rel="stylesheet" href="assets/home.css?v=81">
-    <script src="assets/home.js?v=85" defer></script>
-  </head>
+    <script src="assets/home.js?v=86" defer></script>
+      <link rel="stylesheet" href="/assets/connect.css?v=f7f38869fa">
+    <script src="/assets/language.js?v=15e6eb2491"></script>
+  <link rel="alternate" hreflang="en" href="https://one-by.one/">
+<link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
+<link rel="alternate" hreflang="x-default" href="https://one-by.one/">
+</head>
   <body class="home">
     <header class="topbar">
       <div class="topbar-inner">
@@ -207,7 +212,7 @@
           <img src="assets/icon.svg" alt="">
           <span class="wordmark">one-by.one</span>
         </a>
-        <button class="btn small" type="button" data-open-signup>Sign up</button>
+        <nav class="site-nav" aria-label="Main navigation"><a href="/connect/">Connect your AI</a><button class="btn small" type="button" data-open-signup>Sign up</button></nav>
       </div>
     </header>
 
@@ -266,7 +271,7 @@
       <section class="talk" data-reveal>
         <div class="talk-copy">
           <h2>Talk to your AI like you already do</h2>
-          <p>one-by.one connects to ChatGPT and Claude. Say what’s on your plate in your own words; your AI turns it into cards and puts them on your iPhone.</p>
+          <p>one-by.one connects to any MCP agent with remote HTTP and OAuth. Say what’s on your plate in your own words; your AI turns it into cards and puts them on your iPhone.</p>
         </div>
         <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
       </section>
@@ -416,7 +421,7 @@
       </details>
       <details data-faq-item>
         <summary><h3>Which AI assistants can I connect?</h3></summary>
-        <p data-faq-answer>You can connect ChatGPT or Claude to your one-by.one account. Other assistants can connect if they support custom MCP connectors with sign-in; the support page has the setup steps. ChatGPT and Claude are separate services with their own access requirements, terms and privacy policies.</p>
+        <p data-faq-answer>You can connect any MCP agent that supports remote HTTP and OAuth sign-in, including ChatGPT, Claude, CLI tools and editors. one-by.one supports dynamic client registration and up to three AI connections per account. The Connect page has setup steps. AI services have their own access requirements, terms and privacy policies.</p>
       </details>
       <details data-faq-item>
         <summary><h3>How much does it cost, and is there a free trial?</h3></summary>
@@ -442,7 +447,7 @@
         <summary><h3>Is one-by.one available on Android?</h3></summary>
         <p data-faq-answer>Not yet. one-by.one is iPhone only and is coming soon to iPhone.</p>
       </details>
-      <p class="faq-more">Setup details and everything your AI can do: <a href="support/">Support</a></p>
+      <p class="faq-more">Setup details and everything your AI can do: <a href="/connect/">Connect your AI</a> · <a href="support/">Support</a></p>
     </section>
     </main>
 
@@ -455,18 +460,17 @@
       </div>
       <div class="shell footer-inner">
         <nav aria-label="Legal">
+          <a href="/connect/">Connect</a>
           <a href="manifesto/">Manifesto</a>
           <a href="privacy/">Privacy</a>
           <a href="terms/">Terms</a>
           <a href="support/">Support</a>
         </nav>
-        <nav aria-label="Language">
-          <a href="ko/" lang="ko">한국어</a>
-          <a href="ja/" lang="ja">日本語</a>
-        </nav>
+
         <span>© 2026 one-by.one</span>
       </div>
-    </footer>
+    <nav class="language-links" aria-label="Language"><a href="/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/?lang=ko" data-language="ko" lang="ko">한국어</a></nav>
+</footer>
     <dialog class="signup-dialog" data-signup-dialog aria-labelledby="signup-title">
       <form method="dialog" class="dlg-close"><button aria-label="Close">×</button></form>
       <h2 id="signup-title">Sign up for one-by.one</h2>
