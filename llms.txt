@@ -1,0 +1,28 @@
+# one-by.one
+
+> An iPhone app for people who plan with AI assistants: an ordered day plan, one doable action at a time, and results recorded with units. Coming soon to iPhone. For ages 16+.
+
+## Launch scope and language
+Last updated: October 5, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+
+## How it works
+Tell ChatGPT, Claude or an MCP-capable personal assistant what you want to do. With your approval, the AI reads planning context and saves a queue of action cards through MCP. Your iPhone shows one card at a time with Start, Done, Not today and Undo for mistaken taps. AI changes require your explicit request and approved permissions.
+
+Custom MCP connector: https://mcp.one-by.one/mcp. OAuth sign-in and separate product permissions: context:read, activity:read, activity:write. Connector availability depends on the AI service; a directory listing is not assumed to be available.
+
+## Pricing
+Launch pricing in the United States: US$12.99/month or US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. No free tier. The App Store shows local pricing, eligibility and renewal terms. Existing data stays readable when a subscription lapses; paid features and AI connections need a subscription. Cancel renewal through Apple at least 24 hours before the trial or period ends.
+
+## Privacy
+No sale of data, advertising use or cross-app tracking. Optional calendar sharing is off until you choose calendars; the connected AI can receive the next seven days of selected event titles and times. Share times only substitutes “Busy” for event names. Connected AI clients receive saved content requested by tools under the permissions you approve; their own policies and settings apply. See the privacy policy for encryption, operator access, retention, deletion and sharing limits.
+
+Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). Contact: support@one-by.one; privacy@one-by.one.
+
+Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved. Support and privacy email is routed by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other provider data-center countries. Transfer safeguards are each provider's data processing agreement and standard contractual safeguards; no particular certification is claimed.
+
+## Sources and details
+- [Product and FAQ](https://one-by.one/): Product overview and frequently asked questions.
+- [Privacy Policy](https://one-by.one/privacy/): Data collection, connected AI, optional calendar sharing, encryption and deletion.
+- [Terms of Use](https://one-by.one/terms/): Accounts, subscriptions, trial eligibility and cancellation.
+- [Support](https://one-by.one/support/): Connection, subscription and deletion help.
+- [Full factual overview](https://one-by.one/llms-full.txt): More detailed product and policy context.

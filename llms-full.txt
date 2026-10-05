@@ -1,0 +1,331 @@
+# one-by.one — factual product and policy overview
+
+Coming soon to iPhone. English-only product for users aged 16 and over. This overview summarizes product facts and the English legal pages dated October 5, 2026. The privacy policy and terms contain the full legal wording.
+
+## Launch scope and language
+Last updated: October 5, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+
+## Product and workflow
+one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Claude and MCP-capable personal assistants. You tell your AI what you want to do. With an approved MCP connection, it plans your day as an ordered queue of cards. The phone shows one card at a time: Start, Done, Not today and Undo for mistaken taps. There is no Android version yet.
+
+One card is one doable action. Long tasks, workout sets, recipe steps and rests are split into separate ordered cards. Pomodoro and doing something else while waiting are planning patterns made from ordinary cards. The server is the source of truth for plans and records.
+
+Results can be recorded with units: weight, repetitions, distance, duration, volume, energy, nutrients, pages, cups, cigarettes or games. Things already done can be saved as past results. AI-estimated values, such as nutrition estimated from a meal description, must be labelled estimated. Records shows today and week totals. Share images are generated on the device; one-by.one does not upload them as part of rendering. A selected recipient or app receives an image only when you share it, under that recipient’s policies.
+
+Interests hold ongoing practices, such as guitar, and recurring duties as plain schedule lines, such as “Mondays: ...” or “Last day of month: ...”. Saved context, memories, corrections and retained originals can be included in tool replies. Reads may be limited or paginated and do not establish a complete lifetime history.
+
+## AI connection and changes
+The custom MCP connector address is https://mcp.one-by.one/mcp. The authorization web is https://connect.one-by.one. Sign in with Apple or Google and follow Settings › AI apps. Email sign-in is for existing accounts; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
+
+OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can plan days, edit unstarted cards, save interests and memories, and record or correct results within approved permissions.
+
+Starting work, undoing an eligible mistaken start before any later record, taking a card off today, fixing or withdrawing recorded times, and completing a task require the user’s explicit request. Time correction does not control execution. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
+
+Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
+
+## Subscription, trial and cancellation
+The product is a paid subscription from launch, with no free tier. United States launch prices are US$12.99/month and US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. The App Store purchase screen shows local pricing, eligibility and renewal terms. The introductory offer requires an App Store payment method; Apple handles payment and one-by.one does not receive payment-card details.
+
+Subscriptions renew automatically unless cancelled through Apple at least 24 hours before the trial or period ends. Apple handles purchases, renewals, cancellation and refund requests. Account deletion does not cancel an Apple subscription.
+
+After the trial, paid features and AI connections require a subscription. When a subscription lapses, existing data stays readable in the app; AI connections return SUBSCRIPTION_REQUIRED. Account deletion, disconnection and sharing withdrawal remain available without a subscription. If entitled access is missing, restore purchases or check the signed-in account.
+
+## Privacy stance
+No sale of data, advertising use or cross-app tracking. Text entered into plans, tasks, memories or reports may contain sensitive information; share only what you want stored and available to a connected AI. AI provider policies and settings govern chats and tool data they receive.
+
+The following sections reproduce the current English privacy wording as readable text.
+
+This policy covers the one-by.one website, iPhone app and MCP connection service, provided by salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. The launch scope is worldwide except the countries and territories listed in our terms. The interface is English-only.
+
+## Launch waitlist
+
+If you ask to be notified at launch, we store your email address, signup time and signup page, plus an email hash to prevent duplicate signups. We use this to send one launch email, with no further marketing unless you opt in later. We also use a hashed IP address to limit abusive submissions; these rate-limit records expire after two days of inactivity.
+
+We keep your signup until the launch notice is sent, then delete it after 30 days. If you unsubscribe, it is eligible for deletion immediately by our scheduled cleanup. To remove your signup before then, email privacy@one-by.one.
+
+## What we collect
+
+- Account: account ID, email when available, provider identity and sessions, to sign you in and link your records. Apple sign-in requests email. Google sign-in requests openid email profile. Google identity and access tokens are sent to Supabase Auth for sign-in. The app keeps its session in device-only Keychain storage; web authorization uses browser session storage.
+
+- Plans and results: full task titles, notes, steps, dates, time zones, estimates, targets, measurements, progress, execution records, corrections and versions. These show your day plan and what to do now, record results and support synchronization.
+
+- Interests and memories: titles, planning notes, memory text, user reports, AI summaries and inferences, sources and timestamps. These provide saved planning context. Corrections and withdrawals retain originals.
+
+- Connections and operation: device and AI connection IDs, credential references, hashed server credentials, permissions, approvals, expiry, revocation, synchronization records, write requests and receipts, request-limit records and local startup/sign-in diagnostics. These control access and support retries and operation.
+
+- Support: messages you email us and account-linked bug descriptions, submission IDs, hashes, received times and selected app version, iOS version or error code. Bug-report tools add no automatic attachments.
+
+- Subscription: Apple handles the paid, auto-renewing App Store subscription. We store subscription product identifiers, transaction references, the app-account association, environment, status and relevant expiry or grace-period dates to verify access. We do not receive payment-card details.
+
+If you sign in with Google, our sign-in provider stores what Google shares for that sign-in: your email address and whether Google verified it, your name, your profile picture link and your Google account identifier.
+
+Text you enter may contain health, work, location or other sensitive details. Share only what you want stored and available to your connected AI.
+
+The app can schedule local reminders for running timed cards. Delivery depends on your notification settings, quiet hours and the state last known to this iPhone. The current app does not register for remote push.
+
+Plans: $12.99 per month or $59.99 per year in the United States; the App Store shows the price for your country. A 14-day introductory free trial is available to eligible subscribers, as determined by the App Store. The purchase screen shows eligibility, the applicable price and renewal terms. If you do not cancel at least 24 hours before the trial or a period ends, the subscription renews and your Apple Account is charged. After the trial, a subscription is needed for paid product features and AI connections. Existing data can still be read, and account deletion, disconnection and sharing withdrawal remain available without a subscription.
+
+## Purposes and grounds for processing
+
+- Account, synchronization and AI connections: we process account identity, sessions, saved plans, results, interests, memories and approved connection permissions as needed to provide the service you request. AI access is limited to the permissions you approve; connecting an AI is optional. Where applicable law requires consent, we obtain it. Health-related data and calendar sharing require the separate express choices described below.
+
+- Health-related data and calendar sharing: we rely on your explicit consent for these optional uses, including collection and sharing with your chosen AI. These choices are separate from accepting the terms or signing in.
+
+- Subscription verification: we process transaction references and entitlement status to provide paid access and meet applicable purchase-record obligations. Apple handles payment details.
+
+- Support and privacy requests: we use the messages and diagnostics you choose to send to answer your request; we process privacy requests to meet applicable legal obligations. Please avoid including health or other sensitive information that is unnecessary for your request.
+
+- Security and service operation: we use access, request-limit and technical records as needed to protect accounts, prevent abuse and operate the service, subject to applicable law and any consent it requires.
+
+- Launch waitlist: your voluntary signup authorizes one launch email. You can withdraw by unsubscribing or emailing us; rate-limit records are used only to prevent abusive submissions.
+
+## Consumer health data and explicit consent
+
+Meal and intake records, exercise or fitness activity, weight, medication and other health-related measurements, notes, results or AI inferences may reveal physical or mental health. We treat these as sensitive health-related data. They come from information or measurements you choose to record and from your approved AI's reports or inferences based on that content.
+
+We use this data only to save your requested records, synchronize them, show progress and provide the planning or changes you request. Supabase hosts and processes it; Cloudflare carries authorized AI requests and replies; your chosen AI provider receives it when you separately consent to sharing and approve the relevant connection permissions. These are the recipients and categories of recipients for these uses. If you put health information in a support email, our email provider also receives it as described under International transfers.
+
+The app's consent screen asks for explicit consent to collect and use health-related data and, separately, to share it with your chosen AI. General AI permissions or accepting these terms do not replace health-data consent. Declining these choices leaves the corresponding health-data recording or sharing features unavailable; you can still use features that do not require that data.
+
+You can withdraw health-data consent in the app's Settings or email privacy@one-by.one. Withdrawal stops future collection or sharing covered by that consent when the service receives and confirms the request; an offline request must reconnect to reach the server. Withdrawal does not itself delete existing records or copies already received by an AI provider. You can separately request deletion, including retained originals and history, using the rights procedure below. Withdrawal does not affect processing already lawfully carried out.
+
+We do not sell consumer health data or use it for targeted advertising. Washington's My Health My Data Act and Nevada's SB 370 provide consumer health-data protections that may apply even when other state privacy laws do not. See Major regional privacy rights for access, withdrawal, deletion and appeal options.
+
+## Calendar (optional)
+
+Calendar sharing requires explicit consent on the app's consent screen and is off until you consent and choose calendars to share. You can withdraw that consent in Settings by turning off calendar sharing, or email privacy@one-by.one for help. When you turn it on, one-by.one uploads the next seven days of event titles, start and end times, and all-day status from the calendars you choose, together with hashed event and calendar identifiers. These events are shared with your connected AI to help it plan around your fixed commitments.
+
+You can turn on Share times only in the calendar screen. Your AI sees “Busy” instead of event names; real event names stay on your iPhone. Titles are shared by default when you choose calendars. Changing this option requests withdrawal of the previous snapshot and uploads a fresh replacement.
+
+We do not upload calendar notes, attendees, locations, or URLs, and one-by.one does not write to your calendars. We keep only the latest uploaded calendar snapshot for your account and refresh it when you return to the app, at most once every 15 minutes unless you change your calendar selection or the times-only option.
+
+Calendar data remains available to connected AI until the server confirms withdrawal. Offline withdrawal is retried when the app reconnects. Deleting your account also deletes its uploaded calendar snapshot.
+
+## What your AI app receives
+
+When tools read your records, full saved task, result and memory text is sent to your chosen AI client. Replies can include targets, measurements, retained originals, sources, IDs, versions, permissions, write tokens and receipts.
+
+OAuth authenticates your identity. one-by.one separately records the product permissions you approve: context:read, activity:read, and activity:write. Approvals are requested and recorded on the consent page. These control planning context, activity reads and changes. Tools do not return your sign-in email or personal profile, provider tokens, push tokens or device secrets. Text you put in a task, memory or report can still contain those details.
+
+ChatGPT is provided by OpenAI; Claude by Anthropic. The AI client's handling of chats and tool data is governed by that provider's policy and settings. Check those before connecting.
+
+Write instructions require your explicit request. The server checks granted permissions but cannot prove what you agreed to in chat. Some changes cannot be undone; corrections can preserve originals.
+
+The 20 tools
+
+Read plans and tasks
+
+get_planning_context, list_current_work, get_current_work: read planning context, task lists and task/result records.
+
+Plan days and edit unstarted tasks
+
+open_or_plan_day, edit_day_plan, replace_plan: open or plan days, change queued cards and replace unstarted plans.
+
+Start and correct work
+
+start_work, undo_start, correct_work_time: start a task, undo an eligible mistaken start, or amend or withdraw a recorded time while retaining its original. Time correction does not control execution.
+
+Save and correct results
+
+record_past_result, correct_recorded_result, complete_work: record separate past work, correct or withdraw a result's interpretation, or mark work complete.
+
+Read interests and memories
+
+list_interests, get_interest: read saved interests, context and memories, including retained originals.
+
+Save and change interests and memories
+
+create_interest, replace_interest_context, save_interest_memory, correct_interest_memory: save interests and memories, replace context or correct or withdraw a memory while retaining its original.
+
+Connection and support
+
+get_connection_info: read permissions and supported features, and receive a write token when available. submit_bug_report: send an approved report to one-by.one support and receive a receipt.
+
+Reads may be limited or paginated; they do not establish a complete lifetime history.
+
+## Sharing images
+
+Share images are generated on your device. one-by.one does not upload the generated image as part of rendering it. If you share it, the app or recipient you select receives that image under its own policies. Review the final image before sharing. Automatic keyword warnings or exclusions cannot identify every sensitive item.
+
+## Operator access and encryption
+
+We don't routinely look at your content. Operator access to stored data is limited to fixing a problem you report, keeping the service secure, or meeting a legal obligation. Text you write (card titles, notes, interests, memories, calendar event names) is stored encrypted with a key specific to your account. When you delete your account we delete that key; database backups taken before deletion can still contain it until those backups expire, after which the deleted text can no longer be read.
+
+## Storage and providers
+
+- Supabase: account identity, sessions, product content, reports and server processing. Production server data is hosted in the United States (Supabase US). The service processes content for your requested features, protected by account access restrictions.
+
+- Cloudflare: the MCP proxy carries authorized requests and replies between the AI client and Supabase.
+
+- Apple: sign-in, App Store subscriptions and device services.
+
+- Google: Google sign-in and identity tokens passed to Supabase Auth.
+
+- Your chosen AI client: the requests and replies described above.
+
+- Support and privacy email: Cloudflare Inc. routes messages sent to support@one-by.one and privacy@one-by.one through Cloudflare Email Routing to Google LLC (Gmail), which stores the mailbox. Processing takes place in the United States and other countries where these providers operate data centers.
+
+These providers process data to operate their services. Their own policies apply to their handling. Data may be processed outside your country of residence.
+
+The iPhone keeps local records and credentials. The current app does not automatically sync its local database through CloudKit and does not upload private CloudKit backups.
+
+## International transfers
+
+The following describes the recipients, data, purposes and transfer choices for the service. Transfers occur through encrypted network connections when you use the corresponding feature. Provider contact and privacy information is linked below; you can also contact privacy@one-by.one about your rights.
+
+Supabase Inc. — United States — hosting and database
+
+Account identifiers, sign-in sessions, plans, results, interests, selected calendar snapshots, connection permissions, subscription metadata and support reports are transferred when you sign in, synchronize records or submit a report, for hosting, database processing and access verification. Account content is retained while your account exists; server backups are retained for a maximum of 30 days. In-app bug reports follow the 180-day retention period below, or are deleted earlier with the account. To refuse future transfers, stop using the hosted service and request account deletion; hosted sign-in, synchronization and AI connections then become unavailable. Provider information: Supabase privacy and contact information.
+
+Cloudflare Inc. — United States company; global processing network — network and proxy
+
+Network request information, including IP addresses, and MCP requests and replies pass through Cloudflare when you visit this site or use the MCP connection, to deliver and protect the service. Network and security records are retained under the provider's operational retention settings; application content follows the account retention described above. To refuse future proxy transfers, do not use the MCP connection; AI tool access through it becomes unavailable. Provider information: Cloudflare privacy and contact information.
+
+The AI provider you connect — user-chosen provider and processing countries — planning
+
+Requested saved plans, results, interests, notes, retained originals and selected calendar titles and times are transferred when your approved connection calls a tool, to provide planning and the changes you request. Provider retention and processing countries depend on the AI service you choose and its settings. Review its privacy and contact information before approving the connection. You can refuse by not connecting, withholding product permissions or disconnecting; this prevents future tool access but does not remove information already received by the AI provider.
+
+Apple and Google — sign-in
+
+Sign-in identifiers and identity tokens are exchanged with Apple or Google and Supabase Auth when you choose that sign-in method, to authenticate your account. Their processing countries and retention depend on their services. Provider information: Apple privacy information and Google privacy information.
+
+Cloudflare Inc. and Google LLC — support and privacy email — the United States and other countries where these providers operate data centers
+
+Your email address, message, attachments you choose to include and correspondence metadata are transferred when you email support@one-by.one or privacy@one-by.one. Cloudflare Email Routing forwards them to Google (Gmail) to deliver, store and respond to your request. Provider contacts: Cloudflare privacy and contact information and Google privacy and contact information. We retain this email for 12 months after the last message in the conversation, then delete it, unless a specific legal obligation requires longer retention. Please use the in-app deletion and consent controls if you do not wish to send an email.
+
+Apple — United States and other locations described by Apple — App Store purchases
+
+Purchase and transaction information, app-account association and verification requests are exchanged when you purchase, restore or verify a subscription, to process purchases and confirm access. Apple determines processing locations and retains its purchase records under its policies; one-by.one retains linked subscription metadata to verify access while the account exists. Apple may send further purchase notifications after account deletion. Unlinked purchase notifications are handled under the short retention period described below. You can decline purchases and cancel renewal through Apple; paid access may be unavailable, while existing-data reading and account deletion remain available. Provider information: Apple privacy and contact information.
+
+Our production server is in the United States. Cloudflare's network, Apple, Google, the email provider and the AI provider you choose may process data in the United States or other countries outside your residence. Foreign laws may permit access by public authorities. Choosing a feature does not waive protections required by the law that applies to you.
+
+Transfer safeguards are each provider's data processing agreement and standard contractual safeguards. This statement does not claim any particular certification or that every country-specific transfer assessment has been completed. Applicable requirements include accountability and contractual or other safeguards under Canada's PIPEDA, a privacy impact assessment and adequate protection for transfers outside Quebec under Law 25, overseas-disclosure accountability under Australia's APP 8, comparable safeguards under New Zealand's IPP 12, and comparable protection under Singapore's PDPA Transfer Limitation Obligation. Contact the privacy officer for information about the safeguards applicable to your data.
+
+## Advertising and tracking
+
+We do not sell personal data or share it for cross-context behavioral advertising within the meaning of applicable US state privacy laws. We do not use personal data for targeted advertising or track users across other companies' apps or websites. Authorized disclosures to service providers and the AI you choose are described above; health-data sharing requires separate explicit consent.
+
+## Retention
+
+Account content is kept while the account exists. Corrections preserve originals and history; a correction or withdrawal of an activity record is not a privacy deletion request. Deleting the account removes its content from the live database immediately. Server backup copies, including any account encryption key in a backup made before deletion, are retained for a maximum of 30 days and then expire; this can leave backup copies for up to 30 days after account deletion.
+
+We keep bug reports for 180 days, then remove them from the live database through scheduled cleanup; account-linked reports are deleted earlier with the account.
+
+Calendar snapshots are eligible for scheduled cleanup once their shared window ended more than one day ago. AI write receipts have a 24-hour replay window; device write receipts have a 7-day replay window. Expired replay receipts are removed by bounded scheduled cleanup, except while needed for a pending correction or a live synchronization scope. Facts, results, corrections and history are retained with the account. Account-linked technical records are also deleted with the account.
+
+We keep unlinked purchase notifications (original transaction identifier, notification identifier, type and receipt time) to reconcile a purchase with its account. This also applies when Apple sends a notification after account deletion. These notifications expire seven days after receipt and become eligible for bounded scheduled cleanup; duplicate deliveries while a receipt is stored do not extend its expiry. Expired notifications are not used to link a purchase or restore account content. Linked notification records are removed with the account.
+
+## Deletion and disconnection
+
+To delete your account in the app, open the menu, tap Delete account below Sign out and confirm. For deletion help, email privacy@one-by.one.
+
+Accepted account deletion removes the sign-in account and its linked plans, results, interests, memories, connections, device records, technical records and bug reports in a database transaction. There is no grace period.
+
+The app's deletion cleanup removes its local one-by.one records, session, that account's device credentials and notifications on this iPhone after server confirmation. Cleanup can fail and require a retry. Apple authorization revocation is attempted where applicable.
+
+Deletion does not erase exported files, Calendar events, legacy app data, other-device or operating-system backup copies, support email or AI chats. Manage independently held copies through the relevant provider, or contact us for help. Account deletion does not cancel an Apple subscription.
+
+The current app creates no private CloudKit backup. If earlier app data appears in iCloud, manage it in iOS Settings › Apple Account › iCloud › Manage Storage. Account deletion does not remove separate CloudKit copies or synchronizing backup keys; deleting iCloud app data does not establish that those keys are removed.
+
+Disconnecting an AI app revokes future tool access. It does not erase records or copies that app already received.
+
+## Children
+
+You must be at least 16 to use one-by.one. The service is not directed to anyone under 16. If we learn an account belongs to someone under 16, we delete it. Contact support@one-by.one about an under-age account.
+
+## Policy changes
+
+We may update this policy. Updates will appear here with a revised effective date.
+
+## Common privacy rights and request procedure
+
+Everyone can use this request procedure. The statutory rights, exceptions and remedies that apply depend on your location and the law covering our processing; the regional items below add to this common procedure and are not an exhaustive list of applicable local protections.
+
+Email privacy@one-by.one to request confirmation of processing, access, correction, deletion, a portable copy, consent withdrawal, restriction or objection to processing. Identify your account, country or US state, and the information and action involved so we can apply the relevant rights. These requests are separate from ordinary activity corrections in the app, which may retain originals.
+
+We may ask for the minimum information needed to verify your identity and authority. Do not send passwords, sign-in tokens or identity documents unless we explain a necessary, secure verification method. Where applicable law allows an authorized agent, the agent can use the same contact; we may ask for proof of authorization. We do not discriminate against you for exercising a privacy right, though a feature may no longer work without the data or consent it needs.
+
+We respond within the period required by the law that applies to your request and explain any extension, refusal or exception. If you disagree, reply to privacy@one-by.one with an appeal or complaint; we will explain the outcome and any further review route available under applicable law. You can also complain to the regulator described below.
+
+## Major regional privacy rights
+
+### United States — state privacy laws and health data
+
+where applicable state law covers our processing, you may confirm processing, access, correct, delete or obtain a portable copy of personal data, withdraw consent, and object to or opt out of certain processing, including sale, advertising-related sharing, targeted advertising or qualifying profiling. We do not sell data, share it for cross-context behavioral advertising or use it for targeted advertising. California residents have applicable rights to know the categories and specific pieces collected and disclosed, and to limit qualifying uses of sensitive personal information. The collection categories, sources, purposes, recipients and retention are described in this policy; sensitive information is used for the requested features. You may use an authorized agent where permitted and appeal a refusal where state law provides that right. You can contact your state Attorney General or, in California, the California Privacy Protection Agency.
+
+Washington consumer health data: where the My Health My Data Act applies, you may confirm whether we collect, share or sell your consumer health data; access that data, including a list of third parties and affiliates with whom it has been shared or sold and contact information for them; withdraw consent to collection and sharing; and request deletion. We do not sell it. A covered deletion request also requires us to notify relevant affiliates, processors, contractors and other third parties with whom we shared it, as required by the Act. You may appeal a refusal through privacy@one-by.one and, after an appeal is denied, complain to the Washington State Attorney General. These rights apply to covered consumers, including people whose health data is collected in Washington.
+
+Nevada consumer health data: where SB 370 applies, you may confirm collection, sharing or sale, review or obtain a copy of your consumer health data, request the required list of third-party recipients, withdraw consent to collection and sharing, and request deletion. We do not sell it. You can appeal a refusal through privacy@one-by.one and contact the Nevada Attorney General about concerns.
+
+### Canada, including Quebec
+
+under PIPEDA and applicable provincial law, you may request access and correction, withdraw consent subject to legal or contractual restrictions and reasonable notice, and challenge our handling of your data. Sensitive information, including health-related data, requires express consent. Quebec's Law 25 also provides applicable rights to request cessation of dissemination or de-indexing in specified circumstances and to obtain computerized personal information collected from you in a structured, commonly used technological format, subject to legal exceptions. Contact our privacy officer first, or complain to the Office of the Privacy Commissioner of Canada or the applicable provincial regulator, including Quebec's Commission d'accès à l'information. Seungeun Kim is the person responsible for the protection of personal information, including for Quebec, at privacy@one-by.one.
+
+### Australia
+
+under the Privacy Act and Australian Privacy Principles, where applicable, you may request access and correction and complain about our handling of your data, including overseas disclosures. Sensitive information, including health information, is collected with explicit consent unless a legal exception applies. You can withdraw optional consent or request deletion through the contact above; access, correction and complaint rights do not create a general statutory right to erasure. If your complaint is unresolved, you can contact the Office of the Australian Information Commissioner.
+
+### New Zealand
+
+under the Privacy Act 2020, you may request access and correction and, if a correction is not made, request that a statement of correction be attached. IPP 12 governs applicable disclosures outside New Zealand. You can withdraw optional consent or request deletion through the contact above, subject to applicable retention requirements, and complain to the Office of the Privacy Commissioner.
+
+### Singapore
+
+under the PDPA, where applicable, you may request access and correction and withdraw consent with reasonable notice. We explain the likely consequences of withdrawal and stop the affected collection, use or disclosure unless the PDPA or another law permits or requires it. Overseas transfers must meet the Transfer Limitation Obligation. Contact our Data Protection Officer using the details below; you may also complain to the Personal Data Protection Commission. Requests for deletion or a portable copy are handled through our request process, subject to applicable law.
+
+### Brazil — LGPD
+
+Where the LGPD applies, you may request confirmation and access, correction, anonymization, blocking or deletion of unnecessary, excessive or unlawfully processed data, and portability subject to applicable rules. You may request information about recipients, refusal of consent and its consequences, withdraw consent, and request deletion of consent-based data subject to legal retention exceptions. You may also request review of decisions based solely on automated processing that affect your interests and information about the relevant criteria. Contact Seungeun Kim at privacy@one-by.one; you may petition Brazil's National Data Protection Authority (ANPD) or applicable consumer protection bodies. Sensitive health data and international transfers require the grounds and safeguards applicable under the LGPD.
+
+### Republic of Korea — PIPA
+
+salad76, a Korean sole proprietorship represented by Seungeun Kim and doing business as one-by.one, is the personal information controller. The following PIPA notice applies to our processing as a Korean operator, together with the detailed sections above.
+
+- Purposes and data: the purposes and consent section and collection list describe account sign-in, plans and results, synchronization, approved AI access, subscription verification, security, support and the launch waitlist. Optional health data requires separate explicit consent; calendar sharing is optional.
+
+- Retention and destruction: account data is held while the account exists and removed from the live database upon accepted deletion; server backups expire within 30 days. Bug reports are retained for 180 days unless deleted earlier with the account. Support and privacy email is kept for 12 months after the last message. Waitlist records are deleted 30 days after the launch notice, or made eligible for cleanup on unsubscribe; hashed IP rate-limit records expire after two days of inactivity. Unlinked purchase notifications expire after seven days and undergo scheduled cleanup. Other record-specific periods and deletion limits are in Retention and Deletion and disconnection. If law requires a record to be retained longer, only the required information is retained for that obligation, with access limited to that purpose. Electronic records are deleted or made unreadable under the deletion and backup process described above.
+
+- Third-party provision: when you approve an AI connection and its permissions, OpenAI (ChatGPT), Anthropic (Claude) or another provider you choose receives the requested plans, results, memories, retained originals and selected calendar data for your requested planning and changes. Health-data sharing requires separate explicit consent. That provider retains its independently received copies under its own policy and settings. Declining or withdrawing approval prevents the corresponding future AI tool access. Disclosures required by law are limited to the applicable legal basis; we do not sell personal data or disclose it for targeted advertising.
+
+- Entrusted processing: Supabase Inc. provides hosted account authentication, database storage and server processing; Cloudflare Inc. provides website delivery, security, the MCP proxy and Email Routing; Google LLC (Gmail) provides support and privacy mailbox storage and delivery. Entrusted tasks are limited to the service purposes described above. Apple and Google sign-in, Apple purchases and independently chosen AI services also involve those providers' own processing under their policies; their role must be distinguished from processing solely on our behalf.
+
+- Overseas transfers: the international-transfer notice specifies recipients and contacts, data, countries, purposes, transfer timing and method, retention and how to refuse, with the consequences for the relevant feature. Supabase hosting is in the United States; Cloudflare, Apple, Google and chosen AI providers use the United States and other provider locations as described there. Contractual safeguards do not replace a lawful transfer basis. Where PIPA requires separate transfer consent, we obtain it before transfer; necessary contract-related entrusted processing or storage must meet the applicable notice and safeguard requirements.
+
+- Privacy officer: Seungeun Kim, privacy@one-by.one; postal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. This is also the contact for privacy complaints.
+
+- Exercising rights: you or an authorized representative may email privacy@one-by.one to request access, correction or deletion, suspension of processing or withdrawal of consent, and applicable explanations or review of qualifying automated decisions, subject to PIPA's exceptions. Use the common request procedure; we verify only the information necessary and explain any legal refusal. You may seek help from the Personal Information Protection Commission (PIPC), the Personal Information Dispute Mediation Committee or KISA's privacy complaint center.
+
+### Japan — APPI
+
+Where APPI applies, you may request disclosure of retained personal data and applicable third-party provision records, correction, addition or deletion of inaccurate data, and cessation of use, erasure or cessation of third-party provision where the statutory conditions are met. Health information can be special care-required personal information; we obtain the consent required for its collection and provision unless a legal exception applies. Foreign transfers require applicable information and consent or another permitted basis; entrusted overseas processing is not automatically exempt. Contact privacy@one-by.one using the common procedure or raise concerns with Japan's Personal Information Protection Commission (PPC).
+
+### India — DPDP
+
+India's Digital Personal Data Protection Act, 2023 and implementing rules have a phased commencement. Where the relevant provisions are in force and apply to our processing, Data Principals may request information about processing and sharing, correction, completion, updating and erasure, withdraw consent, seek grievance redressal and nominate another person to exercise rights in the circumstances the Act permits. Use privacy@one-by.one for requests or grievances; after using the required grievance process, you may use the Data Protection Board of India's complaint route when available under applicable law. Cross-border processing remains subject to applicable government restrictions. Where the DPDP children's-data provisions apply, processing data of users under 18 requires the applicable verifiable parental consent and child-data safeguards. Our general minimum age of 16 does not waive those requirements.
+
+## Privacy officer and Data Protection Officer
+
+Seungeun Kim is our privacy officer and Data Protection Officer (DPO), responsible for privacy questions and complaints, including as the Korean privacy officer, Quebec privacy responsible person and Singapore DPO. Contact: privacy@one-by.one. Postal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea.
+
+## Contact
+
+Support messages are accessed by the service operator for support and privacy requests. Hosting and email providers may process them to deliver and protect the service. Contact support@one-by.one or privacy@one-by.one. We do not promise a response time for ordinary support. Privacy-rights requests are handled within the periods required by applicable law.
+
+We keep support and privacy email for 12 months after the last message in the conversation, then delete it. You can ask us to delete your messages sooner. If a specific legal obligation requires longer retention, we limit the retained information to what that obligation requires and explain the applicable exception when responding to your request. Server backup copies follow the maximum 30-day backup period above; independently held provider copies are subject to the provider's policy and applicable law.
+
+## Publisher, age and help
+Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
+
+Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu and tap Delete account below Sign out, then confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
+
+To disconnect an AI, use Disconnect on its one-by.one authorization page or remove the connector through the AI service’s controls. The native AI apps list does not itself revoke access. Revocation blocks future tool calls but does not delete records or copies the AI has already received.
+
+## Canonical sources
+- Product and FAQ: https://one-by.one/
+- Privacy Policy: https://one-by.one/privacy/
+- Terms of Use: https://one-by.one/terms/
+- Support: https://one-by.one/support/
+- Concise overview: https://one-by.one/llms.txt
+- MCP custom connector: https://mcp.one-by.one/mcp
+
+The ko/ja paths are English fallback mirrors, not translated versions. Use the canonical English pages above.

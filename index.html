@@ -4,61 +4,489 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <title>one-by.one</title>
-    <meta name="description" content="Here’s to the overwhelmed. one-by.one is coming soon to iPhone.">
     <link rel="stylesheet" href="assets/styles.css?v=22b60a0b8f">
-    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <title>one-by.one — AI day planning for iPhone</title>
+    <meta name="description" content="Your AI plans the day in small cards. Your iPhone shows one at a time. Start it, finish it, and keep what you did.">
+    <link rel="canonical" href="https://one-by.one/">
+    <meta name="theme-color" content="#F3F4F5">
+    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/icon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="one-by.one">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="one-by.one — AI day planning for iPhone">
+    <meta property="og:description" content="Your AI plans the day in small cards. Your iPhone shows one at a time. Start it, finish it, and keep what you did.">
+    <meta property="og:url" content="https://one-by.one/">
+    <meta property="og:image" content="https://one-by.one/assets/og.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="one-by.one — One action at a time on iPhone">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="one-by.one — AI day planning for iPhone">
+    <meta name="twitter:description" content="Your AI plans the day in small cards. Your iPhone shows one at a time. Start it, finish it, and keep what you did.">
+    <meta name="twitter:image" content="https://one-by.one/assets/og.png">
+    <meta name="twitter:image:alt" content="one-by.one — One action at a time on iPhone">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://one-by.one/#organization",
+      "name": "one-by.one",
+      "legalName": "salad76",
+      "description": "salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "support",
+          "email": "support@one-by.one",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim",
+          "email": "privacy@one-by.one",
+          "availableLanguage": "English"
+        }
+      ],
+      "location": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "302, 173 Donggwang-ro, Seocho-gu",
+          "addressLocality": "Seoul",
+          "addressCountry": "KR"
+        }
+      },
+      "url": "https://one-by.one/",
+      "logo": "https://one-by.one/assets/icon.svg",
+      "email": "support@one-by.one",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Seoul",
+        "addressCountry": "KR"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://one-by.one/#website",
+      "name": "one-by.one",
+      "url": "https://one-by.one/",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://one-by.one/#organization"
+      }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://one-by.one/#app",
+      "name": "one-by.one",
+      "url": "https://one-by.one/",
+      "image": "https://one-by.one/assets/icon.svg",
+      "operatingSystem": "iOS",
+      "applicationCategory": "ProductivityApplication",
+      "description": "An iPhone app that shows the plan your AI assistant makes one card at a time, with Start, Done and recorded results. Coming soon to iPhone.",
+      "publisher": {
+        "@id": "https://one-by.one/#organization"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Monthly subscription",
+          "price": "12.99",
+          "priceCurrency": "USD",
+          "url": "https://one-by.one/terms/",
+          "description": "United States launch pricing. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "12.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Yearly subscription",
+          "price": "59.99",
+          "priceCurrency": "USD",
+          "url": "https://one-by.one/terms/",
+          "description": "United States launch pricing. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "59.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1Y"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://one-by.one/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is one-by.one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "one-by.one is an iPhone app for people who plan with AI assistants. Your AI turns your day into an ordered queue of cards; your phone shows one doable action at a time, with Start, Done, Not today and Undo for mistaken taps. It is coming soon to iPhone and is for people aged 16 and over."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI assistants can I connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can connect ChatGPT or Claude to your one-by.one account. Other assistants can connect if they support custom MCP connectors with sign-in; the support page has the setup steps. ChatGPT and Claude are separate services with their own access requirements, terms and privacy policies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost, and is there a free trial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Launch pricing is US$12.99 per month or US$59.99 per year in the United States. Eligible new subscribers can receive a 14-day introductory free trial, with eligibility determined by the App Store. There is no free tier. The App Store shows your local price, eligibility and renewal terms. After the trial, a subscription is needed for paid product features and AI connections; existing data remains readable without a subscription."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can I record with one-by.one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can record results with units such as weight, repetitions, distance, duration, volume, energy, nutrients, pages or cups. Your AI can save things you already did as past results. AI-estimated values, such as nutrition estimated from a meal description, must be labelled estimated. Records shows today and week totals, and share images are generated on your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my calendar shared with my AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Share times only shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is my data protected, and what does my AI receive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We don't routinely look at your content. Operator access to stored data is limited to fixing a problem you report, keeping the service secure, or meeting a legal obligation. Text you write (card titles, notes, interests, memories, calendar event names) is stored encrypted with a key specific to your account. When you delete your account we delete that key; database backups taken before deletion can still contain it until those backups expire, after which the deleted text can no longer be read. When your connected AI reads your plan or records, it receives the saved text its tools return, such as card titles, results and memories; your AI provider’s policies govern its copy, and disconnecting blocks future access but does not erase what it already received."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I cancel my subscription?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cancel your auto-renewing subscription through Apple. Cancel at least 24 hours before the trial or subscription period ends to avoid renewal. Apple handles purchases, renewals, cancellation and refund requests. Deleting your one-by.one account does not cancel an Apple subscription."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is one-by.one available on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet. one-by.one is iPhone only and is coming soon to iPhone."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
+    <meta name="obo-auth" data-url="" data-key="">
+    <link rel="stylesheet" href="assets/home.css?v=81">
+    <script src="assets/home.js?v=85" defer></script>
   </head>
-  <body>
-    <header class="shell">
-      <a class="brand" href="./" aria-label="one by one">
-        <img src="assets/icon.svg" alt="">
-        <span class="wordmark">one-by.one</span>
-      </a>
+  <body class="home">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./" aria-label="one by one">
+          <img src="assets/icon.svg" alt="">
+          <span class="wordmark">one-by.one</span>
+        </a>
+        <button class="btn small" type="button" data-open-signup>Sign up</button>
+      </div>
     </header>
 
-    <main class="manifesto shell">
-      <h1>Here’s to the overwhelmed.</h1>
+    <main>
+      <section class="hero">
+        <a class="pill" href="manifesto/"><b>Coming soon to iPhone</b><span class="pill-more"><span aria-hidden="true">·</span> Read the manifesto</span><i aria-hidden="true">↗</i></a>
+        <h1>What should I do now? <svg class="h1-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1a1c20"/><rect x="10" y="27" width="20" height="5.5" rx="2.75" fill="#c6ef4e"/></svg> This.</h1>
+        <p class="lede">Your AI plans the day in small cards. <br>Your iPhone shows one at a time.</p>
+        <div class="cta-row">
+          <button class="btn" type="button" data-open-signup>Sign up</button>
+          <a class="btn soft" href="#jobs">See examples</a>
+        </div>
+      </section>
 
-      <p>The overthinkers.<br>
-      The overplanners.<br>
-      The tab hoarders.</p>
+      <section class="product" id="try" aria-label="A plan, from your AI to your iPhone">
+        <div class="window">
+          <aside class="win-side">
+            <div class="win-top"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="win-plus" aria-hidden="true">+</span></div>
+            <p class="win-search" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>Search</p>
+            <div class="threads" role="tablist" aria-label="Example plans">
+              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>Brain dump</b><time>10:05 PM</time><em>6 cards · 2 timers</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="workout"><span class="av" style="--c:#3fb6a8"></span><b>Tonight’s workout</b><time>7:30 PM</time><em>9 cards · first one ready</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="pasta"><span class="av" style="--c:#f2a33a"></span><b>Garlic pasta</b><time>6:05 PM</time><em>7 cards · 3 timers</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="focus"><span class="av" style="--c:#6d5df5"></span><b>Proposal draft</b><time>1:10 PM</time><em>4 cards · breaks included</em></button>
+              <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="reset"><span class="av" style="--c:#3b82f6"></span><b>20-minute reset</b><time>11:40 AM</time><em>4 cards · dishes first</em></button>
+            </div>
+            <p class="win-you"><span>Y</span>You</p>
+          </aside>
+          <div class="win-main" id="plan-panel" role="tabpanel">
+            <header class="win-head"><span class="av" data-plan-dot style="--c:#e5658a"></span><b data-plan-title>Brain dump</b><span class="win-tag">Your AI</span></header>
+            <div class="thread" data-thread aria-live="polite">
+              <p class="msg me">ok so my head is full. i have to get <span class="frag on" data-g="today">the q3 deck going for priya</span> and i keep not starting it, and <span class="frag on" data-g="today">the email to the landlord about the leak</span>, which i’m dreading, and mom left a voicemail sunday so i need to <span class="frag on" data-g="today">call her back</span>. i should <span class="frag on" data-g="today">work out but my shoulder is still weird</span>. oh and <span class="frag on" data-g="today">the dentist</span>, i keep forgetting the dentist. <span class="frag on" data-g="later">we’re out of eggs and coffee</span> too. <span class="frag on" data-g="interest">someday i want to learn spanish lol</span></p><p class="msg ai">that’s a lot, but most of it is small. smallest first step first.</p><ul class="msg ai list"><li data-g="today"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Today</b> → 6 cards · 2 timers</li><li data-g="later"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Later this week</b> → 2 · eggs and coffee, slides 4+</li><li data-g="interest"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Interest</b> → Spanish · when there’s room</li></ul><p class="msg ai">first card is on your iPhone.</p>
+            </div>
+            <div class="composer" aria-hidden="true"><span class="c-plus">+</span><span class="c-field">Message your AI</span><span class="c-mic"><svg viewBox="0 0 16 16"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5"/><path d="M3 8a5 5 0 0 0 10 0M8 13v2"/></svg></span></div>
+          </div>
+        </div>
+        <div class="device" role="group" aria-label="one-by.one on iPhone">
+          <div class="now" data-deck="try">
+            <div class="sheet">
+              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>Good morning</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-try" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+            </div>
+            <div class="slot">
+              <div class="ticket">
+                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <span class="t-shadow" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p>The ones with 47 things marked “important.”<br>
-      The ones who make a list of their lists.<br>
-      The ones who know exactly what they should be doing.</p>
+      <section class="talk" data-reveal>
+        <div class="talk-copy">
+          <h2>Talk to your AI like you already do</h2>
+          <p>one-by.one connects to ChatGPT and Claude. Say what’s on your plate in your own words; your AI turns it into cards and puts them on your iPhone.</p>
+        </div>
+        <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
+      </section>
 
-      <p class="beat">And still can’t start.</p>
+      <section class="values" aria-labelledby="values-heading">
+        <h2 id="values-heading">Built for doing, not organizing</h2>
+        <p class="values-sub">No list to tend, no overdue pile. Just the next card, and a record of what you did.</p>
+        <div class="bento">
+          <article class="tile" data-reveal data-tile="next">
+            <h3>Only the next card</h3>
+            <p>Everything else waits out of sight. Done brings the next one.</p>
+            <div class="viz viz-next" aria-hidden="true" inert>
+              <div class="now mini">
+                <div class="sheet"><p class="upnext"><span>Up next</span><b data-next>Rest</b></p></div>
+                <div class="slot">
+                  <div class="ticket">
+                    <div class="t-body"><div class="t-head"><p class="t-title">Push-ups</p><span class="t-more" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-note">Hands under shoulders · 2 s down</p></div>
+                    <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div>
+                    <span class="t-shadow" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="timer">
+            <h3>Waits are tracked for you</h3>
+            <p>When something has to wait, the app keeps track of it while you do the next thing.</p>
+            <div class="viz viz-wait" aria-hidden="true" inert>
+              <div class="now mini">
+                <div class="sheet">
+                  <div class="sit" data-sit><p class="chip-s" data-sit-chip>Cooking</p><div class="tray" data-tray role="group" aria-label="Timers"><button class="ball" type="button" tabindex="-1" aria-label="Water, 1 minute left"><svg viewBox="0 0 32 32" aria-hidden="true"><circle class="b-tr" cx="16" cy="16" r="13"/><circle class="b-pr" cx="16" cy="16" r="13" transform="rotate(-90 16 16)" style="stroke-dashoffset:-49"/></svg><b>1m</b></button></div><div class="tpanel" id="tp-wait" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+                  <p class="upnext"><span>Up next</span><b data-next>Grate the parmesan</b></p>
+                </div>
+                <div class="slot">
+                  <div class="ticket armable">
+                    <div class="t-body"><div class="t-head"><p class="t-title">Slice the garlic</p><span class="t-more" aria-hidden="true"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg></span></div><p class="t-pause">Paused</p><p class="t-note">4 cloves, sliced thin</p></div><div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Done"><span class="go-lay" aria-hidden="true"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Done</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button></div></div></div><span class="t-shadow" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="share">
+            <h3>Proud of today? Share it.</h3>
+            <p>Every Done keeps what you record, with units. A day turns into a card worth posting.</p>
+            <div class="viz viz-share" aria-hidden="true">
+              <div class="share-stage">
+              <div class="share-img">
+                <div class="si-top"><span>Tuesday, Oct 6</span><b>one-by.one</b></div>
+                <div class="si-mid">
+                  <div class="si-count"><b data-s-count="7">7</b><span>Completed cards</span></div>
+                  <div class="si-grid">
+                    <p><i>Push-ups</i><b data-s-n="30">30</b><em>reps</em></p>
+                    <p><i>Distance</i><b data-s-n="4.2" data-s-dec="1">4.2</b><em>km</em></p>
+                    <p><i>Focus</i><b data-s-n="75">75</b><em>min</em></p>
+                    <p><i>Water</i><b data-s-n="5">5</b><em>cups</em></p>
+                  </div>
+                </div>
+                <p class="si-foot">Planned with my AI · made with one-by.one</p>
+              </div>
+              <div class="sheet-up"><span class="su-handle"></span><span class="su-apps"><span><i style="--c:#34c759"></i>Messages</span><span><i style="--c:#3b82f6"></i>Mail</span><span><i style="--c:#f5b83d"></i>Notes</span><span><i style="--c:#9ba1aa"></i>Save</span></span></div>
+              </div>
+            </div>
+          </article>
+          <article class="tile" data-reveal data-tile="cal">
+            <h3>Plans around your calendar</h3>
+            <p>Prep before the meeting, a follow-up after. Your AI suggests; you decide.</p>
+            <div class="viz viz-cal" aria-hidden="true">
+              <div class="day">
+                <span class="hr" style="--y:0">1 PM</span><span class="hr" style="--y:1">2 PM</span><span class="hr" style="--y:2">3 PM</span>
+                <div class="evt"><b>Design review</b><i>2:00 – 3:00</i></div>
+                <div class="sug before" data-c-before><b>Reread notes</b><i>1:40 · 10 min</i><em>Suggested</em></div>
+                <div class="sug after" data-c-after><b>Send notes</b><i>3:00 · 5 min</i><em>Suggested</em></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <p>The ones who’ve tried every habit tracker.<br>
-      Losing a whole Sunday to a system<br>
-      that saves them ten minutes on Monday.</p>
+      <section class="jobs" id="jobs" aria-labelledby="jobs-heading">
+        <div class="jobs-copy">
+          <h2 id="jobs-heading">Give your AI a job</h2>
+          <div class="chips">
+            <div class="chip-set" role="group" aria-label="Examples">
+              <button type="button" aria-pressed="true" data-job="dump">Brain dump</button>
+              <button type="button" aria-pressed="false" data-job="workout">Workout</button>
+              <button type="button" aria-pressed="false" data-job="cooking">Cooking</button>
+              <button type="button" aria-pressed="false" data-job="focus">Deep work</button>
+            </div>
+            <button type="button" class="chip-own" aria-pressed="false" data-job="own">Your own…</button>
+          </div>
+          <p class="job-desc" data-job-desc><b>Say it messy.</b> Your AI sorts it into small cards, smallest first step first, and keeps ideas like Spanish for when there’s room.</p>
+          <div class="own" data-own>
+            <label for="own-text" data-own-label>Say it however it comes</label>
+            <textarea id="own-text" rows="5" placeholder="e.g. clean my room, call mom, then 30 minutes of guitar" data-own-text>ok so my head is full. i have to get the q3 deck going for priya and i keep not starting it, and the email to the landlord about the leak, which i’m dreading, and mom left a voicemail sunday so i need to call her back. i should work out but my shoulder is still weird. oh and the dentist, i keep forgetting the dentist. we’re out of eggs and coffee too. someday i want to learn spanish lol</textarea>
+            <p class="own-note">A preview of the cards. Your AI does this properly once you’re connected.</p>
+          </div>
+        </div>
+        <div class="device" role="group" aria-label="Cards for this example">
+          <div class="now" data-deck="jobs">
+            <div class="sheet">
+              <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
+              <p class="greet" data-greet>Good morning</p>
+              <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-jobs" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+            </div>
+            <div class="slot">
+              <div class="ticket">
+                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Not today" aria-label="Not today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Not today</span></button><button class="ab rm" type="button" data-name="Remove" aria-label="Remove"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></svg><span>Remove</span></button></div></div></div></div></div>
+                <span class="t-shadow" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p>For the ones still asking:</p>
+      <section class="pricing" aria-labelledby="p-head">
+        <h2 id="p-head">Pricing</h2>
+        <div class="price-card">
+          <div class="price-top">
+            <span class="p-name">one-by.one</span>
+            <div class="seg" role="group" aria-label="Billing"><button type="button" aria-pressed="false" data-bill="monthly">Monthly</button><button type="button" aria-pressed="true" data-bill="yearly">Yearly</button></div>
+          </div>
+          <p class="p-price"><b data-price>US$5</b><span data-per>/ month</span></p>
+          <p class="p-unit" data-unit>Billed annually · US$59.99 per year</p>
+          <button class="btn wide" type="button" data-open-signup>Sign up</button>
+          <p class="p-inc">Includes:</p>
+          <ul class="p-list">
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Connect ChatGPT, Claude or another assistant</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Timers, rests and alerts</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Records with units, and share images</li>
+            <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>14-day free trial for eligible new subscribers</li>
+          </ul>
+        </div>
+      </section>
 
-      <p class="beat">What should I do now?</p>
+      <section class="notify" id="notify" aria-labelledby="notify-heading">
+        <h2 id="notify-heading">Be first to try it</h2>
+        <button class="btn" type="button" data-open-signup>Sign up</button>
+      </section>
 
-      <p class="answer"><strong>This.</strong>
-      Just this one.</p>
-
-      <div class="signoff">
-        <img src="assets/icon.svg" alt="">
-        <span class="wordmark">one-by.one</span>
-      </div>
-      <p class="soon">Coming soon to iPhone.</p>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Questions</h2>
+      <details data-faq-item>
+        <summary><h3>What is one-by.one?</h3></summary>
+        <p data-faq-answer>one-by.one is an iPhone app for people who plan with AI assistants. Your AI turns your day into an ordered queue of cards; your phone shows one doable action at a time, with Start, Done, Not today and Undo for mistaken taps. It is coming soon to iPhone and is for people aged 16 and over.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Which AI assistants can I connect?</h3></summary>
+        <p data-faq-answer>You can connect ChatGPT or Claude to your one-by.one account. Other assistants can connect if they support custom MCP connectors with sign-in; the support page has the setup steps. ChatGPT and Claude are separate services with their own access requirements, terms and privacy policies.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>How much does it cost, and is there a free trial?</h3></summary>
+        <p data-faq-answer>Launch pricing is US$12.99 per month or US$59.99 per year in the United States. Eligible new subscribers can receive a 14-day introductory free trial, with eligibility determined by the App Store. There is no free tier. The App Store shows your local price, eligibility and renewal terms. After the trial, a subscription is needed for paid product features and AI connections; existing data remains readable without a subscription.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>What can I record with one-by.one?</h3></summary>
+        <p data-faq-answer>You can record results with units such as weight, repetitions, distance, duration, volume, energy, nutrients, pages or cups. Your AI can save things you already did as past results. AI-estimated values, such as nutrition estimated from a meal description, must be labelled estimated. Records shows today and week totals, and share images are generated on your device.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Is my calendar shared with my AI?</h3></summary>
+        <p data-faq-answer>Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Share times only shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>How is my data protected, and what does my AI receive?</h3></summary>
+        <p data-faq-answer>We don't routinely look at your content. Operator access to stored data is limited to fixing a problem you report, keeping the service secure, or meeting a legal obligation. Text you write (card titles, notes, interests, memories, calendar event names) is stored encrypted with a key specific to your account. When you delete your account we delete that key; database backups taken before deletion can still contain it until those backups expire, after which the deleted text can no longer be read. When your connected AI reads your plan or records, it receives the saved text its tools return, such as card titles, results and memories; your AI provider’s policies govern its copy, and disconnecting blocks future access but does not erase what it already received.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>How do I cancel my subscription?</h3></summary>
+        <p data-faq-answer>Cancel your auto-renewing subscription through Apple. Cancel at least 24 hours before the trial or subscription period ends to avoid renewal. Apple handles purchases, renewals, cancellation and refund requests. Deleting your one-by.one account does not cancel an Apple subscription.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Is one-by.one available on Android?</h3></summary>
+        <p data-faq-answer>Not yet. one-by.one is iPhone only and is coming soon to iPhone.</p>
+      </details>
+      <p class="faq-more">Setup details and everything your AI can do: <a href="support/">Support</a></p>
+    </section>
     </main>
 
     <footer>
+      <div class="shell publisher">
+        <p>Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one.</p>
+        <p class="address">Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea.</p>
+        <p>Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim — <a href="mailto:privacy@one-by.one">privacy@one-by.one</a>. Support: <a href="mailto:support@one-by.one">support@one-by.one</a>.</p>
+        <p>Worldwide launch with an English-only interface, subject to the <a href="terms/#launch-scope">country and territory exclusions</a>. The App Store shows country-specific prices.</p>
+      </div>
       <div class="shell footer-inner">
         <nav aria-label="Legal">
+          <a href="manifesto/">Manifesto</a>
           <a href="privacy/">Privacy</a>
           <a href="terms/">Terms</a>
           <a href="support/">Support</a>
+        </nav>
+        <nav aria-label="Language">
           <a href="ko/" lang="ko">한국어</a>
           <a href="ja/" lang="ja">日本語</a>
         </nav>
         <span>© 2026 one-by.one</span>
       </div>
     </footer>
+    <dialog class="signup-dialog" data-signup-dialog aria-labelledby="signup-title">
+      <form method="dialog" class="dlg-close"><button aria-label="Close">×</button></form>
+      <h2 id="signup-title">Sign up for one-by.one</h2>
+      <p class="dlg-sub">The same account you’ll use in the app.<br>One email at launch.</p>
+      <div class="signup" data-signup>
+        <button class="sso sso-apple" type="button" data-provider="apple"><svg class="sso-ico" viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.1 10.6c0-2.5 2.1-3.7 2.2-3.8-1.2-1.7-3-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.9 2 5.9 1.1 7.4c-1.9 3.2-.5 8 1.3 10.6.9 1.3 1.9 2.7 3.3 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.2-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-3-4.4zM11.6 3.1c.7-.9 1.2-2 1.1-3.1-1 0-2.3.7-3 1.6-.7.8-1.2 1.9-1.1 3 1.1.1 2.3-.6 3-1.5z"/></svg><span>Continue with Apple</span></button>
+        <button class="sso sso-google" type="button" data-provider="google"><svg class="sso-ico" viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72A5.4 5.4 0 0 1 3.68 9c0-.6.1-1.18.29-1.72V4.95H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.05l3.01-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg><span>Continue with Google</span></button>
+        <p class="signup-status" role="status" aria-live="polite"></p>
+        <details class="email-only">
+          <summary>Just email me at launch</summary>
+          <form class="notify-form" data-waitlist data-endpoint="" novalidate>
+            <label class="visually-hidden" for="dlg-email">Email</label>
+            <input id="dlg-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+            <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit">Notify me</button>
+            <p class="notify-status" role="status" aria-live="polite"></p>
+          </form>
+        </details>
+        <p class="signup-fine"><a href="privacy/">Privacy</a> · <a href="terms/">Terms</a></p>
+      </div>
+    </dialog>
   </body>
 </html>
