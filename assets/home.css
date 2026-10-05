@@ -421,9 +421,11 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .dlg-close button:focus-visible { outline: 2px solid #555d6d; outline-offset: 2px; }
 /* Opening focuses the heading (not the close button), so no ring appears on open. */
 .notify-dialog h2:focus { outline: none; }
+.notify-form input[type=email]:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
 .dlg-fine { margin: 8px 0 0; font-size: 13px; color: var(--hush); }
 .notify-form { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.notify-form input[type=email] { flex: 1 1 200px; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--page); color: var(--text); font: inherit; font-size: 15px; }
+/* 16px: iOS Safari zooms the page when a focused field is smaller. */
+.notify-form input[type=email] { flex: 1 1 200px; min-width: 0; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--page); color: var(--text); font: inherit; font-size: 16px; }
 .notify-form button { height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; }
 @media (prefers-color-scheme: dark) { .notify-form button { background: var(--paper); color: var(--ink); } }
 .notify-status { flex-basis: 100%; margin: 4px 0 0; font-size: 14px; color: var(--muted); }
