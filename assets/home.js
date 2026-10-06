@@ -1266,7 +1266,7 @@
       // Korean: split on sentences, commas and "그리고 / 그다음", drop the connectives and the feelings.
       const lead = /^(?:(?:그리고|그래서|그런데|또|아|음|일단|우선|그다음에?)[,\s]+)+/;
       const noise = /^(?:근데|하지만|ㅋㅋ+|너무|머릿속|언젠가)/;
-      const parts = text.split(/[.,;\n。]|\s그리고\s|\s그다음에?\s|\s그러고 나서\s/).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 2 && !noise.test(x)).slice(0, 4);
+      const parts = text.split(/[.,;\n。]|\s그리고\s|\s그다음에?\s|\s그러고 나서\s/).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 2 && !noise.test(x));
       if (!parts.length) return [{ t: "첫 번째 카드", note: "위에 적으면 카드로 나뉘어요" }, { t: "두 번째 카드" }];
       const short = (x) => (x.length > 18 ? x.slice(0, 18).replace(/\s\S*$/, "") + "…" : x);
       const cards = parts.map((x, n) => {
@@ -1277,7 +1277,7 @@
     }
     const lead = /^(?:(?:ok(?:ay)?|so|and|also|oh|then|well|plus|i (?:really )?(?:have|need|want|should|gotta|got) to|i keep (?:forgetting|not \w+ing)|need to|gotta|have to)\b[,\s]*)+/i;
     const noise = /^(?:which|but|lol|too|my head|it’s|i’m|someday)\b/i;
-    const parts = text.split(/[.,;\n]|\bthen\b|\band then\b/i).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 3 && !noise.test(x)).slice(0, 4);
+    const parts = text.split(/[.,;\n]|\bthen\b|\band then\b/i).map((x) => x.trim().replace(lead, "").trim()).filter((x) => x.length > 3 && !noise.test(x));
     if (!parts.length) return [{ t: "Your first card", note: "Type above to see it split" }, { t: "Your second card" }];
     const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
     // A title is the first clause, cut at a word.

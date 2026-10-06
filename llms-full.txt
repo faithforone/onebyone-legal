@@ -33,7 +33,7 @@ The following sections reproduce the current English privacy wording as readable
 
 This policy covers the one-by.one website, iPhone app and MCP connection service, operated by salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. one-by.one is an execution layer for the AI service you already use. Your connected AI prepares plans; one-by.one presents their actions as cards and keeps execution records that the AI can read with your permission. one-by.one does not itself call an AI model.
 
-Starter sets are fixed card sets supplied in the app, not AI-generated plans. Creating cards from these sets happens on your device and does not send data outside it.
+Starter sets are fixed card sets supplied in the app, not AI-generated plans. Creating cards from these sets happens on your device and does not send data outside it. Cards you add this way are saved and synced to your account like any other card.
 
 The launch scope is worldwide except the countries and territories listed in our terms. The interface is English-only.
 
@@ -217,7 +217,7 @@ Purchase and transaction information, app-account association and verification r
 
 Our production server is in the United States. Cloudflare's network, Apple, Google, the email provider and the AI provider you choose may process data in the United States or other countries outside your residence. Foreign laws may permit access by public authorities. Choosing a feature does not waive protections required by the law that applies to you.
 
-International processing differs by feature. Hosted account processing, MCP disclosure to an approved AI service, opening a prompt link, and support email are separate data flows. For each flow, the notice identifies the recipient, data, purpose, destination countries, transfer timing and method, retention and how to decline.
+International processing differs by feature. Hosted account processing, MCP disclosure to an approved AI service, opening a prompt link, and support email are separate data flows.
 
 ## Advertising and tracking
 
@@ -323,7 +323,7 @@ salad76, a sole proprietorship in the Republic of Korea represented by Seungeun 
 
 - Entrusted processing: Supabase Inc. provides hosted account authentication, database storage and server processing; Cloudflare Inc. provides website delivery, security, the MCP proxy and Email Routing; Google LLC (Gmail) provides support and privacy mailbox storage and delivery. Entrusted tasks are limited to the service purposes described above. Apple and Google sign-in, Apple purchases and independently chosen AI services also involve those providers' own processing under their policies; their role must be distinguished from processing solely on our behalf.
 
-- Overseas transfers: International processing differs by feature. Hosted account processing, MCP disclosure to an approved AI service, opening a prompt link, and support email are separate data flows. For each flow, the notice identifies the recipient, data, purpose, destination countries, transfer timing and method, retention and how to decline. See the international-transfer notice.
+- Overseas transfers: International processing differs by feature. Hosted account processing, MCP disclosure to an approved AI service, opening a prompt link, and support email are separate data flows. See the international-transfer notice.
 
 - Privacy officer: Seungeun Kim, privacy@one-by.one; postal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. This is also the contact for privacy complaints.
 

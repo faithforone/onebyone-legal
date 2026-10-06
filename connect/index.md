@@ -2,7 +2,7 @@
 
 Machine-readable version of https://one-by.one/connect/ (Korean page: https://one-by.one/ko/connect/). Last updated: 2026-10-05. English only.
 
-one-by.one is an iPhone app. A person's AI (ChatGPT, Claude, Claude Code, Codex CLI, Cursor or any MCP agent) plans their day into small cards, and the iPhone shows one card at a time. This page tells an AI agent, or the person using one, how to connect to the one-by.one MCP server.
+one-by.one is an iPhone app. A person's AI (ChatGPT, Claude, Claude Code, Codex CLI, Cursor or any MCP agent) plans their day as cards, and the iPhone hands them over one at a time. This page tells an AI agent, or the person using one, how to connect to the one-by.one MCP server.
 
 ## Paste this into your AI agent
 

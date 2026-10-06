@@ -22,7 +22,8 @@
   try { sessionStorage.setItem(visitedKey, "1"); } catch (_) {}
   if (!bot && !saved && !visited && !internal && !korean && /^ko(?:-|$)/i.test(firstLanguage)) {
     const corresponding = path === "/" ? "/ko/" : /^\/connect\/?$/.test(path) ? "/ko/connect/" : null;
-    location.replace((corresponding || "/ko/") + location.search + (corresponding ? location.hash : ""));
+    // Pages without a Korean counterpart (legal, support) stay where the visitor arrived.
+    if (corresponding) location.replace(corresponding + location.search + location.hash);
   }
   // The query marker also protects deliberate navigation when storage is blocked,
   // and when a language link is opened in a new tab.
