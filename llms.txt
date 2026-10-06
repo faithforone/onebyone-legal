@@ -1,6 +1,6 @@
 # one-by.one
 
-> An iPhone app for people who plan with AI assistants: an ordered day plan, one doable action at a time, and results recorded with units. Coming soon to iPhone. For ages 16+.
+> Never plan again. Your AI plans the whole day; one-by.one delivers action cards, keeps running work and records results. Fixed starter sets work without AI. Coming soon to iPhone. For ages 16+.
 
 ## Launch scope and language
 Last updated: October 5, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
@@ -36,14 +36,14 @@ Instructions for each client: https://one-by.one/connect/index.md
 ```
 
 ## Pricing
-Launch pricing in the United States: US$12.99/month or US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. No free tier. The App Store shows local pricing, eligibility and renewal terms. Existing data stays readable when a subscription lapses; paid features and AI connections need a subscription. Cancel renewal through Apple at least 24 hours before the trial or period ends.
+one-by.one offers monthly and annual auto-renewing subscriptions through the App Store. Apple’s purchase confirmation shows the price, billing period, eligible introductory offers and renewal terms. Manage or cancel renewal in Apple Account settings. Deleting the app or account, signing out or declining consent does not cancel a subscription.
 
 ## Privacy
 No sale of data, advertising use or cross-app tracking. Optional calendar sharing is off until you choose calendars; the connected AI can receive the next seven days of selected event titles and times. Share times only substitutes “Busy” for event names. Connected AI clients receive saved content requested by tools under the permissions you approve; their own policies and settings apply. See the privacy policy for encryption, operator access, retention, deletion and sharing limits.
 
 Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). Contact: support@one-by.one; privacy@one-by.one.
 
-Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved. Support and privacy email is routed by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other provider data-center countries. Transfer safeguards are each provider's data processing agreement and standard contractual safeguards; no particular certification is claimed.
+Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved. Support and privacy email is routed by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other provider data-center countries. International processing differs by feature; see the Privacy Policy for the separate data flows and transfer choices.
 
 ## Sources and details
 - [Product and FAQ](https://one-by.one/): Product overview and frequently asked questions.

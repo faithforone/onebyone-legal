@@ -932,10 +932,10 @@
       { t: "Break", clock: 600, rest: true, note: "Stand up, drink water · screen off", ms: 4000 },
       { t: "Review", clock: 1200, note: "Read it out loud · mark where you stumble", ms: 4000 },
     ],
-    // A brain dump, sorted: the smallest first step first, a timer where a block of time makes sense.
+    // A brain dump, ordered into actions, with timers for timed work.
     dump: [
-      { t: "Open the Q3 deck", note: "Just open it · type the title, then stop" },
-      { t: "Write the deck", clock: 1500, note: "Slides 1–3 only · phone face down", ms: 5000 },
+      { t: "Open the Q3 deck", note: "Open the presentation file" },
+      { t: "Write the deck", clock: 1500, note: "Slides 1–3 · phone face down", ms: 5000 },
       { t: "Email landlord", clock: 300, note: "Three lines: the leak, since when, a date", ms: 4000 },
       { t: "Call mom", note: "Return Sunday’s voicemail · 10 min, then goodnight" },
       { t: "Book the dentist", note: "One call · ask for the first slot next week" },
@@ -970,8 +970,8 @@
       { t: "검토", clock: 1200, note: "소리 내어 읽기 · 걸리는 곳에 표시", ms: 4000 },
     ],
     dump: [
-      { t: "발표 자료 열기", note: "파일만 열어요 · 제목만 쓰고 멈추기" },
-      { t: "발표 자료 쓰기", clock: 1500, note: "1–3번 슬라이드만 · 휴대폰은 엎어 두세요", ms: 5000 },
+      { t: "발표 자료 열기", note: "발표 파일 열기" },
+      { t: "발표 자료 쓰기", clock: 1500, note: "1–3번 슬라이드 · 휴대폰은 엎어 두세요", ms: 5000 },
       { t: "집주인에게 메일 쓰기", clock: 300, note: "세 줄이면 돼요: 누수, 언제부터, 수리 날짜", ms: 4000 },
       { t: "엄마에게 전화하기", note: "일요일 부재중 전화에 답해요 · 10분 통화하고 굿나잇" },
       { t: "치과 예약하기", note: "전화 한 통 · 다음 주 가장 빠른 시간으로" },
@@ -1003,8 +1003,8 @@
       segs: [["ok so my head is full. i have to get ", 0], ["the q3 deck going for priya", "today"], [" and i keep not starting it, and ", 0], ["the email to the landlord about the leak", "today"],
         [", which i’m dreading, and mom left a voicemail sunday so i need to ", 0], ["call her back", "today"], [". i should ", 0], ["work out but my shoulder is still weird", "today"], [". oh and ", 0],
         ["the dentist", "today"], [", i keep forgetting the dentist. ", 0], ["we’re out of eggs and coffee", "later"], [" too. ", 0], ["someday i want to learn spanish lol", "interest"]],
-      ai: "that’s a lot, but most of it is small. smallest first step first.",
-      list: [["Today", "6 cards · 2 timers", "today"], ["Later this week", "2 · eggs and coffee, slides 4+", "later"], ["Interest", "Spanish · when there’s room", "interest"]],
+      ai: "I’ll put the day in order and keep track of it.",
+      list: [["Today", "6 cards · 2 timers", "today"], ["Later this week", "2 · eggs and coffee, slides 4+", "later"], ["Interest", "Spanish · saved interest", "interest"]],
       end: "first card is on your iPhone." },
     workout: { title: "Tonight’s workout", c: "#3fb6a8", me: "quick workout tonight, then I’m cooking pasta", ai: "Monday was legs, so tonight is upper body. You said your shoulders were still sore on Wednesday, so push-ups are lighter than last time.",
       list: [["Push-ups", "3 sets of 8 · was 10"], ["Rows", "3 sets of 12 · 60 s rests"], ["Pasta", "7 steps · 3 timers"]],
@@ -1081,7 +1081,7 @@
           "interest"
         ]
       ],
-      "ai": "하나씩 해 봐요. 가장 쉬운 첫걸음부터요.",
+      "ai": "하루를 정리하고 계속 챙겨 둘게요.",
       "list": [
         [
           "오늘",
@@ -1095,7 +1095,7 @@
         ],
         [
           "관심사",
-          "스페인어 · 여유가 생기면",
+          "스페인어 · 저장한 관심사",
           "interest"
         ]
       ],
@@ -1248,13 +1248,13 @@
   // Jobs: pick an example, or type your own and see it split into cards.
   const dumpText = plans.dump.segs.map((x) => x[0]).join("");
   const jobs = {
-    dump: { d: "<b>Say it messy.</b> Your AI sorts it into small cards, smallest first step first, and keeps ideas like Spanish for when there’s room.", cards: sets.dump },
+    dump: { d: "<b>Say it messy.</b> Your AI puts the day in order and keeps track of plans and interests.", cards: sets.dump },
     workout: { d: "<b>Sets and rests, in order.</b> Your AI splits a workout into sets with timed rests, and logs the reps you enter.", cards: sets.workout },
     cooking: { d: "<b>Steps and waits.</b> Recipes become one step at a time. When something has to wait, the app keeps track of it in the corner while you do the next thing.", cards: sets.pasta },
     focus: { d: "<b>Blocks with breaks.</b> A deadline becomes focused blocks with real breaks between them.", cards: sets.focus },
   };
   if (ko) {
-    jobs.dump.d = "<b>두서없이 말해도 괜찮아요.</b> AI가 작은 카드로 정리해 가장 쉬운 첫걸음부터 보여 줍니다. 언젠가 해 보고 싶은 일은 여유가 생길 때를 위해 남겨 두고요.";
+    jobs.dump.d = "<b>편하게 말하세요.</b> AI가 하루를 순서대로 정리하고, 계획과 관심사도 기억해 둡니다.";
     jobs.workout.d = "<b>세트와 휴식을 차례대로.</b> AI가 운동을 세트별로 나누고 쉬는 시간을 넣어 줍니다. 입력한 횟수도 기록해요.";
     jobs.cooking.d = "<b>요리도 한 단계씩.</b> 레시피를 지금 할 일로 나눕니다. 기다릴 땐 앱이 시간을 챙기는 동안 다음 단계를 진행하세요.";
     jobs.focus.d = "<b>집중할 시간, 쉴 시간.</b> 마감까지 할 일을 집중 구간으로 나누고, 사이사이 제대로 쉬는 시간을 넣어 줍니다.";
