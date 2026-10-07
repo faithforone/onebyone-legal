@@ -124,6 +124,12 @@ li + li { margin-top: 6px; }
 .footer-end .language-links { display: flex; gap: 12px; }
 .footer-end .language-links a { min-height: 0; font-size: 13px; }
 
+/* Header navigation and the EN / 한국어 links, on every page. */
+.site-nav, .language-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.site-nav a, .language-links a { font-size: 14px; text-decoration: none; min-height: 36px; display: inline-flex; align-items: center; }
+.language-links a[aria-current="page"] { text-decoration: underline; }
+@media (max-width: 600px) { .site-nav { gap: 14px; } }
+
 /* Korean pages (<html lang="ko">): Pretendard is linked only from those pages. The tracking, weights and line
    heights above are tuned for Latin headlines; Hangul wants none of that, and breaks between words, not inside them. */
 html:lang(ko) {

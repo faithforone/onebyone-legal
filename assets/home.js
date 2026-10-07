@@ -46,10 +46,20 @@
   const ck = '<svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>';
   const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  // The header's hairline shows once the page has moved 8 px. An observer on an 8 px mark at the top of the page reports that
+  // after layout; asking for scrollY here instead forces the whole page's first layout in the middle of this script.
   const topbar = $(".topbar");
-  const onScroll = () => topbar && topbar.classList.toggle("scrolled", scrollY > 8);
-  addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  if (topbar && "IntersectionObserver" in window) {
+    const mark = document.createElement("i");
+    mark.setAttribute("aria-hidden", "true");
+    mark.style.cssText = "position:absolute;top:0;left:0;width:1px;height:8px;visibility:hidden;pointer-events:none";
+    document.body.append(mark);
+    new IntersectionObserver(([e]) => topbar.classList.toggle("scrolled", !e.isIntersecting)).observe(mark);
+  } else if (topbar) {
+    const onScroll = () => topbar.classList.toggle("scrolled", scrollY > 8);
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 
   // Loops run only while their section is visible.
   if ("IntersectionObserver" in window) {
@@ -1238,7 +1248,16 @@
     // First view: the dump waits until its window is on screen, then plays once.
     let io = null;
     if (!still() && "IntersectionObserver" in window) {
-      thread.innerHTML = threadHTML(plans.dump, true);
+      // The page may already be on screen when this script runs (a slow connection). The first message keeps its element, so it
+      // stays where it is instead of vanishing and fading in a second time; only what follows it is put in its waiting state.
+      const said = thread.firstElementChild, staged = document.createElement("div");
+      staged.innerHTML = threadHTML(plans.dump, true);
+      if (said && said.matches("p.msg.me")) {
+        said.innerHTML = staged.firstElementChild.innerHTML;
+        while (said.previousSibling) said.previousSibling.remove();
+        while (said.nextSibling) said.nextSibling.remove();
+        said.after(...[...staged.children].slice(1));
+      } else thread.innerHTML = staged.innerHTML;
       tryDeck.load(waiting);
       io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); playDump(); } }, { threshold: 0.6 });
       io.observe(thread);
@@ -1299,15 +1318,22 @@
     const picks = $$("[data-job]");
     const drafts = { dump: dumpText, own: "" };
     // The box grows to its text (then scrolls) and always starts at the top.
-    const fit = () => {
+    // The first time it has no height of its own and has not been scrolled, so it is only measured, then sized.
+    const fit = (first) => {
       if (own.hidden) return;
-      ownText.style.height = "auto";
+      if (!first) ownText.style.height = "auto";
       ownText.style.height = `${Math.min(ownText.scrollHeight + 2, 360)}px`;
-      ownText.scrollTop = 0;
+      if (!first) ownText.scrollTop = 0;
     };
-    addEventListener("resize", () => requestAnimationFrame(fit));
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    fit();
+    // Measured right after a frame, when that frame's layout is already done; measured any earlier, it would force the layout
+    // of the whole page (after a web font arrives, of every line of text) in the middle of a script.
+    const refit = () => requestAnimationFrame(() => setTimeout(() => fit()));
+    addEventListener("resize", refit);
+    // A web font arriving changes the text's height; without web fonts (the English pages) this never runs.
+    if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", refit);
+    // First fit: after the page's own first layout and before it is painted, so measuring forces nothing.
+    if ("ResizeObserver" in window) { const ro = new ResizeObserver(() => { ro.disconnect(); fit(true); }); ro.observe(ownText); }
+    else fit(true);
     let job = "dump";
     // The brain dump shows its own words; until they are edited, its cards are the sorted set.
     const cardsNow = () => (job === "dump" && ownText.value === dumpText ? sets.dump : fromText(ownText.value));

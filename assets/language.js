@@ -1,4 +1,6 @@
 // Explicit choices win. Only a first, external arrival can choose a language.
+// Loading: a plain blocking <script> in the head of / and /connect/ (the only pages this can redirect away from), so the choice
+// is made before anything is painted; with defer on every other page, where it only records the visit and the language links.
 (function () {
   "use strict";
   const key = "obo-language";

@@ -1,11 +1,14 @@
 /* one-by.one home. Every word has one job; quiet type, flat surfaces. Lime is the
    card's Start/Done and the brand mark, nothing else. Mockups keep the app's light palette. */
+/* --hush is the quietest text grey. It keeps 4.5:1 or more on every surface it is set on: light #fff 5.07, #fafafa 4.85,
+   #f6f6f4 4.68; dark #0e0f11 5.38, #141518 5.13, #1a1c20 4.79 (WCAG AA for small text). Do not lighten it in light mode or
+   darken it in dark mode. --ring is the lighter grey it used to be, kept for the one outline drawn with it. */
 .home {
   --ink: #1a1c20; --lime: #c6ef4e; --paper: #f3f4f5; --sheet: #fff; --raised: #2e3137; --soft: #b0b3ba;
-  --page: #fff; --panel: #f6f6f4; --line: #e8e9eb; --hush: #8a9099;
+  --page: #fff; --panel: #f6f6f4; --line: #e8e9eb; --hush: #696f78; --ring: #8a9099;
   background: var(--page); line-height: 1.5;
 }
-@media (prefers-color-scheme: dark) { .home { --page: var(--bg); --panel: var(--surface); --line: #2e3137; --hush: #7d838c; } }
+@media (prefers-color-scheme: dark) { .home { --page: var(--bg); --panel: var(--surface); --line: #2e3137; --hush: #838891; --ring: #7d838c; } }
 .home main { display: block; }
 .home h1, .home h2, .home h3, .home p { overflow-wrap: normal; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -369,7 +372,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .sug em { position: absolute; right: 8px; top: 8px; font-style: normal; font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 99px; background: var(--panel); color: var(--muted); transition: background .3s ease, color .3s ease; }
 .sug.before { top: 22px; border: 1.5px dashed transparent; }
 .sug.after { top: 146px; }
-.sug.shown { opacity: 1; transform: none; box-shadow: inset 0 0 0 1.5px var(--hush); }
+.sug.shown { opacity: 1; transform: none; box-shadow: inset 0 0 0 1.5px var(--ring); }
 .sug.added { box-shadow: none; background: var(--ink); color: #fff; }
 .sug.added em { background: rgba(255,255,255,.18); color: #fff; }
 
@@ -388,6 +391,8 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .own label { display: block; font-size: 15px; font-weight: 500; margin-bottom: 8px; }
 .own textarea { width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--page); color: var(--text); font: inherit; font-size: 16px; resize: none; line-height: 1.45; min-height: 46px; max-height: 360px; overflow-y: auto; box-sizing: border-box; }
 .own-note { margin: 8px 0 0; font-size: 14px; color: var(--hush); }
+/* Placeholder text: the browsers' own greys fall under 4.5:1 (Safari in light, Chrome in dark). */
+.own textarea::placeholder, .notify-form input[type=email]::placeholder { color: var(--hush); opacity: 1; }
 .jobs .device { justify-self: center; }
 /* Pricing */
 .pricing { max-width: 520px; margin: 140px auto 0; padding: 0 24px; text-align: center; }
@@ -522,6 +527,11 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .device { width: 260px; }
   .topbar-inner { padding: 10px 16px; }
 }
+@media (max-width: 600px) {
+  .topbar-inner { flex-wrap: wrap; }
+  .home .topbar-inner { padding: 12px 20px; }
+}
+.home:lang(ko) h1, .home:lang(ko) h2, .home:lang(ko) h3 { word-break: keep-all; line-height: 1.35; }
 @media (prefers-reduced-motion: reduce) {
   .thread .msg, .notify-dialog[open] { animation: none !important; }
   .sheet-up, .sug, .go, .a-step::before, .frag, .msg.list li { transition: none !important; }

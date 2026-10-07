@@ -1,9 +1,5 @@
-/* Documentation page: type, spacing and one thin rule. Uses the site palette; no cards, pills or shadows. */
-.site-nav, .language-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.site-nav a, .language-links a { font-size: 14px; text-decoration: none; min-height: 36px; display: inline-flex; align-items: center; }
-.language-links a[aria-current="page"] { text-decoration: underline; }
-
-
+/* Connect guide only (/connect/, /ko/connect/): type, spacing and one thin rule. Uses the site palette; no cards, pills or shadows.
+   The header navigation and language links every page shares are in styles.css; the header bar is in home.css. */
 .connect main { max-width: 720px; width: 100%; margin: 0 auto; padding: 56px 24px 88px; }
 .connect main > * { min-width: 0; }
 .connect p, .connect li { font-size: 16px; line-height: 1.65; overflow-wrap: anywhere; }
@@ -53,16 +49,11 @@
 .connect .prompt-bar button { min-height: 36px; font-size: 13px; padding: 0 12px; min-width: 64px; }
 .connect pre.wrap { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: visible; max-height: 20rem; overflow-y: auto; font-size: 13px; }
 
-.home:lang(ko) h1, .home:lang(ko) h2, .home:lang(ko) h3 { word-break: keep-all; line-height: 1.35; }
 .connect:lang(ko) p, .connect:lang(ko) li { word-break: keep-all; }
 
 @media (max-width: 600px) {
-  .topbar-inner { flex-wrap: wrap; }
-  .site-nav { gap: 14px; }
-  .home .topbar-inner { padding: 12px 20px; }
   .connect main { padding: 32px 16px 56px; }
   .connect .url { flex-direction: column; }
   .connect .url pre { font-size: 15px; }
   .connect .url button { min-height: 44px; }
-
 }

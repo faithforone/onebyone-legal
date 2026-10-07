@@ -1,8 +1,12 @@
 # Cloudflare Pages response headers (Sol security audit, 2026-10-04).
 # Pages has no inline scripts; JSON-LD blocks are data, not script.
 # cdn.jsdelivr.net serves Pretendard (stylesheet + woff2) to lang="ko" pages only; no script loads from it.
+# Cross-Origin-Opener-Policy same-origin (2026-10-07): the site opens no window and is never opened as one that reports back
+# (no window.open, no target="_blank", no postMessage, no OAuth window on this host), so no page needs an opener.
+# HSTS deliberately has no includeSubDomains or preload: both bind every subdomain of one-by.one; see README.md.
 /*
   Strict-Transport-Security: max-age=31536000
+  Cross-Origin-Opener-Policy: same-origin
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY

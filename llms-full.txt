@@ -24,7 +24,7 @@ Starting work, undoing an eligible mistaken start before any later record, takin
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
 ## Subscription, trial and cancellation
-one-by.one offers monthly and annual auto-renewing subscriptions through the App Store. Apple’s purchase confirmation shows the price, billing period, eligible introductory offers and renewal terms. Manage or cancel renewal in Apple Account settings. Deleting the app or account, signing out or declining consent does not cancel a subscription.
+one-by.one offers monthly and annual auto-renewing subscriptions through the App Store. Apple’s purchase confirmation shows the price, billing period, eligible introductory offers and renewal terms. A subscription renews unless it is cancelled at least 24 hours before the end of the current period, and a free trial converts to a paid subscription unless it is cancelled at least 24 hours before it ends. Manage or cancel renewal in Apple Account settings. Deleting the app or account, signing out or declining consent does not cancel a subscription.
 
 ## Privacy stance
 No sale of data, advertising use or cross-app tracking. Text entered into plans, tasks, memories or reports may contain sensitive information; share only what you want stored and available to a connected AI. AI provider policies and settings govern chats and tool data they receive.
