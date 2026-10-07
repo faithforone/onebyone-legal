@@ -180,7 +180,7 @@ Use `https://mcp.one-by.one/mcp` with remote Streamable HTTP and OAuth. The clie
 
 ## Disconnecting
 
-In the iPhone app, open Settings › AI apps and tap "Disconnect" next to that connection. You can also use "Disconnect" on its one-by.one authorization page, or remove the connector in the AI tool. Disconnecting stops future tool access. It does not delete one-by.one records or information the AI already received.
+In the iPhone app, open Settings › AI apps and tap "Disconnect" next to that connection. You can also use "Disconnect" on its one-by.one authorization page. Removing the connector in your AI app alone may not revoke access. Disconnecting stops future tool access. It does not delete one-by.one records or information the AI already received.
 
 ## Related
 
