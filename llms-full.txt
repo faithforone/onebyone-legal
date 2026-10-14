@@ -10,7 +10,7 @@ one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Cl
 
 One card is one doable action. Long tasks, workout sets, recipe steps and rests are split into separate ordered cards. Pomodoro and doing something else while waiting are planning patterns made from ordinary cards. The server is the source of truth for plans and records.
 
-Results can be recorded with units: weight, repetitions, distance, duration, volume, energy, nutrients, pages, cups, cigarettes or games. Things already done can be saved as past results. AI-estimated values, such as nutrition estimated from a meal description, must be labelled estimated. Records shows today and week totals. Share images are generated on the device; one-by.one does not upload them as part of rendering. A selected recipient or app receives an image only when you share it, under that recipient’s policies.
+Results can be recorded with units: weight, repetitions, distance, duration, volume, energy, nutrients, pages, cups, cigarettes or games. Records shows today and week totals. Share images are generated on the device; one-by.one does not upload them as part of rendering. A selected recipient or app receives an image only when you share it, under that recipient’s policies.
 
 Interests hold ongoing practices, such as guitar, and recurring duties as plain schedule lines, such as “Mondays: ...” or “Last day of month: ...”. Saved context, memories, corrections and retained originals can be included in tool replies. Reads may be limited or paginated and do not establish a complete lifetime history.
 
@@ -348,7 +348,7 @@ Per-tool commands (name onebyone, source = official documentation):
 ## Publisher, age and help
 Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
 
-Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu and tap Delete account below Sign out, then confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
+Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu, tap Account, then Delete account and confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
 
 To disconnect an AI, tap Disconnect in the iPhone app under Settings › AI apps, use Disconnect on its one-by.one authorization page, or remove the connector through the AI service’s controls. Revocation blocks future tool calls but does not delete records or copies the AI has already received.
 
