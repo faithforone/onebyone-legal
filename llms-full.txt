@@ -217,7 +217,7 @@ We keep unlinked purchase notifications (original transaction identifier, notifi
 
 ## Deletion and disconnection
 
-To delete your account in the app, open the menu, tap Delete account below Sign out and confirm. For deletion help, email privacy@one-by.one.
+To delete your account in the app, open the menu, tap Account, then Delete account and confirm. For deletion help, email privacy@one-by.one.
 
 Accepted account deletion removes the sign-in account and its linked plans, results, interests, memories, connections, device records, technical records and bug reports in a database transaction. There is no grace period.
 
