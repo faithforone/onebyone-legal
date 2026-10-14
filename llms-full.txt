@@ -17,9 +17,9 @@ Interests hold ongoing practices, such as guitar, and recurring duties as plain 
 ## AI connection and changes
 The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is https://one-by.one/connect/ (Korean: https://one-by.one/ko/connect/). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is https://connect.one-by.one. Sign in with Apple or Google and follow Settings › AI apps. Email sign-in is for existing accounts; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
 
-OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can plan days, edit unstarted cards, save interests and memories, and record or correct results within approved permissions.
+OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can save and change the day, save a day note, save interests and memories, and correct a recorded result within approved permissions.
 
-Starting work, undoing an eligible mistaken start before any later record, taking a card off today, fixing or withdrawing recorded times, and completing a task require the user’s explicit request. Time correction does not control execution. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
+Start and Done are tapped on the phone; no tool starts, finishes or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
 
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
@@ -113,35 +113,29 @@ ChatGPT is provided by OpenAI; Claude by Anthropic. The AI client's handling of 
 
 Write instructions require your explicit request. The server checks granted permissions but cannot prove what you agreed to in chat. Some changes cannot be undone; corrections can preserve originals.
 
-The 20 tools
+The tools
 
-Read plans and tasks
+Read the day and records
 
-get_planning_context, list_current_work, get_current_work: read planning context, task lists and task/result records.
+get_planning_context (read), list_current_work (read), get_current_work (read), get_records (read): read planning context, today's list, running work and card records, and what was done on a range of dates.
 
-Plan days and edit unstarted tasks
+Save and change the day
 
-open_or_plan_day, edit_day_plan, replace_plan: open or plan days, change queued cards and replace unstarted plans.
-
-Start and correct work
-
-start_work, undo_start, correct_work_time: start a task, undo an eligible mistaken start, or amend or withdraw a recorded time while retaining its original. Time correction does not control execution.
-
-Save and correct results
-
-record_past_result, correct_recorded_result, complete_work: record separate past work, correct or withdraw a result's interpretation, or mark work complete.
+change_day (write): add, move, edit, send to another date or drop cards; the server walks the clock and returns each card's times. save_day_note (write): save one short note on a date, shown in Records. correct_recorded_result (write): correct or withdraw a finished record's result while retaining its original.
 
 Read interests and memories
 
-list_interests, get_interest: read saved interests, context and memories, including retained originals.
+list_interests (read), get_interest (read): read saved interests, context and memories, including retained originals.
 
 Save and change interests and memories
 
-create_interest, replace_interest_context, save_interest_memory, correct_interest_memory: save interests and memories, replace context or correct or withdraw a memory while retaining its original.
+create_interest (write), replace_interest_context (write), save_interest_memory (write), correct_interest_memory (write): save interests and memories, replace context or correct or withdraw a memory while retaining its original.
 
 Connection and support
 
-get_connection_info: read permissions and supported features, and receive a write token when available. submit_bug_report: send an approved report to one-by.one support and receive a receipt.
+get_connection_info (read): read permissions and supported features, and receive a write token when available. submit_bug_report (write): send an approved report to one-by.one support and receive a receipt.
+
+Start and Done are tapped on the phone; no tool starts, finishes or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
 
 Reads may be limited or paginated; they do not establish a complete lifetime history.
 

@@ -88,23 +88,20 @@
     <p>ChatGPT is provided by OpenAI; Claude by Anthropic. The AI client's handling of chats and tool data is governed by that provider's policy and settings. Check those before connecting.</p>
     <p>Write instructions require your explicit request. The server checks granted permissions but cannot prove what you agreed to in chat. Some changes cannot be undone; corrections can preserve originals.</p>
     <details>
-      <summary>The 20 tools</summary>
+      <summary>The tools</summary>
       <dl>
-        <dt>Read plans and tasks</dt>
-        <dd><code>get_planning_context</code>, <code>list_current_work</code>, <code>get_current_work</code>: read planning context, task lists and task/result records.</dd>
-        <dt>Plan days and edit unstarted tasks</dt>
-        <dd><code>open_or_plan_day</code>, <code>edit_day_plan</code>, <code>replace_plan</code>: open or plan days, change queued cards and replace unstarted plans.</dd>
-        <dt>Start and correct work</dt>
-        <dd><code>start_work</code>, <code>undo_start</code>, <code>correct_work_time</code>: start a task, undo an eligible mistaken start, or amend or withdraw a recorded time while retaining its original. Time correction does not control execution.</dd>
-        <dt>Save and correct results</dt>
-        <dd><code>record_past_result</code>, <code>correct_recorded_result</code>, <code>complete_work</code>: record separate past work, correct or withdraw a result's interpretation, or mark work complete.</dd>
+        <dt>Read the day and records</dt>
+        <dd><code>get_planning_context</code> (read), <code>list_current_work</code> (read), <code>get_current_work</code> (read), <code>get_records</code> (read): read planning context, today's list, running work and card records, and what was done on a range of dates.</dd>
+        <dt>Save and change the day</dt>
+        <dd><code>change_day</code> (write): add, move, edit, send to another date or drop cards; the server walks the clock and returns each card's times. <code>save_day_note</code> (write): save one short note on a date, shown in Records. <code>correct_recorded_result</code> (write): correct or withdraw a finished record's result while retaining its original.</dd>
         <dt>Read interests and memories</dt>
-        <dd><code>list_interests</code>, <code>get_interest</code>: read saved interests, context and memories, including retained originals.</dd>
+        <dd><code>list_interests</code> (read), <code>get_interest</code> (read): read saved interests, context and memories, including retained originals.</dd>
         <dt>Save and change interests and memories</dt>
-        <dd><code>create_interest</code>, <code>replace_interest_context</code>, <code>save_interest_memory</code>, <code>correct_interest_memory</code>: save interests and memories, replace context or correct or withdraw a memory while retaining its original.</dd>
+        <dd><code>create_interest</code> (write), <code>replace_interest_context</code> (write), <code>save_interest_memory</code> (write), <code>correct_interest_memory</code> (write): save interests and memories, replace context or correct or withdraw a memory while retaining its original.</dd>
         <dt>Connection and support</dt>
-        <dd><code>get_connection_info</code>: read permissions and supported features, and receive a write token when available. <code>submit_bug_report</code>: send an approved report to one-by.one support and receive a receipt.</dd>
+        <dd><code>get_connection_info</code> (read): read permissions and supported features, and receive a write token when available. <code>submit_bug_report</code> (write): send an approved report to one-by.one support and receive a receipt.</dd>
       </dl>
+      <p>Start and Done are tapped on the phone; no tool starts, finishes or undoes a card. When relative waits are enabled on the server, <code>get_day_node</code> (read) is also offered to read one retained day card.</p>
     </details>
     <p>Reads may be limited or paginated; they do not establish a complete lifetime history.</p>
     <h2>Sharing images</h2>
