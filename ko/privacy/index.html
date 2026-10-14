@@ -54,12 +54,13 @@
       <li><strong>Plans and results:</strong> full task titles, notes, steps, dates, time zones, estimates, targets, measurements, progress, execution records, corrections and versions. These show your day plan and what to do now, record results and support synchronization.</li>
       <li><strong>Interests and memories:</strong> titles, planning notes, memory text, user reports, AI summaries and inferences, sources and timestamps. These provide saved planning context. Corrections and withdrawals retain originals.</li>
       <li><strong>Connections and operation:</strong> device and AI connection IDs, credential references, hashed server credentials, permissions, approvals, expiry, revocation, synchronization records, write requests and receipts, request-limit records and local startup/sign-in diagnostics. These control access and support retries and operation.</li>
+      <li><strong>Push token:</strong> the push token Apple issues for this iPhone and its environment, to tell this iPhone that a day arrived. It is removed when you sign out, when the account is deleted, or after 30 days without a refresh.</li>
       <li><strong>Support:</strong> messages you email us and account-linked bug descriptions, submission IDs, hashes, received times and selected app version, iOS version or error code. Bug-report tools add no automatic attachments.</li>
       <li><strong>Subscription:</strong> Apple handles the paid, auto-renewing App Store subscription. We store subscription product identifiers, transaction references, the app-account association, environment, status and relevant expiry or grace-period dates to verify access. We do not receive payment-card details.</li>
     </ul>
     <p>If you sign in with Google, our sign-in provider stores what Google shares for that sign-in: your email address and whether Google verified it, your name, your profile picture link and your Google account identifier.</p>
     <p>Text you enter may contain health, work, location or other sensitive details. Share only what you want stored and available to your connected AI.</p>
-    <p>The app can schedule local reminders for running timed cards. Delivery depends on your notification settings, quiet hours and the state last known to this iPhone. The current app does not register for remote push.</p>
+    <p>The app can schedule local reminders for running timed cards. Delivery depends on your notification settings, quiet hours and the state last known to this iPhone. When you allow notifications, the app registers with the Apple Push Notification service and sends us this iPhone's push token so the server can tell it that your day is ready. The push says only that your day is ready or changed; it carries no card content.</p>
     <p>Plans: $12.99 per month or $59.99 per year in the United States; the App Store shows the price for your country. A 14-day introductory free trial is available to eligible subscribers, as determined by the App Store. The purchase screen shows eligibility, the applicable price and renewal terms. If you do not cancel at least 24 hours before the trial or a period ends, the subscription renews and your Apple Account is charged. After the trial, a subscription is needed for paid product features and AI connections. Existing data can still be read, and account deletion, disconnection and sharing withdrawal remain available without a subscription.</p>
     <h2 id="purposes-and-consent">Purposes and grounds for processing</h2>
     <ul>
@@ -114,7 +115,7 @@
     <ul>
       <li><strong>Supabase:</strong> account identity, sessions, product content, reports and server processing. Production server data is hosted in the United States (Supabase US). The service processes content for your requested features, protected by account access restrictions.</li>
       <li><strong>Cloudflare:</strong> the MCP proxy carries authorized requests and replies between the AI client and Supabase.</li>
-      <li><strong>Apple:</strong> sign-in, App Store subscriptions and device services.</li>
+      <li><strong>Apple:</strong> sign-in, App Store subscriptions, the Apple Push Notification service and device services.</li>
       <li><strong>Google:</strong> Google sign-in and identity tokens passed to Supabase Auth.</li>
       <li><strong>Your chosen AI client:</strong> the requests and replies described above.</li>
       <li><strong>Support and privacy email:</strong> Cloudflare Inc. routes messages sent to support@one-by.one and privacy@one-by.one through Cloudflare Email Routing to Google LLC (Gmail), which stores the mailbox. Processing takes place in the United States and other countries where these providers operate data centers.</li>
