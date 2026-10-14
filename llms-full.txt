@@ -24,7 +24,7 @@ Starting work, undoing an eligible mistaken start before any later record, takin
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
 ## Subscription, trial and cancellation
-The product is a paid subscription from launch, with no free tier. United States launch prices are US$12.99/month and US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. The App Store purchase screen shows local pricing, eligibility and renewal terms. The introductory offer requires an App Store payment method; Apple handles payment and one-by.one does not receive payment-card details.
+The product is a paid subscription from launch, with no free tier. United States launch prices are US$12.99/month and US$59.99/year. Yearly plan: 14-day free trial for eligible new subscribers, as determined by the App Store. The monthly plan has no trial. The App Store purchase screen shows local pricing, eligibility and renewal terms. The introductory offer requires an App Store payment method; Apple handles payment and one-by.one does not receive payment-card details.
 
 Subscriptions renew automatically unless cancelled through Apple at least 24 hours before the trial or period ends. Apple handles purchases, renewals, cancellation and refund requests. Account deletion does not cancel an Apple subscription.
 
@@ -65,7 +65,7 @@ Text you enter may contain health, work, location or other sensitive details. Sh
 
 The app can schedule local reminders for running timed cards. Delivery depends on your notification settings, quiet hours and the state last known to this iPhone. When you allow notifications, the app registers with the Apple Push Notification service and sends us this iPhone's push token so the server can tell it that your day is ready. The push says only that your day is ready or changed; it carries no card content.
 
-Plans: $12.99 per month or $59.99 per year in the United States; the App Store shows the price for your country. A 14-day introductory free trial is available to eligible subscribers, as determined by the App Store. The purchase screen shows eligibility, the applicable price and renewal terms. If you do not cancel at least 24 hours before the trial or a period ends, the subscription renews and your Apple Account is charged. After the trial, a subscription is needed for paid product features and AI connections. Existing data can still be read, and account deletion, disconnection and sharing withdrawal remain available without a subscription.
+Plans: $12.99 per month or $59.99 per year in the United States; the App Store shows the price for your country. Yearly plan: 14-day free trial for eligible new subscribers, as determined by the App Store. The monthly plan has no trial. The purchase screen shows eligibility, the applicable price and renewal terms. If you do not cancel at least 24 hours before the trial or a period ends, the subscription renews and your Apple Account is charged. After the trial, a subscription is needed for paid product features and AI connections. Existing data can still be read, and account deletion, disconnection and sharing withdrawal remain available without a subscription.
 
 ## Purposes and grounds for processing
 

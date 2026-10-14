@@ -36,7 +36,7 @@ Instructions for each client: https://one-by.one/connect/index.md
 ```
 
 ## Pricing
-Launch pricing in the United States: US$12.99/month or US$59.99/year. A 14-day introductory free trial is available to eligible new subscribers, as determined by the App Store. No free tier. The App Store shows local pricing, eligibility and renewal terms. Existing data stays readable when a subscription lapses; paid features and AI connections need a subscription. Cancel renewal through Apple at least 24 hours before the trial or period ends.
+Launch pricing in the United States: US$12.99/month or US$59.99/year. Yearly plan: 14-day free trial for eligible new subscribers, as determined by the App Store. The monthly plan has no trial. No free tier. The App Store shows local pricing, eligibility and renewal terms. Existing data stays readable when a subscription lapses; paid features and AI connections need a subscription. Cancel renewal through Apple at least 24 hours before the trial or period ends.
 
 ## Privacy
 No sale of data, advertising use or cross-app tracking. Optional calendar sharing is off until you choose calendars; the connected AI can receive the next seven days of selected event titles and times. Share times only substitutes “Busy” for event names. Connected AI clients receive saved content requested by tools under the permissions you approve; their own policies and settings apply. See the privacy policy for encryption, operator access, retention, deletion and sharing limits.
