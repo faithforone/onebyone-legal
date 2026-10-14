@@ -207,7 +207,7 @@ Account content is kept while the account exists. Corrections preserve originals
 
 We keep bug reports for 180 days, then remove them from the live database through scheduled cleanup; account-linked reports are deleted earlier with the account.
 
-Calendar snapshots are eligible for scheduled cleanup once their shared window ended more than one day ago. AI write receipts have a 24-hour replay window; device write receipts have a 7-day replay window. Expired replay receipts are removed by bounded scheduled cleanup, except while needed for a pending correction or a live synchronization scope. Facts, results, corrections and history are retained with the account. Account-linked technical records are also deleted with the account.
+Calendar snapshots are eligible for scheduled cleanup once their shared window ended more than one day ago. AI write receipts have a 24-hour replay window; device write receipts have a 7-day replay window. Expired replay receipts are removed by bounded scheduled cleanup, except while needed for a pending correction or a live synchronization scope. Facts, results, corrections and history are retained with the account. Account-linked technical records are also deleted with the account, except the sign-in audit entries (email, user ID, IP address) our sign-in provider keeps; those are purged within 30 days of deletion.
 
 We keep unlinked purchase notifications (original transaction identifier, notification identifier, type and receipt time) to reconcile a purchase with its account. This also applies when Apple sends a notification after account deletion. These notifications expire seven days after receipt and become eligible for bounded scheduled cleanup; duplicate deliveries while a receipt is stored do not extend its expiry. Expired notifications are not used to link a purchase or restore account content. Linked notification records are removed with the account.
 
@@ -215,7 +215,7 @@ We keep unlinked purchase notifications (original transaction identifier, notifi
 
 To delete your account in the app, open the menu, tap Account, then Delete account and confirm. For deletion help, email privacy@one-by.one.
 
-Accepted account deletion removes the sign-in account and its linked plans, results, interests, memories, connections, device records, technical records and bug reports in a database transaction. There is no grace period.
+Accepted account deletion removes the sign-in account and its linked plans, results, interests, memories, connections, device records, technical records and bug reports in a database transaction. Sign-in audit entries held by our sign-in provider are purged within 30 days. There is no grace period.
 
 The app's deletion cleanup removes its local one-by.one records, session, that account's device credentials and notifications on this iPhone after server confirmation. Cleanup can fail and require a retry. Apple authorization revocation is attempted where applicable.
 
