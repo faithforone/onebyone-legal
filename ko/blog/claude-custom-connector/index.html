@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/assets/styles.css?v=5ae713202e">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
-    <title>클로드 커넥터 추가하는 법 (무료 플랜 제한 포함) · one-by.one</title>
-    <meta name="description" content="클로드 커넥터 추가 방법과 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인, 자주 나는 오류 해결법을 한 번에 정리했어요.">
+    <title>클로드 커넥터 추가방법 (무료 플랜 제한·사용법) · one-by.one</title>
+    <meta name="description" content="클로드 커넥터 추가방법을 단계별로 알려 드려요. 클로드 커넥터 사용법, 무료 플랜 1개 제한, OAuth 로그인, 자주 나는 오류 해결까지 정리했어요.">
     <link rel="canonical" href="https://one-by.one/ko/blog/claude-custom-connector/">
     <meta name="theme-color" content="#F3F4F5">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
@@ -16,8 +16,8 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="one-by.one">
     <meta property="og:locale" content="ko_KR">
-    <meta property="og:title" content="클로드 커넥터 추가하는 법 (무료 플랜 제한 포함) · one-by.one">
-    <meta property="og:description" content="클로드 커넥터 추가 방법과 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인, 자주 나는 오류 해결법을 한 번에 정리했어요.">
+    <meta property="og:title" content="클로드 커넥터 추가방법 (무료 플랜 제한·사용법) · one-by.one">
+    <meta property="og:description" content="클로드 커넥터 추가방법을 단계별로 알려 드려요. 클로드 커넥터 사용법, 무료 플랜 1개 제한, OAuth 로그인, 자주 나는 오류 해결까지 정리했어요.">
     <meta property="og:url" content="https://one-by.one/ko/blog/claude-custom-connector/">
     <meta property="og:image" content="https://one-by.one/assets/og-ko.png">
     <meta property="og:image:type" content="image/png">
@@ -28,8 +28,8 @@
     <meta property="article:modified_time" content="2026-10-25">
     <meta property="article:author" content="one-by.one">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="클로드 커넥터 추가하는 법 (무료 플랜 제한 포함) · one-by.one">
-    <meta name="twitter:description" content="클로드 커넥터 추가 방법과 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인, 자주 나는 오류 해결법을 한 번에 정리했어요.">
+    <meta name="twitter:title" content="클로드 커넥터 추가방법 (무료 플랜 제한·사용법) · one-by.one">
+    <meta name="twitter:description" content="클로드 커넥터 추가방법을 단계별로 알려 드려요. 클로드 커넥터 사용법, 무료 플랜 1개 제한, OAuth 로그인, 자주 나는 오류 해결까지 정리했어요.">
     <meta name="twitter:image" content="https://one-by.one/assets/og-ko.png">
     <meta name="twitter:image:alt" content="one-by.one: 계획은 AI가, 실행은 당신이. 작은 카드가 나란히 놓이고 지금 할 카드가 가운데에 있어요.">
     <link rel="stylesheet" href="/assets/home.css?v=8402908fe0">
@@ -46,8 +46,8 @@
     {
       "@type": "Article",
       "@id": "https://one-by.one/ko/blog/claude-custom-connector/#article",
-      "headline": "클로드 커넥터 추가하는 법 (무료 플랜 제한 포함)",
-      "description": "클로드 커넥터 추가 방법과 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인, 자주 나는 오류 해결법을 한 번에 정리했어요.",
+      "headline": "클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지",
+      "description": "클로드 커넥터 추가방법을 단계별로 알려 드려요. 클로드 커넥터 사용법, 무료 플랜 1개 제한, OAuth 로그인, 자주 나는 오류 해결까지 정리했어요.",
       "inLanguage": "ko",
       "datePublished": "2026-10-25",
       "dateModified": "2026-10-25",
@@ -87,7 +87,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "클로드 커넥터 추가하는 법 (무료 플랜 제한 포함)",
+          "name": "클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지",
           "item": "https://one-by.one/ko/blog/claude-custom-connector/"
         }
       ]
@@ -99,14 +99,17 @@
   <body class="home connect blog">
     <header class="topbar"><div class="topbar-inner"><a class="brand" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/">홈</a><a href="/ko/blog/">블로그</a><a href="/ko/connect/">AI 연결</a></nav></div></header>
     <main>
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="/ko/">홈</a><span aria-hidden="true">/</span><a href="/ko/blog/">블로그</a><span aria-hidden="true">/</span><span aria-current="page">클로드 커넥터 추가하는 법</span></nav>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/ko/">홈</a><span aria-hidden="true">/</span><a href="/ko/blog/">블로그</a><span aria-hidden="true">/</span><span aria-current="page">클로드 커넥터 추가방법</span></nav>
       <article>
-        <h1>클로드 커넥터 추가하는 법 (무료 플랜 제한 포함)</h1>
+        <h1>클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지</h1>
         <p class="meta">one-by.one · <time datetime="2026-10-25">2026년 10월 25일</time> 업데이트</p>
-        <p class="lede">클로드에 커넥터를 붙이는 방법은 두 가지예요. Anthropic 디렉터리에서 골라 연결하거나, 서버 주소(URL)로 직접 추가하거나요. 이 글은 두 방법과 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인이 하는 일, 자주 나는 오류의 해결법을 정리했어요. 예시는 one-by.one이에요.</p>
+        <p class="lede">클로드 커넥터 추가방법은 두 가지예요. Anthropic 디렉터리에서 골라 연결하거나, 서버 주소(URL)로 직접 추가해요. 연결한 뒤의 클로드 커넥터 사용법, 무료 플랜의 커스텀 커넥터 1개 제한, OAuth 로그인이 하는 일, 자주 나는 오류의 해결법도 이 글에 정리했어요. 예시는 one-by.one이에요.</p>
         <p class="app-language">one-by.one 앱 화면은 영어로 제공돼요. 이 글에 나오는 앱 메뉴 이름(Settings, AI apps 등)은 영어 그대로 적었어요.</p>
 
-        <h2 id="two-ways">클로드 커넥터 추가 방법 두 가지</h2>
+        <h2 id="meaning">클로드 커넥터 뜻: 커넥터가 뭔가요?</h2>
+        <p>커넥터는 클로드가 바깥 서비스를 쓰게 해 주는 통로예요. 켜 두면 클로드가 캘린더, 문서 같은 서비스에서 정보를 찾고, 내 권한 안에서 작업까지 대신 해 줘요. 이 통로의 규격이 MCP예요. 자세한 설명은 <a href="/ko/blog/claude-mcp-connect/">클로드 MCP 연결 방법</a>에 있어요.</p>
+
+        <h2 id="two-ways">클로드 커넥터 추가방법 두 가지: 디렉터리와 주소</h2>
         <p>먼저 내가 붙이려는 서비스가 디렉터리에 있는지 보세요. 있으면 디렉터리 쪽이 가장 쉬워요. 없을 때 서버 주소로 추가하는 게 커스텀 커넥터예요.</p>
         <h3>디렉터리에서 연결하기</h3>
         <ol>
@@ -127,9 +130,19 @@
           <li><strong>추가</strong>를 누르고, 나오는 로그인 페이지에서 one-by.one 계정으로 로그인해 승인해요.</li>
           <li>대화에서 <strong>+</strong> &gt; <strong>Connectors</strong>로 가서 스위치를 켜요.</li>
         </ol>
-        <p>단계마다 화면 이름을 더 자세히 보고 싶다면 <a href="/ko/blog/claude-mcp-connect/">클로드 MCP 연결 방법</a>을 보세요. 이 글은 제한과 문제 해결에 무게를 뒀어요.</p>
+        <p>단계마다 화면 이름을 더 자세히 보고 싶다면 <a href="/ko/blog/claude-mcp-connect/">클로드 MCP 연결 방법</a>을 보세요. 이 글은 제한과 문제 해결에 무게를 뒀어요. 연결한 뒤의 쓰는 법은 아래 <a href="#use">클로드 커넥터 사용법</a>에 있어요.</p>
 
-        <h2 id="free">클로드 커넥터 무료 플랜 제한</h2>
+        <h2 id="use">클로드 커넥터 사용법</h2>
+        <p>연결한 커넥터는 웹, 데스크톱, 모바일 대화에서 쓸 수 있어요. 켜고 끄는 건 대화마다 따로 해요.</p>
+        <ol>
+          <li>메시지 입력창 왼쪽 아래 <strong>+</strong>를 누르고 <strong>Connectors</strong>를 골라요.</li>
+          <li>쓰려는 커넥터의 스위치를 켜요. 끄면 그 대화에서만 클로드가 쓰지 않고, 연결은 그대로 남아요.</li>
+          <li>커넥터가 필요한 말을 해 보세요. 클로드가 도구를 쓰기 전에 물으면 <strong>Allow once</strong>나 <strong>Always allow</strong>를 골라요.</li>
+        </ol>
+        <p>도구별 허용 범위는 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 커넥터를 골라 <strong>Tool permissions</strong>로 바꿔요. 각 도구를 Always allow, Needs approval, Blocked 중 하나로 둘 수 있어요.</p>
+        <p>정리할 때는 두 가지가 달라요. <strong>Disconnect</strong>는 클로드의 로그인만 끊고 커넥터는 목록에 남겨 둬서 나중에 다시 <strong>Connect</strong>할 수 있어요. <strong>Remove</strong>는 내 계정에서 커넥터를 아예 없애요. Free 플랜에서 자리를 비우려면 Remove가 필요해요.</p>
+
+        <h2 id="free">클로드 커넥터 무료 플랜 제한: 몇 개까지 되나요?</h2>
         <p>무료(Free) 플랜은 <strong>커스텀 커넥터를 1개</strong>만 추가할 수 있어요. 이 제한은 Anthropic 문서가 Free 플랜에만 적어 둔 내용이에요. 디렉터리 커넥터가 이 1개에 포함되는지는 공식 문서에 나와 있지 않아서 단정하지 않을게요.</p>
         <p>누가 추가할 수 있는지는 플랜마다 달라요.</p>
         <ul>
@@ -143,7 +156,7 @@
         <p>1개만 고를 수 있다면 매일 쓰는 서비스를 고르는 게 좋아요. 자주 쓰지 않는 서비스는 필요할 때 내용을 대화창에 직접 붙여 넣어도 돼요. 내가 지금 어떤 커스텀 커넥터를 쓰고 있는지는 <strong>Customize</strong> &gt; <strong>Connectors</strong> 목록에서 바로 확인할 수 있어요. 한도에 걸렸을 때는 이 목록에서 쓰지 않는 것부터 정리하세요.</p>
         <p>한 가지 구분해 둘게요. 클로드 Free 플랜은 무료지만 one-by.one은 구독 서비스예요. 연간 요금제는 대상 신규 구독자에게 14일 무료 체험이 있고, AI 연결에는 구독이 필요해요. 요금은 <a href="/ko/">홈 페이지</a>에서 볼 수 있어요.</p>
 
-        <h2 id="oauth">OAuth 로그인은 무엇을 하나요?</h2>
+        <h2 id="oauth">클로드 커넥터 연결할 때 OAuth 로그인은 무엇을 하나요?</h2>
         <p>대부분의 커넥터는 OAuth를 써요. 서비스에 직접 로그인해서 권한을 허락하는 방식이라, Anthropic 설명대로 클로드는 내 실제 비밀번호를 보지 못해요. 추가 창에서 만나는 선택지는 이런 뜻이에요.</p>
         <p><strong>인증(Authentication)</strong></p>
         <ul>
@@ -161,17 +174,9 @@
 
         <p>연결을 끊고 싶을 때는 Anthropic이 안내하는 대로 클로드의 설정이나 서비스 쪽 보안 설정, 어느 쪽에서든 권한을 거둘 수 있어요. 승인한 권한은 내가 직접 관리하는 거예요.</p>
 
-        <h2 id="use">클로드 커넥터 사용법</h2>
-        <p>연결한 커넥터는 웹, 데스크톱, 모바일 대화에서 쓸 수 있어요. 켜고 끄는 건 대화마다 따로 해요.</p>
-        <ol>
-          <li>메시지 입력창 왼쪽 아래 <strong>+</strong>를 누르고 <strong>Connectors</strong>를 골라요.</li>
-          <li>쓰려는 커넥터의 스위치를 켜요. 끄면 그 대화에서만 클로드가 쓰지 않고, 연결은 그대로 남아요.</li>
-          <li>커넥터가 필요한 말을 해 보세요. 클로드가 도구를 쓰기 전에 물으면 <strong>Allow once</strong>나 <strong>Always allow</strong>를 골라요.</li>
-        </ol>
-        <p>도구별 허용 범위는 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 커넥터를 골라 <strong>Tool permissions</strong>로 바꿔요. 각 도구를 Always allow, Needs approval, Blocked 중 하나로 둘 수 있어요.</p>
-        <p>정리할 때는 두 가지가 달라요. <strong>Disconnect</strong>는 클로드의 로그인만 끊고 커넥터는 목록에 남겨 둬서 나중에 다시 <strong>Connect</strong>할 수 있어요. <strong>Remove</strong>는 내 계정에서 커넥터를 아예 없애요. Free 플랜에서 자리를 비우려면 Remove가 필요해요.</p>
+        
 
-        <h2 id="errors">자주 나는 오류와 해결법</h2>
+        <h2 id="errors">클로드 커넥터 연결이 안 될 때: 자주 나는 오류와 해결법</h2>
         <ul>
           <li><strong>Team, Enterprise인데 추가 버튼이 없어요.</strong> 구성원은 추가할 수 없어요. Owner에게 부탁하고, 추가된 뒤 직접 Connect하세요.</li>
           <li><strong>Free 플랜에서 더 추가되지 않아요.</strong> 한도(1개)에 걸린 거예요. 기존 커스텀 커넥터를 Remove한 뒤 새로 추가하세요.</li>
@@ -185,7 +190,7 @@
 
         <h2 id="trust">커넥터를 믿기 전에</h2>
         <p>Anthropic은 직접 추가한 커스텀 커넥터를 검증하지 않아요. 그래서 믿을 수 있는 조직의 서버에만 연결하고, 승인 화면의 권한을 꼼꼼히 읽는 게 좋아요. 도구 요청도 살펴보고, Always allow는 믿는 서버에만 쓰세요. 쓰지 않는 커넥터는 꺼 두세요. AI가 one-by.one에서 받는 정보는 <a href="/privacy/#connected-ai">개인정보 처리방침(영어)</a>에 정리돼 있어요.</p>
-        <p>영어로 같은 내용을 보고 싶다면 <a href="/blog/add-custom-connector-in-claude/">How to add a custom connector in Claude</a>를 보세요.</p>
+        <p>영어로 같은 내용을 보고 싶다면 <a href="/blog/add-custom-connector-in-claude/">How to add custom connector in Claude</a>를 보세요.</p>
 
         <aside class="end" aria-labelledby="end-title">
           <h2 id="end-title">클로드를 one-by.one에 연결해 보세요</h2>
