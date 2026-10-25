@@ -53,10 +53,37 @@
 .blog .post-card p { margin: 0 0 8px; font-size: 16px; color: var(--muted); }
 .blog .post-card time { font-size: 14px; color: var(--muted); }
 
+/* Figures: hero under the Updated line, body illustrations, phone screenshots. Illustrations have a light
+   background, so they get rounded corners, and a hairline border in dark mode. */
+.blog figure { margin: 30px 0; }
+.blog figure.post-hero { margin: -8px 0 30px; }
+.blog figure img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.blog figcaption { margin: 10px 2px 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.blog figure.phone { max-width: 280px; margin: 34px auto; }
+.blog figure.phone img { border-radius: 32px; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
+.blog figure.phone figcaption { text-align: center; }
+@media (prefers-color-scheme: dark) {
+  .blog figure img { border: 1px solid var(--line); }
+  .blog figure.phone img { box-shadow: none; }
+}
+
+/* Index cards: thumbnail on the left, text on the right; stacked on a phone. */
+.blog .post-card { display: grid; grid-template-columns: 200px minmax(0, 1fr); column-gap: 20px; align-items: start; }
+.blog .post-card > :not(.thumb) { grid-column: 2; }
+.blog .post-card .thumb { grid-column: 1; grid-row: 1 / span 3; display: block; width: 200px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; }
+@media (prefers-color-scheme: dark) {
+  .blog .post-card .thumb { border: 1px solid var(--line); }
+}
+
 @media (max-width: 600px) {
   .blog main { padding: 32px 16px 64px; }
   .blog .lede { font-size: 18px; }
   .blog article p, .blog article li { font-size: 17px; }
   .blog .end { padding: 20px 18px; }
+  .blog figure { margin: 24px 0; }
+  .blog .post-card { grid-template-columns: 112px minmax(0, 1fr); column-gap: 14px; }
+  .blog .post-card > :not(.thumb) { grid-column: 1 / -1; }
+  .blog .post-card .thumb { grid-column: 1; grid-row: 1; width: 112px; }
+  .blog .post-card > h2:not(.thumb) { grid-column: 2; grid-row: 1; font-size: 18px; }
   .blog .end .btn { flex: 1 1 100%; }
 }
