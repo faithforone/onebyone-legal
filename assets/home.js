@@ -664,7 +664,7 @@
     };
     // Cards that arrived meanwhile (a timer's follow-up) stay, queued after the card that comes back as inject() does.
     const putBack = (snap) => {
-      const arrived = st.cards.filter((c) => !c.idle && !snap.cards.includes(c));
+      const arrived = st.cards.filter((c) => !c.idle && !snap.cards.includes(c) && c !== (snap.held && snap.held.c));
       st.cards = snap.cards.slice();
       let at = snap.i + 1;
       while (st.cards[at] && st.cards[at].due) at++;
