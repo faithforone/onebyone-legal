@@ -662,8 +662,14 @@
         ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
         : { vals: st.vals.slice() },
     };
+    // Cards that arrived meanwhile (a timer's follow-up) stay, queued after the card that comes back as inject() does.
     const putBack = (snap) => {
-      st.cards = snap.cards; st.gone = snap.gone; st.held = snap.held;
+      const arrived = st.cards.filter((c) => !c.idle && !snap.cards.includes(c));
+      st.cards = snap.cards.slice();
+      let at = snap.i + 1;
+      while (st.cards[at] && st.cards[at].due) at++;
+      st.cards.splice(at, 0, ...arrived);
+      st.gone = snap.gone; st.held = snap.held;
       swapTo(snap.i, false, null, snap.opts);
     };
     const skip = () => {
