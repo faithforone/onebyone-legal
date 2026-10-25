@@ -35,6 +35,15 @@
 .blog .end .btn.soft { background: none; box-shadow: inset 0 0 0 1px var(--muted); }
 .blog .end .small { margin: 0; font-size: 14px; }
 
+/* Comparison table: scrolls inside its own wrapper, never the page. */
+.blog article { min-width: 0; }
+.blog .table-wrap { margin: 0 0 22px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.blog .table-wrap table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; line-height: 1.45; }
+.blog .table-wrap caption { padding: 10px 12px; text-align: left; font-size: 14px; color: var(--muted); }
+.blog .table-wrap th, .blog .table-wrap td { padding: 10px 12px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+.blog .table-wrap thead th { font-weight: 600; white-space: nowrap; }
+.blog .table-wrap tbody th { font-weight: 600; white-space: nowrap; }
+
 /* Index */
 .blog .post-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; }
 .blog .post-list li { margin: 0; }

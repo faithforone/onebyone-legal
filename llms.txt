@@ -58,4 +58,10 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 ## Blog
 - [Blog](https://one-by.one/blog/): Guides to planning your day with an AI assistant and running the plan on iPhone.
 - [How to plan your day with Claude](https://one-by.one/blog/plan-your-day-with-claude/): What Claude does well for daily planning, connecting your calendar, a copyable prompt, and where the plan should run.
+- [The ChatGPT daily planner prompt (and why plans fall apart by 11 AM)](https://one-by.one/blog/chatgpt-daily-planner-prompt/): Five copyable ChatGPT daily planner prompts (basic, habits, travel and prep, student and shift worker) and why a chat plan drifts by late morning.
+- [To-do and planner apps that work with Claude and ChatGPT (2026)](https://one-by.one/blog/todo-apps-that-work-with-claude-and-chatgpt/): Todoist, TickTick, Sunsama, Asana, Notion, Things, Reminders, Salta and one-by.one compared: which have a Claude or ChatGPT connector and what it can do.
 - [How to add a custom connector in Claude](https://one-by.one/blog/add-custom-connector-in-claude/): Steps on web, desktop and mobile, the Free plan limit, OAuth sign-in and fixes for common errors, with one-by.one as the example.
+- [Can AI plan my day? What works and what doesn't](https://one-by.one/blog/can-ai-plan-my-day/): What AI plans well (habits, travel, prep, re-plans), what it cannot do alone, and a sample plan.
+- [한국어 블로그](https://one-by.one/ko/blog/) (Korean): Korean guides to connecting Claude to one-by.one.
+- [클로드 MCP 연결 방법: 커넥터 추가부터 모바일까지](https://one-by.one/ko/blog/claude-mcp-connect/) (Korean): What Claude MCP is and how to connect it on web, desktop and mobile.
+- [클로드 커넥터 추가하는 법 (무료 플랜 제한 포함)](https://one-by.one/ko/blog/claude-custom-connector/) (Korean): Korean version of the custom connector guide: Free plan limit, OAuth sign-in and common errors.
