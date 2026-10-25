@@ -54,3 +54,8 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 - [한국어 홈](https://one-by.one/ko/) and [한국어 연결 안내](https://one-by.one/ko/connect/): Korean product pages; the app UI and authoritative legal documents remain English.
 - [Support](https://one-by.one/support/): Connection, subscription and deletion help.
 - [Full factual overview](https://one-by.one/llms-full.txt): More detailed product and policy context.
+
+## Blog
+- [Blog](https://one-by.one/blog/): Guides to planning your day with an AI assistant and running the plan on iPhone.
+- [How to plan your day with Claude](https://one-by.one/blog/plan-your-day-with-claude/): What Claude does well for daily planning, connecting your calendar, a copyable prompt, and where the plan should run.
+- [How to add a custom connector in Claude](https://one-by.one/blog/add-custom-connector-in-claude/): Steps on web, desktop and mobile, the Free plan limit, OAuth sign-in and fixes for common errors, with one-by.one as the example.

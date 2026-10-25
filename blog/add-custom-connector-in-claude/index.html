@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="/assets/styles.css?v=5ae713202e">
+    <title>How to add a custom connector in Claude · one-by.one</title>
+    <meta name="description" content="Add a custom connector in Claude on web, desktop and mobile: the Free plan limit, the OAuth sign-in and fixes for common errors, with a worked example.">
+    <link rel="canonical" href="https://one-by.one/blog/add-custom-connector-in-claude/">
+    <meta name="theme-color" content="#F3F4F5">
+    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/icon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="one-by.one">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="How to add a custom connector in Claude · one-by.one">
+    <meta property="og:description" content="Add a custom connector in Claude on web, desktop and mobile: the Free plan limit, the OAuth sign-in and fixes for common errors, with a worked example.">
+    <meta property="og:url" content="https://one-by.one/blog/add-custom-connector-in-claude/">
+    <meta property="og:image" content="https://one-by.one/assets/og.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="one-by.one: one thing at a time. A row of small cards with the current one in front.">
+    <meta property="article:published_time" content="2026-10-25">
+    <meta property="article:modified_time" content="2026-10-25">
+    <meta property="article:author" content="one-by.one">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to add a custom connector in Claude · one-by.one">
+    <meta name="twitter:description" content="Add a custom connector in Claude on web, desktop and mobile: the Free plan limit, the OAuth sign-in and fixes for common errors, with a worked example.">
+    <meta name="twitter:image" content="https://one-by.one/assets/og.png">
+    <meta name="twitter:image:alt" content="one-by.one: one thing at a time. A row of small cards with the current one in front.">
+    <link rel="stylesheet" href="/assets/home.css?v=8402908fe0">
+    <link rel="stylesheet" href="/assets/connect.css?v=3adaa37c0e">
+    <link rel="stylesheet" href="/assets/blog.css?v=41d1f9e5b6">
+    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://one-by.one/blog/add-custom-connector-in-claude/#article",
+      "headline": "How to add a custom connector in Claude",
+      "description": "Add a custom connector in Claude on web, desktop and mobile: the Free plan limit, the OAuth sign-in and fixes for common errors, with a worked example.",
+      "inLanguage": "en",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "image": "https://one-by.one/assets/og.png",
+      "mainEntityOfPage": "https://one-by.one/blog/add-custom-connector-in-claude/",
+      "url": "https://one-by.one/blog/add-custom-connector-in-claude/",
+      "author": {
+        "@type": "Organization",
+        "name": "one-by.one",
+        "url": "https://one-by.one/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "one-by.one",
+        "url": "https://one-by.one/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://one-by.one/assets/icon.svg"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://one-by.one/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://one-by.one/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to add a custom connector in Claude",
+          "item": "https://one-by.one/blog/add-custom-connector-in-claude/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+  </head>
+  <body class="home connect blog">
+    <header class="topbar"><div class="topbar-inner"><a class="brand" href="/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a></nav></div></header>
+    <main>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">How to add a custom connector in Claude</span></nav>
+      <article>
+        <h1>How to add a custom connector in Claude</h1>
+        <p class="meta">By one-by.one · Updated <time datetime="2026-10-25">October 25, 2026</time></p>
+        <p class="lede">A custom connector lets Claude use a service that is not in Anthropic&rsquo;s directory, as long as you have its remote MCP server URL. This guide adds one step by step, using one-by.one as the example, then covers the Free plan limit and the errors people hit most.</p>
+
+        <h2 id="need">What you need before you start</h2>
+        <ul>
+          <li><strong>A Claude account.</strong> Custom connectors work on the Free, Pro, Max, Team and Enterprise plans. A Free account can add one.</li>
+          <li><strong>The connector&rsquo;s server URL.</strong> It is the HTTPS address where the service accepts MCP requests. Ours is below.</li>
+          <li><strong>An account with the service.</strong> For one-by.one that is a one-by.one account, which you create in the iPhone app (coming soon).</li>
+        </ul>
+        <div class="copy-block"><div class="url"><pre tabindex="0" aria-label="MCP server URL"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button type="button" data-copy="server-url" aria-label="MCP server URL Copy" hidden>Copy</button></div><span role="status" aria-live="polite"></span></div>
+        <p>One more fact explains most failures later. Claude connects to the server from Anthropic&rsquo;s cloud, not from your device, and that includes the mobile apps. So the server has to be reachable from the public internet.</p>
+
+        <h2 id="web">How to add a custom connector in Claude on the web</h2>
+        <p>These steps are for the Free, Pro and Max plans. Anthropic notes that the dialog varies by organization: some show a name, a URL and Advanced settings on one screen, others take two steps.</p>
+        <ol>
+          <li>Go to <strong>Customize</strong>, then <strong>Connectors</strong>.</li>
+          <li>Click <strong>Add custom connector</strong>.</li>
+          <li>Enter a name and the server URL. For us, the name is <code>one-by.one</code> and the URL is <code>https://mcp.one-by.one/mcp</code>.</li>
+          <li>If it asks for <strong>Authentication</strong>, choose <strong>Sign in now</strong>. If it asks for an <strong>OAuth client</strong>, choose <strong>Register automatically</strong>, which matches one-by.one&rsquo;s dynamic client registration.</li>
+          <li>Click <strong>Add</strong>.</li>
+          <li>Finish the sign-in. Claude takes you to one-by.one&rsquo;s sign-in page. Sign in with your one-by.one account, check the app name and permissions, and approve. The approval screen may say &ldquo;Unverified app.&rdquo; That is normal for a client we have not verified; just check it is the one you meant to connect.</li>
+          <li>Turn it on in a chat: select <strong>+</strong> at the lower left of the message box, choose <strong>Connectors</strong>, and switch on <strong>one-by.one</strong>. The switch is per conversation.</li>
+        </ol>
+        <p>When Claude wants to use one of the connector&rsquo;s tools it may ask first. <strong>Allow once</strong> is the cautious choice. <strong>Always allow</strong> skips the prompt for that tool from then on.</p>
+        <h3>Claude Desktop, Team and Enterprise</h3>
+        <p>Claude Desktop uses the same Customize and Connectors screen. On Team and Enterprise plans a member cannot add a custom connector. An Owner does it under <strong>Organization settings</strong>, then <strong>Connectors</strong> (<strong>Add</strong>, <strong>Custom</strong>, then <strong>Web</strong> if asked). On Enterprise, a custom role that manages the organization&rsquo;s libraries can do it too. Each member then opens <strong>Customize</strong>, <strong>Connectors</strong>, finds the connector labeled <strong>Custom</strong> and clicks <strong>Connect</strong>.</p>
+
+        <h2 id="mobile">How to add a custom connector in Claude on mobile</h2>
+        <p>Add it on the web or in Claude Desktop first. Anthropic documents adding a custom connector there, and does not publish steps for adding one from the iPhone or Android app, so we will not invent any.</p>
+        <p>After that it should follow you. Anthropic says connected connectors are available in your conversations on web, desktop and mobile, and that the mobile app supports remote connectors. Its help article says a connector you set up on the web shows up the next time you log in on Claude for iOS or Android. Open a chat and look for the connector in the message box&rsquo;s <strong>+</strong> menu.</p>
+        <p>Do not mix this up with the one-by.one app. The cards live in that app. The Claude connector is only how Claude sends plans to it.</p>
+
+        <h2 id="free">Claude custom connectors on the free plan</h2>
+        <p>A Free account can add <strong>one</strong> custom connector. Anthropic states that limit for the Free plan only. Claude itself costs nothing for this, but one-by.one is a subscription (the yearly plan has a 14-day free trial for eligible new subscribers), and AI connections need it. Existing data stays readable.</p>
+        <p>To swap connectors, go to <strong>Customize</strong>, <strong>Connectors</strong>, open the three-dot menu and select <strong>Remove</strong>, then add the new one. You can edit a connector&rsquo;s name or URL, but not its authentication settings. To change those, remove the connector and add it again.</p>
+
+        <h2 id="oauth">What the OAuth sign-in does</h2>
+        <p>Most connectors use OAuth. You sign in to the service and grant permissions, and Anthropic says Claude never sees your password. one-by.one needs no API key or token. It asks for three permissions: <code>context:read</code> (the context you share for planning), <code>activity:read</code> (your plans and recorded activity) and <code>activity:write</code> (create or update plans and save activity). You can connect up to three AI apps to one account.</p>
+        <p>To disconnect, select the connector under <strong>Customize</strong>, <strong>Connectors</strong> and choose <strong>Disconnect</strong>, or tap Disconnect in Settings, AI apps in the iPhone app. This stops future access. It does not delete your one-by.one records or what the AI already received.</p>
+
+        <h2 id="errors">Common errors and how to fix them</h2>
+        <ul>
+          <li><strong>You cannot add a custom connector (Team or Enterprise).</strong> Ask an Owner to add it. Then connect it yourself from Customize, Connectors.</li>
+          <li><strong>You hit the limit (Free).</strong> Remove your existing custom connector, then add the new one.</li>
+          <li><strong>It times out or cannot reach the server.</strong> The server must be reachable from Anthropic&rsquo;s cloud. Working from your own laptop is not enough. For one-by.one, check you typed the URL exactly, with <code>https://</code> and <code>/mcp</code> at the end.</li>
+          <li><strong>Sign-in fails or loops.</strong> Select the connector in Customize, Connectors, choose Disconnect, then connect again.</li>
+          <li><strong>&ldquo;This corporate identity belongs to an Enterprise that manages access through their own Claude account.&rdquo;</strong> Sign in to your organization&rsquo;s Claude account, or contact your admin.</li>
+          <li><strong>It is connected but Claude does not use it.</strong> Turn it on in this chat under <strong>+</strong>, <strong>Connectors</strong>. Also check the connector&rsquo;s tool permissions in Customize; a tool set to Blocked will not run.</li>
+          <li><strong>The row says Reconnect.</strong> Claude lost access. Select Reconnect and sign in again.</li>
+          <li><strong>Wrong authentication choice.</strong> It cannot be edited. Remove the connector and add it again.</li>
+          <li><strong>one-by.one refuses the connection.</strong> Three AI apps are already connected, so disconnect one. Or the subscription has lapsed, which makes AI connections return SUBSCRIPTION_REQUIRED. Or you do not have an account yet.</li>
+        </ul>
+
+        <h2 id="trust">Before you trust any custom connector</h2>
+        <p>Anthropic does not verify custom connectors. A remote server can give Claude tools that read, change or delete data. So connect only to organizations you trust, read the permissions on the approval screen, review tool requests, use <strong>Always allow</strong> only for servers you trust, and turn off connectors you are not using. Our <a href="/privacy/">privacy policy</a> says what your AI receives from one-by.one.</p>
+        <p>Once it works, you can <a href="/blog/plan-your-day-with-claude/">plan your day with Claude</a> and send the plan to your iPhone.</p>
+
+        <aside class="end" aria-labelledby="end-title">
+          <h2 id="end-title">Connect Claude to one-by.one</h2>
+          <p>The Connect page has the same steps for ChatGPT, Claude Code and other MCP apps, plus a prompt your AI can follow.</p>
+          <p class="cta-row"><a class="btn" href="/connect/">Open the Connect page</a><a class="btn soft" href="/#notify">Get launch updates</a></p>
+          <p class="small">one-by.one is coming soon to iPhone. Availability varies by country; see the <a href="/terms/#launch-scope">launch scope</a>.</p>
+        </aside>
+
+        <h2 id="sources">Sources</h2>
+        <ul class="sources">
+          <li><a href="https://claude.com/docs/connectors/custom/add-unlisted">Anthropic: Add a connector that isn&rsquo;t in the directory</a></li>
+          <li><a href="https://claude.com/docs/connectors/getting-started">Anthropic: Get started with connectors</a></li>
+          <li><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Claude Help Center: Get started with custom connectors using remote MCP</a></li>
+          <li><a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Claude Help Center: Use connectors to extend Claude&rsquo;s capabilities</a></li>
+          <li><a href="/connect/">one-by.one: Connect an AI app</a></li>
+        </ul>
+      </article>
+    </main>
+    <footer><div class="shell footer-inner"><nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav><div class="footer-end"><span>© 2026 one-by.one</span></div></div>
+    </footer>
+  </body>
+</html>

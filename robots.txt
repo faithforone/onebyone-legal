@@ -1,4 +1,6 @@
-# Public discovery pages; ko/ja mirrors and 404 use HTML noindex directives.
+# Public discovery pages. Indexable: the English pages, the blog and the Korean home and Connect (/ko/, /ko/connect/).
+# HTML noindex,follow: the English-fallback mirrors under /ko/privacy, /ko/terms, /ko/support and every /ja/ page, plus 404.
+# HTML noindex: /welcome/ (reached only after sign-up).
 
 User-agent: *
 Allow: /
