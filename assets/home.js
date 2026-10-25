@@ -7,7 +7,7 @@
   // The demo's own words (buttons, menu, labels, announcements). English is the default; <html lang="ko"> swaps the table.
   const T = ko ? {
     start: "시작", done: "완료", track: "맡기기", waiting: "대기 중", paused: "일시정지됨", resume: "다시 시작", held: "보류 중",
-    skip: "건너뛰기", notToday: "오늘은 넘기기", remove: "삭제", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
+    skip: "건너뛰기", dismiss: "오늘은 빼기", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
     ready: "시간 됐어요", restOver: "휴식 끝", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     dueAria: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     left: (c) => `${c} 남음`, speed: "여기서는 시간을 건너뛰어 보여 줘요",
@@ -15,7 +15,7 @@
     trayLabel: (n) => `타이머 ${n}개 실행 중`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)}분` : "1분 미만"} 남음`,
     timerStarted: (n, m) => `${n} 타이머를 ${m}분으로 시작했어요.`, confirm: (n) => `${n} 확인`,
     stepLabel: (r, dir) => `${r.l} ${dir < 0 ? "줄이기" : "늘리기"}`,
-    skipped: "건너뛰었어요. 다음 카드 뒤에 다시 나와요.", removed: "삭제했어요. 왼쪽 위의 되돌리기로 취소할 수 있어요.", aside: "오늘은 넘겼어요",
+    skipped: "건너뛰었어요. 다음 카드 뒤에 다시 나와요. 왼쪽 위의 되돌리기로 취소할 수 있어요.", dismissed: "오늘은 뺐어요. 왼쪽 위의 되돌리기로 취소할 수 있어요.", asideToast: "오늘은 뺐어요. 되돌리기는 왼쪽 위에 있어요",
     paused2: "일시정지했어요.", resumed: "다시 시작했어요.",
     idleT: "지금 할 일이 없어요", idleNote: (n, then) => `${n} 타이머가 끝나면 ‘${then}’ 차례예요.`,
     waitT: "아직 없어요", waitNote: "AI에게 지금 생각나는 일을 말해 보세요. 카드가 여기로 와요.",
@@ -23,7 +23,7 @@
     suggested: "제안", added: "추가됨",
   } : {
     start: "Start", done: "Done", track: "Keep track", waiting: "Waiting", paused: "Paused", resume: "Resume", held: "Held",
-    skip: "Skip", notToday: "Not today", remove: "Remove", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
+    skip: "Skip", dismiss: "Dismiss", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
     ready: "Time’s up", restOver: "Rest’s over", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
     dueAria: (n, next) => `${n}, due. ${next} is next.`,
     left: (c) => `${c} left`, speed: "Time skips ahead in this demo",
@@ -31,7 +31,7 @@
     trayLabel: (n) => `Timers, ${n} running`, ballLabel: (n, s) => `${n}, ${s >= 60 ? `${Math.ceil(s / 60)} minutes` : "under a minute"} left`,
     timerStarted: (n, m) => `${n} timer started, ${m} minutes.`, confirm: (n) => `Confirm: ${n}`,
     stepLabel: (r, dir) => `${dir < 0 ? (r.u === "reps" ? "Fewer" : "Less") : "More"} ${r.l.toLowerCase()}`,
-    skipped: "Skipped. It comes back after the next card.", removed: "Removed. Undo is at the top left.", aside: "Set aside for today",
+    skipped: "Skipped. It comes back after the next card. Undo is at the top left.", dismissed: "Dismissed. Undo is at the top left.", asideToast: "Dismissed. Undo is at the top left",
     paused2: "Paused.", resumed: "Resumed.",
     idleT: "Nothing to do now", idleNote: (n, then) => `${then} comes when the ${n.toLowerCase()} is ready.`,
     waitT: "Nothing yet", waitNote: "Tell your AI what’s on your mind. The cards land here.",
@@ -180,7 +180,7 @@
   const plus = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg>';
   const xIcon = '<svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg>';
   const icon = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
-  const skipIcon = icon("M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"), moonIcon = icon("M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"), trashIcon = icon("M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5");
+  const skipIcon = icon("M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"), moonIcon = icon("M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z");
   const playIcon = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l10 6.5-10 6.5z"/></svg>';
   const clockText = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;
   // Demo timers are decorative, and no visible number ever changes faster than once per real second.
@@ -204,9 +204,9 @@
   const pillHTML = (label, k, off, glyph = arrow) =>
     `<button class="go" type="button" aria-label="${label}"${off ? ' aria-disabled="true"' : ""}><span class="go-lay" aria-hidden="true"><span class="go-t">${label}</span><b>${glyph}</b></span>` +
     `<span class="go-lit" aria-hidden="true" style="transform:translateX(${shift(k)})"><span class="go-lay" style="transform:translateX(${shift(2 - k)})"><span class="go-t">${label}</span><b>${glyph}</b></span></span></button>`;
-  // Not today and Remove sit side by side; the first tap joins them into one named button, the second does it.
-  const pairHTML = `<div class="pair"><button class="ab nt" type="button" data-name="${T.notToday}" aria-label="${T.notToday}">${moonIcon}<span>${T.notToday}</span></button><button class="ab rm" type="button" data-name="${T.remove}" aria-label="${T.remove}">${trashIcon}<span>${T.remove}</span></button></div>`;
-  // The ⋯ opens the stub split: Skip, Not today, Remove, with the pill slid aside.
+  // Dismiss sits beside Skip; the first tap widens it into one named button, the second does it (Dismiss can be undone, as in the app).
+  const pairHTML = `<div class="pair"><button class="ab nt" type="button" data-name="${T.dismiss}" aria-label="${T.dismiss}">${moonIcon}<span>${T.dismiss}</span></button></div>`;
+  // The ⋯ opens the stub split: Skip and Dismiss, with the pill slid aside.
   const moreHTML = (menu, c) => menu && !c.idle
     ? `<button class="t-more" type="button" aria-label="${T.more}" aria-expanded="false">${dots}${xIcon}</button>`
     : `<span class="t-more${c.idle ? " off" : ""}" aria-hidden="true">${dots}</span>`;
@@ -598,7 +598,7 @@
       nextAnims = [down, nextEl.animate([{ transform: "translateY(-34px)" }, { transform: "translateY(0)" }], { duration: 300, delay: 90, easing: "cubic-bezier(.22,.8,.26,1)", fill: "backwards" })];
     };
 
-    // The card's ⋯ (the stub splits into Skip · Not today · Remove), the Up next queue, Undo and Pause.
+    // The card's ⋯ (the stub splits into Skip · Dismiss), the Up next queue, Undo and Pause.
     const sheet = $(".sheet", root), upBtn = menu ? $("button.upnext", root) : null;
     const inertOf = (el, on) => { if (el) { if (on) el.setAttribute("inert", ""); else el.removeAttribute("inert"); } };
     const toastEl = menu && sheet ? Object.assign(document.createElement("p"), { className: "toast" }) : null;
@@ -625,14 +625,14 @@
     const disarm = () => {
       const a = st.armed;
       if (!a) return false;
-      st.armed = null; a.host.classList.remove("arm-nt", "arm-rm");
+      st.armed = null; a.host.classList.remove("arm-nt");
       $$(".ab", a.host).forEach((b) => b.setAttribute("aria-label", b.dataset.name));
       return true;
     };
-    const arm = (host, remove) => {
-      disarm(); st.armed = { host, remove };
-      host.classList.add(remove ? "arm-rm" : "arm-nt");
-      const b = $(remove ? ".ab.rm" : ".ab.nt", host);
+    const arm = (host) => {
+      disarm(); st.armed = { host };
+      host.classList.add("arm-nt");
+      const b = $(".ab.nt", host);
       b.setAttribute("aria-label", T.confirm(b.dataset.name));
     };
     const setMenu = (on) => {
@@ -643,8 +643,8 @@
       inertOf(row, !on); inertOf($(".go", t), on);
       if (on) { closeQueue(); setOpen(false); $(".m-skip", t).hidden = st.cards.length - st.i < 2 || (!!st.held && st.held.by === card()); }
     };
-    // Skip puts the card one place back, right after the next one (as the app does); Not today sets it aside for today and
-    // Remove takes it out (Remove can be undone for a few seconds).
+    // Skip puts the card one place back, right after the next one (as the app does); Dismiss sets it aside for today.
+    // Both can be undone for a few seconds with the Undo at the top left (the app offers Undo for them; there is no Remove in 1.0).
     const advance = () => {
       if (st.held && !st.cards.includes(st.held.by)) {
         const h = st.held; st.held = null; st.cards.splice(st.i, 0, h.c); swapTo(st.i, false, null, { restore: h }); return;
@@ -655,21 +655,30 @@
     };
     const skip = () => {
       if (st.cards.length - st.i < 2) return;
+      const c = st.cards[st.i];
       st.cards.splice(st.i + 1, 0, st.cards.splice(st.i, 1)[0]);
-      say(T.skipped); advance();
+      setUndo({ c, skip: true }); say(T.skipped); advance();
     };
-    const putAside = (c, remove) => {
+    const putAside = (c) => {
       const at = st.cards.indexOf(c);
       if (at < 0) return;
       st.cards.splice(at, 1); st.gone.add(c); st.sel = null;
       st.timers.filter((x) => x.card === c).forEach((x) => closeBall(x));
-      if (remove) { setUndo({ c, at }); say(T.removed); } else toast(T.aside);
+      setUndo({ c, at }); say(T.dismissed); toast(T.asideToast);
       if (at === st.i) advance(); else { showNext(true); refreshQueue(); }
     };
     const restore = () => {
       const u = st.undo;
       if (!u) return;
       setUndo(null);
+      if (u.skip) {
+        // Put a skipped card back in front, if it is still waiting behind the current one.
+        const from = st.cards.indexOf(u.c);
+        if (from <= st.i) return;
+        st.cards.splice(st.i, 0, st.cards.splice(from, 1)[0]);
+        swapTo(st.i, false);
+        return;
+      }
       st.cards = st.cards.filter((c) => !c.idle); st.gone.delete(u.c);
       const at = Math.min(u.at, st.cards.length);
       st.cards.splice(at, 0, u.c);
@@ -748,9 +757,9 @@
         if (t.closest(".m-skip")) { skip(); return; }
         const ab = t.closest(".ab");
         if (ab) {
-          const host = ab.closest(".armable"), remove = ab.classList.contains("rm");
-          if (st.armed && st.armed.host === host && st.armed.remove === remove) putAside(host.classList.contains("ticket") ? card() : st.qcards[Number(host.dataset.n)], remove);
-          else arm(host, remove);
+          const host = ab.closest(".armable");
+          if (st.armed && st.armed.host === host) putAside(host.classList.contains("ticket") ? card() : st.qcards[Number(host.dataset.n)]);
+          else arm(host);
           return;
         }
         const row = t.closest(".qrow");
@@ -1455,11 +1464,18 @@
   }));
 
   // Launch switch. Before launch every [data-cta] opens the small "launch updates" dialog.
-  // TODO(launch): when the app is on the App Store, set LAUNCH = true and put the real App Store URL below.
+  // TODO(launch): when the app is on the App Store, set LAUNCH = true (APP_STORE_URL below is already the real link).
+  // These static texts are not changed by this script and must also be edited by hand at launch:
+  //   - "Coming soon" meta, og: and twitter: descriptions: index.html, ko/index.html
+  //   - JSON-LD: SoftwareApplication description / availability, and the FAQ "Is it available on Android?" answer
+  //     ("coming soon to iPhone"), in the FAQPage JSON-LD and the visible FAQ together (check_site.py compares them): index.html, ko/index.html
+  //   - the "Coming soon to iPhone" first sentences: llms.txt, llms-full.txt
+  //   - the no-JS fallback wording of [data-cta] buttons, the hero pill and the notify heading (their data-launch-text covers script users only): index.html, ko/index.html
+  //   - the launch waitlist section/dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
   // This is the only place to change: each [data-cta] becomes a link to the App Store and
   // each [data-launch-text] (button, section heading, hero pill) shows the text in its attribute.
   const LAUNCH = false;
-  const APP_STORE_URL = "https://apps.apple.com/app/id0000000000";
+  const APP_STORE_URL = "https://apps.apple.com/app/id6766732077";
 
   const dialog = $("[data-notify-dialog]");
   if (LAUNCH) {

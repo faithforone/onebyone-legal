@@ -391,7 +391,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .own { margin-top: 20px; max-width: 480px; }
 .own label { display: block; font-size: 15px; font-weight: 500; margin-bottom: 8px; }
 .own textarea { width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--page); color: var(--text); font: inherit; font-size: 16px; resize: none; line-height: 1.45; min-height: 46px; max-height: 360px; overflow-y: auto; box-sizing: border-box; }
-.own-note { margin: 8px 0 0; font-size: 14px; color: var(--hush); }
+.own-note { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
 .jobs .device { justify-self: center; }
 /* Pricing */
 .pricing { max-width: 520px; margin: 140px auto 0; padding: 0 24px; text-align: center; }
