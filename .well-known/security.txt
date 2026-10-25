@@ -1,0 +1,4 @@
+Contact: mailto:support@one-by.one
+Expires: 2027-10-25T00:00:00.000Z
+Preferred-Languages: en, ko
+Canonical: https://one-by.one/.well-known/security.txt

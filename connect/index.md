@@ -1,6 +1,6 @@
 # Connect any MCP agent to one-by.one
 
-Machine-readable version of https://one-by.one/connect/ (Korean page: https://one-by.one/ko/connect/). Last updated: 2026-10-05. English only.
+Machine-readable version of https://one-by.one/connect/ (Korean page: https://one-by.one/ko/connect/). Last updated: 2026-10-25. English only.
 
 one-by.one is an iPhone app. A person's AI (ChatGPT, Claude, Claude Code, Codex CLI, Cursor or any MCP agent) plans their day into small cards, and the iPhone shows one card at a time. This page tells an AI agent, or the person using one, how to connect to the one-by.one MCP server.
 
@@ -177,6 +177,24 @@ In Cascade, open the "..." Actions menu > MCPs > Open MCP config file. Merge thi
 ### Any other MCP agent
 
 Use `https://mcp.one-by.one/mcp` with remote Streamable HTTP and OAuth. The client must support OAuth discovery and dynamic client registration. Check the tool's own documentation for its configuration format.
+
+## Example prompts
+
+After connecting, try:
+
+- "Here is my week: I work 9 to 6 Monday to Friday, and I have a dentist visit Thursday at 4. Plan it, including getting there and back."
+- "I am behind today. Lighten the rest of the day and move what can wait."
+- "I just walked for 20 minutes and read for half an hour. Record that."
+- "Look at what I actually did last week and tell me what to change this week."
+
+## Troubleshooting
+
+- **The sign-in page does not open.** Your app must support OAuth sign-in with automatic client registration. Remove the connection, add it again and retry.
+- **The limit of 3 connections is reached.** Disconnect one you no longer use in Settings › AI apps in the iPhone app, then connect again.
+- **The tools do not appear in a chat.** Turn the connector on for that conversation, or start a new chat.
+- **Access is refused after sign-in.** AI connections need your account's subscription access. Check it in the iPhone app.
+- **Cards do not show on the iPhone.** Make sure the iPhone app and your AI app are signed in to the same one-by.one account.
+- Still stuck? Contact support: https://one-by.one/support/
 
 ## Disconnecting
 

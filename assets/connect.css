@@ -66,3 +66,7 @@
   .connect .url button { min-height: 44px; }
 
 }
+
+.connect dl { margin: 0; }
+.connect dt { font-weight: 650; margin-top: 14px; }
+.connect dd { margin: 4px 0 0; }
