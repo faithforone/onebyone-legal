@@ -654,14 +654,23 @@
       else { st.cards = fresh(); swapTo(0, false); }
     };
     // What Undo needs to print the card back as it was: its amounts, and where its run had got to (it returns held, as after a timer).
-    const snapOf = (c) => c !== card() ? null : st.phase === "run"
-      ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
-      : { vals: st.vals.slice() };
+    // When the card in front goes, Undo puts the whole deck back as it was (order, set-aside cards, a held card).
+    const snapOf = (c) => c !== card() ? null : {
+      cards: st.cards.slice(), i: st.i, gone: new Set(st.gone),
+      held: st.held && { ...st.held, vals: st.held.vals.slice() },
+      opts: st.phase === "run"
+        ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
+        : { vals: st.vals.slice() },
+    };
+    const putBack = (snap) => {
+      st.cards = snap.cards; st.gone = snap.gone; st.held = snap.held;
+      swapTo(snap.i, false, null, snap.opts);
+    };
     const skip = () => {
       if (st.cards.length - st.i < 2) return;
       const c = st.cards[st.i], snap = snapOf(c);
       st.cards.splice(st.i + 1, 0, st.cards.splice(st.i, 1)[0]);
-      setUndo({ c, skip: true, snap }); say(T.skipped); advance();
+      setUndo({ c, snap }); say(T.skipped); advance();
     };
     const putAside = (c) => {
       const at = st.cards.indexOf(c);
@@ -676,19 +685,12 @@
       const u = st.undo;
       if (!u) return;
       setUndo(null);
-      if (u.skip) {
-        // Put a skipped card back in front, if it is still waiting behind the current one.
-        const from = st.cards.indexOf(u.c);
-        if (from <= st.i) return;
-        st.cards.splice(st.i, 0, st.cards.splice(from, 1)[0]);
-        swapTo(st.i, false, null, u.snap || {});
-        return;
-      }
+      if (u.snap) { putBack(u.snap); return; }
       // The deck may have refilled after the last card went; the card comes back once, not twice.
       st.cards = st.cards.filter((c) => !c.idle && c !== u.c); st.gone.delete(u.c);
       const at = Math.min(u.at, st.cards.length);
       st.cards.splice(at, 0, u.c);
-      if (at <= st.i) swapTo(at, false, null, u.snap || {}); else { showNext(true); refreshQueue(); }
+      if (at <= st.i) swapTo(at, false); else { showNext(true); refreshQueue(); }
     };
     const doNow = (c) => {
       const j = st.cards.indexOf(c);
