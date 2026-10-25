@@ -653,18 +653,23 @@
       else if (soonest()) { st.cards.push(idleCard()); swapTo(st.i, false); }
       else { st.cards = fresh(); swapTo(0, false); }
     };
+    // What Undo needs to print the card back as it was: its amounts, and where its run had got to (it returns held, as after a timer).
+    const snapOf = (c) => c !== card() ? null : st.phase === "run"
+      ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
+      : { vals: st.vals.slice() };
     const skip = () => {
       if (st.cards.length - st.i < 2) return;
-      const c = st.cards[st.i];
+      const c = st.cards[st.i], snap = snapOf(c);
       st.cards.splice(st.i + 1, 0, st.cards.splice(st.i, 1)[0]);
-      setUndo({ c, skip: true }); say(T.skipped); advance();
+      setUndo({ c, skip: true, snap }); say(T.skipped); advance();
     };
     const putAside = (c) => {
       const at = st.cards.indexOf(c);
       if (at < 0) return;
+      const snap = snapOf(c);
       st.cards.splice(at, 1); st.gone.add(c); st.sel = null;
       st.timers.filter((x) => x.card === c).forEach((x) => closeBall(x));
-      setUndo({ c, at }); say(T.dismissed); toast(T.asideToast);
+      setUndo({ c, at, snap }); say(T.dismissed); toast(T.asideToast);
       if (at === st.i) advance(); else { showNext(true); refreshQueue(); }
     };
     const restore = () => {
@@ -676,13 +681,14 @@
         const from = st.cards.indexOf(u.c);
         if (from <= st.i) return;
         st.cards.splice(st.i, 0, st.cards.splice(from, 1)[0]);
-        swapTo(st.i, false);
+        swapTo(st.i, false, null, u.snap || {});
         return;
       }
-      st.cards = st.cards.filter((c) => !c.idle); st.gone.delete(u.c);
+      // The deck may have refilled after the last card went; the card comes back once, not twice.
+      st.cards = st.cards.filter((c) => !c.idle && c !== u.c); st.gone.delete(u.c);
       const at = Math.min(u.at, st.cards.length);
       st.cards.splice(at, 0, u.c);
-      if (at <= st.i) swapTo(at, false); else { showNext(true); refreshQueue(); }
+      if (at <= st.i) swapTo(at, false, null, u.snap || {}); else { showNext(true); refreshQueue(); }
     };
     const doNow = (c) => {
       const j = st.cards.indexOf(c);
@@ -795,7 +801,7 @@
       const here = card();
       st.timers.filter((x) => x.card === here).forEach((x) => closeBall(x));
       if (st.queue) renderQueue(false);
-      st.vals = opts.restore ? opts.restore.vals.slice() : (here.amt || []).map((r) => r.v);
+      st.vals = opts.restore ? opts.restore.vals.slice() : opts.vals ? opts.vals.slice() : (here.amt || []).map((r) => r.v);
       st.phase = opts.restore ? "run" : startsHere() || here.notStarted ? "ready" : "run";
       const t = document.createElement("div");
       t.className = "ticket armable inc";
