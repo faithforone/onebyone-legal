@@ -463,6 +463,7 @@
     // A timer that is up turns red and pops; its card is queued as the next one (after any other due cards), the current card is not touched.
     // Tapping the due ball brings it now: the current card is held (frozen like Pause) and the due card pops out of the ball.
     const inject = (c, tm) => {
+      setUndo(null);
       const here = card();
       if (here && here.idle) { st.cards.splice(st.i, 1, c); swapTo(st.i, false, null, { pop: !still() && tm && tm.el.isConnected ? rectIn(tm.el) : null }); return; }
       let at = st.i + 1;
@@ -494,7 +495,7 @@
     const bring = (tm) => {
       const due = tm.card, j = st.cards.indexOf(due);
       if (j <= st.i) return;
-      setMenu(false); closeQueue(); setOpen(false);
+      setUndo(null); setMenu(false); closeQueue(); setOpen(false);
       const pop = still() ? null : rectIn(tm.el), here = card();
       if (st.phase === "run") {
         st.held = { c: here, by: due, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 };
@@ -654,20 +655,32 @@
       else { st.cards = fresh(); swapTo(0, false); }
     };
     // What Undo needs to print the card back as it was: its amounts, and where its run had got to (it returns held, as after a timer).
-    const snapOf = (c) => c !== card() ? null : st.phase === "run"
-      ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
-      : { vals: st.vals.slice() };
+    // When the card in front goes, Undo puts the whole deck back as it was (order, set-aside cards, a held card).
+    const snapOf = (c) => c !== card() ? null : {
+      cards: st.cards.slice(), i: st.i, gone: new Set(st.gone),
+      held: st.held && { ...st.held, vals: st.held.vals.slice() },
+      opts: st.phase === "run"
+        ? { restore: { c, vals: st.vals.slice(), elapsed: st.paused ? st.elapsed : performance.now() - st.t0 } }
+        : { vals: st.vals.slice() },
+    };
+    // Exact: anything else that changes the deck (Done, a timer's card arriving, bringing a card) ends the Undo window first.
+    const putBack = (snap) => {
+      st.cards = snap.cards.slice(); st.gone = snap.gone; st.held = snap.held;
+      swapTo(snap.i, false, null, snap.opts);
+    };
     const skip = () => {
       if (st.cards.length - st.i < 2) return;
       const c = st.cards[st.i], snap = snapOf(c);
       st.cards.splice(st.i + 1, 0, st.cards.splice(st.i, 1)[0]);
-      setUndo({ c, skip: true, snap }); say(T.skipped); advance();
+      setUndo({ c, snap }); say(T.skipped); advance();
     };
     const putAside = (c) => {
       const at = st.cards.indexOf(c);
       if (at < 0) return;
       const snap = snapOf(c);
       st.cards.splice(at, 1); st.gone.add(c); st.sel = null;
+      // A held card waiting on this one now comes back after the card in front.
+      if (st.held && st.held.by === c && at !== st.i) st.held.by = card();
       st.timers.filter((x) => x.card === c).forEach((x) => closeBall(x));
       setUndo({ c, at, snap }); say(T.dismissed); toast(T.asideToast);
       if (at === st.i) advance(); else { showNext(true); refreshQueue(); }
@@ -676,24 +689,17 @@
       const u = st.undo;
       if (!u) return;
       setUndo(null);
-      if (u.skip) {
-        // Put a skipped card back in front, if it is still waiting behind the current one.
-        const from = st.cards.indexOf(u.c);
-        if (from <= st.i) return;
-        st.cards.splice(st.i, 0, st.cards.splice(from, 1)[0]);
-        swapTo(st.i, false, null, u.snap || {});
-        return;
-      }
+      if (u.snap) { putBack(u.snap); return; }
       // The deck may have refilled after the last card went; the card comes back once, not twice.
       st.cards = st.cards.filter((c) => !c.idle && c !== u.c); st.gone.delete(u.c);
       const at = Math.min(u.at, st.cards.length);
       st.cards.splice(at, 0, u.c);
-      if (at <= st.i) swapTo(at, false, null, u.snap || {}); else { showNext(true); refreshQueue(); }
+      if (at <= st.i) swapTo(at, false); else { showNext(true); refreshQueue(); }
     };
     const doNow = (c) => {
       const j = st.cards.indexOf(c);
       if (j <= st.i) return;
-      st.cards.splice(j, 1); st.cards.splice(st.i, 0, c);
+      setUndo(null); st.cards.splice(j, 1); st.cards.splice(st.i, 0, c);
       closeQueue(); swapTo(st.i, false);
     };
     // The queue: the cards after this one, nearest at the bottom, rolling out above the Up next line.
