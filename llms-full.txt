@@ -1,25 +1,25 @@
 # one-by.one — factual product and policy overview
 
-Coming soon to iPhone. English-only product for users aged 16 and over. This overview summarizes product facts and the English legal pages dated October 15, 2026. The privacy policy and terms contain the full legal wording.
+Coming soon to iPhone. English-only product for users aged 16 and over. This overview summarizes product facts and the English legal pages dated October 25, 2026. The privacy policy and terms contain the full legal wording.
 
 ## Launch scope and language
-Last updated: October 15, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+Last updated: October 25, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
 
 ## Product and workflow
-one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Claude and MCP-capable personal assistants. You tell your AI what you want to do. With an approved MCP connection, it plans your day as an ordered queue of cards. The phone shows one card at a time: Start, Done, Not today and Undo for mistaken taps. There is no Android version yet.
+one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Claude and MCP-capable personal assistants. You tell your AI what you want to do. With an approved MCP connection, it plans your day as an ordered queue of cards. The phone shows one card at a time: Start, Done, Skip, Dismiss and Undo for mistaken taps. There is no Android version yet.
 
-One card is one doable action. Long tasks, workout sets, recipe steps and rests are split into separate ordered cards. Pomodoro and doing something else while waiting are planning patterns made from ordinary cards. The server is the source of truth for plans and records.
+One card is one doable action. Long tasks, workout sets, recipe steps and rests are split into separate ordered cards. Pomodoro and doing something else while waiting are planning patterns made from ordinary cards. The iPhone runs a received plan locally and syncs records with the server.
 
 Results can be recorded with units: weight, repetitions, distance, duration, volume, energy, nutrients, pages, cups, cigarettes or games. Records shows today and week totals. Share images are generated on the device; one-by.one does not upload them as part of rendering. A selected recipient or app receives an image only when you share it, under that recipient’s policies.
 
 Interests hold ongoing practices, such as guitar, and recurring duties as plain schedule lines, such as “Mondays: ...” or “Last day of month: ...”. Saved context, memories, corrections and retained originals can be included in tool replies. Reads may be limited or paginated and do not establish a complete lifetime history.
 
 ## AI connection and changes
-The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is https://one-by.one/connect/ (Korean: https://one-by.one/ko/connect/). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is https://connect.one-by.one. Sign in with Apple or Google and follow Settings › AI apps. Email sign-in is for existing accounts; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
+The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is https://one-by.one/connect/ (Korean: https://one-by.one/ko/connect/). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is https://connect.one-by.one. The iPhone app signs in with Apple or Google; follow Settings › AI apps there. Existing email accounts can sign in on the web authorization page only; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
 
 OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can save and change the day, save a day note, save interests and memories, and correct a recorded result within approved permissions.
 
-Start and Done are tapped on the phone; no tool starts, finishes or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
+Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes, skips, dismisses or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
 
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
@@ -135,13 +135,13 @@ Connection and support
 
 get_connection_info (read): read permissions and supported features, and receive a write token when available. submit_bug_report (write): send an approved report to one-by.one support and receive a receipt.
 
-Start and Done are tapped on the phone; no tool starts, finishes or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
+Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes, skips, dismisses or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
 
 Reads may be limited or paginated; they do not establish a complete lifetime history.
 
 ## Sharing images
 
-Share images are generated on your device. one-by.one does not upload the generated image as part of rendering it. If you share it, the app or recipient you select receives that image under its own policies. Review the final image before sharing. Automatic keyword warnings or exclusions cannot identify every sensitive item.
+Share images are generated on your device. one-by.one does not upload the generated image as part of rendering it. If you share it, the app or recipient you select receives that image under its own policies. Review the selected totals and the final image before sharing. Sensitive information is not removed automatically.
 
 ## Operator access and encryption
 
@@ -357,4 +357,4 @@ To disconnect an AI, tap Disconnect in the iPhone app under Settings › AI apps
 - MCP custom connector: https://mcp.one-by.one/mcp
 - Connect instructions (Markdown): https://one-by.one/connect/index.md
 
-The ko/ja paths are English fallback mirrors, not translated versions. Use the canonical English pages above.
+The Korean home page (/ko/) and Korean Connect page (/ko/connect/) are translated. The legal pages (privacy, terms, support) stay in English: their ko/ja paths are English fallback mirrors, not translated versions. Use the canonical English pages above.
