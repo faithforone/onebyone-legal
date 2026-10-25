@@ -679,6 +679,8 @@
       if (at < 0) return;
       const snap = snapOf(c);
       st.cards.splice(at, 1); st.gone.add(c); st.sel = null;
+      // A held card waiting on this one now comes back after the card in front.
+      if (st.held && st.held.by === c && at !== st.i) st.held.by = card();
       st.timers.filter((x) => x.card === c).forEach((x) => closeBall(x));
       setUndo({ c, at, snap }); say(T.dismissed); toast(T.asideToast);
       if (at === st.i) advance(); else { showNext(true); refreshQueue(); }
