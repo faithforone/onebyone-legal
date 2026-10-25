@@ -19,7 +19,7 @@ The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide 
 
 OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can save and change the day, save a day note, save interests and memories, and correct a recorded result within approved permissions.
 
-Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes, skips, dismisses or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
+Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
 
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
@@ -135,7 +135,7 @@ Connection and support
 
 get_connection_info (read): read permissions and supported features, and receive a write token when available. submit_bug_report (write): send an approved report to one-by.one support and receive a receipt.
 
-Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes, skips, dismisses or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
+Start, Done, Skip, Dismiss and Undo are tapped on the phone; no tool starts, finishes or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
 
 Reads may be limited or paginated; they do not establish a complete lifetime history.
 
