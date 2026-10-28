@@ -1459,7 +1459,7 @@
   //   - the Smart App Banner: uncomment <meta name="apple-itunes-app" content="app-id=6766732077"> (TODO(launch) above <body>) in index.html and ko/index.html
   //   - the launch waitlist dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
   // This is the only place to change: each [data-cta] becomes a link to the App Store and
-  // each [data-launch-text] (button, hero pill) shows the text in its attribute, and each [data-launch-hide] goes.
+  // each [data-launch-text] (button, hero pill) shows the text in its attribute.
   const LAUNCH = false;
   const APP_STORE_URL = "https://apps.apple.com/app/id6766732077";
 
@@ -1480,7 +1480,6 @@
       b.replaceWith(a);
     });
     $$("[data-launch-text]").forEach((el) => { el.textContent = el.dataset.launchText; });
-    $$("[data-launch-hide]").forEach((el) => el.remove());
     dialog?.remove();
   } else {
     $$("[data-cta]").forEach((b) => b.addEventListener("click", () => {

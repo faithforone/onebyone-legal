@@ -549,9 +549,6 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .hero-copy { grid-area: copy; align-self: end; }
 .hero-act { grid-area: act; align-self: start; }
 .hero-phone { grid-area: phone; display: grid; justify-items: center; }
-.hero .lede { margin-bottom: 12px; }
-.hero-how { margin: 0 0 30px; max-width: 38ch; font-size: 16px; line-height: 1.55; color: var(--muted); }
-.hero-note { margin: 14px 0 0; font-size: 14px; color: var(--text); }
 .hero-phone .device { width: 340px; aspect-ratio: 2 / 3; }
 .hero-phone .now .greet { font-size: 20px; }
 .hero-phone .dayline { margin: 6px 0 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: #6b7280; }
@@ -567,7 +564,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .dock { display: none; }
 @media (max-width: 960px) {
   .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "phone" "act"; gap: 28px; text-align: center; max-width: 560px; }
-  .hero-how { margin: 0 auto; }
+  .hero .lede { margin-bottom: 0; }
   .hero .cta-row { justify-content: center; }
   .hero .store-badge { align-self: center; }
   .lede { margin-left: auto; margin-right: auto; }
