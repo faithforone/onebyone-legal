@@ -538,4 +538,4 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 /* Pricing: how to cancel, under the plan. */
 .p-cancel { margin: 14px 0 0; font-size: 14px; color: var(--muted, #6b6f76); }
 .p-cancel a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-.talk-starter { margin-top: 14px; color: var(--text, #1a1c20); font-weight: 500; }
+.talk .talk-copy .talk-starter { margin-top: 14px; color: var(--text, #1a1c20); font-weight: 500; }
