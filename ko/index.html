@@ -31,8 +31,8 @@
     <meta name="twitter:image:alt" content="one-by.one: 계획은 AI가, 실행은 당신이. 작은 카드가 나란히 놓이고 지금 할 카드가 가운데에 있어요.">
 
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
-    <link rel="stylesheet" href="/assets/home.css?v=2276cf83f6">
-    <script src="/assets/home.js?v=f9028634ae" defer></script>
+    <link rel="stylesheet" href="/assets/home.css?v=910a2804b7">
+    <script src="/assets/home.js?v=fe2fa8faeb" defer></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -143,22 +143,30 @@
           <div class="store-qr" data-store-qr hidden><img src="/assets/app-store-qr.svg" width="88" height="88" alt=""><span>iPhone으로 스캔</span></div>
           <p class="app-language">앱은 현재 영어로 제공됩니다. 아래 iPhone 화면은 이해를 돕기 위해 한국어로 옮겨 보여 드려요.</p>
         </div>
-        <div class="hero-shots">
-          <figure class="hero-shot">
-            <img src="/assets/hero/work-720.jpg" width="720" height="900" alt="햇살 드는 책상에서 노트북을 치는 손과 옆 거치대의 iPhone" fetchpriority="high">
-            <p class="hs-say"><i aria-hidden="true"></i><span>빨래가 돌아가고 있어요. <b>10:40에 알려 드릴게요.</b></span></p>
-            <span class="hs-card" aria-hidden="true"><b>발표 자료 개요</b><span class="hs-clock">21:35</span><small>1–5번 슬라이드</small><span class="hs-go">완료<span>→</span></span></span>
-          </figure>
-          <figure class="hero-shot">
-            <img src="/assets/hero/workout-720.jpg" width="720" height="900" alt="요가 매트 위 팔굽혀펴기 자세의 손과 앞에 세워 둔 iPhone">
-            <p class="hs-say"><i aria-hidden="true"></i><span>다음은 휴식이에요. <b>시간은 저희가 잴게요.</b></span></p>
-            <span class="hs-card" aria-hidden="true"><b>팔굽혀펴기</b><small>15회 · 3세트 중 2세트</small><span class="hs-go">완료<span>→</span></span></span>
-          </figure>
-          <figure class="hero-shot">
-            <img src="/assets/hero/kitchen-720.jpg" width="720" height="900" alt="김이 오르는 냄비 옆에서 마늘을 써는 손과 거치대에 놓인 iPhone">
-            <p class="hs-say"><i aria-hidden="true"></i><span>파스타 물 올렸어요. <b>다 되면 알려 드릴게요.</b></span></p>
-            <span class="hs-card" aria-hidden="true"><b>마늘 썰기</b><small>4쪽을 얇게</small><span class="hs-go">완료<span>→</span></span></span>
-          </figure>
+        <div class="reel" data-reel>
+          <div class="reel-frame">
+            <figure class="reel-shot on" style="--ct: 36%">
+              <img src="/assets/hero/work-720.jpg" width="720" height="900" alt="햇살 드는 책상에서 노트북을 치는 손과 옆 거치대의 iPhone" fetchpriority="high">
+              <p class="hs-say"><i aria-hidden="true"></i><span>빨래가 돌아가고 있어요. <b>10:40에 알려 드릴게요.</b></span></p>
+              <span class="hs-card" aria-hidden="true"><b>발표 자료 개요</b><span class="hs-clock" data-reel-clock>21:35</span><small>1–5번 슬라이드</small><span class="hs-go">완료<span>→</span></span></span>
+            </figure>
+            <figure class="reel-shot" style="--ct: 33%" aria-hidden="true">
+              <img src="/assets/hero/home-720.jpg" width="720" height="900" alt="침대 위에서 수건을 개는 손과 협탁 위의 iPhone" decoding="async">
+              <p class="hs-say"><i aria-hidden="true"></i><span>빨래가 다 됐어요. <b>말씀드린 대로 가져왔어요.</b></span></p>
+              <span class="hs-card" aria-hidden="true"><b>수건 개기</b><small>그다음 티셔츠</small><span class="hs-go">완료<span>→</span></span></span>
+            </figure>
+            <figure class="reel-shot" style="--ct: 40%" aria-hidden="true">
+              <img src="/assets/hero/workout-720.jpg" width="720" height="900" alt="요가 매트 위 팔굽혀펴기 자세의 손과 앞에 세워 둔 iPhone" decoding="async">
+              <p class="hs-say"><i aria-hidden="true"></i><span>다음은 휴식이에요. <b>시간은 저희가 잴게요.</b></span></p>
+              <span class="hs-card" aria-hidden="true"><b>팔굽혀펴기</b><small>15회 · 3세트 중 2세트</small><span class="hs-go">완료<span>→</span></span></span>
+            </figure>
+            <figure class="reel-shot" style="--ct: 40%" aria-hidden="true">
+              <img src="/assets/hero/kitchen-720.jpg" width="720" height="900" alt="김이 오르는 냄비 옆에서 마늘을 써는 손과 거치대에 놓인 iPhone" decoding="async">
+              <p class="hs-say"><i aria-hidden="true"></i><span>파스타 물 올렸어요. <b>다 되면 알려 드릴게요.</b></span></p>
+              <span class="hs-card" aria-hidden="true"><b>마늘 썰기</b><small>4쪽을 얇게</small><span class="hs-go">완료<span>→</span></span></span>
+            </figure>
+          </div>
+          <div class="reel-tabs" role="group" aria-label="하루를 한 장씩" hidden><button type="button" aria-pressed="true" class="on">업무<i aria-hidden="true"></i></button><button type="button" aria-pressed="false">집안일<i aria-hidden="true"></i></button><button type="button" aria-pressed="false">운동<i aria-hidden="true"></i></button><button type="button" aria-pressed="false">요리<i aria-hidden="true"></i></button></div>
         </div>
       </section>
 

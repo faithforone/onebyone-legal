@@ -1402,6 +1402,48 @@
     $("[data-price]").textContent = price; $("[data-per]").textContent = per; $("[data-unit]").textContent = unit;
   }));
 
+  // Hero reel: one day in four moments, on a loop. Done is pressed, the card falls, the next one is lowered in
+  // and your AI says what it keeps. Still under reduced motion; paused off screen and in background tabs.
+  {
+    const reel = $("[data-reel]");
+    if (reel) {
+      const shots = $$(".reel-shot", reel), tabs = $$(".reel-tabs button", reel), clock = $("[data-reel-clock]", reel);
+      const DWELL = 3700;
+      let i = 0, seen = false, timers = [], outDone = 0, left = 21 * 60 + 35;
+      reel.style.setProperty("--dwell", `${DWELL}ms`);
+      const clear = () => { timers.forEach(clearTimeout); timers = []; reel.classList.remove("playing"); };
+      // Stopped (reduced motion, off screen, background tab): no transition is left half way.
+      const settle = () => { clearTimeout(outDone); shots.forEach((s) => s.classList.remove("out", "in", "pressed")); };
+      const show = (n, animate) => {
+        clearTimeout(outDone);
+        shots.forEach((s) => s.classList.remove("out", "pressed"));
+        if (n !== i) {
+          const prev = shots[i];
+          prev.classList.remove("on", "in");
+          if (animate) { prev.classList.add("out"); outDone = setTimeout(() => prev.classList.remove("out"), 1100); }
+        }
+        i = n;
+        shots[i].classList.remove("in"); void shots[i].offsetWidth;
+        shots[i].classList.add("on"); if (animate) shots[i].classList.add("in");
+        shots.forEach((s, k) => s.setAttribute("aria-hidden", String(k !== i)));
+        tabs.forEach((t, k) => { t.classList.toggle("on", k === i); t.setAttribute("aria-pressed", String(k === i)); });
+      };
+      const run = () => {
+        clear();
+        if (still() || !seen || document.hidden) { settle(); return; }
+        void reel.offsetWidth; reel.classList.add("playing");
+        timers.push(setTimeout(() => shots[i].classList.add("pressed"), DWELL - 500));
+        timers.push(setTimeout(() => { show((i + 1) % shots.length, true); run(); }, DWELL));
+      };
+      tabs.forEach((t, k) => t.addEventListener("click", () => { if (k !== i) show(k, !still()); run(); }));
+      reel.querySelector(".reel-tabs").hidden = false;
+      setInterval(() => { if (clock && reel.classList.contains("playing") && shots[i].contains(clock)) { left = left > 60 ? left - 1 : 21 * 60 + 35; clock.textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`; } }, 1000);
+      if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { seen = e.isIntersecting; run(); }, { threshold: 0.4 }).observe(reel);
+      document.addEventListener("visibilitychange", run);
+      motion.addEventListener?.("change", run);
+    }
+  }
+
   // Phones: the dock shows the sign-up button once the hero's own button has scrolled away.
   {
     const dock = $("[data-dock]"), heroRow = $(".hero .cta-row");
