@@ -1283,12 +1283,13 @@
 
   // Value tiles: short loops. step(later) returns how long the loop waits.
   // They begin when the tile first shows and keep looping while it is on screen. Off screen (or in a
-  // hidden tab) a loop finishes its cycle and waits; it resumes at the next cycle, never reset.
+  // hidden tab, or once Reduce Motion is turned on) a loop finishes its cycle and waits; it resumes at the
+  // next cycle, never reset.
   const loopWhileVisible = (el, step) => {
     if (!el || still() || !("IntersectionObserver" in window)) return;
     let seen = false, waiting = true;
     const later = (fn, ms) => setTimeout(fn, ms);
-    const showing = () => seen && !document.hidden;
+    const showing = () => seen && !document.hidden && !still();
     const run = () => {
       if (!showing()) { waiting = true; return; }
       waiting = false;
@@ -1298,6 +1299,7 @@
     const wake = () => { if (waiting && showing()) run(); };
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; wake(); }, { threshold: 0.35 }).observe(el);
     document.addEventListener("visibilitychange", wake);
+    motion.addEventListener?.("change", wake);
   };
   const animateTo = (ms, fn) => {
     const t0 = performance.now();
@@ -1329,6 +1331,41 @@
         later(() => deck.press(), 90);
       }, 1500);
       return 3600;
+    });
+  }
+
+  // Hero: one day your AI planned ahead, on a loop. The ticket is the app's own: Done tears the stub, the card
+  // falls and the next is printed. The photo follows the card; the day line says how the day was arranged.
+  {
+    const reel = $("[data-reel]"), screen = $(".reel-now", reel);
+    const deck = screen && makeDeck(screen, { chain: true, menu: false });
+    const shots = $$(".reel-shot", reel);
+    const cards = ko ? [
+      { t: "발표 자료 개요", note: "회의 전 조용한 시간에 넣었어요" },
+      { t: "팔굽혀펴기", note: "오늘은 상체 · 하체는 화요일에 했어요" },
+      { t: "마늘 썰기", note: "물이 끓는 동안 해요 · 4쪽, 얇게" },
+      { t: "수건 개기", note: "건조기 끝나는 때에 맞췄어요" },
+    ] : [
+      { t: "Q3 deck outline", note: "Before standup, while it’s quiet" },
+      { t: "Push-ups", note: "Upper body today · legs were Tuesday" },
+      { t: "Slice the garlic", note: "While the water heats · 4 cloves, thin" },
+      { t: "Fold the towels", note: "Timed for when the dryer finishes" },
+    ];
+    let k = 0, ready = false;
+    screen?.addEventListener("deck:done", () => {
+      k = (k + 1) % shots.length;
+      setTimeout(() => shots.forEach((s, n) => { s.classList.toggle("on", n === k); s.setAttribute("aria-hidden", String(n !== k)); }), 400);
+    });
+    if (deck) loopWhileVisible(reel, (later) => {
+      if (!ready) { deck.load(cards); ready = true; }
+      later(() => {
+        const go = $(".slot .ticket:not(.inc) .go", screen);
+        if (!go) return;
+        go.classList.add("tap");
+        later(() => go.classList.remove("tap"), 150);
+        later(() => deck.press(), 90);
+      }, 2400);
+      return 3800;
     });
   }
 
@@ -1401,48 +1438,6 @@
     const [price, per, unit] = bills[b.dataset.bill];
     $("[data-price]").textContent = price; $("[data-per]").textContent = per; $("[data-unit]").textContent = unit;
   }));
-
-  // Hero reel: one day in four moments, on a loop. Done is pressed, the card falls, the next one is lowered in
-  // and your AI says what it keeps. Still under reduced motion; paused off screen and in background tabs.
-  {
-    const reel = $("[data-reel]");
-    if (reel) {
-      const shots = $$(".reel-shot", reel), tabs = $$(".reel-tabs button", reel), clock = $("[data-reel-clock]", reel);
-      const DWELL = 3700;
-      let i = 0, seen = false, timers = [], outDone = 0, left = 21 * 60 + 35;
-      reel.style.setProperty("--dwell", `${DWELL}ms`);
-      const clear = () => { timers.forEach(clearTimeout); timers = []; reel.classList.remove("playing"); };
-      // Stopped (reduced motion, off screen, background tab): no transition is left half way.
-      const settle = () => { clearTimeout(outDone); shots.forEach((s) => s.classList.remove("out", "in", "pressed")); };
-      const show = (n, animate) => {
-        clearTimeout(outDone);
-        shots.forEach((s) => s.classList.remove("out", "pressed"));
-        if (n !== i) {
-          const prev = shots[i];
-          prev.classList.remove("on", "in");
-          if (animate) { prev.classList.add("out"); outDone = setTimeout(() => prev.classList.remove("out"), 1100); }
-        }
-        i = n;
-        shots[i].classList.remove("in"); void shots[i].offsetWidth;
-        shots[i].classList.add("on"); if (animate) shots[i].classList.add("in");
-        shots.forEach((s, k) => s.setAttribute("aria-hidden", String(k !== i)));
-        tabs.forEach((t, k) => { t.classList.toggle("on", k === i); t.setAttribute("aria-pressed", String(k === i)); });
-      };
-      const run = () => {
-        clear();
-        if (still() || !seen || document.hidden) { settle(); return; }
-        void reel.offsetWidth; reel.classList.add("playing");
-        timers.push(setTimeout(() => shots[i].classList.add("pressed"), DWELL - 500));
-        timers.push(setTimeout(() => { show((i + 1) % shots.length, true); run(); }, DWELL));
-      };
-      tabs.forEach((t, k) => t.addEventListener("click", () => { if (k !== i) show(k, !still()); run(); }));
-      reel.querySelector(".reel-tabs").hidden = false;
-      setInterval(() => { if (clock && reel.classList.contains("playing") && shots[i].contains(clock)) { left = left > 60 ? left - 1 : 21 * 60 + 35; clock.textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`; } }, 1000);
-      if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { seen = e.isIntersecting; run(); }, { threshold: 0.4 }).observe(reel);
-      document.addEventListener("visibilitychange", run);
-      motion.addEventListener?.("change", run);
-    }
-  }
 
   // Phones: the dock shows the sign-up button once the hero's own button has scrolled away.
   {

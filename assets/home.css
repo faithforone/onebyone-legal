@@ -532,7 +532,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .thread .msg, .notify-dialog[open] { animation: none !important; }
   .sheet-up, .sug, .go, .a-step::before, .frag, .msg.list li { transition: none !important; }
   .tpanel { animation: none !important; }
-  .go, .mrow, .ab, .q-act, .toast, .upnext .chev { transition: none !important; }
+  .go, .mrow, .ab, .q-act, .toast, .upnext .chev, .reel-shot { transition: none !important; }
 }
 
 /* Pricing: how to cancel, under the plan. */
@@ -540,43 +540,19 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .p-cancel a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .talk .talk-copy .talk-starter { margin-top: 14px; color: var(--text, #1a1c20); font-weight: 500; }
 
-/* Hero: one day on a loop. Each card is done, the next is handed over, and what is running is kept for you. */
+/* Hero: one planned day on a loop. The photo follows the card; the card is the app's own ticket. */
 .hero-price { margin: 16px 0 0; font-size: 14px; color: var(--hush); }
 .hero .app-language { margin: 6px 0 0; font-size: 14px; color: var(--hush); }
 .reel-frame { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: #c9b8a3; }
-.reel-shot { position: absolute; inset: 0; margin: 0; visibility: hidden; }
-.reel-shot.on, .reel-shot.out { visibility: visible; }
-.reel-shot.on { z-index: 1; }
-.reel-shot.out { z-index: 2; }
+.reel-shot { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .7s ease; }
+.reel-shot.on { opacity: 1; }
 .reel-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.hs-say { position: absolute; left: 5%; right: 5%; top: 5%; display: flex; gap: 10px; align-items: flex-start; margin: 0; text-align: left; }
-.hs-say i { flex: none; width: 28px; height: 28px; border-radius: 8px; background: #1a1c20 linear-gradient(var(--lime), var(--lime)) 50% 66% / 12px 3.5px no-repeat; box-shadow: 0 6px 16px rgba(0,0,0,.2); }
-.hs-say span { padding: 8px 12px; border-radius: 4px 16px 16px 16px; background: rgba(255,255,255,.92); color: #1a1c20; font-size: 14px; line-height: 1.4; box-shadow: 0 10px 24px rgba(0,0,0,.16); }
-.hs-say b { font-weight: 650; }
-.hs-card { position: absolute; right: 4%; top: var(--ct, 40%); width: 56%; padding: 16px 14px 12px; text-align: left; border-radius: 22px; background: var(--ink); color: #fff; box-shadow: 0 20px 44px rgba(0,0,0,.32); }
-.hs-card b { display: block; font-size: clamp(17px, 2vw, 21px); font-weight: 600; letter-spacing: -.02em; }
-.hs-clock { display: block; margin-top: 2px; font-size: 17px; font-weight: 600; color: var(--soft); font-variant-numeric: tabular-nums; }
-.hs-card small { display: block; margin: 4px 0 22px; font-size: 13px; color: var(--soft); }
-.hs-go { display: flex; align-items: center; justify-content: space-between; height: 42px; padding: 0 5px 0 16px; border-radius: 999px; background: var(--lime); color: var(--ink); font-weight: 600; font-size: 16px; }
-.hs-go span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--lime); font-size: 15px; transition: transform .18s ease; }
-/* The loop: the photo changes under a falling card; the next card is lowered in, then your AI's line appears. */
-.reel-shot.pressed .hs-go span { transform: translateX(-3px) scale(.88); }
-.reel-shot.out img { opacity: 0; transition: opacity .6s ease .2s; }
-.reel-shot.out .hs-say { opacity: 0; transition: opacity .2s ease; }
-.reel-shot.out .hs-card { animation: reel-fall .5s cubic-bezier(.55, 0, .8, .2) both; }
-.reel-shot.in .hs-card { animation: reel-print .46s cubic-bezier(.22, .8, .26, 1) .55s both; }
-.reel-shot.in .hs-say { animation: reel-say .35s ease 1s both; }
-@keyframes reel-fall { to { transform: translateY(140%) rotate(7deg); } }
-@keyframes reel-print { from { transform: translateY(-48px) scale(1.025); opacity: 0; } 25% { opacity: 1; } to { transform: none; opacity: 1; } }
-@keyframes reel-say { from { transform: translateY(-6px); opacity: 0; } to { transform: none; opacity: 1; } }
-.reel-tabs { display: flex; gap: 6px; justify-content: center; margin-top: 14px; }
-.reel-tabs button { position: relative; overflow: hidden; padding: 7px 14px; border: 0; border-radius: 999px; background: var(--surface); color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
-.reel-tabs[hidden] { display: none; }
-.reel-tabs button.on { background: var(--ink); color: #fff; }
-@media (prefers-color-scheme: dark) { .reel-tabs button.on { background: var(--paper); color: var(--ink); } }
-.reel-tabs i { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--lime); transform: scaleX(0); transform-origin: 0 50%; }
-.reel.playing .reel-tabs .on i { animation: reel-bar var(--dwell, 3.7s) linear both; }
-@keyframes reel-bar { to { transform: none; } }
+/* The app's Now, small: your AI's line for the day, Up next, and the ticket. */
+.reel .reel-now { position: absolute; right: 4%; bottom: 4%; width: min(64%, 290px); height: auto; border-radius: 26px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+.reel-now .sheet { padding: 0 18px; }
+.reel-now .dayline { margin: 14px 0 0; font-size: 13px; line-height: 1.35; font-weight: 500; color: #555d6d; }
+.reel-now .upnext { margin: 0; height: 36px; }
+.reel-now .slot { height: 176px; margin: 12px 12px 12px; }
 /* After launch: the official badge leads the hero, and a QR code helps desktop visitors reach their iPhone. */
 .store-badge { display: inline-flex; }
 .store-badge img { display: block; height: 52px; width: auto; }
@@ -593,10 +569,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 @media (max-width: 520px) {
   .site-nav .btn { display: none; }
   .reel-frame { border-radius: 24px; }
-  .hs-say i { display: none; }
-  .hs-say span { font-size: 13px; }
-  .hs-card { width: 62%; right: 3%; }
-  .hs-card small { margin-bottom: 16px; }
+  .reel .reel-now { width: 76%; right: 3%; bottom: 3%; }
   .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--page) 92%, transparent); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
   .dock.on { transform: none; visibility: visible; transition: transform .25s ease; }
   .dock .btn { height: 52px; }
