@@ -1334,40 +1334,41 @@
     });
   }
 
-  // Hero: one day your AI planned ahead, on a loop. The ticket is the app's own: Done tears the stub, the card
-  // falls and the next is printed. The photo follows the card; the day line says how the day was arranged.
+  // Hero: an evening your AI planned ahead, on the app's own Now. Done tears the stub and the next card prints;
+  // "Put the water on" goes into the tray as a timer, the garlic comes meanwhile, and when the water is due
+  // "Add the pasta" is the next card. Two minutes here is a short sweep.
   {
-    const reel = $("[data-reel]"), screen = $(".reel-now", reel);
+    const hero = $("[data-hero]"), screen = $(".now", hero);
     const deck = screen && makeDeck(screen, { chain: true, menu: false });
-    const shots = $$(".reel-shot", reel);
-    const cards = ko ? [
-      { t: "발표 자료 개요", note: "회의 전 조용한 시간에 넣었어요" },
-      { t: "팔굽혀펴기", note: "오늘은 상체 · 하체는 화요일에 했어요" },
+    const cards = ko ? set([
+      { t: "팔굽혀펴기", note: "오늘은 상체예요 · 하체는 화요일에 했어요" },
+      { t: "물 올리기", note: "큰 냄비에 뚜껑을 덮고 · 2분", wait: { name: "물", min: 2, then: { t: "면 넣기", note: "한 번 저어요" } } },
       { t: "마늘 썰기", note: "물이 끓는 동안 해요 · 4쪽, 얇게" },
       { t: "수건 개기", note: "건조기 끝나는 때에 맞췄어요" },
-    ] : [
-      { t: "Q3 deck outline", note: "Before standup, while it’s quiet" },
+    ], "오늘 저녁") : set([
       { t: "Push-ups", note: "Upper body today · legs were Tuesday" },
+      { t: "Put the water on", note: "Big pot, lid on · 2 min", wait: { name: "Water", min: 2, then: { t: "Add the pasta", note: "Stir once" } } },
       { t: "Slice the garlic", note: "While the water heats · 4 cloves, thin" },
       { t: "Fold the towels", note: "Timed for when the dryer finishes" },
-    ];
-    let k = 0, ready = false;
-    screen?.addEventListener("deck:done", () => {
-      k = (k + 1) % shots.length;
-      setTimeout(() => shots.forEach((s, n) => { s.classList.toggle("on", n === k); s.setAttribute("aria-hidden", String(n !== k)); }), 400);
-    });
-    if (deck) loopWhileVisible(reel, (later) => {
-      if (!ready) { deck.load(cards); ready = true; }
-      later(() => {
-        const go = $(".slot .ticket:not(.inc) .go", screen);
-        if (!go) return;
-        go.classList.add("tap");
-        later(() => go.classList.remove("tap"), 150);
-        later(() => deck.press(), 90);
-      }, 2400);
-      return 3800;
+    ], "This evening");
+    let first = true;
+    const tap = () => {
+      const go = $(".slot .ticket:not(.inc) .go", screen);
+      if (!go) return;
+      go.classList.add("tap");
+      setTimeout(() => go.classList.remove("tap"), 150);
+      setTimeout(() => deck.press(), 90);
+    };
+    if (deck) loopWhileVisible(hero, (later) => {
+      deck.load(cards, { print: !first }); first = false;
+      later(tap, 1800);
+      later(tap, 4200);
+      later(tap, 11000);
+      later(tap, 13600);
+      return 17000;
     });
   }
+
 
   // Waits: "Put the water on" is short to do; Keep track tears the stub, the card shrinks into a ball in the tray,
   // the next card comes while the ring drains, the ball turns red when due, and tapping it brings "Add the pasta" now:
@@ -1439,11 +1440,11 @@
     $("[data-price]").textContent = price; $("[data-per]").textContent = per; $("[data-unit]").textContent = unit;
   }));
 
-  // Phones: the dock shows the sign-up button once the hero's own button has scrolled away.
+  // Phones: the dock shows the sign-up button whenever the hero's own button is off screen (below the phone at first, or scrolled away).
   {
     const dock = $("[data-dock]"), heroRow = $(".hero .cta-row");
     if (dock && heroRow && "IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => dock.classList.toggle("on", !e.isIntersecting && e.boundingClientRect.top < 0)).observe(heroRow);
+      new IntersectionObserver(([e]) => dock.classList.toggle("on", !e.isIntersecting)).observe(heroRow);
     }
   }
 
@@ -1458,7 +1459,7 @@
   //   - the Smart App Banner: uncomment <meta name="apple-itunes-app" content="app-id=6766732077"> (TODO(launch) above <body>) in index.html and ko/index.html
   //   - the launch waitlist dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
   // This is the only place to change: each [data-cta] becomes a link to the App Store and
-  // each [data-launch-text] (button, hero pill) shows the text in its attribute.
+  // each [data-launch-text] (button, hero pill) shows the text in its attribute, and each [data-launch-hide] goes.
   const LAUNCH = false;
   const APP_STORE_URL = "https://apps.apple.com/app/id6766732077";
 
@@ -1479,6 +1480,7 @@
       b.replaceWith(a);
     });
     $$("[data-launch-text]").forEach((el) => { el.textContent = el.dataset.launchText; });
+    $$("[data-launch-hide]").forEach((el) => el.remove());
     dialog?.remove();
   } else {
     $$("[data-cta]").forEach((b) => b.addEventListener("click", () => {

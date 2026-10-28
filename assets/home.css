@@ -104,6 +104,7 @@
    Top sheet: Undo, menu, greeting, and one "Up next" line. Below it, the ticket:
    title, one measure of time or the amounts, a note, a perforation, and the pill. */
 .device { width: 270px; aspect-ratio: 9 / 15; padding: 9px; border-radius: 44px; background: #0b0c0e; box-shadow: 0 30px 60px -36px rgba(0,0,0,.4); }
+@media (prefers-color-scheme: dark) { .device { box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 30px 60px -36px rgba(0,0,0,.4); } }
 .now { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: var(--paper); color: var(--ink); display: flex; flex-direction: column; text-align: left; isolation: isolate; }
 .sheet { position: relative; z-index: 3; flex: 1; min-height: 0; background: var(--sheet); border-radius: 0 0 22px 22px; padding: 22px 16px 0; display: flex; flex-direction: column; box-shadow: 0 6px 14px rgba(0,0,0,.08); }
 .bar { display: flex; justify-content: space-between; align-items: center; }
@@ -532,7 +533,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .thread .msg, .notify-dialog[open] { animation: none !important; }
   .sheet-up, .sug, .go, .a-step::before, .frag, .msg.list li { transition: none !important; }
   .tpanel { animation: none !important; }
-  .go, .mrow, .ab, .q-act, .toast, .upnext .chev, .reel-shot { transition: none !important; }
+  .go, .mrow, .ab, .q-act, .toast, .upnext .chev { transition: none !important; }
 }
 
 /* Pricing: how to cancel, under the plan. */
@@ -540,19 +541,23 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .p-cancel a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .talk .talk-copy .talk-starter { margin-top: 14px; color: var(--text, #1a1c20); font-weight: 500; }
 
-/* Hero: one planned day on a loop. The photo follows the card; the card is the app's own ticket. */
+/* Hero: the price line and the language note under the buttons. */
 .hero-price { margin: 16px 0 0; font-size: 14px; color: var(--hush); }
 .hero .app-language { margin: 6px 0 0; font-size: 14px; color: var(--hush); }
-.reel-frame { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: #c9b8a3; }
-.reel-shot { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .7s ease; }
-.reel-shot.on { opacity: 1; }
-.reel-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
-/* The app's Now, small: your AI's line for the day, Up next, and the ticket. */
-.reel .reel-now { position: absolute; right: 4%; bottom: 4%; width: min(64%, 290px); height: auto; border-radius: 26px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
-.reel-now .sheet { padding: 0 18px; }
-.reel-now .dayline { margin: 14px 0 0; font-size: 13px; line-height: 1.35; font-weight: 500; color: #555d6d; }
-.reel-now .upnext { margin: 0; height: 36px; }
-.reel-now .slot { height: 176px; margin: 12px 12px 12px; }
+/* The copy and the buttons on the left, the app's own Now on a big phone on the right. On phones: copy, phone, buttons. */
+.hero { grid-template-areas: "copy phone" "act phone"; row-gap: 0; }
+.hero-copy { grid-area: copy; align-self: end; }
+.hero-act { grid-area: act; align-self: start; }
+.hero-phone { grid-area: phone; display: grid; justify-items: center; }
+.hero .lede { margin-bottom: 12px; }
+.hero-how { margin: 0 0 30px; max-width: 38ch; font-size: 16px; line-height: 1.55; color: var(--muted); }
+.hero-note { margin: 14px 0 0; font-size: 14px; color: var(--text); }
+.hero-phone .device { width: 340px; aspect-ratio: 2 / 3; }
+.hero-phone .now .greet { font-size: 20px; }
+.hero-phone .dayline { margin: 6px 0 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: #6b7280; }
+.hero-phone .sit { margin-top: 14px; }
+.hero-phone .ticket .t-title { font-size: 26px; }
+.hero-phone .ticket .t-note { font-size: 13px; }
 /* After launch: the official badge leads the hero, and a QR code helps desktop visitors reach their iPhone. */
 .store-badge { display: inline-flex; }
 .store-badge img { display: block; height: 52px; width: auto; }
@@ -561,15 +566,16 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 @media (min-width: 961px) and (hover: hover) { .store-qr:not([hidden]) { display: flex; } }
 .dock { display: none; }
 @media (max-width: 960px) {
-  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; text-align: center; max-width: 560px; }
+  .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "phone" "act"; gap: 28px; text-align: center; max-width: 560px; }
+  .hero-how { margin: 0 auto; }
   .hero .cta-row { justify-content: center; }
   .hero .store-badge { align-self: center; }
   .lede { margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 520px) {
   .site-nav .btn { display: none; }
-  .reel-frame { border-radius: 24px; }
-  .reel .reel-now { width: 76%; right: 3%; bottom: 3%; }
+  .hero-phone .device { width: 272px; aspect-ratio: 9 / 15; }
+  .hero-phone .ticket .t-title { font-size: 22px; }
   .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--page) 92%, transparent); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
   .dock.on { transform: none; visibility: visible; transition: transform .25s ease; }
   .dock .btn { height: 52px; }
