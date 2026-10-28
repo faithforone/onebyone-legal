@@ -143,3 +143,11 @@ html:lang(ko) .home .hero h1 { font-size: clamp(36px, 5.2vw, 64px); line-height:
 html:lang(ko) .home h2 { line-height: 1.3; }
 html:lang(ko) .home .lede { line-height: 1.65; }
 html:lang(ko) .home :is(.job-desc, .values-sub, .talk-copy p, .tile p) { line-height: 1.65; }
+
+/* Support jump links and the privacy summary. */
+.jump-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; }
+.jump-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px #d9dbde; color: inherit; text-decoration: none; font-size: 15px; }
+.glance { margin: 24px 0 8px; padding: 20px 22px; border-radius: 16px; background: #f3f4f5; }
+.glance h2 { margin-top: 0; }
+.glance ul { margin: 0 0 10px; }
+.glance p { margin: 0; font-size: 14px; color: #6b6f76; }

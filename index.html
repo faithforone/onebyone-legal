@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="assets/styles.css?v=5ae713202e">
+    <link rel="stylesheet" href="assets/styles.css?v=9830ab58e4">
     <title>one-by.one · Your AI plans. You just do.</title>
     <meta name="description" content="Your AI splits the day into small cards. Do them one by one on iPhone. Coming soon to the App Store.">
     <link rel="canonical" href="https://one-by.one/">
@@ -144,6 +144,14 @@
         },
         {
           "@type": "Question",
+          "name": "Can I use it before connecting my AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Tap what fills your usual morning, daytime and evening, plus any habits, and the app turns them into today’s cards. Connect your AI whenever you like, and it plans each day around you. A subscription is required."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How much does it cost, and is there a free trial?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -196,9 +204,9 @@
 }
     </script>
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
-    <link rel="stylesheet" href="assets/home.css?v=8402908fe0">
-    <script src="assets/home.js?v=fadda52cfe" defer></script>
-      <link rel="stylesheet" href="/assets/connect.css?v=117e914cb9">
+    <link rel="stylesheet" href="assets/home.css?v=37770ba76f">
+    <script src="assets/home.js?v=8cd750d954" defer></script>
+      <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
     <script src="/assets/language.js?v=15e6eb2491"></script>
   <link rel="alternate" hreflang="en" href="https://one-by.one/">
 <link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
@@ -282,6 +290,7 @@
         <div class="talk-copy">
           <h2>Talk to your AI like you already do</h2>
           <p>one-by.one connects to any MCP agent with remote HTTP and OAuth. Say what’s on your plate in your own words; your AI turns it into cards and puts them on your iPhone.</p>
+          <p class="talk-starter">No AI connected yet? Tap what fills your usual morning, daytime and evening, and today’s cards are ready.</p>
         </div>
         <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
       </section>
@@ -405,8 +414,8 @@
             <span class="p-name">one-by.one</span>
             <div class="seg" role="group" aria-label="Billing"><button type="button" aria-pressed="false" data-bill="monthly">Monthly</button><button type="button" aria-pressed="true" data-bill="yearly">Yearly</button></div>
           </div>
-          <p class="p-price"><b data-price>US$5</b><span data-per>/ month</span></p>
-          <p class="p-unit" data-unit>Billed annually · US$59.99 per year</p>
+          <p class="p-price"><b data-price>US$59.99</b><span data-per>/ year</span></p>
+          <p class="p-unit" data-unit>About US$5 a month, billed yearly</p>
           <button class="btn wide" type="button" data-cta data-launch-text="Download on the App Store">Get launch updates</button>
           <p class="p-inc">Includes:</p>
           <ul class="p-list">
@@ -415,6 +424,7 @@
             <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Records with units, and share images</li>
             <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Yearly plan: 14-day free trial for eligible new subscribers</li>
           </ul>
+          <p class="p-cancel">Cancel any time in your iPhone settings. <a href="support/#subscription">How to cancel</a></p>
         </div>
       </section>
 
@@ -432,6 +442,10 @@
       <details data-faq-item>
         <summary><h3>Which AI assistants can I connect?</h3></summary>
         <p data-faq-answer>You can connect any MCP agent that supports remote HTTP and OAuth sign-in, including ChatGPT, Claude, CLI tools and editors. one-by.one supports dynamic client registration and up to three AI connections per account. The Connect page has setup steps. AI services have their own access requirements, terms and privacy policies.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Can I use it before connecting my AI?</h3></summary>
+        <p data-faq-answer>Yes. Tap what fills your usual morning, daytime and evening, plus any habits, and the app turns them into today’s cards. Connect your AI whenever you like, and it plans each day around you. A subscription is required.</p>
       </details>
       <details data-faq-item>
         <summary><h3>How much does it cost, and is there a free trial?</h3></summary>

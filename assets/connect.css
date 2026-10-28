@@ -70,3 +70,8 @@
 .connect dl { margin: 0; }
 .connect dt { font-weight: 650; margin-top: 14px; }
 .connect dd { margin: 4px 0 0; }
+
+/* Pick your AI: straight to its steps. */
+.connect .pick { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 28px; }
+.connect .pick a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--text, #1a1c20); color: #fff; font-weight: 600; text-decoration: none; }
+.connect .pick a:last-child { background: none; color: var(--text, #1a1c20); box-shadow: inset 0 0 0 1px currentColor; }

@@ -1468,7 +1468,7 @@
   }
 
   // Pricing toggle: two options, one pressed.
-  const bills = { monthly: ["US$12.99", ko ? "/ 월" : "/ month", ko ? "매월 결제" : "Billed monthly"], yearly: ["US$5", ko ? "/ 월" : "/ month", ko ? "연간 결제 · 1년에 US$59.99" : "Billed annually · US$59.99 per year"] };
+  const bills = { monthly: ["US$12.99", ko ? "/ 월" : "/ month", ko ? "매월 결제 · 무료 체험 없음" : "Billed monthly · no free trial"], yearly: ["US$59.99", ko ? "/ 년" : "/ year", ko ? "한 달 약 US$5, 1년 단위 결제" : "About US$5 a month, billed yearly"] };
   $$("[data-bill]").forEach((b) => b.addEventListener("click", () => {
     $$("[data-bill]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     const [price, per, unit] = bills[b.dataset.bill];

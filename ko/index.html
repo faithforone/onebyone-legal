@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=5ae713202e">
+    <link rel="stylesheet" href="/assets/styles.css?v=9830ab58e4">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
     <title>one-by.one · 계획은 AI가, 실행은 당신이</title>
@@ -31,8 +31,8 @@
     <meta name="twitter:image:alt" content="one-by.one: 계획은 AI가, 실행은 당신이. 작은 카드가 나란히 놓이고 지금 할 카드가 가운데에 있어요.">
 
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
-    <link rel="stylesheet" href="/assets/home.css?v=8402908fe0">
-    <script src="/assets/home.js?v=fadda52cfe" defer></script>
+    <link rel="stylesheet" href="/assets/home.css?v=37770ba76f">
+    <script src="/assets/home.js?v=8cd750d954" defer></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -51,6 +51,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "원격 HTTP와 OAuth 로그인을 지원하는 MCP 에이전트라면 연결할 수 있습니다. ChatGPT와 Claude뿐 아니라 CLI와 에디터에서도 사용할 수 있어요. 클라이언트 자동 등록을 지원하며 계정당 AI 연결은 최대 3개입니다. AI 연결 안내 페이지에서 도구별 설정을 확인하세요. 각 AI 서비스의 이용 조건과 개인정보 정책도 적용됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI를 연결하기 전에도 쓸 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 평소 아침, 낮, 저녁에 하는 일과 습관을 고르면 앱이 오늘 카드로 만들어 줘요. AI는 언제든 연결하면 되고, 연결하면 AI가 매일 하루 전체를 계획해 줍니다. 구독이 필요합니다."
       }
     },
     {
@@ -103,7 +111,7 @@
     }
   ]
 }</script>
-    <link rel="stylesheet" href="/assets/connect.css?v=117e914cb9">
+    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
     <script src="/assets/language.js?v=15e6eb2491"></script>
   <link rel="alternate" hreflang="en" href="https://one-by.one/">
 <link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
@@ -186,6 +194,7 @@
         <div class="talk-copy">
           <h2>AI와 대화하던 그대로</h2>
           <p>원격 HTTP와 OAuth를 지원하는 MCP 에이전트라면 연결할 수 있어요. 해야 할 일을 편하게 말하세요. AI가 작은 카드로 정리해 iPhone에 보내 줍니다.</p>
+          <p class="talk-starter">아직 AI를 연결하지 않았나요? 평소 아침, 낮, 저녁에 하는 일을 고르면 오늘 카드가 준비돼요.</p>
         </div>
         <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
       </section>
@@ -309,8 +318,8 @@
             <span class="p-name">one-by.one</span>
             <div class="seg" role="group" aria-label="결제 주기"><button type="button" aria-pressed="false" data-bill="monthly">월간</button><button type="button" aria-pressed="true" data-bill="yearly">연간</button></div>
           </div>
-          <p class="p-price"><b data-price>US$5</b><span data-per>/ 월</span></p>
-          <p class="p-unit" data-unit>연간 결제 · 1년에 US$59.99</p>
+          <p class="p-price"><b data-price>US$59.99</b><span data-per>/ 년</span></p>
+          <p class="p-unit" data-unit>한 달 약 US$5, 1년 단위 결제</p>
           <button class="btn wide" type="button" data-cta data-launch-text="App Store에서 받기">출시 알림 받기</button>
           <p class="p-inc">함께 제공됩니다:</p>
           <ul class="p-list">
@@ -319,6 +328,7 @@
             <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>단위가 있는 기록과 공유 이미지</li>
             <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>연간 요금제: 대상 신규 구독자에게 14일 무료 체험</li>
           </ul>
+          <p class="p-cancel">iPhone 설정에서 언제든 해지할 수 있어요. <a href="/support/#subscription">해지 방법</a></p>
         </div>
       </section>
 
@@ -336,6 +346,10 @@
       <details data-faq-item>
         <summary><h3>어떤 AI를 연결할 수 있나요?</h3></summary>
         <p data-faq-answer>원격 HTTP와 OAuth 로그인을 지원하는 MCP 에이전트라면 연결할 수 있습니다. ChatGPT와 Claude뿐 아니라 CLI와 에디터에서도 사용할 수 있어요. 클라이언트 자동 등록을 지원하며 계정당 AI 연결은 최대 3개입니다. AI 연결 안내 페이지에서 도구별 설정을 확인하세요. 각 AI 서비스의 이용 조건과 개인정보 정책도 적용됩니다.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>AI를 연결하기 전에도 쓸 수 있나요?</h3></summary>
+        <p data-faq-answer>네. 평소 아침, 낮, 저녁에 하는 일과 습관을 고르면 앱이 오늘 카드로 만들어 줘요. AI는 언제든 연결하면 되고, 연결하면 AI가 매일 하루 전체를 계획해 줍니다. 구독이 필요합니다.</p>
       </details>
       <details data-faq-item>
         <summary><h3>요금과 무료 체험이 궁금해요.</h3></summary>
