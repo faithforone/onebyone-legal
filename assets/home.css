@@ -30,15 +30,15 @@
 .topbar .wordmark { white-space: nowrap; }
 
 /* Hero */
-.hero { max-width: 1000px; margin: 0 auto; padding: 72px 24px 0; text-align: center; }
+.hero { max-width: 1140px; margin: 0 auto; padding: 64px 24px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 56px; align-items: center; }
 .pill { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--text); text-decoration: none; margin-bottom: 28px; }
 .pill b { font-weight: 500; }
 .pill span { color: var(--hush); }
 .pill i { font-style: normal; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--panel); font-size: 13px; }
-.hero h1 { font-size: clamp(42px, 6vw, 76px); font-weight: 500; line-height: 1.04; letter-spacing: -.035em; margin: 0 0 22px; text-wrap: balance; }
+.hero h1 { font-size: clamp(42px, 5.2vw, 70px); font-weight: 500; line-height: 1.04; letter-spacing: -.035em; margin: 0 0 22px; text-wrap: balance; }
 .h1-mark { display: inline-block; width: .82em; height: .82em; vertical-align: -.08em; margin: 0 .04em; }
-.lede { font-size: clamp(18px, 1.8vw, 21px); line-height: 1.5; color: var(--muted); margin: 0 auto 30px; }
-.cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.lede { font-size: clamp(18px, 1.8vw, 21px); line-height: 1.5; color: var(--muted); margin: 0 0 30px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* Product: a window you can click, and the phone it fills. */
 .product { position: relative; max-width: 1080px; margin: 64px auto 0; padding: 0 24px; }
@@ -539,3 +539,41 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .p-cancel { margin: 14px 0 0; font-size: 14px; color: var(--muted, #6b6f76); }
 .p-cancel a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .talk .talk-copy .talk-starter { margin-top: 14px; color: var(--text, #1a1c20); font-weight: 500; }
+
+/* Hero: a real kitchen. The phone holds the next card; the pasta water is kept while the garlic is sliced. */
+.hero-price { margin: 16px 0 0; font-size: 14px; color: var(--hush); }
+.hero .app-language { margin: 6px 0 0; font-size: 14px; color: var(--hush); }
+.hero-shot { position: relative; margin: 0; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; background: #c9b8a3; }
+.hero-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hs-kept { position: absolute; right: 6%; top: 6%; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: 999px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 600; box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+.hs-kept em { font-style: normal; font-weight: 500; color: #5d636b; font-variant-numeric: tabular-nums; }
+.hs-kept i { width: 10px; height: 10px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(198,239,78,.35); }
+.hs-card { position: absolute; right: 4%; top: 41%; width: 56%; padding: 16px 14px 12px; text-align: left; border-radius: 22px; background: var(--ink); color: #fff; box-shadow: 0 20px 44px rgba(0,0,0,.32); }
+.hs-card b { display: block; font-size: clamp(17px, 2vw, 21px); font-weight: 600; letter-spacing: -.02em; }
+.hs-card small { display: block; margin: 4px 0 26px; font-size: 13px; color: var(--soft); }
+.hs-go { display: flex; align-items: center; justify-content: space-between; height: 42px; padding: 0 5px 0 16px; border-radius: 999px; background: var(--lime); color: var(--ink); font-weight: 600; font-size: 16px; }
+.hs-go span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--lime); font-size: 15px; }
+/* After launch: the official badge leads the hero, and a QR code helps desktop visitors reach their iPhone. */
+.store-badge { display: inline-flex; }
+.store-badge img { display: block; height: 52px; width: auto; }
+.store-qr { display: none; align-items: center; gap: 12px; margin-top: 20px; font-size: 14px; color: var(--hush); }
+.store-qr img { border-radius: 8px; box-shadow: 0 0 0 1px var(--line); }
+@media (min-width: 961px) and (hover: hover) { .store-qr:not([hidden]) { display: flex; } }
+.dock { display: none; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; text-align: center; max-width: 560px; }
+  .hero .cta-row { justify-content: center; }
+  .hero .store-badge { align-self: center; }
+  .lede { margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 520px) {
+  .site-nav .btn { display: none; }
+  .hero-shot { border-radius: 24px; }
+  .hs-card { width: 60%; right: 3%; }
+  .hs-card small { margin-bottom: 18px; }
+  .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--page) 92%, transparent); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  .dock.on { transform: none; visibility: visible; transition: transform .25s ease; }
+  .dock .btn { height: 52px; }
+  .home footer { padding-bottom: 96px; }
+}
+@media (prefers-reduced-motion: reduce) { .dock { transition: none; } }

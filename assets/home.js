@@ -953,14 +953,17 @@
       { t: "Break", clock: 600, rest: true, note: "Stand up, drink water · screen off", ms: 4000 },
       { t: "Review", clock: 1200, note: "Read it out loud · mark where you stumble", ms: 4000 },
     ],
-    // A brain dump, sorted: the smallest first step first, a timer where a block of time makes sense.
+    // A whole ordinary day, planned: work, the dentist, the gym, dinner; rests and timers where they belong.
     dump: [
-      { t: "Open the Q3 deck", note: "Just open it · type the title, then stop" },
-      { t: "Write the deck", clock: 1500, note: "Slides 1–3 only · phone face down", ms: 5000 },
-      { t: "Email landlord", clock: 300, note: "Three lines: the leak, since when, a date", ms: 4000 },
-      { t: "Call mom", note: "Return Sunday’s voicemail · 10 min, then goodnight" },
-      { t: "Book the dentist", note: "One call · ask for the first slot next week" },
-      { t: "Band pulls", amt: [{ l: "Reps", v: 15, u: "reps", s: 1 }], note: "Light band, elbows in · stop if it pinches" },
+      { t: "Q3 deck outline", clock: 1500, note: "Slides 1–5 · a title and one number each", ms: 5000 },
+      { t: "Standup", note: "9:30 · deck status, one blocker" },
+      { t: "Q3 deck charts", clock: 2700, note: "Pull the Q3 numbers · three charts", ms: 5000 },
+      { t: "Lunch", clock: 1800, rest: true, note: "Away from the desk", ms: 4000 },
+      { t: "Send the deck draft", note: "To Priya · comments by Friday noon" },
+      { t: "Leave for the dentist", note: "4:05 · 20 min walk · insurance card" },
+      { t: "Push-ups", amt: [{ l: "Reps", v: 10, u: "reps", s: 1 }], note: "Upper body · set 1 of 3" },
+      { t: "Put the water on", note: "Big pot, lid on · salt it" },
+      { t: "Call mom", note: "Return Sunday’s voicemail · 10 min" },
     ],
     reset: [
       { t: "Dishes", clock: 480, note: "Glasses first · hot water, sink to rack", ms: 5000 },
@@ -991,12 +994,15 @@
       { t: "검토", clock: 1200, note: "소리 내어 읽기 · 걸리는 곳에 표시", ms: 4000 },
     ],
     dump: [
-      { t: "발표 자료 열기", note: "파일만 열어요 · 제목만 쓰고 멈추기" },
-      { t: "발표 자료 쓰기", clock: 1500, note: "1–3번 슬라이드만 · 휴대폰은 엎어 두세요", ms: 5000 },
-      { t: "집주인에게 메일 쓰기", clock: 300, note: "세 줄이면 돼요: 누수, 언제부터, 수리 날짜", ms: 4000 },
-      { t: "엄마에게 전화하기", note: "일요일 부재중 전화에 답해요 · 10분 통화하고 굿나잇" },
-      { t: "치과 예약하기", note: "전화 한 통 · 다음 주 가장 빠른 시간으로" },
-      { t: "밴드 당기기", amt: [{ l: "횟수", v: 15, u: "회", s: 1 }], note: "가벼운 밴드, 팔꿈치는 몸 쪽으로 · 아프면 멈춰요" },
+      { t: "발표 자료 개요", clock: 1500, note: "1–5번 슬라이드 · 제목과 숫자 하나씩", ms: 5000 },
+      { t: "스탠드업", note: "9시 30분 · 자료 진행 상황, 막힌 점 하나" },
+      { t: "발표 자료 차트", clock: 2700, note: "3분기 숫자 가져오기 · 차트 세 개", ms: 5000 },
+      { t: "점심", clock: 1800, rest: true, note: "자리에서 벗어나기", ms: 4000 },
+      { t: "초안 보내기", note: "팀장님께 · 금요일 정오까지 의견 요청" },
+      { t: "치과 가기", note: "4시 5분 출발 · 걸어서 20분 · 보험증" },
+      { t: "푸시업", amt: [{ l: "횟수", v: 10, u: "회", s: 1 }], note: "상체 · 3세트 중 1세트" },
+      { t: "물 올리기", note: "큰 냄비, 뚜껑 덮고 · 소금 넣기" },
+      { t: "엄마에게 전화하기", note: "일요일 부재중 전화에 답해요 · 10분" },
     ],
     reset: [
       { t: "설거지", clock: 480, note: "컵부터 · 뜨거운 물로, 싱크대에서 건조대로", ms: 5000 },
@@ -1009,7 +1015,7 @@
   $$("[data-greet]").forEach((g) => { g.textContent = greeting(new Date().getHours()); });
 
   // Product window: each thread is a plan; the phone shows its first card.
-  // The brain dump comes first: a messy ramble (segs, grouped by where each piece went) becomes a short reply and a deck.
+  // A full day comes first: said in passing (segs, grouped by where each piece went), it becomes a short reply and a deck.
   // <plans>
   const segHTML = (segs, on) => segs.map(([t, g]) => (g ? `<span class="frag${on ? " on" : ""}" data-g="${g}">${esc(t)}</span>` : esc(t))).join("");
   // A number stays on the line of its unit ("10 min", "3 sets", "60 s").
@@ -1020,12 +1026,10 @@
     `<ul class="msg ai list${staged ? " pre" : ""}">${plan.list.map(([b, t, g]) => `<li${g ? ` data-g="${g}"` : ""}${staged ? ' class="pre"' : ""}>${ck}<span class="l"><b>${b}</b> → ${keep(t)}</span></li>`).join("")}</ul>` +
     `<p class="msg ai${staged ? " pre" : ""}">${plan.end}</p>`;
   const plans = {
-    dump: { title: "Brain dump", c: "#e5658a",
-      segs: [["ok so my head is full. i have to get ", 0], ["the q3 deck going for priya", "today"], [" and i keep not starting it, and ", 0], ["the email to the landlord about the leak", "today"],
-        [", which i’m dreading, and mom left a voicemail sunday so i need to ", 0], ["call her back", "today"], [". i should ", 0], ["work out but my shoulder is still weird", "today"], [". oh and ", 0],
-        ["the dentist", "today"], [", i keep forgetting the dentist. ", 0], ["we’re out of eggs and coffee", "later"], [" too. ", 0], ["someday i want to learn spanish lol", "interest"]],
-      ai: "that’s a lot, but most of it is small. smallest first step first.",
-      list: [["Today", "6 cards · 2 timers", "today"], ["Later this week", "2 · eggs and coffee, slides 4+", "later"], ["Interest", "Spanish · when there’s room", "interest"]],
+    dump: { title: "Thursday", c: "#e5658a",
+      segs: [["thursday. ", 0], ["work 9 to 6, standup at 9:30", "today"], [", and ", 0], ["the q3 deck is due friday", "today"], [". ", 0], ["dentist at 4:30", "today"], [" so i’ll leave early, then ", 0], ["gym, upper body", "today"], [". ", 0], ["garlic pasta for dinner", "today"], [" and ", 0], ["call mom back", "today"], [". ", 0], ["we’re out of eggs and coffee", "later"], [". ", 0], ["someday i want to learn spanish", "interest"]],
+      ai: "got it. the whole day, around work and the dentist.",
+      list: [["Thursday", "9 cards · 3 timers", "today"], ["On the way home", "eggs and coffee", "later"], ["Interest", "Spanish · when there’s room", "interest"]],
       end: "first card is on your iPhone." },
     workout: { title: "Tonight’s workout", c: "#3fb6a8", me: "quick workout tonight, then I’m cooking pasta", ai: "Monday was legs, so tonight is upper body. You said your shoulders were still sore on Wednesday, so push-ups are lighter than last time.",
       list: [["Push-ups", "3 sets of 8 · was 10"], ["Rows", "3 sets of 12 · 60 s rests"], ["Pasta", "7 steps · 3 timers"]],
@@ -1041,87 +1045,11 @@
       end: "4 cards, 20 minutes. stop when the last one’s done." },
   };
   if (ko) Object.assign(plans, {
-    "dump": {
-      "title": "머릿속 정리",
-      "c": "#e5658a",
-      "segs": [
-        [
-          "머리 복잡하다. ",
-          0
-        ],
-        [
-          "내일 발표 자료 시작해야 되는데",
-          "today"
-        ],
-        [
-          " 계속 미루는 중이고, ",
-          0
-        ],
-        [
-          "집주인한테 누수 얘기 보내야 되고",
-          "today"
-        ],
-        [
-          " 엄마한테 ",
-          0
-        ],
-        [
-          "전화도 해야 돼",
-          "today"
-        ],
-        [
-          ". ",
-          0
-        ],
-        [
-          "운동하고 싶은데 어깨가 좀 뻐근해",
-          "today"
-        ],
-        [
-          ". 아 ",
-          0
-        ],
-        [
-          "치과 예약도 해야 됨",
-          "today"
-        ],
-        [
-          ". ",
-          0
-        ],
-        [
-          "달걀이랑 커피 다 떨어졌고",
-          "later"
-        ],
-        [
-          " 언젠간 ",
-          0
-        ],
-        [
-          "스페인어도 배워보고 싶다",
-          "interest"
-        ]
-      ],
-      "ai": "하나씩 해 봐요. 가장 쉬운 첫걸음부터요.",
-      "list": [
-        [
-          "오늘",
-          "카드 6장 · 타이머 2개",
-          "today"
-        ],
-        [
-          "이번 주에",
-          "달걀과 커피, 나머지 발표 자료",
-          "later"
-        ],
-        [
-          "관심사",
-          "스페인어 · 여유가 생기면",
-          "interest"
-        ]
-      ],
-      "end": "첫 카드가 iPhone에 도착했어요."
-    },
+    "dump": { title: "목요일", c: "#e5658a",
+      segs: [["목요일. ", 0], ["9시부터 6시까지 근무, 9시 반 스탠드업", "today"], [", ", 0], ["금요일까지 3분기 발표 자료", "today"], [". ", 0], ["4시 반 치과", "today"], ["라 일찍 나가고, 끝나면 ", 0], ["헬스장에서 상체", "today"], [". 저녁은 ", 0], ["알리오 올리오", "today"], [" 하고 ", 0], ["엄마한테 전화", "today"], [". ", 0], ["달걀이랑 커피 떨어짐", "later"], [". 언젠가 ", 0], ["스페인어 배워 보고 싶어", "interest"]],
+      ai: "좋아요. 근무와 치과 시간에 맞춰 하루 전체를 짰어요.",
+      list: [["목요일", "카드 9장 · 타이머 3개", "today"], ["퇴근길에", "달걀과 커피", "later"], ["관심사", "스페인어 · 여유가 생기면", "interest"]],
+      end: "첫 카드가 iPhone에 도착했어요." },
     "workout": {
       "title": "오늘 저녁 운동",
       "c": "#3fb6a8",
@@ -1220,16 +1148,16 @@
   const tryScreen = $('[data-deck="try"]');
   if (thread && tryScreen) {
     const tryDeck = makeDeck(tryScreen);
-    const waiting = [{ idle: true, t: T.waitT, note: T.waitNote }];
     const tabs = $$("[data-plan]");
     // The dump, in about two seconds: the AI answers, each group of pieces lights up as its row appears, then the first card prints.
     let timers = [];
     const cancel = () => { timers.forEach(clearTimeout); timers = []; };
     const at = (fn, ms) => timers.push(setTimeout(fn, ms));
-    const playDump = () => {
+    // The deck loads at once (fresh: printed from a tab), so a Start tapped while the thread plays is never reset.
+    const playDump = (fresh) => {
       cancel();
       thread.innerHTML = threadHTML(plans.dump, true);
-      tryDeck.load(waiting, { print: true });
+      if (fresh) tryDeck.load(sets.dump, { print: true });
       const rev = (el) => { el.classList.remove("pre"); el.classList.add("rev"); };
       const [intro, list, end] = $$(".msg.ai", thread);
       at(() => rev(intro), 500);
@@ -1238,7 +1166,6 @@
         li.classList.remove("pre");
         $$(`.frag[data-g="${li.dataset.g}"]`, thread).forEach((x) => x.classList.add("on"));
       }, 1050 + n * 380));
-      at(() => tryDeck.load(sets.dump, { print: true }), 1750);
       at(() => rev(end), 2150);
     };
     const show = (key) => {
@@ -1246,7 +1173,7 @@
       const plan = plans[key];
       $("[data-plan-title]").textContent = plan.title;
       $("[data-plan-dot]").style.setProperty("--c", plan.c);
-      if (plan.segs && !still()) { playDump(); return; }
+      if (plan.segs && !still()) { playDump(true); return; }
       thread.innerHTML = threadHTML(plan, false);
       tryDeck.load(sets[key], { print: true });
     };
@@ -1260,7 +1187,7 @@
     let io = null;
     if (!still() && "IntersectionObserver" in window) {
       thread.innerHTML = threadHTML(plans.dump, true);
-      tryDeck.load(waiting);
+      tryDeck.load(sets.dump);
       io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); playDump(); } }, { threshold: 0.6 });
       io.observe(thread);
     } else tryDeck.load(sets.dump);
@@ -1269,13 +1196,13 @@
   // Jobs: pick an example, or type your own and see it split into cards.
   const dumpText = plans.dump.segs.map((x) => x[0]).join("");
   const jobs = {
-    dump: { d: "<b>Say it messy.</b> Your AI sorts it into small cards, smallest first step first, and keeps ideas like Spanish for when there’s room.", cards: sets.dump },
+    dump: { d: "<b>Say it however it comes.</b> Your AI plans the whole day, travel and timers included, and keeps ideas like Spanish for when there’s room.", cards: sets.dump },
     workout: { d: "<b>Sets and rests, in order.</b> Your AI splits a workout into sets with timed rests, and logs the reps you enter.", cards: sets.workout },
     cooking: { d: "<b>Steps and waits.</b> Recipes become one step at a time. When something has to wait, the app keeps track of it in the corner while you do the next thing.", cards: sets.pasta },
     focus: { d: "<b>Blocks with breaks.</b> A deadline becomes focused blocks with real breaks between them.", cards: sets.focus },
   };
   if (ko) {
-    jobs.dump.d = "<b>두서없이 말해도 괜찮아요.</b> AI가 작은 카드로 정리해 가장 쉬운 첫걸음부터 보여 줍니다. 언젠가 해 보고 싶은 일은 여유가 생길 때를 위해 남겨 두고요.";
+    jobs.dump.d = "<b>생각나는 대로 말하세요.</b> AI가 이동 시간과 타이머까지 넣어 하루 전체를 짜고, 스페인어 같은 관심사는 여유가 생길 때를 위해 남겨 둡니다.";
     jobs.workout.d = "<b>세트와 휴식을 차례대로.</b> AI가 운동을 세트별로 나누고 쉬는 시간을 넣어 줍니다. 입력한 횟수도 기록해요.";
     jobs.cooking.d = "<b>요리도 한 단계씩.</b> 레시피를 지금 할 일로 나눕니다. 기다릴 땐 앱이 시간을 챙기는 동안 다음 단계를 진행하세요.";
     jobs.focus.d = "<b>집중할 시간, 쉴 시간.</b> 마감까지 할 일을 집중 구간으로 나누고, 사이사이 제대로 쉬는 시간을 넣어 줍니다.";
@@ -1330,7 +1257,7 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     fit();
     let job = "dump";
-    // The brain dump shows its own words; until they are edited, its cards are the sorted set.
+    // The full day shows its own words; until they are edited, its cards are the sorted set.
     const cardsNow = () => (job === "dump" && ownText.value === dumpText ? sets.dump : fromText(ownText.value));
     picks.forEach((chip) => chip.addEventListener("click", () => {
       picks.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
@@ -1475,6 +1402,14 @@
     $("[data-price]").textContent = price; $("[data-per]").textContent = per; $("[data-unit]").textContent = unit;
   }));
 
+  // Phones: the dock shows the sign-up button once the hero's own button has scrolled away.
+  {
+    const dock = $("[data-dock]"), heroRow = $(".hero .cta-row");
+    if (dock && heroRow && "IntersectionObserver" in window) {
+      new IntersectionObserver(([e]) => dock.classList.toggle("on", !e.isIntersecting && e.boundingClientRect.top < 0)).observe(heroRow);
+    }
+  }
+
   // Launch switch. Before launch every [data-cta] opens the small "launch updates" dialog.
   // TODO(launch): when the app is on the App Store, set LAUNCH = true (APP_STORE_URL below is already the real link).
   // These static texts are not changed by this script and must also be edited by hand at launch:
@@ -1482,15 +1417,25 @@
   //   - JSON-LD: SoftwareApplication description / availability, and the FAQ "Is it available on Android?" answer
   //     ("coming soon to iPhone"), in the FAQPage JSON-LD and the visible FAQ together (check_site.py compares them): index.html, ko/index.html
   //   - the "Coming soon to iPhone" first sentences: llms.txt, llms-full.txt
-  //   - the no-JS fallback wording of [data-cta] buttons, the hero pill and the notify heading (their data-launch-text covers script users only): index.html, ko/index.html
-  //   - the launch waitlist section/dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
+  //   - the no-JS fallback wording of [data-cta] buttons, and the hero pill (their data-launch-text covers script users only): index.html, ko/index.html
+  //   - the Smart App Banner: uncomment <meta name="apple-itunes-app" content="app-id=6766732077"> (TODO(launch) above <body>) in index.html and ko/index.html
+  //   - the launch waitlist dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
   // This is the only place to change: each [data-cta] becomes a link to the App Store and
-  // each [data-launch-text] (button, section heading, hero pill) shows the text in its attribute.
+  // each [data-launch-text] (button, hero pill) shows the text in its attribute.
   const LAUNCH = false;
   const APP_STORE_URL = "https://apps.apple.com/app/id6766732077";
 
   const dialog = $("[data-notify-dialog]");
   if (LAUNCH) {
+    // The hero's main button becomes Apple's official badge (unaltered); a QR code shows on desktop.
+    const heroCta = $(".hero [data-cta]");
+    if (heroCta) {
+      const a = document.createElement("a");
+      a.className = "store-badge"; a.href = APP_STORE_URL;
+      a.innerHTML = '<img src="/assets/app-store-badge.svg" width="156" height="52" alt="Download on the App Store">';
+      heroCta.replaceWith(a);
+    }
+    $("[data-store-qr]")?.removeAttribute("hidden");
     $$("[data-cta]").forEach((b) => {
       const a = document.createElement("a");
       a.className = b.className; a.href = APP_STORE_URL; a.textContent = b.dataset.launchText || b.textContent;

@@ -204,14 +204,15 @@
 }
     </script>
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
-    <link rel="stylesheet" href="assets/home.css?v=658e2a36b8">
-    <script src="assets/home.js?v=8cd750d954" defer></script>
+    <link rel="stylesheet" href="assets/home.css?v=77d15b92d7">
+    <script src="assets/home.js?v=f9028634ae" defer></script>
       <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
     <script src="/assets/language.js?v=15e6eb2491"></script>
   <link rel="alternate" hreflang="en" href="https://one-by.one/">
 <link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
 <link rel="alternate" hreflang="x-default" href="https://one-by.one/">
 </head>
+  <!-- TODO(launch): <meta name="apple-itunes-app" content="app-id=6766732077"> goes in the head above. -->
   <body class="home">
     <header class="topbar">
       <div class="topbar-inner">
@@ -225,13 +226,22 @@
 
     <main>
       <section class="hero">
-        <a class="pill" href="manifesto/"><b data-launch-text="Now on iPhone">Coming soon to iPhone</b><span class="pill-more"><span aria-hidden="true">·</span> Read the manifesto</span><i aria-hidden="true">↗</i></a>
-        <h1>What should I do now? <svg class="h1-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1a1c20"/><rect x="10" y="27" width="20" height="5.5" rx="2.75" fill="#c6ef4e"/></svg> This.</h1>
-        <p class="lede">Your AI plans. <br>You just do.</p>
-        <div class="cta-row">
-          <button class="btn" type="button" data-cta data-launch-text="Download on the App Store">Get launch updates</button>
-          <a class="btn soft" href="#jobs">See examples</a>
+        <div class="hero-copy">
+          <a class="pill" href="manifesto/"><b data-launch-text="Now on iPhone">Coming soon to iPhone</b><span class="pill-more"><span aria-hidden="true">·</span> Read the manifesto</span><i aria-hidden="true">↗</i></a>
+          <h1>What should I do now? <svg class="h1-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1a1c20"/><rect x="10" y="27" width="20" height="5.5" rx="2.75" fill="#c6ef4e"/></svg> This.</h1>
+          <p class="lede">Your AI plans. <br>You just do.</p>
+          <div class="cta-row">
+            <button class="btn" type="button" data-cta data-launch-text="Download on the App Store">Get launch updates</button>
+            <a class="btn soft" href="#jobs">See examples</a>
+          </div>
+          <p class="hero-price">Yearly plan: 14-day free trial for eligible new subscribers, then US$59.99/year.</p>
+          <div class="store-qr" data-store-qr hidden><img src="/assets/app-store-qr.svg" width="88" height="88" alt=""><span>Scan with iPhone</span></div>
         </div>
+        <figure class="hero-shot">
+          <img src="/assets/hero/kitchen-1120.jpg" srcset="/assets/hero/kitchen-720.jpg 720w, /assets/hero/kitchen-1120.jpg 1120w" sizes="(max-width: 960px) 100vw, 460px" width="1120" height="1400" alt="Hands slicing garlic next to a steaming pot, with an iPhone on a stand" fetchpriority="high">
+          <span class="hs-kept" aria-hidden="true"><i></i>Pasta water <em>6:12</em></span>
+          <span class="hs-card" aria-hidden="true"><b>Slice the garlic</b><small>4 cloves, sliced thin</small><span class="hs-go">Done<span>→</span></span></span>
+        </figure>
       </section>
 
       <section class="product" id="try" aria-label="A plan, from your AI to your iPhone">
@@ -240,7 +250,7 @@
             <div class="win-top"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="win-plus" aria-hidden="true">+</span></div>
             <p class="win-search" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></svg>Search</p>
             <div class="threads" role="tablist" aria-label="Example plans">
-              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>Brain dump</b><time>10:05 PM</time><em>6 cards · 2 timers</em></button>
+              <button role="tab" aria-selected="true" tabindex="0" aria-controls="plan-panel" data-plan="dump"><span class="av" style="--c:#e5658a"></span><b>Thursday</b><time>9:40 PM</time><em>9 cards · 3 timers</em></button>
               <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="workout"><span class="av" style="--c:#3fb6a8"></span><b>Tonight’s workout</b><time>7:30 PM</time><em>9 cards · first one ready</em></button>
               <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="pasta"><span class="av" style="--c:#f2a33a"></span><b>Garlic pasta</b><time>6:05 PM</time><em>7 cards · 3 timers</em></button>
               <button role="tab" aria-selected="false" tabindex="-1" aria-controls="plan-panel" data-plan="focus"><span class="av" style="--c:#6d5df5"></span><b>Proposal draft</b><time>1:10 PM</time><em>4 cards · breaks included</em></button>
@@ -249,9 +259,9 @@
             <p class="win-you"><span>Y</span>You</p>
           </aside>
           <div class="win-main" id="plan-panel" role="tabpanel">
-            <header class="win-head"><span class="av" data-plan-dot style="--c:#e5658a"></span><b data-plan-title>Brain dump</b><span class="win-tag">Your AI</span></header>
+            <header class="win-head"><span class="av" data-plan-dot style="--c:#e5658a"></span><b data-plan-title>Thursday</b><span class="win-tag">Your AI</span></header>
             <div class="thread" data-thread aria-live="polite">
-              <p class="msg me">ok so my head is full. i have to get <span class="frag on" data-g="today">the q3 deck going for priya</span> and i keep not starting it, and <span class="frag on" data-g="today">the email to the landlord about the leak</span>, which i’m dreading, and mom left a voicemail sunday so i need to <span class="frag on" data-g="today">call her back</span>. i should <span class="frag on" data-g="today">work out but my shoulder is still weird</span>. oh and <span class="frag on" data-g="today">the dentist</span>, i keep forgetting the dentist. <span class="frag on" data-g="later">we’re out of eggs and coffee</span> too. <span class="frag on" data-g="interest">someday i want to learn spanish lol</span></p><p class="msg ai">that’s a lot, but most of it is small. smallest first step first.</p><ul class="msg ai list"><li data-g="today"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Today</b> → 6 cards · 2 timers</li><li data-g="later"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Later this week</b> → 2 · eggs and coffee, slides 4+</li><li data-g="interest"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Interest</b> → Spanish · when there’s room</li></ul><p class="msg ai">first card is on your iPhone.</p>
+              <p class="msg me">thursday. <span class="frag on" data-g="today">work 9 to 6, standup at 9:30</span>, and <span class="frag on" data-g="today">the q3 deck is due friday</span>. <span class="frag on" data-g="today">dentist at 4:30</span> so i’ll leave early, then <span class="frag on" data-g="today">gym, upper body</span>. <span class="frag on" data-g="today">garlic pasta for dinner</span> and <span class="frag on" data-g="today">call mom back</span>. <span class="frag on" data-g="later">we’re out of eggs and coffee</span>. <span class="frag on" data-g="interest">someday i want to learn spanish</span></p><p class="msg ai">got it. the whole day, around work and the dentist.</p><ul class="msg ai list"><li data-g="today"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Thursday</b> → 9 cards · 3 timers</li><li data-g="later"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>On the way home</b> → eggs and coffee</li><li data-g="interest"><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><b>Interest</b> → Spanish · when there’s room</li></ul><p class="msg ai">first card is on your iPhone.</p>
             </div>
             <div class="composer" aria-hidden="true"><span class="c-plus">+</span><span class="c-field">Message your AI</span><span class="c-mic"><svg viewBox="0 0 16 16"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5"/><path d="M3 8a5 5 0 0 0 10 0M8 13v2"/></svg></span></div>
           </div>
@@ -262,11 +272,11 @@
               <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
               <p class="greet" data-greet>Good morning</p>
               <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-try" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
-              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-try"><span>Up next</span><b data-next>Standup</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
             </div>
             <div class="slot">
               <div class="ticket">
-                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-body"><div class="t-head"><p class="t-title">Q3 deck outline</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-clock sm" role="timer">25:00</p><p class="t-note">Slides 1–5 · a title and one number each</p></div>
                 <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Dismiss" aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Dismiss</span></button></div></div></div></div></div>
                 <span class="t-shadow" aria-hidden="true"></span>
               </div>
@@ -275,21 +285,10 @@
         </div>
       </section>
 
-      <section class="better" aria-label="Why one-by.one">
-        <article data-reveal>
-          <h2>Nothing to plan, nothing to remember</h2>
-          <p>Your AI fits your habits between your schedule and to-dos. Your phone hands you the next card, and timers bring back what is waiting. You just have a better day.</p>
-        </article>
-        <article data-reveal>
-          <h2>For ADHD brains</h2>
-          <p>One clear action in front of you. Your AI handles the plan, while timers keep track of waits and bring follow-up cards back. Take the next step without sorting the whole day again.</p>
-        </article>
-      </section>
-
       <section class="talk" data-reveal>
         <div class="talk-copy">
           <h2>Talk to your AI like you already do</h2>
-          <p>one-by.one connects to any MCP agent with remote HTTP and OAuth. Say what’s on your plate in your own words; your AI turns it into cards and puts them on your iPhone.</p>
+          <p>Works with ChatGPT, Claude and other AI apps. Tell yours what’s on your plate in your own words; it plans the whole day and sends it to your iPhone.</p>
           <p class="talk-starter">No AI connected yet? Tap what fills your usual morning, daytime and evening, and today’s cards are ready.</p>
         </div>
         <div class="mark-art" aria-hidden="true"><span class="m1"></span><span class="m2"></span><span class="m3"><i></i></span></div>
@@ -374,17 +373,17 @@
           <h2 id="jobs-heading">Give your AI a job</h2>
           <div class="chips">
             <div class="chip-set" role="group" aria-label="Examples">
-              <button type="button" aria-pressed="true" data-job="dump">Brain dump</button>
+              <button type="button" aria-pressed="true" data-job="dump">Full day</button>
               <button type="button" aria-pressed="false" data-job="workout">Workout</button>
               <button type="button" aria-pressed="false" data-job="cooking">Cooking</button>
               <button type="button" aria-pressed="false" data-job="focus">Deep work</button>
             </div>
             <button type="button" class="chip-own" aria-pressed="false" data-job="own">Your own…</button>
           </div>
-          <p class="job-desc" data-job-desc><b>Say it messy.</b> Your AI sorts it into small cards, smallest first step first, and keeps ideas like Spanish for when there’s room.</p>
+          <p class="job-desc" data-job-desc><b>Say it however it comes.</b> Your AI plans the whole day, travel and timers included, and keeps ideas like Spanish for when there’s room.</p>
           <div class="own" data-own>
             <label for="own-text" data-own-label>Say it however it comes</label>
-            <textarea id="own-text" rows="5" placeholder="e.g. clean my room, call mom, then 30 minutes of guitar" data-own-text>ok so my head is full. i have to get the q3 deck going for priya and i keep not starting it, and the email to the landlord about the leak, which i’m dreading, and mom left a voicemail sunday so i need to call her back. i should work out but my shoulder is still weird. oh and the dentist, i keep forgetting the dentist. we’re out of eggs and coffee too. someday i want to learn spanish lol</textarea>
+            <textarea id="own-text" rows="5" placeholder="e.g. clean my room, call mom, then 30 minutes of guitar" data-own-text>thursday. work 9 to 6, standup at 9:30, and the q3 deck is due friday. dentist at 4:30 so i’ll leave early, then gym, upper body. garlic pasta for dinner and call mom back. we’re out of eggs and coffee. someday i want to learn spanish</textarea>
             <p class="own-note">A preview of the cards. Your AI does this properly once you’re connected.</p>
           </div>
         </div>
@@ -394,11 +393,11 @@
               <div class="bar"><button class="ic undo" type="button" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span class="u-t">Undo</span></button><span class="bar-r"><button class="ic pause" type="button" aria-label="Pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button><span class="ic menu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h14"/></svg></span></span></div>
               <p class="greet" data-greet>Good morning</p>
               <div class="sit" data-sit hidden><p class="chip-s" data-sit-chip></p><div class="tray" data-tray role="group" aria-label="Timers" hidden></div><div class="tpanel" id="tp-jobs" data-tpanel role="group" aria-label="Running timers" hidden></div></div>
-              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>Up next</span><b data-next>Write the deck</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+              <button class="upnext" type="button" aria-expanded="false" aria-controls="q-jobs"><span>Up next</span><b data-next>Standup</b><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
             </div>
             <div class="slot">
               <div class="ticket">
-                <div class="t-body"><div class="t-head"><p class="t-title">Open the Q3 deck</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-note">Just open it · type the title, then stop</p></div>
+                <div class="t-body"><div class="t-head"><p class="t-title">Q3 deck outline</p><button class="t-more" type="button" aria-label="More" aria-expanded="false"><svg class="dots" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></svg><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div><p class="t-pause">Paused</p><p class="t-clock sm" role="timer">25:00</p><p class="t-note">Slides 1–5 · a title and one number each</p></div>
                 <div class="t-stub"><div class="stub-a"><div class="stub-in"><button class="go" type="button" aria-label="Start"><span class="go-lay" aria-hidden="true"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span><span class="go-lit" aria-hidden="true" style="transform:translateX(0.00%)"><span class="go-lay" style="transform:translateX(0.00%)"><span class="go-t">Start</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span></span></button><div class="mrow" inert><button class="m-skip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v6a3 3 0 0 0 3 3h10M14 10l4 4-4 4"/></svg><span>Skip</span></button><div class="pair"><button class="ab nt" type="button" data-name="Dismiss" aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span>Dismiss</span></button></div></div></div></div></div>
                 <span class="t-shadow" aria-hidden="true"></span>
               </div>
@@ -407,7 +406,7 @@
         </div>
       </section>
 
-      <section class="pricing" aria-labelledby="p-head">
+      <section class="pricing" id="notify" aria-labelledby="p-head">
         <h2 id="p-head">Pricing</h2>
         <div class="price-card">
           <div class="price-top">
@@ -426,11 +425,6 @@
           </ul>
           <p class="p-cancel">Cancel any time in your iPhone settings. <a href="support/#subscription">How to cancel</a></p>
         </div>
-      </section>
-
-      <section class="notify" id="notify" aria-labelledby="notify-heading">
-        <h2 id="notify-heading" data-launch-text="Now on the App Store">Be first to try it</h2>
-        <button class="btn" type="button" data-cta data-launch-text="Download on the App Store">Get launch updates</button>
       </section>
 
     <section id="faq" aria-labelledby="faq-heading">
@@ -474,6 +468,7 @@
       <p class="faq-more">Setup details and everything your AI can do: <a href="/connect/">Connect your AI</a> · <a href="support/">Support</a></p>
     </section>
     </main>
+    <div class="dock" data-dock><button class="btn wide" type="button" data-cta data-launch-text="Download on the App Store">Get launch updates</button></div>
 
     <footer>
       <div class="shell publisher">
