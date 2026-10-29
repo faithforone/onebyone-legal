@@ -2,10 +2,10 @@
    card's Start/Done and the brand mark, nothing else. Mockups keep the app's light palette. */
 .home {
   --ink: #1a1c20; --lime: #c6ef4e; --paper: #f3f4f5; --sheet: #fff; --raised: #2e3137; --soft: #b0b3ba;
-  --page: #fff; --panel: #f6f6f4; --line: #e8e9eb; --hush: #8a9099;
+  --page: #fff; --panel: #f6f6f4; --line: #e8e9eb; --hush: #656c75;
   background: var(--page); line-height: 1.5;
 }
-@media (prefers-color-scheme: dark) { .home { --page: var(--bg); --panel: var(--surface); --line: #2e3137; --hush: #7d838c; } }
+@media (prefers-color-scheme: dark) { .home { --page: var(--bg); --panel: var(--surface); --line: #2e3137; --hush: #8b919a; } }
 .home main { display: block; }
 .home h1, .home h2, .home h3, .home p { overflow-wrap: normal; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
