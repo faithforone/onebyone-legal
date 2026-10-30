@@ -617,3 +617,50 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .wall { flex-direction: column; padding: 18px; gap: 18px; }
   .w-lockside { width: 170px; }
 }
+
+/* One evening, card by card: the phone stays while the page scrolls, and each card is
+   done, tears off and the next prints (assets/day-scroll.js, GSAP ScrollTrigger). The
+   section is tall only where motion is allowed; still, it is the first card and the list. */
+.ds { max-width: 1080px; margin: 120px auto 0; padding: 0 24px; }
+.ds-pin { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: center; }
+.ds-copy h2 { margin: 0 0 14px; }
+.ds-copy > p { margin: 0 0 28px; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 36ch; }
+.ds-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ds-steps li { display: flex; align-items: baseline; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 20px; }
+.ds-steps time { flex: none; width: 74px; font-size: 14px; color: var(--hush); font-variant-numeric: tabular-nums; }
+.ds-steps b { font-weight: 600; }
+.ds-phone .device { margin: 0 auto; }
+.ds .upnext .ds-nexts { position: relative; flex: 1; min-width: 0; height: 100%; }
+.ds .upnext [data-ds-next] { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); }
+.ds .upnext [data-ds-next], .ds [data-ds-label] { transition: opacity .2s ease; }
+.ds .upnext [data-ds-next]:not(:first-child) { opacity: 0; }
+.ds .go { cursor: default; }
+.ds .go-lit { clip-path: inset(0 100% 0 0); }
+.ds .ticket:not(:first-child) { visibility: hidden; }
+.ds .stub-b { opacity: 0; }
+.ds .stub-b .go-lit { clip-path: none; }   /* the stub tears off after Done: filled */
+.ds .ticket[data-torn] .t-body { --teeth: radial-gradient(circle 2.4px at 4px 100%, #0000 92%, #000); --teeth-size: 8px 100%; }
+.ds .stub-b .stub-in { --teeth: radial-gradient(circle 2.4px at 4px 0, #0000 92%, #000); --teeth-size: 8px 100%; }
+/* Tall and held only once the script has the timeline: without it (no script, a failed load,
+   Reduce Motion) the section is the first card and the whole list, at its own height. */
+.ds-steps li { color: var(--hush); transition: color .25s ease, opacity .25s ease; }
+.ds-steps li b { color: inherit; }
+.ds-steps li:first-child, .ds-live .ds-steps li[data-on] { color: var(--text); }
+.ds-live .ds-steps li[data-off] { color: var(--hush); }
+.ds-live { height: 380vh; }
+.ds-live .ds-pin { position: sticky; top: 0; height: 100vh; height: 100svh; padding: 64px 0 24px; box-sizing: border-box; }
+@media (max-width: 860px) {
+  .ds { margin-top: 80px; padding: 0 16px; }
+  .ds-pin { grid-template-columns: 1fr; gap: 18px; align-content: center; justify-items: center; text-align: center; }
+  .ds-copy > p { display: none; }
+  .ds-copy h2 { font-size: 26px; }
+  .ds-steps { justify-items: center; }
+  .ds-steps li { border: 0; padding: 0; font-size: 17px; }
+  .ds-phone .device { width: min(250px, 62vw); }
+  /* Clear of the header above and the launch bar below; a short screen gets a smaller phone. */
+  .ds-live .ds-pin { padding: 64px 0 92px; gap: 14px; }
+  /* One line under the heading: the card in hand. */
+  .ds-live .ds-steps { display: block; position: relative; height: 26px; }
+  .ds-live .ds-steps li { position: absolute; left: 0; right: 0; justify-content: center; opacity: 0; }
+  .ds-live .ds-steps li[data-on] { opacity: 1; }
+}
