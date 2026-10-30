@@ -85,7 +85,7 @@
   .blog .post-card > :not(.thumb) { grid-column: 1 / -1; }
   .blog .post-card .thumb { grid-column: 1; grid-row: 1; width: 112px; }
   .blog .post-card > h2:not(.thumb) { grid-column: 2; grid-row: 1; font-size: 18px; }
-  .blog .end .btn { flex: 1 1 100%; }
+  .blog .end .btn { flex: none; width: 100%; }
 }
 
 /* Jump links under the answer. */

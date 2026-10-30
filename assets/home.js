@@ -159,7 +159,8 @@
       // No frames are scheduled while the mark is off screen; it resumes where it was.
       const tick = (now) => { if (!visible) { raf = 0; last = 0; return; } raf = requestAnimationFrame(tick); const dt = last ? Math.min(64, now - last) : 0; last = now; t += dt / 1000; draw(t); };
       draw(0);
-      new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible && !raf) raf = requestAnimationFrame(tick); }, { threshold: 0.3 }).observe(art);
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting && !still(); if (visible && !raf) raf = requestAnimationFrame(tick); }, { threshold: 0.3 }).observe(art);
+      motion.addEventListener("change", () => { if (!still()) return; visible = false; cancelAnimationFrame(raf); raf = 0; t = 0; draw(0); });
       window.__mark = { seek: (ms) => { t = ms / 1000; draw(t); }, stop: () => { cancelAnimationFrame(raf); visible = false; } };
     }
   }
@@ -879,6 +880,8 @@
       lowered.finished.then(settle, () => {});
     };
 
+    // A tap while a card prints lands it at once (the new card is inert until then); the next tap acts on it.
+    slot.addEventListener("pointerdown", () => finish());
     slot.addEventListener("click", (e) => {
       const adj = e.target.closest(".a-step");
       if (adj) { step(adj); return; }

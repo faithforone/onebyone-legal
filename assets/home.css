@@ -31,7 +31,7 @@
 
 /* Hero */
 .hero { max-width: 1140px; margin: 0 auto; padding: 64px 24px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 56px; align-items: center; }
-.pill { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--text); text-decoration: none; margin-bottom: 28px; }
+.pill { display: inline-flex; align-items: center; min-height: 44px; gap: 8px; font-size: 15px; color: var(--text); text-decoration: none; margin-bottom: 28px; }
 .pill b { font-weight: 500; }
 .pill span { color: var(--hush); }
 .pill i { font-style: normal; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--panel); font-size: 13px; }
@@ -183,7 +183,7 @@ html:lang(ko) .home .tile .ticket .t-note { line-height: 1.35; }
 .go svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .go-lit { position: absolute; inset: 0; overflow: hidden; background: var(--lime); color: var(--ink); }
 .go-lit .go-lay b { background: var(--ink); color: var(--lime); }
-.go:active, .go.tap { transform: scale(.985); }
+.go:active, .go.tap { transform: scale(.985); transition-duration: .12s; }
 .go[aria-disabled="true"] { cursor: default; }
 .go[aria-disabled="true"]:active { transform: none; }
 .ticket :focus-visible { outline-color: var(--paper); outline-offset: -3px; }
@@ -418,6 +418,10 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 /* Launch-updates dialog */
 .notify-dialog { width: min(420px, calc(100% - 32px)); border: 0; border-radius: 24px; padding: 32px 28px 24px; background: var(--page); color: var(--text); box-shadow: 0 30px 80px -30px rgba(0,0,0,.45); text-align: center; }
 .notify-dialog::backdrop { background: rgba(10, 12, 14, .35); backdrop-filter: blur(4px); }
+@media (prefers-reduced-transparency: reduce) {
+  .topbar { background: var(--page); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .notify-dialog::backdrop { background: rgba(10, 12, 14, .6); backdrop-filter: none; }
+}
 .notify-dialog h2 { font-size: 24px; margin: 0 0 8px; }
 .dlg-sub { margin: 0 0 22px; color: var(--muted); font-size: 15px; }
 /* Centered on the title's first line, inset like the sheet's padding. */

@@ -105,6 +105,7 @@ li + li { margin-top: 6px; }
 }
 .footer-inner nav { display: flex; gap: 8px 18px; flex-wrap: wrap; }
 .footer-inner a { text-decoration: none; }
+.footer-inner nav a { display: inline-flex; align-items: center; min-height: 32px; }
 .footer-inner a:hover { text-decoration: underline; }
 .footer-inner a[aria-current="page"] { color: var(--text); }
 
@@ -122,7 +123,7 @@ li + li { margin-top: 6px; }
 }
 .footer-end { display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; }
 .footer-end .language-links { display: flex; gap: 12px; }
-.footer-end .language-links a { min-height: 0; font-size: 13px; }
+.footer-end .language-links a { display: inline-flex; align-items: center; min-height: 32px; min-width: 24px; font-size: 13px; }
 
 /* Korean pages (<html lang="ko">): Pretendard is linked only from those pages. The tracking, weights and line
    heights above are tuned for Latin headlines; Hangul wants none of that, and breaks between words, not inside them. */
@@ -146,8 +147,8 @@ html:lang(ko) .home :is(.job-desc, .values-sub, .talk-copy p, .tile p) { line-he
 
 /* Support jump links and the privacy summary. */
 .jump-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px; }
-.jump-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px #d9dbde; color: inherit; text-decoration: none; font-size: 15px; }
+.jump-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line, #d9dbde); color: inherit; text-decoration: none; font-size: 15px; }
 .glance { margin: 24px 0 8px; padding: 20px 22px; border-radius: 16px; background: var(--surface, #fff); box-shadow: inset 0 0 0 1px var(--line, #e3e5e8); }
 .glance h2 { margin-top: 0; }
 .glance ul { margin: 0 0 10px; }
-.glance p { margin: 0; font-size: 14px; color: #6b6f76; }
+.glance p { margin: 0; font-size: 14px; color: var(--muted); }
