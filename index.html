@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="assets/styles.css?v=34c6f3cd9f">
-    <title>one-by.one · Your AI plans. You just do.</title>
-    <meta name="description" content="Your AI splits the day into small cards. Do them one by one on iPhone. Coming soon to the App Store.">
+    <title>AI Daily Planner App for iPhone | one-by.one</title>
+    <meta name="description" content="AI daily planner for iPhone. ChatGPT or Claude plans your day; the app shows one task at a time, with timers for timed ones. A to-do list built for doing.">
     <link rel="canonical" href="https://one-by.one/">
     <meta name="theme-color" content="#F3F4F5">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
@@ -14,8 +14,8 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="one-by.one">
     <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="one-by.one · Your AI plans. You just do.">
-    <meta property="og:description" content="Your AI splits the day into small cards. Do them one by one on iPhone. Coming soon to the App Store.">
+    <meta property="og:title" content="AI Daily Planner App for iPhone | one-by.one">
+    <meta property="og:description" content="AI daily planner for iPhone. ChatGPT or Claude plans your day; the app shows one task at a time, with timers for timed ones. A to-do list built for doing.">
     <meta property="og:url" content="https://one-by.one/">
     <meta property="og:image" content="https://one-by.one/assets/og.png">
     <meta property="og:image:type" content="image/png">
@@ -23,8 +23,8 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="one-by.one: one thing at a time. A row of small cards with the current one in front.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="one-by.one · Your AI plans. You just do.">
-    <meta name="twitter:description" content="Your AI splits the day into small cards. Do them one by one on iPhone. Coming soon to the App Store.">
+    <meta name="twitter:title" content="AI Daily Planner App for iPhone | one-by.one">
+    <meta name="twitter:description" content="AI daily planner for iPhone. ChatGPT or Claude plans your day; the app shows one task at a time, with timers for timed ones. A to-do list built for doing.">
     <meta name="twitter:image" content="https://one-by.one/assets/og.png">
     <meta name="twitter:image:alt" content="one-by.one: one thing at a time. A row of small cards with the current one in front.">
     <script type="application/ld+json">
@@ -171,7 +171,7 @@
           "name": "Is my calendar shared with my AI?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Share times only shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects."
+            "text": "Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Hide event names shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects."
           }
         },
         {
@@ -192,6 +192,22 @@
         },
         {
           "@type": "Question",
+          "name": "Is one-by.one an AI to-do list app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, without a list to manage. Your AI writes the tasks; the app shows the next one, with a timer when it has a length."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it a good to-do list app for ADHD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is built for people who freeze in front of a long list: you see one task, not forty. It is not a medical app and does not treat ADHD."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Is one-by.one available on Android?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -204,7 +220,7 @@
 }
     </script>
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
-    <link rel="stylesheet" href="assets/home.css?v=deccc5d6a2">
+    <link rel="stylesheet" href="assets/home.css?v=31353b25c2">
     <script src="assets/home.js?v=af52ab1c71" defer></script>
       <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
     <script src="/assets/language.js?v=15e6eb2491"></script>
@@ -228,6 +244,7 @@
       <section class="hero">
         <div class="hero-copy">
           <a class="pill" href="manifesto/"><b data-launch-text="Now on iPhone">Coming soon to iPhone</b><span class="pill-more"><span aria-hidden="true">·</span> Read the manifesto</span><i aria-hidden="true">↗</i></a>
+          <p class="hero-kicker">AI daily planner for iPhone</p>
           <h1>Your whole day, <br>card by card.</h1>
           <p class="lede">Your AI plans. You just do.</p>
         </div>
@@ -297,7 +314,7 @@
 
       <section class="talk" data-reveal>
         <div class="talk-copy">
-          <h2>Talk to your AI like you already do</h2>
+          <h2>Plan your day with ChatGPT or Claude</h2>
           <p>Works with ChatGPT, Claude and other AI apps. Tell yours what’s on your plate in your own words; it plans the whole day and sends it to your iPhone.</p>
           <p class="talk-starter">No AI connected yet? Tap your usual routines and start with cards for right now.</p>
         </div>
@@ -461,7 +478,7 @@
       </details>
       <details data-faq-item>
         <summary><h3>Is my calendar shared with my AI?</h3></summary>
-        <p data-faq-answer>Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Share times only shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects.</p>
+        <p data-faq-answer>Calendar sharing is optional and off until you choose calendars. If enabled, the next seven days of event titles, start and end times, and all-day status from selected calendars are shared with your connected AI. Hide event names shows “Busy” instead of event names. Calendar notes, attendees, locations and URLs are not uploaded, and one-by.one does not write to your calendars. Data remains available until the server confirms withdrawal; offline withdrawal is retried when the app reconnects.</p>
       </details>
       <details data-faq-item>
         <summary><h3>How is my data protected, and what does my AI receive?</h3></summary>
@@ -470,6 +487,14 @@
       <details data-faq-item>
         <summary><h3>How do I cancel my subscription?</h3></summary>
         <p data-faq-answer>Cancel your auto-renewing subscription through Apple. Cancel at least 24 hours before the trial or subscription period ends to avoid renewal. Apple handles purchases, renewals, cancellation and refund requests. Deleting your one-by.one account does not cancel an Apple subscription.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Is one-by.one an AI to-do list app?</h3></summary>
+        <p data-faq-answer>Yes, without a list to manage. Your AI writes the tasks; the app shows the next one, with a timer when it has a length.</p>
+      </details>
+      <details data-faq-item>
+        <summary><h3>Is it a good to-do list app for ADHD?</h3></summary>
+        <p data-faq-answer>It is built for people who freeze in front of a long list: you see one task, not forty. It is not a medical app and does not treat ADHD.</p>
       </details>
       <details data-faq-item>
         <summary><h3>Is one-by.one available on Android?</h3></summary>

@@ -97,7 +97,7 @@ We do not sell consumer health data or use it for targeted advertising. Washingt
 
 Calendar sharing requires explicit consent on the app's consent screen and is off until you consent and choose calendars to share. You can withdraw that consent in Settings by turning off calendar sharing, or email privacy@one-by.one for help. When you turn it on, one-by.one uploads the next seven days of event titles, start and end times, and all-day status from the calendars you choose, together with hashed event and calendar identifiers. These events are shared with your connected AI to help it plan around your fixed commitments.
 
-You can turn on Share times only in the calendar screen. Your AI sees “Busy” instead of event names; real event names stay on your iPhone. Titles are shared by default when you choose calendars. Changing this option requests withdrawal of the previous snapshot and uploads a fresh replacement.
+You can turn on Hide event names in the calendar screen. Your AI sees “Busy” instead of event names; real event names stay on your iPhone. Titles are shared by default when you choose calendars. Changing this option requests withdrawal of the previous snapshot and uploads a fresh replacement.
 
 We do not upload calendar notes, attendees, locations, or URLs, and one-by.one does not write to your calendars. We keep only the latest uploaded calendar snapshot for your account and refresh it when you return to the app, at most once every 15 minutes unless you change your calendar selection or the times-only option.
 
