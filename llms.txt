@@ -72,4 +72,4 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 - [한국어 블로그](https://one-by.one/ko/blog/) (Korean): Korean guides to connecting Claude to one-by.one.
 - [클로드 MCP 연결 방법: 사용법부터 모바일까지](https://one-by.one/ko/blog/claude-mcp-connect/) (Korean): What Claude MCP means, how to connect and use it on web, desktop and mobile, and what to check when it will not connect.
 - [클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지](https://one-by.one/ko/blog/claude-custom-connector/) (Korean): Korean version of the custom connector guide: how to add and use a connector, Free plan limit, OAuth sign-in and common errors.
-- [클로드 일정관리 하는법: 프롬프트와 한계까지](https://one-by.one/ko/blog/claude-schedule/) (Korean): 클로드 일정관리 하는법을 알려 드려요. 하루를 짜는 프롬프트, 캘린더 연결, 계획이 흐지부지되는 이유, 아이폰에서 카드로 실행하는 방법까지 정리했어요.
+- [클로드 일정관리 하는법: 프롬프트와 한계까지](https://one-by.one/ko/blog/claude-schedule/) (Korean): 클로드와 챗GPT에 일정·할 일·습관을 알려 하루를 계획해요. 복사할 프롬프트와 아이폰에서 한 장씩 실행하는 one-by.one의 기능·비용을 비교해요.
