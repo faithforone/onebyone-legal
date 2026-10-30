@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
     <title>클로드 일정관리 하는법: 프롬프트와 한계 · one-by.one</title>
-    <meta name="description" content="클로드 일정관리 하는법을 정리했어요. 구글 캘린더 연결, 복사해 쓰는 하루 계획 프롬프트, 대화창 계획이 점심쯤 흐지부지되는 이유와 아이폰에서 한 장씩 실행하는 법까지요.">
+    <meta name="description" content="클로드 일정관리 하는법 3단계와 복사해 쓰는 프롬프트예요. 챗GPT 일정관리도 같아요. 대화창 계획이 폰에서 안 굴러가는 이유와 한 장씩 실행하는 법까지 담았어요.">
     <link rel="canonical" href="https://one-by.one/ko/blog/claude-schedule/">
     <meta name="theme-color" content="#F3F4F5">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="one-by.one">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:title" content="클로드 일정관리 하는법: 프롬프트와 한계 · one-by.one">
-    <meta property="og:description" content="클로드 일정관리 하는법을 정리했어요. 구글 캘린더 연결, 복사해 쓰는 하루 계획 프롬프트, 대화창 계획이 점심쯤 흐지부지되는 이유와 아이폰에서 한 장씩 실행하는 법까지요.">
+    <meta property="og:description" content="클로드 일정관리 하는법 3단계와 복사해 쓰는 프롬프트예요. 챗GPT 일정관리도 같아요. 대화창 계획이 폰에서 안 굴러가는 이유와 한 장씩 실행하는 법까지 담았어요.">
     <meta property="og:url" content="https://one-by.one/ko/blog/claude-schedule/">
     <meta property="og:image" content="https://one-by.one/assets/blog/claude-schedule/og.jpg">
     <meta property="og:image:type" content="image/jpeg">
@@ -29,10 +29,10 @@
     <meta property="article:author" content="one-by.one">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="클로드 일정관리 하는법: 프롬프트와 한계 · one-by.one">
-    <meta name="twitter:description" content="클로드 일정관리 하는법을 정리했어요. 구글 캘린더 연결, 복사해 쓰는 하루 계획 프롬프트, 대화창 계획이 점심쯤 흐지부지되는 이유와 아이폰에서 한 장씩 실행하는 법까지요.">
+    <meta name="twitter:description" content="클로드 일정관리 하는법 3단계와 복사해 쓰는 프롬프트예요. 챗GPT 일정관리도 같아요. 대화창 계획이 폰에서 안 굴러가는 이유와 한 장씩 실행하는 법까지 담았어요.">
     <meta name="twitter:image" content="https://one-by.one/assets/blog/claude-schedule/og.jpg">
     <meta name="twitter:image:alt" content="왼쪽 말풍선 안의 가로 줄 목록이 위에서 아래로 갈수록 흐려지고, 오른쪽에는 라임색 카드 한 장이 점선으로 이어져 홀로 놓여 있어요.">
-    <link rel="stylesheet" href="/assets/home.css?v=c0c7215e67">
+    <link rel="stylesheet" href="/assets/home.css?v=42c40d2690">
     <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
     <link rel="stylesheet" href="/assets/blog.css?v=13083078f0">
     <script src="/assets/connect.js?v=fdbef95b32" defer></script>
@@ -44,7 +44,7 @@
       "@type": "Article",
       "@id": "https://one-by.one/ko/blog/claude-schedule/#article",
       "headline": "클로드 일정관리 하는법: 프롬프트와 한계까지",
-      "description": "클로드 일정관리 하는법을 정리했어요. 구글 캘린더 연결, 복사해 쓰는 하루 계획 프롬프트, 대화창 계획이 점심쯤 흐지부지되는 이유와 아이폰에서 한 장씩 실행하는 법까지요.",
+      "description": "클로드 일정관리 하는법 3단계와 복사해 쓰는 프롬프트예요. 챗GPT 일정관리도 같아요. 대화창 계획이 폰에서 안 굴러가는 이유와 한 장씩 실행하는 법까지 담았어요.",
       "inLanguage": "ko",
       "datePublished": "2026-10-30",
       "dateModified": "2026-10-30",
@@ -100,60 +100,51 @@
       <article>
         <h1>클로드 일정관리 하는법: 프롬프트와 한계까지</h1>
         <p class="meta">one-by.one · <time datetime="2026-10-30">2026년 10월 30일</time> 업데이트</p>
-        <p class="lede">내일 고정 일정과 할 일, 습관을 알려 주면 클로드가 시간표를 짜 줘요. 아래 프롬프트에 내 하루만 채워 붙여 넣으면 되고, 구글 캘린더를 연결해 두면 일정은 클로드가 직접 읽어요. 막히는 건 그다음이에요. 계획이 대화창에만 있으면 점심쯤엔 위로 밀려 잊혀요.</p>
+        <p class="lede">고정 일정과 할 일, 습관을 알려 주면 클로드가 빈 시간에 맞춰 하루를 짜 줘요. 챗GPT 일정관리도 같은 방법으로 돼요. 다만 계획은 대화창에 남을 뿐, 폰에서 지금 할 일을 챙겨 주지는 않아요.</p>
         <figure class="post-hero"><img src="/assets/blog/claude-schedule/hero-ko-schedule.jpg" alt="왼쪽 말풍선 안의 가로 줄 목록이 위에서 아래로 갈수록 흐려지고, 오른쪽에는 라임색 카드 한 장이 점선으로 이어져 홀로 놓여 있어요." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
         <p class="app-language">one-by.one 앱 화면은 영어만 지원해요. 그래서 이 글의 앱 버튼 이름도 영어 그대로 적었어요.</p>
 
-        <h2 id="calendar">클로드에 내 일정 알려 주기</h2>
-        <p>클로드에서 <strong>Customize</strong> &gt; <strong>Connectors</strong>를 열고 Google Calendar의 <strong>Connect</strong>를 누른 뒤 구글 계정으로 로그인해요. 대화창에서는 입력창 왼쪽 아래 <strong>+</strong> &gt; <strong>Connectors</strong>에서 켜 두면 돼요. 그러면 &ldquo;내일 회의 뭐 있어?&rdquo; 같은 질문에 클로드가 <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">캘린더를 보고 답해요</a>.</p>
-        <p>아이폰 클로드 앱은 허용만 하면 <a href="https://support.claude.com/en/articles/11869619-using-claude-with-ios-apps">기기 캘린더를 읽고 일정을 새로 만들 수 있어요</a>. 미리 알림에는 이미 있는 목록에 항목을 더해 주고요. 캘린더를 연결하지 않았다면 내일 일정의 시간과 제목만 붙여 넣어도 충분해요.</p>
-        <p>매일 같은 설명을 되풀이하기 싫다면 <a href="https://support.claude.com/en/articles/9517075-what-are-projects">프로젝트</a>를 하나 만들어 기상 시간, 출근 시간, 습관을 지침에 적어 두세요. 무료 계정도 프로젝트를 5개까지 만들 수 있어요. <a href="https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context">기억 기능</a>은 무료 플랜부터 기본으로 켜져 있지만, 내가 어떤 사람인지 기억하는 기능이지 오늘 3시에 뭘 할지 챙겨 주는 기능은 아니에요. 유료 플랜이라면 Claude Cowork의 <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork">예약 작업</a>으로 매일 아침 같은 시간에 요약을 받아 볼 수도 있어요.</p>
+        <h2 id="how-people">사람들은 클로드로 이렇게 일정관리해요</h2>
+        <p>레딧에는 할 일을 쏟아 넣으면 순서를 매기고, 시간을 정한 일 하나만 보여 주는 클로드 프로젝트를 만든 사람이 있어요. 못 끝낸 일은 내일로 넘겨 주고요. 그런데 만든 사람도 한계를 적었어요. &ldquo;It puts a list in order, it doesn&rsquo;t make it smaller.&rdquo; 순서는 매겨 줘도 목록이 줄지는 않는다는 얘기예요(<a href="https://www.reddit.com/r/ClaudeAI/comments/1wwb8vw/made_a_claude_project_to_help_me_with_my_daily/">2026년 10월</a>).</p>
+        <p>챗GPT로는 아침에 컨디션을 말하고, 할 일마다 걸리는 시간을 받고, 캘린더를 캡처해 보여 주는 사람이 많아요(<a href="https://www.reddit.com/r/ChatGPT/comments/1i3nmkb/chatgpt_is_incredible_for_adhd_executing/">2025년 1월</a>).</p>
+        <figure><img src="/assets/blog/claude-schedule/body-ordered-not-smaller.jpg" alt="왼쪽에는 회색 블록 여덟 개가 어지럽게 쌓여 있고, 화살표 오른쪽에는 같은 블록 여덟 개가 같은 높이로 가지런히 쌓여 있어요. 맨 위 하나만 라임색이에요." width="1200" height="675" loading="lazy" decoding="async"></figure>
 
-        <h2 id="prompt">클로드 일정관리 프롬프트</h2>
-        <p>대괄호만 내 상황으로 한 번 고쳐 두고, 전날 저녁이나 아침에 붙여 넣으면 돼요. 프로젝트 지침에 넣어 두면 붙여 넣을 필요도 없어요.</p>
-        <div class="copy-block"><div class="prompt-bar"><span>하루 계획 프롬프트</span><button type="button" data-copy="day-prompt" aria-label="하루 계획 프롬프트 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="하루 계획 프롬프트"><code id="day-prompt">내일 하루 일정을 짜 줘.
-
-내 하루
-- 기상: [7시]. 마무리: [밤 10시 30분].
-- 고정 일정: 캘린더가 보이면 거기서 확인해 줘. 안 보이면 [시간, 일정, 이동 시간]이야.
-- 꼭 해야 할 일: [할 일, 대략 걸리는 시간, 마감].
-- 지키고 싶은 습관: [예: 걷기 20분, 책 10쪽, 스트레칭].
-- 내 컨디션: [예: 오전에 집중이 잘 되고 점심 뒤엔 처져].
-
-짜는 방법
-1. 고정 일정은 움직이지 말고 거기서 시작해.
-2. 밖에 나가는 일 앞에는 이동 시간을, 준비가 필요한 일 앞에는 준비 시간을 넣어 줘. 씻고 준비하기, 통화 들어가기 전 정리 같은 것들이야.
-3. 가장 어려운 일은 집중이 잘 되는 시간에 두고, 일과 일 사이에 10분쯤 비워 줘.
-4. 습관은 일정 사이 빈 시간에 끼워 줘. 안 들어가면 내일 계획에서는 빼고 알려 줘. 억지로 끼우지 마.
-5. 기다려야 하는 일(빨래, 오븐, 다운로드)은 기다림 자체를 한 단계로 적고, 바로 뒤에 할 만한 일을 붙여 줘.
-6. 하루가 너무 꽉 차면 뭘 뺄지 제안하고, 빼기 전에 나한테 물어봐.
-
-중요한 정보가 빠졌으면 먼저 질문을 세 개까지만 해 줘.
-
-그다음 계획은 한 단계에 한 줄로 줘. 시작 시각, 짧은 행동, 걸리는 분 순서로.</code></pre><span role="status" aria-live="polite"></span></div>
-        <p>걸리는 시간은 대충이라도 적어 주세요. &ldquo;보고서 쓰기&rdquo;보다 &ldquo;보고서 쓰기, 90분쯤&rdquo;처럼요. 못 옮기는 일정은 먼저 말하고, 그건 움직이지 말라고 해 두세요.</p>
-        <p>하루가 틀어지면 처음부터 다시 쓸 필요 없어요. &ldquo;지금 2시 15분인데 회의가 40분 길어졌어. 남은 하루 다시 짜 줘&rdquo;처럼 바뀐 것만 말하면 돼요.</p>
-
-        <h2 id="limit">클로드로 짠 일정이 흐지부지되는 이유</h2>
-        <p>클로드는 계획을 잘 짜요. 할 일 더미에 순서를 매기고, 3시 회의와 3시 반 약속이 안 맞는다는 것도 짚어 줘요. 문제는 계획이 나온 다음이에요.</p>
-        <p>아침 9시엔 계획이 맞아요. 11시면 벌써 밀려 있고, 대화는 저 위에 있어요. 예약 작업이나 미리 알림으로 정해진 때 알림은 받을 수 있지만, 빨래가 끝났으니 지금 널 차례라고 하루 흐름에 맞춰 알려 주지는 않아요. 지금 뭘 할 차례인지는 결국 내가 기억하고 있어야 해요.</p>
-        <p>캘린더나 할 일 앱에 옮겨 적으면 조금 나아요. 그래도 목록이 하나 더 생길 뿐이라, 지금 뭘 할지는 여전히 내가 골라야 해요. 일정이 가벼운 날이라면 대화창이나 종이 메모로도 충분하고요.</p>
-
-        <h2 id="cards">클로드가 짠 하루를 아이폰에서 한 장씩</h2>
-        <p>one-by.one은 이 &lsquo;그다음&rsquo;을 맡는 아이폰 앱이에요. 앱이 계획을 짜지는 않아요. AI 모델도 부르지 않고요. 클로드처럼 MCP를 지원하는 내 AI가 짠 계획을 카드로 받아 두고, 지금 할 카드 한 장만 보여 줘요.</p>
-        <p>카드에서 Start, Done, Skip, Dismiss를 누르고, 잘못 눌렀으면 Undo로 되돌려요. 빨래처럼 기다리는 일엔 타이머가 붙고, 끝나면 다음 카드가 알아서 돌아와요. 한 일은 Records에 쌓이고, 잠금 화면과 StandBy 위젯에도 지금 할 일이 떠요. 하루가 틀어지면 클로드에게 말하면 카드가 바뀌어요.</p>
-        <figure class="phone"><img src="/assets/blog/plan-your-day-with-claude/app-card-running.jpg" alt="iPhone의 one-by.one 앱에서 'Boil water' 카드 한 장이 0:53 타이머와 짧은 메모, Done 슬라이더와 함께 보여요. 위에는 다음 카드 'Make sauce'의 이름이 보여요." width="600" height="1304" loading="lazy" decoding="async"><figcaption>카드 한 장과 타이머, Done 슬라이더가 있는 one-by.one 화면이에요.</figcaption></figure>
-        <h3>연결하는 방법</h3>
+        <h2 id="how-to">클로드·챗GPT 일정관리 하는법 3단계</h2>
         <ol>
-          <li>클로드의 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 커스텀 커넥터를 추가하고, 서버 주소에 <code>https://mcp.one-by.one/mcp</code>를 넣어요.</li>
-          <li>one-by.one 계정으로 로그인하고 권한을 승인해요.</li>
-          <li>대화의 + &gt; Connectors에서 one-by.one을 켜고, 위 프롬프트 끝에 한 줄을 더해요. &ldquo;이 계획을 one-by.one에 카드 한 장당 행동 하나로 저장하고, 다 되면 알려 줘.&rdquo;</li>
+          <li><strong>프로젝트 만들기.</strong> 기상 시간, 출근 시간, 지키고 싶은 습관을 지침에 적어 두면 매일 설명할 필요가 없어요. 챗GPT도 프로젝트에 같은 내용을 적으면 돼요.</li>
+          <li><strong>캘린더 보여 주기.</strong> 클로드는 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 Google Calendar를 연결해요. 번거로우면 캘린더 화면을 캡처해 붙여 넣어도 돼요.</li>
+          <li><strong>아침마다 프롬프트 붙여 넣기.</strong> 대괄호만 내 상황으로 바꿔 두세요.</li>
         </ol>
-        <p>화면별 순서는 <a href="/ko/connect/">AI 연결 페이지</a>에 있어요. 무료 플랜은 커스텀 커넥터를 1개만 쓸 수 있는데, 이 제한과 연결 오류는 <a href="/ko/blog/claude-custom-connector/">클로드 커넥터 추가방법</a>에서 다뤄요.</p>
+        <div class="copy-block"><div class="prompt-bar"><span>하루 계획 프롬프트</span><button type="button" data-copy="day-prompt" aria-label="하루 계획 프롬프트 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="하루 계획 프롬프트"><code id="day-prompt">오늘 하루를 짜 줘.
+- 고정 일정: 캘린더에서 확인해 줘. 안 보이면 [시간, 일정]이야.
+- 할 일: [할 일, 걸리는 시간]
+- 습관: [걷기 20분, 책 10쪽]
+습관은 일정 사이 빈 시간에 넣고, 이동·준비 시간도 넣어 줘.
+빨래처럼 기다리는 일엔 그동안 할 일을 붙여 줘.
+한 줄에 한 단계씩, 시작 시각과 걸리는 분으로 줘.</code></pre><span role="status" aria-live="polite"></span></div>
+        <p>하루가 틀어지면 &ldquo;회의가 40분 길어졌어. 남은 하루 다시 짜 줘&rdquo;처럼 바뀐 것만 말하면 돼요.</p>
 
-        <h2 id="notes">시작하기 전에</h2>
-        <p>앱은 아직 출시 전이고 곧 아이폰에서 만날 수 있어요. <a href="/ko/#notify">출시 알림</a>을 신청해 두면 나올 때 알려 드려요. 프롬프트는 지금 바로 쓸 수 있고요. 아이폰 전용이고, 미국 기준 연 $59.99(대상 신규 구독자는 14일 무료 체험) 또는 월 $12.99예요. 무료 요금제는 없어요.</p>
-        <p>클로드는 대화에 쓴 내용과 연결한 서비스에서 허용된 정보를 읽어요. 보여 주고 싶지 않은 일정은 캘린더 커넥터를 끄고 제목을 가려서 적으면 돼요.</p>
+        <h2 id="limit">대화창만으로는 부족한 점</h2>
+        <p>9시엔 계획이 맞아요. 11시면 벌써 밀려 있고, 계획은 대화 저 위에 있어요.</p>
+        <ul>
+          <li><strong>폰에서 하루를 굴려 주지 않아요.</strong> 지금 뭘 할 차례인지는 내가 기억해야 해요.</li>
+          <li><strong>타이머가 없어요.</strong> 빨래 45분이 끝나도 널 차례라고 알려 주지 않아요.</li>
+          <li><strong>위젯이 없어요.</strong> 확인하려면 앱을 열고 대화를 거슬러 올라가야 해요.</li>
+        </ul>
+        <p>캘린더나 할 일 앱에 옮겨 적으면 조금 나아요. 그래도 목록이 하나 더 생길 뿐, 지금 뭘 할지는 여전히 내가 골라야 해요.</p>
+        <figure><img src="/assets/blog/chatgpt-daily-planner-prompt/body-plan-drift.jpg" alt="왼쪽에는 해 아래 세 항목이 체크된 깔끔한 목록이, 오른쪽에는 11시 가까운 시계 옆에 기울어진 목록이 있어요. 오른쪽 목록엔 커피 자국이 묻고 줄이 종이 밖으로 흘러 나가요." width="1200" height="675" loading="lazy" decoding="async"></figure>
+
+        <h2 id="phone">one-by.one은 폰 쪽을 맡아요</h2>
+        <p>one-by.one은 클로드나 챗GPT처럼 커스텀 커넥터(MCP)를 지원하는 내 AI가 짠 하루를 카드로 받아, 아이폰에서 한 장씩 보여 주는 앱이에요. 앱이 AI 모델을 직접 부르지는 않아요. 연결은 <a href="/ko/connect/">AI 연결 페이지</a>에서 해요.</p>
+        <ul>
+          <li><strong>한 번에 카드 한 장.</strong> Start, Done, Skip을 누르고, 잘못 눌렀으면 Undo로 되돌려요.</li>
+          <li><strong>기다림은 계속 세요.</strong> 빨래 45분이 도는 동안 다음 카드를 하고, 끝나면 널기 카드가 돌아와요.</li>
+          <li><strong>밀렸을 땐 Catch-up.</strong> 최근 카드를 한 번에 완료로 표시하고, 나머지는 AI에게 다시 짜 달라고 하면 돼요.</li>
+        </ul>
+        <figure class="phone"><img src="/assets/blog/claude-schedule/app-wait-returns.jpg" alt="'Nothing to plan. Nothing to remember.' 제목 아래 one-by.one 화면이에요. 'Make sauce' 카드에 9:52 타이머가 돌고, 위에는 'Add pasta comes back in 4 min.' 알림이 떠 있어요." width="506" height="1100" loading="lazy" decoding="async"><figcaption>기다리던 일은 시간이 되면 카드로 돌아와요.</figcaption></figure>
+        <p>위젯은 홈 화면(작은·중간 크기)과 잠금 화면에 있어요. 앱을 열지 않고 지금 카드를 Start, Done, Skip 할 수 있고, 작은 위젯은 StandBy에서도 보여요.</p>
+        <figure class="phone"><img src="/assets/blog/claude-schedule/app-widget.jpg" alt="'Resume from your Home Screen.' 제목 아래 one-by.one 홈 화면 위젯이에요. 'Dinner' 카드와 1:23 타이머, 라임색 Resume 버튼이 보여요." width="506" height="1100" loading="lazy" decoding="async"><figcaption>홈 화면에서 바로 지금 카드를 이어 가요.</figcaption></figure>
+        <p>대신 월 $12.99 또는 연 $59.99예요(대상 신규 구독자는 연간 요금제 14일 무료 체험). 내 AI가 있어야 하고, 아이폰 전용에 앱 화면은 영어예요. 아직 출시 전이라 <a href="/ko/#notify">출시 알림</a>을 신청해 두면 나올 때 알려 드려요.</p>
 
         <aside class="end" aria-labelledby="end-title">
           <h2 id="end-title">클로드가 짠 하루를 한 장씩 실행해 보세요</h2>
