@@ -36,3 +36,13 @@ Share images: `assets/og.png` (English pages) and `assets/og-ko.png` (Korean hom
 Blog: a new post is a folder `blog/<slug>/index.html` copied from an existing post (head tags, Article + BreadcrumbList JSON-LD, visible "Updated" date, end block). Add it to `blog/index.html`, `sitemap.xml` and the Blog list in `llms.txt`, and keep `dateModified`, the visible Updated date and the `article:modified_time` tag in step when a post changes. Blog pages omit `language.js` and the language links so browsers are never redirected away from a post. English posts live under `/blog/`, Korean ones under `/ko/blog/` (real, indexable Korean pages with their own index; add Korean posts to `ko/blog/index.html` too). Only a post that exists in both languages gets hreflang (currently `add-custom-connector-in-claude` and `claude-custom-connector`); the sitemap does not use hreflang. Table styles for the comparison post live in `blog.css`, not inline. At launch, search the blog posts for "coming soon" and for `/#notify` (the launch-updates links) and switch them to the App Store link next to the `LAUNCH` switch in `home.js`; the blog does not load `home.js`.
 
 Check the blog with `python3 ../fixes/site/check_site.py --site-root .` (without `--site-root` the checker looks at the sibling `legal-site` checkout, not this one).
+
+## IndexNow (Bing, Yandex, Naver, Seznam)
+
+The key file `/4e0c5576b4a10582ac41971ea88d81b1.txt` proves we own the host. After publishing or changing pages, tell the engines with the sitemap's URLs:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "content-type: application/json; charset=utf-8" -d "$(python3 -c 'import json,re;u=re.findall(r"<loc>([^<]+)</loc>",open("sitemap.xml").read());print(json.dumps({"host":"one-by.one","key":"4e0c5576b4a10582ac41971ea88d81b1","keyLocation":"https://one-by.one/4e0c5576b4a10582ac41971ea88d81b1.txt","urlList":u}))')"
+```
+
+200 or 202 means accepted. Add new pages to `sitemap.xml` first.
