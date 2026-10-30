@@ -23,7 +23,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="A task card is copied, and the tilted copy turns into a lime chat bubble, while a clock in the corner shows nearly eleven.">
     <meta property="article:published_time" content="2026-10-25">
-    <meta property="article:modified_time" content="2026-10-25">
+    <meta property="article:modified_time" content="2026-10-30">
     <meta property="article:author" content="one-by.one">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ChatGPT daily planner prompt (5 to copy) · one-by.one">
@@ -45,7 +45,7 @@
       "description": "A ChatGPT daily planner prompt to copy, plus daily schedule prompts for habits, travel, students and shift workers, and why a chat plan drifts by 11 AM.",
       "inLanguage": "en",
       "datePublished": "2026-10-25",
-      "dateModified": "2026-10-25",
+      "dateModified": "2026-10-30",
       "image": "https://one-by.one/assets/blog/chatgpt-daily-planner-prompt/og.jpg",
       "mainEntityOfPage": "https://one-by.one/blog/chatgpt-daily-planner-prompt/",
       "url": "https://one-by.one/blog/chatgpt-daily-planner-prompt/",
@@ -97,9 +97,8 @@
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">The ChatGPT daily planner prompt</span></nav>
       <article>
         <h1>The ChatGPT daily planner prompt (and why plans fall apart by 11 AM)</h1>
-        <p class="meta">By one-by.one · Updated <time datetime="2026-10-25">October 25, 2026</time></p>
-        <p class="lede">A ChatGPT daily planner prompt turns a list of tasks and a few facts about your day into a plan you can follow. Copy one of the five below: a basic daily schedule prompt, a prompt for your daily routine and habits, one that adds travel and prep, and versions for students and shift workers. After them comes the harder part, which is why the plan is usually wrong by late morning.</p>
-        <nav class="jump" aria-label="Jump to"><span>Jump to</span><a href="#basic">Basic prompt</a><a href="#habits">Routine and habits</a><a href="#travel">Travel and prep</a><a href="#student">Students</a><a href="#shift">Shift workers</a></nav>
+        <p class="meta">By one-by.one · Updated <time datetime="2026-10-30">October 30, 2026</time></p>
+        <p class="lede">A ChatGPT daily planner prompt turns a list of tasks and a few facts about your day into a plan you can follow. Copy one of the five below: a basic daily schedule prompt, a prompt for your daily routine and habits, one that adds travel and prep, and versions for students and shift workers.</p>
         <figure class="post-hero"><img src="/assets/blog/chatgpt-daily-planner-prompt/hero-chatgpt-prompt.jpg" alt="A task card is copied, and the tilted copy turns into a lime chat bubble, while a clock in the corner shows nearly eleven." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
 
         <h2 id="how">Using ChatGPT to plan my day: how to get a good plan</h2>
@@ -220,16 +219,16 @@ Output one line per step: start time, action, minutes. Show the day in the order
         <p>Re-planning also costs a round trip every time: describe what changed, wait, read the new plan, find your place again.</p>
 
         <h2 id="tasks">What about ChatGPT&rsquo;s own Tasks?</h2>
-        <p>ChatGPT has a feature for this, and it is worth knowing what it does. OpenAI&rsquo;s help page describes scheduled tasks that can run one-time or recurring prompts, monitor for changes and, on some plans, respond to events in Gmail, Slack or GitHub. You manage them from a Scheduled page, and notifications come by push, email or both.</p>
+        <p>ChatGPT has a feature for this, and it is worth knowing what it does. <a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">OpenAI&rsquo;s help page</a> describes scheduled tasks that can run one-time or recurring prompts, monitor for changes and, on some plans, respond to events in Gmail, Slack or GitHub. You manage them from a Scheduled page, and notifications come by push, email or both.</p>
         <p>That helps with the morning part. A recurring task can deliver a day plan at a time you choose, and it is a fair way to get a nudge without opening ChatGPT. The limits matter, though. According to the same page, free accounts get flexible windows such as morning or night, while exact delivery times and hourly schedules need an eligible paid plan. Active tasks are capped by plan: 3 on Free and Go, 5 on Plus, 10 on Business and Edu, and 15 on Pro and Enterprise. Tasks do not support voice chats, GPTs or locked chats.</p>
-        <p>What the page does not describe is tracking you through the day: showing the current step, marking steps done, or bringing a follow-up back when a wait ends. A task is a scheduled run of a prompt. It is a good reminder system and a poor day runner. Both can be true, and plenty of people will find Tasks enough.</p>
+        <p>A task is a scheduled run of a prompt. It is a good reminder system and a poor day runner. Both can be true, and plenty of people will find Tasks enough.</p>
 
         <h2 id="connect">Connect ChatGPT to one-by.one so the plan runs</h2>
         <p>one-by.one is an iPhone app that does not plan anything itself and never calls an AI model. Your ChatGPT (or Claude, or another assistant that supports MCP) makes the plan and saves it to the app as cards. The app shows one card at a time: Start, Done, Skip, Dismiss, and Undo for a mis-tap. A wait gets a timer, and when it ends the follow-up card comes back. Records show what you did, and Lock Screen and StandBy widgets show the current card. When the day changes, tell ChatGPT and it updates the cards. Your AI plans. You just do.</p>
         <figure class="phone"><img src="/assets/blog/chatgpt-daily-planner-prompt/app-timer-ball.jpg" alt="The one-by.one iPhone app showing a Make sauce card with a 9:52 timer and a Done slider. A small round ball at the top right counts down a wait of 4 minutes." width="600" height="1304" loading="lazy" decoding="async"><figcaption>The one-by.one app: a small round timer ball keeps a wait in view.</figcaption></figure>
         <p>The setup is on our <a href="/connect/">Connect page</a>. For ChatGPT it says to turn on Developer mode if your account allows it (Settings, Security and login, Developer mode), open Plugins, select <strong>+</strong>, name it <code>one-by.one</code> and enter the server URL below. Older versions call this Apps or Connectors. Then finish the sign-in and pick it from the tools menu in a new chat.</p>
         <div class="copy-block"><div class="url"><pre tabindex="0" aria-label="MCP server URL"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button type="button" data-copy="server-url" aria-label="MCP server URL Copy" hidden>Copy</button></div><span role="status" aria-live="polite"></span></div>
-        <p>On plan requirements, the Connect page says: &ldquo;Availability depends on your plan and workspace policy.&rdquo; It does not list plans, so check what your own ChatGPT account and workspace allow. one-by.one itself is a paid subscription, US$59.99 a year with a 14-day free trial for eligible new subscribers, or US$12.99 a month, and AI connections need it.</p>
+        <p>one-by.one is a paid subscription, US$59.99 a year with a 14-day free trial for eligible new subscribers, or US$12.99 a month, and AI connections need it.</p>
         <p>Once connected, use any prompt above and add one line at the end: &ldquo;If you have a one-by.one connection, save this plan there, one action per card, and tell me when it is ready.&rdquo;</p>
         <p>Be clear about the limits. The app is iPhone only, the interface is English only, there is no free tier, and it is coming soon to the App Store, not there today. Until it arrives, the five prompts work on their own in any ChatGPT chat.</p>
 
@@ -237,14 +236,8 @@ Output one line per step: start time, action, minutes. Show the day in the order
           <h2 id="end-title">Your AI plans. You just do.</h2>
           <p>one-by.one runs the day your AI plans, one card at a time on iPhone.</p>
           <p class="cta-row"><a class="btn" href="/connect/">See how to connect ChatGPT</a><a class="btn soft" href="/#notify">Get launch updates</a></p>
-          <p class="small">one-by.one is coming soon to iPhone. Availability varies by country; see the <a href="/terms/#launch-scope">launch scope</a>.</p>
+          <p class="small">one-by.one is coming soon to iPhone.</p>
         </aside>
-
-        <h2 id="sources">Sources</h2>
-        <ul class="sources">
-          <li><a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">OpenAI Help Center: Scheduled tasks in ChatGPT</a></li>
-          <li><a href="/connect/">one-by.one: Connect an AI app</a></li>
-        </ul>
       </article>
     </main>
     <footer><div class="shell footer-inner"><nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav><div class="footer-end"><span>© 2026 one-by.one</span></div></div>

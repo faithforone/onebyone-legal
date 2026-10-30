@@ -25,7 +25,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="왼쪽 말풍선에서 출발한 선이 라임색 점 네 개를 지나 오른쪽 휴대폰 속 라임색 카드 한 장에 닿아요.">
     <meta property="article:published_time" content="2026-10-25">
-    <meta property="article:modified_time" content="2026-10-25">
+    <meta property="article:modified_time" content="2026-10-30">
     <meta property="article:author" content="one-by.one">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="클로드 MCP 연결 방법 (사용법·연결 안됨·모바일) · one-by.one">
@@ -47,7 +47,7 @@
       "description": "클로드 MCP 연결 방법을 순서대로 알려 드려요. 클로드 MCP 사용법, 연결 안됨 해결, 모바일에서 쓰는 법까지 one-by.one을 예시로 정리했어요.",
       "inLanguage": "ko",
       "datePublished": "2026-10-25",
-      "dateModified": "2026-10-25",
+      "dateModified": "2026-10-30",
       "image": "https://one-by.one/assets/blog/claude-mcp-connect/og.jpg",
       "mainEntityOfPage": "https://one-by.one/ko/blog/claude-mcp-connect/",
       "url": "https://one-by.one/ko/blog/claude-mcp-connect/",
@@ -99,9 +99,8 @@
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/ko/">홈</a><span aria-hidden="true">/</span><a href="/ko/blog/">블로그</a><span aria-hidden="true">/</span><span aria-current="page">클로드 MCP 연결 방법</span></nav>
       <article>
         <h1>클로드 MCP 연결 방법: 사용법부터 모바일까지</h1>
-        <p class="meta">one-by.one · <time datetime="2026-10-25">2026년 10월 25일</time> 업데이트</p>
-        <p class="lede">클로드 MCP 연결 방법은 세 단계예요. Customize &gt; Connectors에서 Add custom connector를 눌러 서버 주소를 넣고, 로그인을 마친 뒤, 대화의 + 메뉴에서 커넥터를 켜면 돼요. 이 글은 클로드 MCP 사용법, 연결 안됨 해결법, 모바일에서 쓰는 법까지 차례로 알려 드려요. 따라 해 볼 예시는 one-by.one이에요.</p>
-        <nav class="jump" aria-label="바로 가기"><span>바로 가기</span><a href="#web">연결 방법</a><a href="#mobile">모바일</a><a href="#example">연동 예시</a><a href="#errors">연결 안됨</a></nav>
+        <p class="meta">one-by.one · <time datetime="2026-10-30">2026년 10월 30일</time> 업데이트</p>
+        <p class="lede">클로드 MCP 연결 방법은 세 단계예요. Customize &gt; Connectors에서 Add custom connector를 눌러 서버 주소를 넣고, 로그인을 마친 뒤, 대화의 + 메뉴에서 커넥터를 켜면 돼요. 따라 해 볼 예시는 one-by.one이에요.</p>
         <figure class="post-hero"><img src="/assets/blog/claude-mcp-connect/hero-ko-mcp.jpg" alt="왼쪽 말풍선에서 출발한 선이 라임색 점 네 개를 지나 오른쪽 휴대폰 속 라임색 카드 한 장에 닿아요." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
         <p class="app-language">one-by.one 앱 화면은 영어로 제공돼요. 이 글에 나오는 앱 메뉴 이름(Settings, AI apps 등)은 영어 그대로 적었어요.</p>
 
@@ -111,7 +110,7 @@
         <p>예전에는 MCP 서버가 내 노트북 안에서만 돌아갔어요. 지금은 인터넷에 올려 둔 <strong>원격 MCP 서버</strong>에 주소(URL) 하나로 연결해요. 연결하는 길은 두 가지예요.</p>
         <ul>
           <li><strong>디렉터리 커넥터.</strong> Anthropic이 모아 둔 목록에서 골라 연결해요. Google Calendar처럼 이름만 찾으면 돼요.</li>
-          <li><strong>커스텀 커넥터.</strong> 목록에 없는 서비스라도 원격 MCP 서버 주소를 알면 직접 추가할 수 있어요. 이 글이 다루는 방법이에요.</li>
+          <li><strong>커스텀 커넥터.</strong> 목록에 없는 서비스라도 원격 MCP 서버 주소를 알면 직접 추가할 수 있어요.</li>
         </ul>
 
         <h2 id="need">연결하기 전에 필요한 것</h2>
@@ -124,7 +123,7 @@
         <p>하나만 기억해 두면 나중에 막힐 때 도움이 돼요. 클로드는 내 기기가 아니라 Anthropic의 클라우드에서 서버에 접속해요. 모바일 앱도 마찬가지예요. 그래서 서버는 공개 인터넷에서 닿을 수 있어야 해요.</p>
 
         <h2 id="web">클로드 MCP 연결 방법: 웹과 데스크톱</h2>
-        <p>Free, Pro, Max 플랜 기준이에요. Anthropic은 조직에 따라 추가 창의 모양이 다르다고 안내해요. 이름, 주소, 고급 설정이 한 화면에 나오기도 하고, 두 단계로 나뉘어 <strong>계속</strong> 버튼이 나오기도 해요. 한국어 도움말은 메뉴를 &lsquo;사용자 정의 &gt; 커넥터&rsquo;로 적고 있어서, 화면 언어에 따라 영어(Customize, Connectors)와 한국어 이름이 섞여 보일 수 있어요.</p>
+        <p>Free, Pro, Max 플랜 기준이에요. <a href="https://claude.com/docs/connectors/custom/add-unlisted">Anthropic</a>은 조직에 따라 추가 창의 모양이 다르다고 안내해요. 이름, 주소, 고급 설정이 한 화면에 나오기도 하고, 두 단계로 나뉘어 <strong>계속</strong> 버튼이 나오기도 해요. 한국어 도움말은 메뉴를 &lsquo;사용자 정의 &gt; 커넥터&rsquo;로 적고 있어서, 화면 언어에 따라 영어(Customize, Connectors)와 한국어 이름이 섞여 보일 수 있어요.</p>
         <ol>
           <li><strong>Customize</strong>(사용자 정의)에서 <strong>Connectors</strong>(커넥터)를 열어요. 데스크톱 앱은 사이드바에서 같은 메뉴를 골라요.</li>
           <li><strong>Add custom connector</strong>(커스텀 커넥터 추가)를 눌러요. 한국어 도움말은 &ldquo;+ 추가&rdquo; 다음 &ldquo;커스텀 커넥터 추가&rdquo; 순서로 안내해요.</li>
@@ -138,7 +137,7 @@
         <h3>Team, Enterprise 플랜이라면</h3>
         <p>구성원은 직접 커스텀 커넥터를 추가할 수 없어요. Owner(Enterprise는 라이브러리 관리 권한이 있는 커스텀 역할도 가능)가 <strong>Organization settings</strong>(조직 설정)의 <strong>Connectors</strong>에서 먼저 추가해야 해요. 그다음 구성원이 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 <strong>Custom</strong> 표시가 붙은 커넥터를 찾아 <strong>Connect</strong>를 누르면 돼요.</p>
         <h3>터미널에서 쓰는 Claude Code라면</h3>
-        <p>Claude Code는 같은 서버를 명령 한 줄로 추가해요. 이어서 Claude Code 안에서 <code>/mcp</code>를 입력하면 브라우저에서 로그인할 수 있어요.</p>
+        <p><a href="https://code.claude.com/docs/en/mcp">Claude Code</a>는 같은 서버를 명령 한 줄로 추가해요. 이어서 Claude Code 안에서 <code>/mcp</code>를 입력하면 브라우저에서 로그인할 수 있어요.</p>
 <pre tabindex="0"><code>claude mcp add --transport http onebyone https://mcp.one-by.one/mcp</code></pre>
 
         <h2 id="use">클로드 MCP 사용법: 연결한 뒤 대화에서 쓰기</h2>
@@ -151,8 +150,8 @@
         <p>도구별 허용 범위는 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 커넥터를 골라 <strong>Tool permissions</strong>로 바꿔요. 각 도구를 Always allow, Needs approval, Blocked 중 하나로 둘 수 있어요. 정리할 때 <strong>Disconnect</strong>는 클로드의 로그인만 끊고 커넥터는 목록에 남겨 둬요. <strong>Remove</strong>는 내 계정에서 커넥터를 아예 없애요.</p>
 
         <h2 id="mobile">클로드 MCP 모바일에서 쓰는 법</h2>
-        <p>모바일 앱도 원격 커넥터를 지원해요. 웹이나 Claude Desktop에서 연결해 둔 서비스는 iOS나 Android의 Claude 앱에 다음번 로그인할 때 나타난다고 Anthropic이 안내해요. 대화창을 열고 <strong>+</strong> 메뉴에서 커넥터가 보이는지 확인하세요.</p>
-        <p>다만 커스텀 커넥터는 웹과 데스크톱에서 먼저 추가하는 쪽이 정석이에요. 공식 도움말에 따르면 모바일에서 커넥터를 설치하는 기능은 아직 베타이고, 사용자 정의 커넥터의 주된 경로는 웹과 Claude Desktop이에요. 모바일 앱에서 커스텀 커넥터를 추가하는 단계별 방법은 공개되어 있지 않아서, 이 글도 지어내지 않았어요.</p>
+        <p>모바일 앱도 원격 커넥터를 지원해요. 웹이나 Claude Desktop에서 연결해 둔 서비스는 iOS나 Android의 Claude 앱에 다음번 로그인할 때 나타난다고 <a href="https://support.claude.com/ko/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Anthropic이 안내</a>해요. 대화창을 열고 <strong>+</strong> 메뉴에서 커넥터가 보이는지 확인하세요.</p>
+        <p>다만 커스텀 커넥터는 웹과 데스크톱에서 먼저 추가하는 쪽이 정석이에요. 공식 도움말에 따르면 모바일에서 커넥터를 설치하는 기능은 아직 베타이고, 사용자 정의 커넥터의 주된 경로는 웹과 Claude Desktop이에요.</p>
         <p>헷갈리기 쉬운 점이 하나 있어요. 클로드 앱의 커넥터와 one-by.one 앱은 다른 거예요. 카드는 one-by.one 앱에서 하나씩 열리고, 클로드 커넥터는 클로드가 그 앱으로 계획을 보내는 통로일 뿐이에요.</p>
         <figure class="phone"><img src="/assets/blog/claude-mcp-connect/app-connect-screen.jpg" alt="iPhone의 one-by.one 앱 화면이에요. 'Add one-by.one to your AI.'라는 카드에 라임색 Open your AI 버튼이 있고, 그 아래에 On a computer, Skip AI today, More 버튼이 있어요." width="600" height="1304" loading="lazy" decoding="async"><figcaption>one-by.one 앱에서 AI를 연결하는 화면이에요. 앱 화면은 영어예요.</figcaption></figure>
 
@@ -162,7 +161,7 @@
         <p>연결을 끊으려면 <strong>Customize</strong> &gt; <strong>Connectors</strong>에서 커넥터를 골라 <strong>Disconnect</strong>를 누르거나, iPhone 앱의 <strong>Settings</strong> &gt; <strong>AI apps</strong>에서 <strong>Disconnect</strong>를 누르세요. 이후 접근은 막히지만 one-by.one 기록과 AI가 이미 받은 정보는 지워지지 않아요.</p>
 
         <h2 id="errors">클로드 MCP 연결 안됨: 이럴 때 확인하세요</h2>
-        <p>주소, 로그인, 대화의 스위치 순서로 확인해 보세요. 아래 증상 중 맞는 걸 찾으면 돼요.</p>
+        <p>주소, 로그인, 대화의 스위치 순서로 확인해 보세요.</p>
         <ul>
           <li><strong>Team, Enterprise인데 추가 버튼이 없어요.</strong> 구성원은 직접 추가할 수 없어요. Owner에게 부탁하고, 추가된 뒤 직접 Connect하세요.</li>
           <li><strong>Free 플랜에서 더 추가되지 않아요.</strong> 커스텀 커넥터 1개 한도에 걸린 거예요. 기존 것을 Remove한 뒤 새로 추가하세요.</li>
@@ -184,18 +183,8 @@
           <h2 id="end-title">클로드를 one-by.one에 연결해 보세요</h2>
           <p>AI 연결 페이지에 같은 순서가 ChatGPT, Claude Code 등 다른 MCP 앱용으로도 정리돼 있어요. AI에게 그대로 붙여 넣을 지시문도 있어요.</p>
           <p class="cta-row"><a class="btn" href="/ko/connect/">AI 연결 페이지 열기</a><a class="btn soft" href="/ko/#notify">출시 알림 받기</a></p>
-          <p class="small">one-by.one은 곧 iPhone에서 만나요. 이용 가능한 국가는 <a href="/terms/#launch-scope">이용약관의 출시 범위(영어)</a>를 확인하세요.</p>
+          <p class="small">one-by.one은 곧 iPhone에서 만나요.</p>
         </aside>
-
-        <h2 id="sources">참고한 공식 문서</h2>
-        <ul class="sources">
-          <li><a href="https://support.claude.com/ko/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Claude 지원 센터(한국어): 원격 MCP를 사용하여 커스텀 커넥터 시작하기</a></li>
-          <li><a href="https://support.claude.com/ko/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Claude 지원 센터(한국어): 커넥터를 사용하여 Claude의 기능 확장하기</a></li>
-          <li><a href="https://claude.com/docs/connectors/custom/add-unlisted">Anthropic(영어): Add a connector that isn&rsquo;t in the directory</a></li>
-          <li><a href="https://claude.com/docs/connectors/getting-started">Anthropic(영어): Get started with connectors</a></li>
-          <li><a href="https://code.claude.com/docs/en/mcp">Claude Code(영어): Connect Claude Code to tools via MCP</a></li>
-          <li><a href="/ko/connect/">one-by.one: AI 앱 연결하기</a></li>
-        </ul>
       </article>
     </main>
     <footer><div class="shell footer-inner"><nav aria-label="하단 메뉴"><a href="/ko/">홈</a><a href="/ko/blog/">블로그</a><a href="/ko/connect/">AI 연결</a><a href="/privacy/">개인정보 처리방침(영어)</a><a href="/terms/">이용약관(영어)</a><a href="/support/">지원(영어)</a></nav><div class="footer-end"><span>법적 문서는 영어본이 기준입니다. · © 2026 one-by.one</span></div></div>
