@@ -57,12 +57,12 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 
 ## Blog
 - [Blog](https://one-by.one/blog/): Guides to planning your day with an AI assistant and running the plan on iPhone.
-- [Best planner app 2026: what Reddit recommends](https://one-by.one/blog/best-planner-app/): TickTick, Google Calendar and Todoist lead Reddit's planner picks for 2026. The five complaints users repeat, what they wish existed, and which to pick.
+- [Best planner app 2026: what Reddit recommends](https://one-by.one/blog/best-planner-app/): Planner apps Reddit users recommend in 2026, from TickTick to Structured: the complaints they repeat, what they wish existed, and which to pick.
 - [Tiimo Review 2026: What Reddit Users Say](https://one-by.one/blog/tiimo-review/): Tiimo review from Reddit threads: users love the calm visual day and timers, but report removed routines, missed alerts and an AI that needs fixing.
 - [Structured App Review 2026: What Reddit Says](https://one-by.one/blog/structured-app-review/): Structured app review from Reddit threads: users love the visual timeline, but report blank widgets and dragging every block forward after a slip.
 - [Motion App Review 2026: What Reddit Users Say](https://one-by.one/blog/motion-app-review/): Motion app review from Reddit: users love the AI auto-scheduling but report tasks moving, price changes and slow support. Plus a phone-first alternative.
 - [Sunsama Review 2026: What Reddit Users Say](https://one-by.one/blog/sunsama-review/): Sunsama review from Reddit: users love the calm daily ritual but report the price, a weaker phone app and planning still left to you. Plus an alternative.
-- [Best ADHD planner app: what Reddit recommends](https://one-by.one/blog/adhd-to-do-list-app/): Reddit's top ADHD planner and to-do list apps, the complaints users repeat, why preferences clash, and an iPhone app that shows one card at a time.
+- [Best ADHD planner app: what Reddit recommends](https://one-by.one/blog/adhd-to-do-list-app/): ADHD planner and to-do list apps, the complaints users repeat, why preferences clash, and an iPhone app that shows one card at a time.
 - [Daily routine app for iPhone: Routinery, Tiimo and Structured reviews](https://one-by.one/blog/daily-routine-app-iphone/): Routinery, Tiimo and Structured on iPhone: what users report, from removed routines to blank widgets, and a routine app where your own AI plans the day.
 - [How to use Claude to plan your day](https://one-by.one/blog/plan-your-day-with-claude/): Three steps, connecting your calendar, a copyable prompt to plan your day with Claude, and what happens after the plan.
 - [The ChatGPT daily planner prompt (and why plans fall apart by 11 AM)](https://one-by.one/blog/chatgpt-daily-planner-prompt/): A ChatGPT daily planner prompt to copy, plus daily schedule and routine prompts (habits, travel and prep, student, shift worker) and why a chat plan drifts by late morning.
