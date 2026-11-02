@@ -20,12 +20,12 @@
   const campaign = `home-${lang}-${v}`;
 
   // B: the slogan becomes the headline and the headline the line under it, as soon
-  // as the parser has finished both (the lede has a next sibling), not after the deferred scripts.
+  // as the parser is past both (the phone after them exists), not after the deferred scripts.
   let swapped = false;
-  const swap = () => {
+  const swap = (parsed) => {
     const h1 = document.querySelector(".hero h1[data-b]");
     const lede = document.querySelector(".hero .lede[data-b]");
-    if (!h1 || !lede || !lede.nextElementSibling) return;
+    if (!h1 || !lede || !(parsed || document.querySelector(".hero [data-hero]"))) return;
     if (v === "b") {
       const [first, second] = h1.dataset.b.split("|");
       h1.replaceChildren(first, document.createElement("br"), second);
@@ -50,7 +50,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     watch.disconnect();
-    if (!swapped) swap();
+    if (!swapped) swap(true);
     html.dataset.abReady = "";
     stamp();
   });
