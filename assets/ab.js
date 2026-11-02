@@ -20,32 +20,38 @@
   const campaign = `home-${lang}-${v}`;
 
   // B: the slogan becomes the headline and the headline the line under it, as soon
-  // as the parser has both, not after the deferred scripts.
+  // as the parser has finished both (the lede has a next sibling), not after the deferred scripts.
+  let swapped = false;
   const swap = () => {
     const h1 = document.querySelector(".hero h1[data-b]");
     const lede = document.querySelector(".hero .lede[data-b]");
-    if (!h1 || !lede) return false;
+    if (!h1 || !lede || !lede.nextElementSibling) return;
     if (v === "b") {
       const [first, second] = h1.dataset.b.split("|");
       h1.replaceChildren(first, document.createElement("br"), second);
       lede.textContent = lede.dataset.b;
     }
+    swapped = true;
     html.dataset.abReady = "";
-    return true;
   };
-  const watch = new MutationObserver(() => { if (swap()) watch.disconnect(); });
+  // Links and QR codes get this variant's campaign as they appear, home.js's included.
+  const link = `https://apps.apple.com/app/apple-store/id6766732077?pt=${PT}&ct=${campaign}&mt=8`;
+  const qr = `/assets/app-store-qr-${lang}-${v}.svg`;
+  const stamp = () => {
+    document.querySelectorAll('a[href^="https://apps.apple.com/app/"]').forEach((a) => {
+      if (a.href !== link) a.href = link;
+    });
+    document.querySelectorAll("[data-store-qr] img").forEach((img) => {
+      if (img.getAttribute("src") !== qr) img.setAttribute("src", qr);
+    });
+  };
+  const watch = new MutationObserver(() => { if (!swapped) swap(); stamp(); });
   watch.observe(html, { childList: true, subtree: true });
 
   document.addEventListener("DOMContentLoaded", () => {
     watch.disconnect();
-    if (!("abReady" in html.dataset)) swap();
+    if (!swapped) swap();
     html.dataset.abReady = "";
-    // home.js has already made the buttons and the hero badge (deferred scripts run first).
-    document.querySelectorAll('a[href^="https://apps.apple.com/app/"]').forEach((a) => {
-      a.href = `https://apps.apple.com/app/apple-store/id6766732077?pt=${PT}&ct=${campaign}&mt=8`;
-    });
-    document.querySelectorAll("[data-store-qr] img").forEach((img) => {
-      img.src = `/assets/app-store-qr-${campaign.slice(5)}.svg`;
-    });
+    stamp();
   });
 })();
