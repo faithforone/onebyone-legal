@@ -5,7 +5,7 @@
 // Loaded in <head> without defer so a B visitor never sees A's words first.
 (function () {
   "use strict";
-  const PT = "PROVIDER_TOKEN";
+  const PT = "128870540";
   const KEY = "one-by.one-ab-hero";
   const html = document.documentElement;
   const asked = /[?&]ab=([ab])(?:&|$)/.exec(location.search);

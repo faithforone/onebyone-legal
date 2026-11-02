@@ -27,6 +27,8 @@ Language detection runs on the first external visit only, using the first prefer
 
 `home.css`, `home.js`, `connect.css`, `connect.js`, `blog.css` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference. Launch switch: `LAUNCH` and `APP_STORE_URL` near the top of the "Launch switch" block in `home.js` turn every launch-updates button into an App Store link.
 
+Landing A/B: `assets/ab.js` (loaded in the head of `index.html` and `ko/index.html`, not deferred) gives each visitor variant a or b and keeps it in localStorage; `?ab=a` or `?ab=b` shows one. B moves the slogan into the h1 (`data-b` on the h1 and `.lede`). Every App Store link gets `pt=128870540&ct=home-{en|ko}-{a|b}`, so App Store Connect > Analytics > Acquisition > Campaigns shows page views and downloads per variant. To end the test, keep the winner in the HTML and remove ab.js and the `data-b` attributes.
+
 Blog pages are exempt from this: `ko/blog/**` counts as real Korean pages in the shared checker. For the new Korean indexing policy, run `python3 work-sc/check_site.py --site-root .` and `node work-sc/check_behavior.mjs`. The original external checker still assumes all Korean pages are English noindex mirrors; see `work-sc/REPORT.md` for its unchanged result.
 
 Legal content is currently English-only. Cloudflare redirects ko/ja legal URLs to the root English pages; matching English file mirrors also work on hosts that ignore `_redirects`. Keep these mirrors consistent when changing legal copy. International-transfer details and retention operations require owner/legal approval before publication.
