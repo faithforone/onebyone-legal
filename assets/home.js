@@ -1452,7 +1452,6 @@
   }
 
   // Launch switch. Before launch every [data-cta] opens the small "launch updates" dialog.
-  // TODO(launch): when the app is on the App Store, set LAUNCH = true (APP_STORE_URL below is already the real link).
   // These static texts are not changed by this script and must also be edited by hand at launch:
   //   - "Coming soon" meta, og: and twitter: descriptions: index.html, ko/index.html
   //   - JSON-LD: SoftwareApplication description / availability, and the FAQ "Is it available on Android?" answer
@@ -1463,7 +1462,7 @@
   //   - the launch waitlist dialog in index.html and ko/index.html, and the waitlist paragraphs in the privacy, terms and support pages, once the notice is sent
   // This is the only place to change: each [data-cta] becomes a link to the App Store and
   // each [data-launch-text] (button, hero pill) shows the text in its attribute.
-  const LAUNCH = false;
+  const LAUNCH = true;
   const APP_STORE_URL = "https://apps.apple.com/app/id6766732077";
 
   const dialog = $("[data-notify-dialog]");

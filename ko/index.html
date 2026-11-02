@@ -33,7 +33,7 @@
 
     <!-- Production auth (set when the US project exists): data-url, data-key = public anon key. -->
     <link rel="stylesheet" href="/assets/home.css?v=4c6c08d9d8">
-    <script src="/assets/home.js?v=3299c8f9f6" defer></script>
+    <script src="/assets/home.js?v=c923933354" defer></script>
     <script src="/assets/day-scroll.js?v=fe090e70e3" defer></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -44,7 +44,7 @@
       "name": "one-by.one은 어떤 앱인가요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 지금 하기 싫은 카드는 Skip으로 뒤로 미루고, 오늘 하지 않을 일은 Dismiss로 빼세요. 잘못 누른 건 Undo로 되돌릴 수 있습니다. 곧 iPhone에서 출시되며, 만 16세 이상이 이용할 수 있습니다."
+        "text": "AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 지금 하기 싫은 카드는 Skip으로 뒤로 미루고, 오늘 하지 않을 일은 Dismiss로 빼세요. 잘못 누른 건 Undo로 되돌릴 수 있습니다. App Store에서 iPhone용으로 받을 수 있으며, 만 16세 이상이 이용할 수 있습니다."
       }
     },
     {
@@ -116,7 +116,7 @@
       "name": "Android에서도 쓸 수 있나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "아직은 iPhone 전용입니다. 곧 iPhone에서 만나요."
+        "text": "아직은 iPhone 전용입니다."
       }
     }
   ]
@@ -126,8 +126,8 @@
   <link rel="alternate" hreflang="en" href="https://one-by.one/">
 <link rel="alternate" hreflang="ko" href="https://one-by.one/ko/">
 <link rel="alternate" hreflang="x-default" href="https://one-by.one/">
+  <meta name="apple-itunes-app" content="app-id=6766732077">
 </head>
-  <!-- TODO(launch): <meta name="apple-itunes-app" content="app-id=6766732077"> goes in the head above. -->
   <body class="home">
     <header class="topbar">
       <div class="topbar-inner">
@@ -135,14 +135,14 @@
           <img src="/assets/icon.svg" alt="">
           <span class="wordmark">one-by.one</span>
         </a>
-        <nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/connect/">AI 연결하기</a><button class="btn small" type="button" data-cta data-launch-text="App Store에서 받기">출시 알림 받기</button></nav>
+        <nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/connect/">AI 연결하기</a><a class="btn small" href="https://apps.apple.com/app/id6766732077" data-cta data-launch-text="App Store에서 받기">App Store에서 받기</a></nav>
       </div>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <a class="pill" href="/manifesto/"><b data-launch-text="지금 iPhone에서 만나요">곧 iPhone에서 만나요</b><span class="pill-more"><span aria-hidden="true">·</span> 우리가 만드는 것</span><i aria-hidden="true">↗</i></a>
+          <a class="pill" href="/manifesto/"><b data-launch-text="지금 iPhone에서 만나요">지금 iPhone에서 만나요</b><span class="pill-more"><span aria-hidden="true">·</span> 우리가 만드는 것</span><i aria-hidden="true">↗</i></a>
           <p class="hero-kicker">아이폰 AI 일정관리 앱</p>
           <h1>하루 전체를, <br>카드 하나씩.</h1>
           <p class="lede">계획은 AI가, 실행은 당신이.</p>
@@ -162,7 +162,7 @@
         </div>
         <div class="hero-act">
           <div class="cta-row">
-            <button class="btn" type="button" data-cta data-launch-text="App Store에서 받기">출시 알림 받기</button>
+            <a class="btn" href="https://apps.apple.com/app/id6766732077" data-cta data-launch-text="App Store에서 받기">App Store에서 받기</a>
             <a class="btn soft" href="#jobs">예시 보기</a>
           </div>
           <p class="hero-price">연간 요금제: 대상 신규 구독자는 14일 무료, 이후 1년에 US$59.99.</p>
@@ -382,7 +382,7 @@
           </div>
           <p class="p-price"><b data-price>US$59.99</b><span data-per>/ 년</span></p>
           <p class="p-unit" data-unit>한 달 US$5, 1년 단위 결제</p>
-          <button class="btn wide" type="button" data-cta data-launch-text="App Store에서 받기">출시 알림 받기</button>
+          <a class="btn wide" href="https://apps.apple.com/app/id6766732077" data-cta data-launch-text="App Store에서 받기">App Store에서 받기</a>
           <p class="p-inc">함께 제공됩니다:</p>
           <ul class="p-list">
             <li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>ChatGPT, Claude 등 MCP 에이전트 연결</li>
@@ -398,7 +398,7 @@
       <h2 id="faq-heading">궁금한 점</h2>
       <details data-faq-item>
         <summary><h3>one-by.one은 어떤 앱인가요?</h3></summary>
-        <p data-faq-answer>AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 지금 하기 싫은 카드는 Skip으로 뒤로 미루고, 오늘 하지 않을 일은 Dismiss로 빼세요. 잘못 누른 건 Undo로 되돌릴 수 있습니다. 곧 iPhone에서 출시되며, 만 16세 이상이 이용할 수 있습니다.</p>
+        <p data-faq-answer>AI와 함께 계획하는 사람을 위한 iPhone 앱입니다. AI가 할 일을 순서대로 작은 카드로 만들면, 휴대폰에는 지금 할 일 한 장만 보여요. Start로 시작하고 Done으로 마치세요. 지금 하기 싫은 카드는 Skip으로 뒤로 미루고, 오늘 하지 않을 일은 Dismiss로 빼세요. 잘못 누른 건 Undo로 되돌릴 수 있습니다. App Store에서 iPhone용으로 받을 수 있으며, 만 16세 이상이 이용할 수 있습니다.</p>
       </details>
       <details data-faq-item>
         <summary><h3>어떤 AI를 연결할 수 있나요?</h3></summary>
@@ -434,12 +434,12 @@
       </details>
       <details data-faq-item>
         <summary><h3>Android에서도 쓸 수 있나요?</h3></summary>
-        <p data-faq-answer>아직은 iPhone 전용입니다. 곧 iPhone에서 만나요.</p>
+        <p data-faq-answer>아직은 iPhone 전용입니다.</p>
       </details>
       <p class="faq-more">연결 방법과 AI로 할 수 있는 일: <a href="/ko/connect/">AI 연결하기</a> · <a href="/support/">지원(영어)</a></p>
     </section>
     </main>
-    <div class="dock" data-dock><button class="btn wide" type="button" data-cta data-launch-text="App Store에서 받기">출시 알림 받기</button></div>
+    <div class="dock" data-dock><a class="btn wide" href="https://apps.apple.com/app/id6766732077" data-cta data-launch-text="App Store에서 받기">App Store에서 받기</a></div>
 
     <footer>
       <div class="shell publisher"><p>서비스 제공자: 대한민국 개인사업자 salad76(대표 김승은), one-by.one이라는 이름으로 서비스를 제공합니다.</p><p>주소: 대한민국 서울특별시 서초구 동광로 173, 302호.</p><p>개인정보 보호 책임자: 김승은 · <a href="mailto:privacy@one-by.one">privacy@one-by.one</a><br>지원 문의: <a href="mailto:support@one-by.one">support@one-by.one</a></p><p>앱은 현재 영어로 제공됩니다. 이용 가능한 국가는 <a href="/terms/#launch-scope">이용약관의 출시 범위(영어)</a>를 확인하세요. 국가별 결제 금액은 App Store에 표시됩니다.</p><p>법적 문서는 영어본이 기준입니다.</p></div>
