@@ -12,3 +12,7 @@
 # Markdown twin of /connect/ for AI agents (linked via rel="alternate" type="text/markdown").
 /connect/index.md
   Content-Type: text/markdown; charset=utf-8
+
+# App-directory review material (ChatGPT plugin walkthrough); reachable by link, kept out of search.
+/review/*
+  X-Robots-Tag: noindex
