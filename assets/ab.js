@@ -1,7 +1,7 @@
 // Landing A/B (2026-11-02): half the visitors read the slogan as the headline.
 // Every App Store link and QR code carries the variant as an App Store campaign, so
 // App Store Connect counts page views and downloads per variant (Analytics >
-// Acquisition > Campaigns); nothing about the visitor is sent anywhere.
+// Acquisition > Campaigns); analytics.js also sends the variant with page views and App Store clicks.
 // The HTML is variant A (no-JS visitors and crawlers stay on it). ?ab=a or ?ab=b shows one.
 // Loaded in <head> without defer so a B visitor never sees A's words first.
 (function () {
@@ -15,7 +15,15 @@
   let v = asked ? asked[1] : bot ? "a" : null;
   if (!v) { try { v = localStorage.getItem(KEY); } catch (e) { /* storage blocked */ } }
   if (v !== "a" && v !== "b") v = Math.random() < 0.5 ? "a" : "b";
-  if (!asked && !bot) { try { localStorage.setItem(KEY, v); } catch (e) { /* storage blocked */ } }
+  // Kept only where analytics may remember a visitor (same rule as analytics.js): not before
+  // Accept in the EEA/UK/Switzerland, never after Decline.
+  let zone = "";
+  try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) { /* old browser */ }
+  let choice = null;
+  try { choice = localStorage.getItem("obo-analytics"); } catch (e) { /* storage blocked */ }
+  const askFirst = /^(Europe\/|Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Asia\/(Nicosia|Famagusta))/.test(zone);
+  const keep = choice === "yes" || (choice === null && !askFirst);
+  if (!asked && !bot && keep) { try { localStorage.setItem(KEY, v); } catch (e) { /* storage blocked */ } }
   html.dataset.ab = v;
   const campaign = `home-${lang}-${v}`;
 

@@ -1,4 +1,5 @@
 // Explicit choices win. Only a first, external arrival can choose a language.
+// Stored only when the person picks a language; the first-arrival note lives for the tab session (2026-11-05).
 (function () {
   "use strict";
   const key = "obo-language";
@@ -6,8 +7,10 @@
   const choice = new URLSearchParams(location.search).get("lang");
   let saved = null;
   let visited = false;
-  try { saved = localStorage.getItem(key); visited = !!localStorage.getItem(visitedKey); } catch (_) {}
-  try { visited = visited || !!sessionStorage.getItem(visitedKey); } catch (_) {}
+  try { saved = localStorage.getItem(key); } catch (_) {}
+  try { visited = !!sessionStorage.getItem(visitedKey); } catch (_) {}
+  // Values older builds kept without being asked.
+  try { localStorage.removeItem(visitedKey); } catch (_) {}
   if (choice === "en" || choice === "ko" || choice === "ja") {
     saved = choice;
     try { localStorage.setItem(key, choice); } catch (_) {}
@@ -18,7 +21,6 @@
   const firstLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || "";
   const path = location.pathname.replace(/\/index\.html$/, "/");
   const korean = path === "/ko" || path.startsWith("/ko/");
-  try { localStorage.setItem(visitedKey, "1"); } catch (_) {}
   try { sessionStorage.setItem(visitedKey, "1"); } catch (_) {}
   if (!bot && !saved && !visited && !internal && !korean && /^ko(?:-|$)/i.test(firstLanguage)) {
     const corresponding = path === "/" ? "/ko/" : /^\/connect\/?$/.test(path) ? "/ko/connect/" : null;
