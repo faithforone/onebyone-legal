@@ -1,9 +1,9 @@
 # one-by.one — factual product and policy overview
 
-Available on the App Store for iPhone: https://apps.apple.com/app/id6766732077. English-only product for users aged 16 and over. This overview summarizes product facts and the English legal pages dated October 25, 2026. The privacy policy and terms contain the full legal wording.
+Available on the App Store for iPhone: https://apps.apple.com/app/id6766732077. For users aged 16 and over; the app is available in nine languages. This overview summarizes product facts and the English legal pages dated November 7, 2026. The privacy policy and terms contain the full legal wording.
 
 ## Launch scope and language
-Last updated: October 25, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The interface is English-only; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+Last updated: November 7, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The app interface is available in English, Korean, Japanese, Simplified Chinese, Traditional Chinese, French, German, Spanish and Brazilian Portuguese; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
 
 ## Product and workflow
 one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Claude and MCP-capable personal assistants. You tell your AI what you want to do. With an approved MCP connection, it plans your day as an ordered queue of cards. The phone shows one card at a time: Start, Done, Skip, Dismiss and Undo for mistaken taps. There is no Android version yet.
@@ -35,7 +35,7 @@ No sale of data, advertising use or cross-app tracking. Text entered into plans,
 
 The following sections reproduce the current English privacy wording as readable text.
 
-This policy covers the one-by.one website, iPhone app and MCP connection service, provided by salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. The launch scope is worldwide except the countries and territories listed in our terms. The interface is English-only.
+This policy covers the one-by.one website, iPhone app and MCP connection service, provided by salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. The launch scope is worldwide except the countries and territories listed in our terms. The app interface is available in nine languages.
 
 ## Launch waitlist
 
