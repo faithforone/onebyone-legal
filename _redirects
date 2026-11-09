@@ -22,3 +22,6 @@
 # Blog post renamed 2026-10-25 to match how people search.
 /blog/can-ai-plan-my-day /blog/use-ai-to-plan-your-day/ 301
 /blog/can-ai-plan-my-day/ /blog/use-ai-to-plan-your-day/ 301
+
+# MCP Registry domain key (Pages does not serve the .well-known folder from git builds).
+/.well-known/mcp-registry-auth /mcp-registry-auth.txt 200
