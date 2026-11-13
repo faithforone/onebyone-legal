@@ -120,6 +120,21 @@ html[data-ab="b"]:not([data-ab-ready]) .hero h1, html[data-ab="b"]:not([data-ab-
 .now .upnext { position: relative; overflow: hidden; clip-path: inset(0); }
 .now .upnext .nx-old { position: absolute; pointer-events: none; }
 .now .upnext b { transform-origin: 50% 100%; font-size: 14px; font-weight: 600; color: #555d6d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Pip, the app's face (one-by.one/Now/OneByOnePrinterFace.swift): the near-black square at the right of the top sheet,
+   its two white eyes set low and toward the ticket. It sits beside the greeting, centred between the top bar and Up next,
+   at most about a quarter of the screen wide (the app: up to 140 pt beside the words), and steps aside while Up next is open. */
+.now:not(.mini) { container-type: size; }
+.now:not(.mini) > .sheet { --pip-top: 22px; --pip-room: calc(45cqh - 27px - var(--pip-top) - 42px); --pip: min(27cqw, var(--pip-room)); }
+.now:not(.mini) > .sheet:has(> .bar) { --pip-top: 60px; }
+.pip { position: absolute; z-index: 0; right: 16px; top: calc(var(--pip-top) + (var(--pip-room) - var(--pip)) / 2); width: var(--pip); height: var(--pip); border-radius: 26%; background: #1c1c1e; pointer-events: none; transition: opacity .2s ease; }
+.pip i { position: absolute; top: 46.3%; left: 7.1%; width: 24.2%; height: 30.8%; border-radius: 99px; background: #fff; animation: pip-look 9s ease-in-out infinite, pip-blink 4.6s ease-in-out infinite; }
+.pip i + i { left: 48.7%; animation-delay: .04s; }
+.sheet:has(> .pip) > :is(.greet, .dayline, .sit) { margin-right: calc(var(--pip) + 10px); }
+.sheet:has(.upnext[aria-expanded="true"]) > .pip { opacity: 0; }
+/* Idle, as in the app: now and then it looks up at the person and back to the ticket, and blinks. */
+@keyframes pip-look { 0%, 34% { translate: 0 0; } 40%, 62% { translate: 42% -36%; } 68%, 100% { translate: 0 0; } }
+@keyframes pip-blink { 0%, 93%, 100% { scale: 1 1; } 96% { scale: 1 .12; } }
+@media (prefers-reduced-motion: reduce) { .pip i { animation: none; } }
 .slot { position: relative; z-index: 1; flex: none; height: 55%; margin: 14px 13px 13px; }
 .ticket { position: absolute; inset: 0; display: flex; flex-direction: column; color: var(--paper); }
 .ticket.inc { z-index: 2; pointer-events: none; }
@@ -296,27 +311,36 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
 .ticket.ghost .t-body { --teeth: radial-gradient(circle 2.4px at 4px 100%, #0000 92%, #000); --teeth-size: 8px 100%; }
 
 
-/* Talk: one large mark that breathes while on screen. */
+/* Talk: Pip printing the day, large, while on screen. */
 .better { max-width: 1080px; margin: 120px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .better article { padding: 48px 44px; border-radius: 24px; background: var(--panel); }
 .better h2 { margin: 0 0 14px; font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; }
 .better p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); }
 .talk { max-width: 1080px; margin: 120px auto 0; padding: 56px; border-radius: 24px; background: var(--panel); display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; align-items: center; overflow: hidden; }
 .talk-copy p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 40ch; }
-/* The box is exactly the art's extent, centred in its column at every width. */
-.mark-art { position: relative; left: 50%; width: 330px; margin-left: -165px; height: 300px; }
-.mark-art span { position: absolute; border-radius: 26%; }
-.mark-art .m1 { width: 150px; height: 150px; left: 0; top: 30px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
-.mark-art .m2 { width: 190px; height: 190px; left: 50px; top: 70px; background: #dadde1; }
-.mark-art .m3 { width: 220px; height: 220px; left: 110px; top: 90px; background: var(--ink); box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
-.mark-art .m3 i { position: absolute; left: 50%; bottom: 34px; width: 110px; height: 30px; margin-left: -55px; border-radius: 99px; background: var(--lime); transform-origin: left center; }
-/* The mark art loops on screen (see home.js); without it, or with reduced motion, it stands still as above. Live, each card
-   rides in a lane that holds the camera: the art box plus 400 px all round (a mask paints only inside its box). */
+/* Pip prints your day: the app's face, eyes on the ticket coming out from under it; the ticket hangs a moment, then drops
+   away and the next one prints. Plays once the section is on screen; with reduced motion one ticket stands under Pip. */
 .talk { isolation: isolate; }
-.mark-art.live { margin-bottom: 72px; }                                  /* the ticket comes down 120 px below the art; the panel clips */
-.mark-art.live .lane { position: absolute; left: -400px; top: -400px; width: 1130px; height: 1100px; perspective: 1000px; perspective-origin: 565px 550px; pointer-events: none; }
-.mark-art.live .lane span { left: 0; top: 0; width: 220px; height: 220px; transform-origin: 110px 110px; }
-.mark-art.live .lane i { position: absolute; left: 50%; bottom: 34px; width: 110px; height: 30px; margin-left: -55px; border-radius: 99px; background: var(--lime); }
+.pip-art { position: relative; left: 50%; width: 330px; margin-left: -165px; height: 330px; }
+.pip-art span { position: absolute; }
+.pa-pip { z-index: 2; left: 65px; top: 10px; width: 200px; height: 200px; border-radius: 26%; background: #1c1c1e; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.pa-pip i { position: absolute; top: 46.3%; left: 17.1%; width: 24.2%; height: 30.8%; border-radius: 99px; background: #fff; translate: 0 22%; }
+.pa-pip i + i { left: 58.7%; }
+.pa-ticket { z-index: 1; left: 95px; top: 130px; width: 140px; height: 180px; border-radius: 0 0 22px 22px; background:
+  repeating-linear-gradient(90deg, rgba(26,28,32,.45) 0 6px, transparent 6px 11px) 14px 118px / 112px 2px no-repeat, var(--lime);
+  -webkit-mask: radial-gradient(circle at 0 119px, transparent 7px, #000 7.6px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 119px, transparent 7px, #000 7.6px) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle at 0 119px, transparent 7px, #000 7.6px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 119px, transparent 7px, #000 7.6px) right / 51% 100% no-repeat; }
+.pa-ticket i { position: absolute; left: 35px; bottom: 22px; width: 70px; height: 18px; border-radius: 99px; background: var(--ink); }
+.pip-art :is(.pa-pip, .pa-pip i, .pa-ticket) { animation-duration: 3.6s; animation-timing-function: cubic-bezier(.4,0,.2,1); animation-iteration-count: infinite; animation-play-state: paused; }
+.on .pip-art :is(.pa-pip, .pa-pip i, .pa-ticket) { animation-play-state: running; }
+.pa-ticket { animation-name: pa-print; }
+.pa-pip { animation-name: pa-hop; }
+.pa-pip i { animation-name: pa-look, pa-blink; animation-duration: 3.6s, 4.3s; }
+@keyframes pa-print { 0% { translate: 0 -170px; opacity: 1; } 32%, 70% { translate: 0 0; opacity: 1; } 100% { translate: 0 170px; opacity: 0; } }
+@keyframes pa-hop { 0%, 68%, 100% { translate: 0 0; } 74% { translate: 0 -7px; } 80% { translate: 0 0; } }
+@keyframes pa-look { 0%, 6% { translate: 0 0; } 20%, 66% { translate: 0 22%; } 76%, 92% { translate: 34% -30%; } 100% { translate: 0 0; } }
+@keyframes pa-blink { 0%, 90%, 100% { scale: 1 1; } 94% { scale: 1 .12; } }
+@media (prefers-reduced-motion: reduce) { .pip-art :is(.pa-pip, .pa-pip i, .pa-ticket) { animation: none; } }
 
 /* Values: what it does, shown small. */
 .values { max-width: 1080px; margin: 120px auto 0; padding: 0 24px; text-align: center; }
@@ -498,8 +522,7 @@ button.t-more::after { content: ""; position: absolute; inset: -8px; }
   .talk { grid-template-columns: 1fr; padding: 32px 24px; margin: 80px 16px 0; }
   .better { grid-template-columns: 1fr; margin: 80px 16px 0; gap: 16px; }
   .better article { padding: 32px 24px; }
-  .mark-art { transform: scale(.8); transform-origin: 50% 0; margin-bottom: -60px; }
-  .mark-art.live { margin-bottom: 40px; }
+  .pip-art { transform: scale(.8); transform-origin: 50% 0; margin-bottom: -50px; }
   .bento { grid-template-columns: 1fr; }
   .values { margin-top: 96px; }
   .tile { padding: 28px 24px 0; min-height: 340px; }
