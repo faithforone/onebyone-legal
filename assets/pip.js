@@ -1,6 +1,6 @@
 // Pip, the app's printer, drawn for the web: the same eyes as the app (OneByOnePrinterFace).
 // One pair that moves together; the gap changes only as the head turns (the eyes sit on a drum).
-// A blink keeps the bottom edge still and brings the top down to a short flat pill; glad is an
+// A blink is the sleep close done quickly (the top down onto the still bottom, a ∪); glad is an
 // eye smile (the eye closes into its lower part and the bottom bows up, ∩); asleep is a ∪.
 // Use: const pip = Pip(svgElement); pip.look(x, y); pip.smile(); pip.sleep(true); pip.wake().
 (() => {
@@ -8,17 +8,14 @@
   const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // The eye's outline (as OneByOnePrinterFaceView.eye): open 1 a pill; closing, the top comes down
-  // into the lower part; bow 1 the bottom curves down (∪), -1 up (∩); blink squashes it onto its bottom.
-  function eyePath(w, h, open, bow, blink) {
+  // into the lower part; bow 1 the bottom curves down (∪), -1 up (∩). A blink is the sleep close, quickly.
+  function eyePath(w, h, open, bow) {
     const a = w / 2, bh = Math.max(a, h / 2);
     const op = Math.min(1.1, Math.max(0, open)), o = Math.min(1, op);
     const top = -bh + a, bottom = bh - a, y = bottom + (top - bottom) * op;
     const dip = a * (0.45 + 0.55 * o) * bow, cap = -dip + (a + dip) * o, q = 4 / 3;
     const c = a * (0.4 + 0.6 * o);
-    // A blink keeps the outline's lowest point where it is (as the app does).
-    const low = bottom + Math.max(0, dip), high = y - Math.max(0, cap), tall = Math.max(0.001, low - high);
-    const b = Math.min(1, Math.max(0, blink)), flat = Math.min(tall, w / 6), k = (flat + (tall - flat) * (1 - b)) / tall;
-    const Y = (v) => (low - (low - v) * k).toFixed(2), X = (v) => v.toFixed(2);
+    const Y = (v) => v.toFixed(2), X = (v) => v.toFixed(2);
     const d = `M${X(-a)} ${Y(y)}L${X(-a)} ${Y(bottom)}C${X(-c)} ${Y(bottom + q * dip)} ${X(c)} ${Y(bottom + q * dip)} ${X(a)} ${Y(bottom)}` +
       `L${X(a)} ${Y(y)}C${X(c)} ${Y(y - q * cap)} ${X(-c)} ${Y(y - q * cap)} ${X(-a)} ${Y(y)}Z`;
     return { d, line: 9.5 * Math.max(0, Math.min(1, (0.32 - op) / 0.32)) };
@@ -56,9 +53,9 @@
       const gy = Math.max(-14, Math.min(14, s.gy));
       const slim = (ang) => Math.min(1, 1 + (Math.cos(ang) / Math.cos(spread) - 1) * 0.6);
       const smile = Math.min(1, Math.max(0, s.smile));
-      const open = 1 - Math.max(Math.min(1, s.shut), smile), bow = 1 - 2 * smile;
+      const open = 1 - Math.max(Math.min(1, s.shut), smile, s.blink), bow = 1 - 2 * smile;
       [[-half, slim(turn - spread)], [half, slim(turn + spread)]].forEach(([dx, wide], i) => {
-        const e = eyePath(w * wide, h, open, bow, s.blink);
+        const e = eyePath(w * wide, h, open, bow);
         eyes[i].setAttribute("d", e.d);
         eyes[i].setAttribute("stroke-width", e.line.toFixed(2));
         eyes[i].setAttribute("transform", `translate(${(60 + x + dx).toFixed(2)} ${(67 + gy).toFixed(2)})`);
