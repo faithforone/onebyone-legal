@@ -15,6 +15,10 @@
   const stage = $(".v2-stage", hero), copy = $(".v2-copy", hero), act = $(".v2-act", hero), printer = $(".v2-printer", hero);
   const chip = $(".v2-chip", hero), card = $(".v2-card", hero), fill = $(".v2-fill", hero);
   const dock = $("[data-dock]");
+  // The top bar is not there on the first screen; it comes down once the hero's words step aside.
+  const bar = $(".topbar");
+  const showBar = (on) => { if (!bar) return; bar.classList.toggle("v2-up", on); bar.inert = !on; };
+  showBar(false);
   const pip = window.Pip($(".v2-printer svg", hero));
 
   // The printed line: what your AI plans. Pip looks down at each new one as it prints.
@@ -70,6 +74,7 @@
       el.style.translate = `0 ${((el === copy ? -1 : 1) * away * 36).toFixed(1)}px`;
     }
     act.inert = away > 0.5;
+    showBar(away > 0.5);
     if (dock) dock.classList.toggle("on", away > 0.5 && !nearBuy());
     roll(p < 0.02);
     // The line goes back into Pip; Pip rises to make room; the long ticket prints.
@@ -88,6 +93,14 @@
     if (done < 0.6) printed = false;
     // Then the lights go out: only Pip's eyes and its ticket are left.
     stage.style.setProperty("--dark", ease(span(p, 0.84, 0.98)).toFixed(3));
+  }
+  if (still && dock) {
+    // Reduce Motion: no scene, but the floating Download still shows only while neither the hero's
+    // nor the page's own Download is in view.
+    const heroRow = $("[data-hero-cta]");
+    const dockOnly = () => { ticking = false; const h = heroRow.getBoundingClientRect(), gone = h.bottom < 0 || h.top > innerHeight; dock.classList.toggle("on", gone && !nearBuy()); showBar(gone); };
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(dockOnly); } }, { passive: true });
+    dockOnly();
   }
   if (!still) {
     addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });

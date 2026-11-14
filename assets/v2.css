@@ -114,10 +114,24 @@ body.v2 { background: #000; }
 .v2-paper .ds-copy h2 { margin-top: 18px; }
 @media (min-width: 900px) { .v2-paper { margin-inline: 16px; } }
 /* The footer sits on the black, under the sheet. */
-.v2 footer { --text: #f5f5f7; --muted: #a1a1a6; --hush: #86868b; --line: rgba(255,255,255,.14); color: var(--muted); }
+.v2 footer { --text: #f5f5f7; --muted: #a1a1a6; --hush: #86868b; --line: rgba(255,255,255,.14); --focus: #c6ef4e; color: var(--muted); }
 .v2 footer a { color: #d2d2d7; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v2-paper { box-shadow: 0 0 0 1px rgba(255,255,255,.08); } }
 :root[data-theme="dark"] .v2-paper { box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
 
 /* A shorter walk through the four cards than on the main page. */
 .v2 .ds-live { height: 300vh; }
+
+/* Company details: folded under the footer links, one tap to open. */
+.v2-co { flex-basis: 100%; order: 3; font-size: 13px; color: var(--hush); }
+.v2-co summary { cursor: pointer; display: inline-flex; align-items: center; min-height: 32px; list-style: none; }
+.v2-co summary::-webkit-details-marker { display: none; }
+.v2-co summary::after { content: "+"; margin-left: 6px; }
+.v2-co[open] summary::after { content: "−"; }
+.v2-co p { margin: 4px 0 8px; max-width: 70ch; line-height: 1.5; }
+.v2-co summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+/* No top bar on the first screen: it slides down once the hero's words step aside. */
+.v2 .topbar { transform: translateY(calc(-100% - 16px)); transition: transform .32s cubic-bezier(.2,.8,.2,1); }
+.v2 .topbar.v2-up { transform: none; }
+@media (prefers-reduced-motion: reduce) { .v2 .topbar { transition: none; } }
