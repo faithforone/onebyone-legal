@@ -1,102 +1,83 @@
-/* Home v2 (preview): Taby's flow with Pip as the face. A big Pip hero; scrolling turns the page
-   black while Pip prints the first card and one big line arrives; the product on a light sheet;
-   a "done for today" moment; a sleeping Pip at the very end. Every scroll change is tied to the
-   scroll position itself (no easing after the finger), so it moves exactly as you scroll. */
-.v2 { --night: #050506; --round: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+/* Home v2 (preview). The flow of a character-led landing page, told in one-by.one's own things:
+   Pip is a printer, everything it gives you is a paper ticket, and Done is the lime pill.
+   The hero's rotating line is printed on a ticket; scrolling makes Pip print one long ticket,
+   "One card at a time.", whose Done fills as you reach the end; a finished day leaves its torn
+   stubs in a pile; at the very end Pip is asleep. Scroll changes follow the scroll position
+   itself, frame by frame, so nothing trails the finger. */
+.v2 { --paper-w: #fff; --done: var(--lime); }
 .pip-body { fill: #1c1c1e; }
 .pip-eye { fill: #fff; stroke: #fff; }
 
-/* Top bar floats as a pill once the hero copy has gone. */
+/* Top bar: a floating pill once the page moves. */
 .v2 .topbar { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: 0; position: fixed; inset: 0 0 auto; padding-top: env(safe-area-inset-top, 0px); transition: none; }
 .v2 .topbar-inner { max-width: 1040px; margin: 12px auto 0; padding: 8px 10px 8px 18px; border-radius: 999px; transition: background .25s, box-shadow .25s; }
-.v2 .topbar.scrolled .topbar-inner { background: color-mix(in srgb, #fff 82%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 10px 30px -12px rgba(0,0,0,.25); }
-.v2 .topbar.on-night:not(.scrolled) { color: #fff; }
-.v2 .topbar.on-night:not(.scrolled) .btn { background: #fff; color: var(--ink); }
-@media (prefers-color-scheme: dark) { .v2 .topbar.scrolled .topbar-inner { background: color-mix(in srgb, #1a1c20 82%, transparent); box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 10px 30px -12px rgba(0,0,0,.6); } }
+.v2 .topbar.scrolled .topbar-inner { background: color-mix(in srgb, var(--page) 84%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.25); }
 
 /* Hero: a tall track; the stage stays while the track scrolls past. */
-.v2-hero { position: relative; height: 260vh; height: 260svh; }
-.v2-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; justify-items: center; background: var(--page); }
-.v2-night { position: absolute; inset: 0; background: var(--night); opacity: 0; pointer-events: none; }
-.v2-dust { position: absolute; inset: 0; pointer-events: none; }
-.v2-dust i { position: absolute; left: var(--x); top: var(--y); width: var(--l, 40px); height: 3px; border-radius: 3px; background: currentColor; color: #1a1c20; opacity: var(--o, .7); rotate: var(--r); }
-.v2-dust i.dot { width: 9px; height: 9px; }
-@media (prefers-color-scheme: dark) { .v2-dust i { color: #c9ccd2; } }
+.v2-hero { position: relative; height: 250vh; height: 250svh; }
+.v2-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--page); --pip-w: clamp(190px, 29vh, 290px); --pip-top: calc(env(safe-area-inset-top, 0px) + clamp(150px, 25vh, 230px)); }
+.v2-copy { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--pip-top) + clamp(18px, 3vh, 30px)); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.v2-copy h1 { margin: 0; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.04; letter-spacing: -.04em; font-weight: 600; }
 
-.v2-printer { position: absolute; left: 50%; top: 0; width: var(--pip-w); margin-left: calc(var(--pip-w) / -2); --pip-w: clamp(220px, 30vw, 360px); translate: 0 calc(var(--pip-w) * -.18); z-index: 2; }
-.v2-printer svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 30px 40px rgba(0,0,0,.18)); cursor: pointer; }
-.v2-printer .pip-body { stroke: #2e3137; stroke-width: 0; }
-.v2-slot { position: absolute; left: 12%; right: 12%; top: calc(100% - 10px); height: calc(var(--pip-w) * 1.05); overflow: hidden; pointer-events: none; }
-.v2-card { position: absolute; inset: 0 0 auto; translate: 0 -101%; background: #fff; color: #1a1c20; border-radius: 0 0 18px 18px; padding: 22px 20px 18px; box-shadow: 0 1px 0 rgba(0,0,0,.04); }
-.v2-card b { display: block; font-size: clamp(20px, 2.1vw, 26px); font-weight: 600; letter-spacing: -.02em; }
-.v2-card p { margin: 4px 0 16px; color: #656c75; font-size: 15px; line-height: 1.4; }
-.v2-card span { display: flex; align-items: center; justify-content: space-between; height: 46px; padding: 0 6px 0 18px; border-radius: 999px; background: var(--lime); font-weight: 600; }
-.v2-card span i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #1a1c20; color: var(--lime); font-style: normal; }
+.v2-printer { position: absolute; left: 50%; top: var(--pip-top); width: var(--pip-w); margin-left: calc(var(--pip-w) / -2); z-index: 2; transform-origin: 50% 0; }
+.v2-printer svg { position: relative; z-index: 2; display: block; width: 100%; height: auto; cursor: pointer; filter: drop-shadow(0 22px 26px rgba(0,0,0,.16)); }
+/* Paper comes out of the slot under Pip's face, a little narrower than Pip. */
+.v2-slot { position: absolute; z-index: 1; left: 6%; right: 6%; top: calc(100% - 14px); height: 72vh; overflow: hidden; pointer-events: none; padding: 0 14px 30px; margin-inline: -14px; }
+.v2-chip, .v2-card { background: var(--paper-w); color: #1a1c20; border-radius: 0 0 16px 16px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.04); }
+.v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; padding: 26px 12px 16px; text-align: center; font-size: clamp(21px, 2.3vw, 27px); font-weight: 600; letter-spacing: -.02em; }
+/* Each new line is printed: it comes down out of the slot. */
+.v2-chip b { grid-area: 1 / 1; font-weight: inherit; white-space: nowrap; clip-path: inset(0 0 100% 0); transform: translateY(-60%); transition: clip-path .5s cubic-bezier(.3,.7,.2,1), transform .5s cubic-bezier(.3,.7,.2,1); }
+.v2-chip b.on { clip-path: inset(0 0 0 0); transform: none; }
+.v2-chip b.off { clip-path: inset(100% 0 0 0); transform: translateY(40%); transition-duration: .3s; }
+.v2-card { position: absolute; left: 14px; right: 14px; top: 0; padding: 30px 20px 18px; translate: 0 -101%; }
+.v2-card-k { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
+.v2-card-t { margin: 0; font-size: calc(var(--pip-w) * .165); line-height: 1.02; letter-spacing: -.035em; font-weight: 650; }
+.v2-card-t span { display: inline-block; }
+.v2-card-n { margin: 12px 0 22px; font-size: 15px; line-height: 1.4; color: #656c75; }
+.v2-go { position: relative; display: flex; align-items: center; justify-content: space-between; height: 50px; padding: 0 6px 0 18px; border-radius: 999px; background: #eef0f2; overflow: hidden; font-weight: 600; }
+.v2-go em, .v2-go b { position: relative; font-style: normal; }
+.v2-go b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #1a1c20; color: var(--done); font-weight: 600; }
+.v2-fill { position: absolute; inset: 0; background: var(--done); transform-origin: 0 50%; transform: scaleX(0); }
 
-.v2-copy { position: absolute; left: 0; right: 0; bottom: max(7vh, 40px); display: grid; justify-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); z-index: 1; }
-.v2-copy h1 { margin: 0; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -.04em; font-weight: 650; text-wrap: balance; }
-.v2-roll { display: grid; justify-items: center; overflow: hidden; padding-bottom: .08em; }
-.v2-roll b { grid-area: 1 / 1; font-weight: inherit; white-space: nowrap; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .4s, filter .4s; transform: translateY(70%); opacity: 0; filter: blur(8px); }
-.v2-roll b.on { transform: none; opacity: 1; filter: none; }
-.v2-roll b.off { transform: translateY(-70%); opacity: 0; filter: blur(8px); }
-.v2-copy .v2-sub { margin: 14px 0 26px; font-size: clamp(18px, 1.8vw, 22px); color: var(--muted); }
-.v2-copy .btn { height: 58px; padding: 0 30px; font-size: 18px; box-shadow: 0 14px 30px -14px rgba(0,0,0,.45); }
-.v2-copy .hero-price { margin: 14px 0 0; font-size: 14px; color: var(--hush); }
-.v2-down { margin-top: 26px; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); color: var(--text); font-size: 14px; font-weight: 500; text-decoration: none; }
+.v2-act { position: absolute; left: 0; right: 0; bottom: max(6vh, calc(env(safe-area-inset-bottom, 0px) + 22px)); display: grid; justify-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); z-index: 3; }
+.v2-sub { margin: 0 0 18px; font-size: clamp(19px, 1.9vw, 23px); color: var(--muted); }
+.v2-act .btn { height: 56px; padding: 0 28px; font-size: 18px; }
+.v2-act .hero-price { margin: 12px 0 0; font-size: 14px; color: var(--hush); }
+@media (max-width: 700px) { .v2-act .hero-price { max-width: 30ch; } }
 
-.v2-say { position: absolute; left: 0; right: 0; bottom: 12vh; margin: 0; text-align: center; color: #fff; font-family: var(--round); font-weight: 800; font-size: clamp(54px, 9vw, 132px); line-height: .98; letter-spacing: -.03em; z-index: 1; padding-inline: 16px; }
-.v2-say span { display: inline-block; opacity: 0; translate: 0 40px; }
-
-@media (max-width: 700px) {
-  .v2-printer { --pip-w: 230px; }
-  .v2-copy { bottom: max(5vh, 24px); }
-  .v2-down { display: none; }
-  .v2-dust { display: none; }
-  .v2-say { bottom: 16vh; }
-}
-@media (max-height: 760px) and (min-width: 701px) { .v2-printer { --pip-w: clamp(200px, 26vh, 300px); } }
-
-/* The black carries on under a light sheet: the product. */
-.v2-sheet-wrap { background: var(--night); padding: 0 max(12px, env(safe-area-inset-left, 0px)) 12px max(12px, env(safe-area-inset-right, 0px)); }
-.v2-sheet { max-width: 1320px; margin: 0 auto; background: var(--page); border-radius: 44px; padding-block: 72px 80px; }
+/* After the hero, the product. */
+.v2-sheet { padding-top: 24px; }
 .v2-sheet .product { margin-top: 0; }
-.v2-sheet .talk { margin-bottom: 0; }
 .v2-sheet-head { text-align: center; max-width: 760px; margin: 0 auto 40px; padding-inline: 24px; }
-.v2-sheet-head h2 { font-size: clamp(34px, 4.4vw, 54px); font-weight: 650; letter-spacing: -.035em; line-height: 1.08; }
+.v2-sheet-head h2 { font-size: clamp(32px, 4.2vw, 52px); font-weight: 600; letter-spacing: -.035em; line-height: 1.08; }
 .v2-sheet-head h2 em { font-style: normal; color: var(--hush); }
 
-/* Done for today: big rounded words that pop in, confetti, Pip smiling. */
-.v2-yay { position: relative; overflow: hidden; min-height: 92vh; display: grid; place-items: center; text-align: center; padding: 96px max(16px, env(safe-area-inset-left, 0px)) 96px max(16px, env(safe-area-inset-right, 0px)); background: var(--panel); }
-.v2-yay h2 { font-family: var(--round); font-weight: 800; font-size: clamp(64px, 13vw, 168px); line-height: .95; letter-spacing: -.035em; margin: 0 0 18px; }
-.v2-yay h2 span { display: inline-block; transform: scale(.4) translateY(30px); opacity: 0; }
-.v2-yay.on h2 span { transform: none; opacity: 1; transition: transform .6s cubic-bezier(.3,1.6,.5,1), opacity .25s; }
-.v2-yay.on h2 span:nth-child(2) { transition-delay: .12s; }
-.v2-yay p { font-size: clamp(20px, 2.6vw, 34px); color: var(--muted); margin: 0 0 30px; letter-spacing: -.01em; }
-.v2-yay .v2-cta { opacity: 0; translate: 0 14px; }
-.v2-yay.on .v2-cta { opacity: 1; translate: 0 0; transition: opacity .4s .45s, translate .5s .45s cubic-bezier(.2,.8,.2,1); }
-.v2-yay .v2-mini { width: 92px; margin: 0 auto 26px; display: block; }
-.v2-confetti { position: absolute; inset: 0; pointer-events: none; }
-.v2-confetti i { position: absolute; left: 50%; top: 45%; width: 10px; height: 14px; border-radius: 3px; background: var(--c); opacity: 0; }
+/* Today, done: the day's stubs fall and pile up while Pip smiles. */
+.v2-yay { position: relative; overflow: hidden; min-height: 88vh; display: grid; place-items: center; text-align: center; padding: 96px max(16px, env(safe-area-inset-left, 0px)) 180px max(16px, env(safe-area-inset-right, 0px)); background: var(--panel); }
+.v2-yay-in { position: relative; z-index: 2; }
+.v2-yay h2 { font-size: clamp(56px, 10vw, 128px); font-weight: 650; line-height: .98; letter-spacing: -.05em; margin: 0 0 16px; }
+.v2-yay p { font-size: clamp(19px, 2.2vw, 26px); color: var(--muted); margin: 0 0 28px; }
+.v2-yay .v2-mini { width: 84px; margin: 0 auto 22px; display: block; }
+.v2-pile { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.v2-stub { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 14px; border-radius: 10px; background: var(--paper-w); color: #1a1c20; font-size: 15px; font-weight: 600; white-space: nowrap; box-shadow: 0 10px 20px -12px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.05); }
+.v2-stub i { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--done); color: #1a1c20; font-style: normal; font-size: 13px; }
 
-/* The end: a huge wordmark and Pip asleep behind it; tap to wake. */
-.v2-end { position: relative; overflow: hidden; background: var(--panel); padding: 40px max(16px, env(safe-area-inset-left, 0px)) 0 max(16px, env(safe-area-inset-right, 0px)); text-align: center; }
-.v2-word { margin: 0; font-weight: 750; font-size: clamp(64px, 17vw, 250px); line-height: .8; letter-spacing: -.06em; color: var(--text); white-space: nowrap; }
-.v2-bed { position: relative; width: clamp(180px, 22vw, 300px); margin: 44px auto 0; height: calc(clamp(180px, 22vw, 300px) * .84); overflow: hidden; }
-.v2-bed button { all: unset; display: block; position: absolute; left: 0; right: 0; top: 0; cursor: pointer; translate: 0 60%; transition: translate .8s cubic-bezier(.2,.8,.2,1); }
-.v2-end.on .v2-bed button { translate: 0 0; }
-.v2-bed button:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 26%; }
+/* The end: Pip asleep. A tap wakes it for a moment. */
+.v2-end { background: var(--panel); padding: 56px max(16px, env(safe-area-inset-left, 0px)) calc(64px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-right, 0px)); display: grid; justify-items: center; gap: 14px; text-align: center; }
+.v2-bed { position: relative; width: 120px; }
+.v2-bed button { all: unset; display: block; cursor: pointer; border-radius: 26%; }
+.v2-bed button:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 .v2-bed svg { display: block; width: 100%; height: auto; }
-.v2-z { position: absolute; right: 8%; top: 4%; font-family: var(--round); font-weight: 800; color: var(--hush); font-size: 22px; opacity: 0; }
+.v2-z { position: absolute; right: -14px; top: -8px; font-weight: 700; color: var(--hush); font-size: 20px; opacity: 0; }
 .v2-end.asleep .v2-z { animation: v2-z 2.4s ease-in-out infinite; }
-.v2-end.asleep .v2-z + .v2-z { animation-delay: 1.2s; font-size: 16px; right: 3%; }
-@keyframes v2-z { 0% { opacity: 0; transform: translate(0, 10px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(14px, -26px); } }
+.v2-end.asleep .v2-z + .v2-z { animation-delay: 1.2s; font-size: 15px; right: -26px; }
+@keyframes v2-z { 0% { opacity: 0; transform: translate(0, 10px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(12px, -24px); } }
+.v2-night-t { margin: 0; color: var(--hush); font-size: 15px; }
 
 @media (prefers-reduced-motion: reduce) {
   .v2-hero { height: auto; }
-  .v2-stage { position: relative; height: auto; min-height: 100svh; }
-  .v2-say { display: none; }
-  .v2-yay h2 span, .v2-yay .v2-cta { transform: none; opacity: 1; translate: none; }
-  .v2-bed button { translate: 0 0; }
+  .v2-stage { position: relative; height: 100svh; min-height: 640px; }
+  .v2-card { display: none; }
+  .v2-chip b { transition: none; }
   .v2-end.asleep .v2-z { animation: none; opacity: 1; }
-  .v2-roll b { transition: none; filter: none; }
 }
