@@ -54,7 +54,7 @@
     lift = Math.max(0, printer.offsetTop - top);
     const tall = printer.offsetHeight + card.offsetHeight - 14;
     const room = innerHeight - top - 28 - (dock && getComputedStyle(dock).display !== "none" ? dock.offsetHeight + 12 : 0);
-    grow = clamp(Math.min(room / tall, (innerWidth - 40) / printer.offsetWidth), 1, 1.6);
+    grow = clamp(Math.min(room / tall, (innerWidth - 40) / printer.offsetWidth), 0.6, 1.6);
   };
   function paint() {
     ticking = false;

@@ -15,7 +15,7 @@
 
 /* Hero: a tall track; the stage stays while the track scrolls past. */
 .v2-hero { position: relative; height: 250vh; height: 250svh; }
-.v2-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--page); --pip-w: clamp(190px, 29vh, 290px); --pip-top: calc(env(safe-area-inset-top, 0px) + clamp(150px, 25vh, 230px)); }
+.v2-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--page); --pip-w: clamp(140px, 29vh, 290px); --pip-top: calc(env(safe-area-inset-top, 0px) + clamp(118px, 24vh, 230px)); }
 .v2-copy { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--pip-top) + clamp(18px, 3vh, 30px)); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
 .v2-copy h1 { margin: 0; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.04; letter-spacing: -.04em; font-weight: 600; }
 
