@@ -24,7 +24,7 @@
 /* Paper comes out of the slot under Pip's face, a little narrower than Pip. */
 .v2-slot { position: absolute; z-index: 1; left: 6%; right: 6%; top: calc(100% - 14px); height: 72vh; overflow: hidden; pointer-events: none; padding: 0 14px 30px; margin-inline: -14px; }
 .v2-chip, .v2-card { background: var(--paper-w); color: #1a1c20; border-radius: 0 0 16px 16px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.04); }
-.v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; padding: 26px 12px 16px; text-align: center; font-size: clamp(21px, 2.3vw, 27px); font-weight: 600; letter-spacing: -.02em; }
+.v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; padding: 26px 12px 16px; text-align: center; font-size: min(27px, calc(var(--pip-w) * .1)); font-weight: 600; letter-spacing: -.02em; }
 /* Each new line is printed: it comes down out of the slot. */
 .v2-chip b { grid-area: 1 / 1; font-weight: inherit; white-space: nowrap; clip-path: inset(0 0 100% 0); transform: translateY(-60%); transition: clip-path .5s cubic-bezier(.3,.7,.2,1), transform .5s cubic-bezier(.3,.7,.2,1); }
 .v2-chip b.on { clip-path: inset(0 0 0 0); transform: none; }
