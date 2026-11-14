@@ -14,7 +14,7 @@
   if (!hero) return;
   const stage = $(".v2-stage", hero), night = $(".v2-night", hero), copy = $(".v2-copy", hero);
   const card = $(".v2-card", hero), say = $$(".v2-say span", hero), dust = $(".v2-dust", hero);
-  const topbar = $(".topbar");
+  const topbar = $(".topbar"), dock = $("[data-dock]");
   const pip = window.Pip($(".v2-printer svg", hero));
 
   // The rotating line: what the AI plans. Pip reacts to each.
@@ -53,6 +53,9 @@
     copy.style.transform = `translateY(${(-away * 40).toFixed(1)}px) scale(${(1 - away * 0.06).toFixed(3)})`;
     copy.style.pointerEvents = away > 0.5 ? "none" : "";
     copy.inert = away > 0.5;
+    // Phones: once the hero's button has faded, the dock offers it (the button is still on screen, so its
+    // own observer would not say so).
+    if (dock) dock.classList.toggle("on", away > 0.5);
     const dark = span(p, 0.08, 0.4);
     night.style.opacity = dark.toFixed(3);
     dust.style.opacity = String(1 - dark);
