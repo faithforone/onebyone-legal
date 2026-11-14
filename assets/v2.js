@@ -1,7 +1,7 @@
 // Home v2 (preview). The hero's scroll scene is read straight off the scroll position every frame,
 // so it never trails the finger: the words step aside, the printed line goes back into Pip, and
-// Pip prints one long ticket, "One card at a time."; its Done fills as you reach the end and Pip
-// smiles. Then a finished day's stubs pile up, and at the end Pip is asleep.
+// Pip prints one long ticket, "One card at a time."; its Done fills and Pip smiles; then the
+// lights go out and only Pip's eyes and the ticket are left. Then a finished day's stubs pile up, and at the end Pip is asleep.
 (() => {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -12,7 +12,7 @@
 
   const hero = $("[data-v2-hero]");
   if (!hero) return;
-  const copy = $(".v2-copy", hero), act = $(".v2-act", hero), printer = $(".v2-printer", hero);
+  const stage = $(".v2-stage", hero), copy = $(".v2-copy", hero), act = $(".v2-act", hero), printer = $(".v2-printer", hero);
   const chip = $(".v2-chip", hero), card = $(".v2-card", hero), fill = $(".v2-fill", hero);
   const dock = $("[data-dock]");
   const pip = window.Pip($(".v2-printer svg", hero));
@@ -48,6 +48,9 @@
   $(".v2-printer svg", hero).addEventListener("click", () => pip.glad(900).pop());
 
   let printed = false, ticking = false, lift = 0, grow = 1;
+  // The floating Download steps away while the page's own Download is in view.
+  const buy = $("[data-v2-buy]");
+  const nearBuy = () => { if (!buy) return false; const b = buy.getBoundingClientRect(); return b.bottom > 0 && b.top < innerHeight * 0.9; };
   // Pip rises under the top bar, and on a big screen grows with its ticket until the two fill the height.
   const measure = () => {
     const top = Math.max(84, innerHeight * 0.1);
@@ -67,22 +70,24 @@
       el.style.translate = `0 ${((el === copy ? -1 : 1) * away * 36).toFixed(1)}px`;
     }
     act.inert = away > 0.5;
-    if (dock) dock.classList.toggle("on", away > 0.5);
+    if (dock) dock.classList.toggle("on", away > 0.5 && !nearBuy());
     roll(p < 0.02);
     // The line goes back into Pip; Pip rises to make room; the long ticket prints.
     const back = ease(span(p, 0.06, 0.24));
     chip.style.translate = `0 ${(-104 * back).toFixed(2)}%`;
     const up = ease(span(p, 0.14, 0.5));
     printer.style.translate = `0 ${(-lift * up).toFixed(1)}px`;
-    printer.style.scale = String(1 + (grow - 1) * ease(span(p, 0.26, 0.72)));
-    const out = ease(span(p, 0.26, 0.72));
+    printer.style.scale = String(1 + (grow - 1) * ease(span(p, 0.26, 0.62)));
+    const out = ease(span(p, 0.26, 0.62));
     card.style.translate = `0 ${(-101 + out * 101).toFixed(2)}%`;
-    if (p > 0.22 && p < 0.74) pip.look(0, 14);
+    if (p > 0.22 && p < 0.64) pip.look(0, 14);
     // Done fills as the end comes, as a held press fills it in the app.
-    const done = span(p, 0.78, 0.96);
+    const done = span(p, 0.66, 0.8);
     fill.style.transform = `scaleX(${done.toFixed(3)})`;
     if (done >= 1 && !printed) { printed = true; pip.glad(1200).pop(1.1); }
     if (done < 0.6) printed = false;
+    // Then the lights go out: only Pip's eyes and its ticket are left.
+    stage.style.setProperty("--dark", ease(span(p, 0.84, 0.98)).toFixed(3));
   }
   if (!still) {
     addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
