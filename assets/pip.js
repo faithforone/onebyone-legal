@@ -15,8 +15,10 @@
     const top = -bh + a, bottom = bh - a, y = bottom + (top - bottom) * op;
     const dip = a * (0.45 + 0.55 * o) * bow, cap = -dip + (a + dip) * o, q = 4 / 3;
     const c = a * (0.4 + 0.6 * o);
-    const b = Math.min(1, Math.max(0, blink)), k = (w / 6 + (2 * bh - w / 6) * (1 - b)) / (2 * bh);
-    const Y = (v) => (bh - (bh - v) * k).toFixed(2), X = (v) => v.toFixed(2);
+    // A blink keeps the outline's lowest point where it is (as the app does).
+    const low = bottom + Math.max(0, dip), high = y - Math.max(0, cap), tall = Math.max(0.001, low - high);
+    const b = Math.min(1, Math.max(0, blink)), flat = Math.min(tall, w / 6), k = (flat + (tall - flat) * (1 - b)) / tall;
+    const Y = (v) => (low - (low - v) * k).toFixed(2), X = (v) => v.toFixed(2);
     const d = `M${X(-a)} ${Y(y)}L${X(-a)} ${Y(bottom)}C${X(-c)} ${Y(bottom + q * dip)} ${X(c)} ${Y(bottom + q * dip)} ${X(a)} ${Y(bottom)}` +
       `L${X(a)} ${Y(y)}C${X(c)} ${Y(y - q * cap)} ${X(-c)} ${Y(y - q * cap)} ${X(-a)} ${Y(y)}Z`;
     return { d, line: 9.5 * Math.max(0, Math.min(1, (0.32 - op) / 0.32)) };
@@ -104,7 +106,16 @@
       get asleep() { return asleep; },
     };
     draw();
-    if (still()) { draw(); return api; }
+    if (still()) {
+      // Reduce Motion: no gliding, wandering or blinking; each change shows at once.
+      api.pop = () => api;
+      for (const key of ["look", "roam", "smile", "sleep", "wake"]) {
+        const run = api[key];
+        api[key] = (...a) => { run(...a); wander = false; Object.assign(s, to, { blink: 0 }); draw(); return api; };
+      }
+      api.blink = () => api;
+      return api;
+    }
     // Run only while on screen.
     new IntersectionObserver((seen) => seen.forEach((e) => (e.isIntersecting ? api.start() : api.stop()))).observe(svg);
     return api;

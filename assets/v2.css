@@ -97,4 +97,6 @@
   .v2-say { display: none; }
   .v2-yay h2 span, .v2-yay .v2-cta { transform: none; opacity: 1; translate: none; }
   .v2-bed button { translate: 0 0; }
+  .v2-end.asleep .v2-z { animation: none; opacity: 1; }
+  .v2-roll b { transition: none; filter: none; }
 }

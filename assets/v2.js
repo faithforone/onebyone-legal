@@ -52,6 +52,7 @@
     copy.style.filter = away > 0 ? `blur(${(away * 14).toFixed(1)}px)` : "";
     copy.style.transform = `translateY(${(-away * 40).toFixed(1)}px) scale(${(1 - away * 0.06).toFixed(3)})`;
     copy.style.pointerEvents = away > 0.5 ? "none" : "";
+    copy.inert = away > 0.5;
     const dark = span(p, 0.08, 0.4);
     night.style.opacity = dark.toFixed(3);
     dust.style.opacity = String(1 - dark);
