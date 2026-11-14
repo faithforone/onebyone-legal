@@ -6,7 +6,7 @@
   // <i18n>
   // The demo's own words (buttons, menu, labels, announcements). English is the default; <html lang="ko"> swaps the table.
   const T = ko ? {
-    start: "시작", done: "완료", track: "맡기기", waiting: "대기 중", paused: "일시정지됨", resume: "다시 시작", held: "보류 중",
+    start: "시작", done: "완료", track: "시작", waiting: "대기 중", paused: "일시정지됨", resume: "이어하기", held: "보류 중",
     skip: "건너뛰기", dismiss: "오늘은 빼기", more: "더 보기", close: "닫기", upNext: "다음 카드", doNow: "지금 하기",
     ready: "시간 됐어요", restOver: "휴식 끝", due: "끝남", dueBall: "끝", dueSay: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
     dueAria: (n, next) => `${n} 타이머가 끝났어요. 다음은 ${next}.`,
@@ -22,7 +22,7 @@
     greet: (h) => (h >= 5 && h < 12 ? "좋은 아침이에요" : h >= 12 && h < 18 ? "좋은 오후예요" : "좋은 저녁이에요"),
     suggested: "제안", added: "추가됨",
   } : {
-    start: "Start", done: "Done", track: "Keep track", waiting: "Waiting", paused: "Paused", resume: "Resume", held: "Held",
+    start: "Start", done: "Done", track: "Start", waiting: "Waiting", paused: "Paused", resume: "Resume", held: "Held",
     skip: "Skip", dismiss: "Dismiss", more: "More", close: "Close", upNext: "Up next", doNow: "Do now",
     ready: "Time’s up", restOver: "Rest’s over", due: "Due", dueBall: "due", dueSay: (n, next) => `${n} is due. ${next} is next.`,
     dueAria: (n, next) => `${n}, due. ${next} is next.`,
@@ -56,113 +56,6 @@
     // Once, never undone: scrolling back up must not restart or reverse anything.
     const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { threshold: 0.3 });
     $$("[data-reveal]").forEach((el) => io.observe(el));
-  }
-
-  // Talk: the mark art is the product's loop (confirmed 2026-10-05). Your day comes down to you, one card at a time: the cards
-  // stand in one 3D space seen through one camera (sizes from distance, colour from haze: far is pale, near is charcoal). Each
-  // step the front card becomes the app's ticket (the notches bite in, the perforation prints) and goes straight down through
-  // the edge just under it, tipping 18 degrees towards you below the edge; the next card turns charcoal on its way up and gets
-  // its lime once the ticket is out; a new card fades in at the back. 2 s a step, slowest exactly at the logo, never stopping.
-  // Plays while on screen, pauses (never restarts) when off; with reduced motion the mark stands still.
-  {
-    const art = $(".mark-art");
-    const masks = window.CSS && (CSS.supports("mask-image", "linear-gradient(#000,#000)") || CSS.supports("-webkit-mask-image", "linear-gradient(#000,#000)"));
-    if (art && !still() && masks && "IntersectionObserver" in window) {
-      const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), lerp = (a, b, p) => a + (b - a) * p;
-      const smooth = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
-      // colour in OKLab, so a change is lighter or darker, never muddy
-      const toLin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
-      const fromLin = (v) => 255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055);
-      const toLab = ([r, g, b]) => { r = toLin(r); g = toLin(g); b = toLin(b); const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b), m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b), s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
-        return [0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s, 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s]; };
-      const fromLab = ([L, a, b]) => { const l = Math.pow(L + 0.3963377774 * a + 0.2158037573 * b, 3), m = Math.pow(L - 0.1055613458 * a - 0.0638541728 * b, 3), s = Math.pow(L - 0.0894841775 * a - 1.291485548 * b, 3);
-        return [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s].map((v) => Math.round(clamp(fromLin(clamp(v, 0, 1)), 0, 255))); };
-      const WHITE = toLab([255, 255, 255]), GREY = toLab([218, 221, 225]), INK = toLab([26, 28, 32]), LIME = toLab([198, 239, 78]);
-      const mix = (a, b, p) => fromLab([0, 1, 2].map((i) => lerp(a[i], b[i], p)));
-      const rgb = (c) => `rgb(${c.join(",")})`;
-      const haze = (h) => h <= 0.87 ? mix(INK, GREY, h / 0.87) : mix(GREY, WHITE, (h - 0.87) / 0.13);   // 0 near .. 1 far
-      const E = ((x1, y1, x2, y2) => (x) => {                                                          // cubic-bezier(.4,0,.6,1)
-        if (x <= 0) return 0; if (x >= 1) return 1;
-        const cx = (t) => 3 * x1 * t * (1 - t) ** 2 + 3 * x2 * t * t * (1 - t) + t ** 3, cy = (t) => 3 * y1 * t * (1 - t) ** 2 + 3 * y2 * t * t * (1 - t) + t ** 3;
-        let lo = 0, hi = 1, t = x; for (let i = 0; i < 24; i++) { t = (lo + hi) / 2; if (cx(t) < x) lo = t; else hi = t; } return cy(t);
-      })(0.4, 0, 0.6, 1);
-      // the path of a card's centre and size: behind the back card, back, middle, front, on (Catmull-Rom, so no corners)
-      const NODE = [[22, 58, 118], [75, 105, 150], [145, 165, 190], [220, 200, 220], [282, 236, 246]];
-      const TAN = NODE.map((n, i) => [0, 1, 2].map((k) => i === 0 ? NODE[1][k] - NODE[0][k] : i === 4 ? NODE[4][k] - NODE[3][k] : (NODE[i + 1][k] - NODE[i - 1][k]) / 2));
-      const along = (q) => {
-        const x = clamp(q + 1, 0, 3.999), i = Math.floor(x), t = x - i, t2 = t * t, t3 = t2 * t, a = NODE[i], b = NODE[i + 1], ta = TAN[i], tb = TAN[i + 1];
-        const h00 = 2 * t3 - 3 * t2 + 1, h10 = t3 - 2 * t2 + t, h01 = -2 * t3 + 3 * t2, h11 = t3 - t2;
-        return [0, 1, 2].map((k) => h00 * a[k] + h10 * ta[k] + h01 * b[k] + h11 * tb[k]);
-      };
-      const P = 2, A = 0.7, CAM = 1000, ORG = [165, 150];
-      const EDGE = 324, OUT = 640, FALL = 0.6, BEND = 18, PERF = 122;                               // y in the art frame; past the edge the panel itself is what hides it
-      const steps = (tt) => { const v = tt / P, n = Math.floor(v), p = v - n; return n + p - A * Math.sin(2 * Math.PI * p) / (2 * Math.PI); };
-      const notch = (r) => `radial-gradient(circle at 0 ${PERF}px, transparent ${r.toFixed(2)}px, #000 ${(r + 0.6).toFixed(2)}px), radial-gradient(circle at 220px ${PERF}px, transparent ${r.toFixed(2)}px, #000 ${(r + 0.6).toFixed(2)}px)`;
-      const perf = (a) => `repeating-linear-gradient(90deg, rgba(255,255,255,${a.toFixed(3)}) 0 5px, transparent 5px 9px) 14px ${PERF - 0.6}px / 192px 1.2px no-repeat`;
-      const setMask = (st, m) => { st.webkitMaskImage = m; st.maskImage = m; };
-      // each card rides in a lane holding the camera (the art box plus 400 px all round, contents 400 px in); the second lane
-      // carries the part of a leaving card that is below the edge
-      art.textContent = "";
-      const lane = () => { const l = document.createElement("div"); l.className = "lane"; l.innerHTML = "<span><i></i></span>"; art.append(l); return l; };
-      const cards = [0, 1, 2, 3].map(() => { const l = lane(), l2 = lane(); return { l, l2, e: l.firstChild, e2: l2.firstChild, bar: l.firstChild.firstChild, bar2: l2.firstChild.firstChild }; });
-      art.classList.add("live");
-      const draw = (tt) => {
-        const u = steps(tt);
-        cards.forEach((c, j) => {
-          const q = ((((j + u + 1) % 4) + 4) % 4) - 1, role = Math.floor(q), f = q - role;
-          const s = c.e.style, s2 = c.e2.style;
-          c.l2.style.visibility = "hidden";
-          if (role === 2 && f >= FALL) { c.l.style.visibility = "hidden"; return; }
-          c.l.style.visibility = "visible";
-          const [cx, cy, sz] = along(Math.min(q, 2));
-          const z = CAM * (1 - 220 / sz), back = (CAM - z) / CAM;
-          const wx = ORG[0] + (cx - ORG[0]) * back, wy = ORG[1] + (cy - ORG[1]) * back;   // world centre that projects onto (cx, cy)
-          const base = `translate3d(${(wx + 290).toFixed(2)}px,${(wy + 290).toFixed(2)}px,${z.toFixed(2)}px)`;
-          let h = 0, lit = 1, opacity = 1, shadow, zi = 20 + 10 * q;
-          if (role === -1) { h = 1; lit = 0; opacity = E(f); }
-          else if (role === 0) { h = 1 - 0.13 * E(f); lit = 0; }
-          else if (role === 1) { h = 0.87 * (1 - E(f / 0.62)); lit = E((f - 0.6) / 0.08); }
-          const bgc = haze(h), bg = rgb(bgc), lime = rgb(mix(toLab(bgc), LIME, lit));
-          c.bar.style.background = lime;
-          setMask(s, "none");
-          if (role === 2) {
-            zi = 60;
-            const x = clamp(f / FALL), drop = 340 * (0.3 * x + 0.7 * x * x), edge = EDGE - (90 + drop);
-            const k = smooth(f / 0.08);
-            s.transform = `${base} translateY(${drop.toFixed(2)}px)`;
-            s.background = `linear-gradient(rgba(0,0,0,0) ${(edge - 12).toFixed(1)}px, rgba(0,0,0,.10) ${edge.toFixed(1)}px), ${perf(0.3 * k)}, ${bg}`;
-            if (k > 0.01) setMask(s, notch(6 * k));
-            s.opacity = "1";
-            shadow = 0.18 * (1 - smooth(x / 0.3));
-            setMask(c.l.style, `linear-gradient(#000 ${EDGE + 401.5}px, transparent ${EDGE + 401.5}px)`);
-            c.l2.style.visibility = "visible"; c.l2.style.zIndex = "61";
-            setMask(c.l2.style, `linear-gradient(transparent ${EDGE + 400}px, #000 ${EDGE + 400}px, #000 ${OUT + 400}px, transparent ${OUT + 400}px)`);
-            const pv = edge - 110;
-            s2.transform = `${base} translateY(${drop.toFixed(2)}px) translateY(${pv.toFixed(2)}px) rotateX(${BEND}deg) translateY(${(-pv).toFixed(2)}px)`;
-            s2.background = `${perf(0.3)}, ${bg}`;
-            setMask(s2, notch(6));
-            c.bar2.style.background = lime;
-          } else {
-            s.transform = base; s.background = bg; s.opacity = opacity.toFixed(4);
-            shadow = 0.18 * (1 - smooth(h / 0.6));
-            setMask(c.l.style, "none");
-          }
-          c.l.style.zIndex = String(Math.round(zi));
-          const sh = [];
-          if (shadow > 0.002) sh.push(`0 12px 24px -12px rgba(0,0,0,${shadow.toFixed(3)})`);
-          const ring = smooth((h - 0.9) / 0.1);
-          if (ring > 0.002) sh.push(`inset 0 0 0 1px rgba(214,216,220,${ring.toFixed(3)})`);
-          s.boxShadow = sh.length ? sh.join(",") : "none";
-        });
-      };
-      let t = 0, last = 0, visible = false, raf = 0;
-      // No frames are scheduled while the mark is off screen; it resumes where it was.
-      const tick = (now) => { if (!visible) { raf = 0; last = 0; return; } raf = requestAnimationFrame(tick); const dt = last ? Math.min(64, now - last) : 0; last = now; t += dt / 1000; draw(t); };
-      draw(0);
-      new IntersectionObserver(([e]) => { visible = e.isIntersecting && !still(); if (visible && !raf) raf = requestAnimationFrame(tick); }, { threshold: 0.3 }).observe(art);
-      motion.addEventListener("change", () => { if (!still()) return; visible = false; cancelAnimationFrame(raf); raf = 0; t = 0; draw(0); });
-      window.__mark = { seek: (ms) => { t = ms / 1000; draw(t); }, stop: () => { cancelAnimationFrame(raf); visible = false; } };
-    }
   }
 
   // One-of-a-group buttons: aria-pressed, plus arrow keys for a tablist.
@@ -229,7 +122,7 @@
     `<div class="t-body">${bodyHTML(c, !start, vals, menu)}</div><div class="t-stub"><div class="stub-a"><div class="stub-in">${pillHTML(c.idle ? T.waiting : start ? T.start : c.wait ? T.track : T.done, c.idle ? 0 : start || !c.clock ? 1 : 0, c.idle)}${menu && !c.idle ? menuHTML : ""}</div></div></div><span class="t-shadow" aria-hidden="true"></span>`;
   // </tpl>
 
-  // A wait is a card that is short to do; its pill reads Keep track, and the app keeps track of the wait (the app's timer balls, planned for 1.1).
+  // A wait is a card that is short to do; its pill reads Start, as in the app, and the app then keeps track of the wait (the timer balls).
   // The demo runs one real minute in two seconds; the ball and panel always say real minutes.
   const RING = 2 * Math.PI * 13, LAND = 920, MAX_BALLS = 3;
   const leftLabel = (s) => (s >= 60 ? T.min(Math.ceil(s / 60)) : T.sec(s));
