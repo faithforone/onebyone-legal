@@ -13,22 +13,31 @@
 .v2 .topbar-inner { max-width: 1040px; margin: 12px auto 0; padding: 8px 10px 8px 18px; border-radius: 999px; transition: background .25s, box-shadow .25s; }
 .v2 .topbar.scrolled .topbar-inner { background: color-mix(in srgb, var(--page) 84%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.25); }
 
-/* Hero: a tall track; the stage stays while the track scrolls past. */
+/* Hero: a tall track; the stage stays while the track scrolls past. One column, read top to bottom:
+   the visitor's own question; Pip wakes and prints the answer, one card; then what we do and Download. */
 .v2-hero { position: relative; height: 300vh; height: 300svh; }
-.v2-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; --dark: 0; color: #111214; background: color-mix(in srgb, #000 calc(var(--dark) * 100%), var(--lime-ground)); --pip-w: clamp(150px, 35vh, 360px); --pip-top: calc(env(safe-area-inset-top, 0px) + clamp(130px, 21vh, 240px)); }
-.v2-copy { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--pip-top) + clamp(18px, 3vh, 30px)); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
-.v2-copy h1 { margin: 0; font-size: clamp(40px, min(14.5vw, 10.5vh), 120px); line-height: .95; letter-spacing: -.05em; font-weight: 700; }
+.v2-stage {
+  position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; --dark: 0;
+  color: #111214; --focus: #111214;
+  background: color-mix(in srgb, #000 calc(var(--dark) * 100%), var(--lime-ground));
+  --top: calc(env(safe-area-inset-top, 0px) + clamp(48px, 9svh, 110px));
+  --h1: clamp(38px, min(12.5vw, 7.5svh), 104px);
+  --pip-w: min(66vw, 30svh, 320px);
+  --pip-top: calc(var(--top) + var(--h1) * 1.95 + clamp(18px, 3svh, 36px));
+  --ticket: calc(var(--pip-w) * .12);
+}
+.v2-copy { position: absolute; left: 0; right: 0; top: var(--top); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.v2-copy h1 { margin: 0; font-size: var(--h1); line-height: .95; letter-spacing: -.05em; font-weight: 700; }
 
 .v2-printer { position: absolute; left: 50%; top: var(--pip-top); width: var(--pip-w); margin-left: calc(var(--pip-w) / -2); z-index: 2; transform-origin: 50% 0; }
 .v2-printer svg { position: relative; z-index: 2; display: block; width: 100%; height: auto; cursor: pointer; filter: drop-shadow(0 22px 26px rgba(0,0,0,.16)); }
 /* Paper comes out of the slot under Pip's face, a little narrower than Pip. */
 .v2-slot { position: absolute; z-index: 1; left: 6%; right: 6%; top: calc(100% - 14px); height: 72vh; overflow: hidden; pointer-events: none; padding: 0 14px 30px; margin-inline: -14px; }
 .v2-chip, .v2-card { background: var(--paper-w); color: #1a1c20; border-radius: 0 0 16px 16px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.04); }
-.v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; padding: 26px 12px 16px; text-align: center; font-size: min(40px, calc(var(--pip-w) * .11)); font-weight: 650; letter-spacing: -.02em; }
-/* Each new line is printed: it comes down out of the slot. */
-.v2-chip b { grid-area: 1 / 1; font-weight: inherit; white-space: nowrap; clip-path: inset(0 0 100% 0); transform: translateY(-60%); transition: clip-path .5s cubic-bezier(.3,.7,.2,1), transform .5s cubic-bezier(.3,.7,.2,1); }
-.v2-chip b.on { clip-path: inset(0 0 0 0); transform: none; }
-.v2-chip b.off { clip-path: inset(100% 0 0 0); transform: translateY(40%); transition-duration: .3s; }
+/* The answer: one card. */
+.v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; gap: 4px; padding: 26px 12px 16px; text-align: left; }
+.v2-chip-k { font-size: 13px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
+.v2-chip-t { font-size: var(--ticket); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; text-wrap: balance; }
 .v2-card { position: absolute; left: 14px; right: 14px; top: 0; padding: 30px 20px 18px; translate: 0 -101%; }
 .v2-card-k { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
 .v2-card-t { margin: 0; font-size: calc(var(--pip-w) * .165); line-height: 1.02; letter-spacing: -.035em; font-weight: 650; }
@@ -39,18 +48,30 @@
 .v2-go b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #1a1c20; color: var(--done); font-weight: 600; }
 .v2-fill { position: absolute; inset: 0; background: var(--done); transform-origin: 0 50%; transform: scaleX(0); }
 
-.v2-act { position: absolute; left: 0; right: 0; bottom: max(6vh, calc(env(safe-area-inset-bottom, 0px) + 22px)); display: grid; justify-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); z-index: 3; }
-.v2-sub { margin: 0 0 22px; font-size: clamp(30px, min(11vw, 8vh), 84px); line-height: 1; letter-spacing: -.05em; font-weight: 700; }
+/* Under the card: what we do, and Download. */
+.v2-act { position: absolute; left: 0; right: 0; top: calc(var(--pip-top) + var(--pip-w) + var(--ticket) * 1.05 + 70px + clamp(16px, 3svh, 34px)); display: grid; justify-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); z-index: 3; }
+.v2-sub { margin: 0 0 clamp(12px, 2.2svh, 22px); line-height: 1; }
+.v2-sub span { display: block; font-size: clamp(17px, min(4.8vw, 2.6svh), 24px); letter-spacing: -.02em; font-weight: 600; opacity: .62; margin-bottom: 6px; }
+.v2-sub b { display: block; font-size: calc(var(--h1) * .72); letter-spacing: -.05em; font-weight: 700; }
 /* On the lime ground the button is always black, whatever the theme. */
-.v2-act .btn { height: 60px; padding: 0 clamp(22px, 7vw, 34px); font-size: clamp(16px, 4.8vw, 19px); white-space: nowrap; background: #111214; color: #fff; }
-.v2-act .hero-price { margin: 12px 0 0; font-size: 14px; color: var(--hush); }
-/* A phone on its side: the printed line steps down so the longest one fits. */
-@media (max-height: 500px) { .v2-chip { font-size: calc(var(--pip-w) * .095); } }
-/* A phone on its side: Pip and its line on the left half, "You just do." and Download on the right. */
+.v2-act .btn { height: clamp(50px, 7svh, 60px); padding: 0 clamp(22px, 7vw, 34px); font-size: clamp(16px, 4.8vw, 19px); white-space: nowrap; background: #111214; color: #fff; }
+
+/* Arrival, in reading order: the question, Pip wakes (script), the card prints, then the rest. */
+@keyframes v2-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes v2-print { from { transform: translateY(-105%); } }
+.v2-copy h1 { animation: v2-rise .6s cubic-bezier(.2,.8,.2,1) .1s both; }
+.v2-chip { animation: v2-print .75s cubic-bezier(.2,.8,.2,1) 1.35s both; }
+.v2-act > * { animation: v2-rise .6s cubic-bezier(.2,.8,.2,1) 2.1s both; }
+.v2-act > * + * { animation-delay: 2.3s; }
+
+/* A phone on its side: the question and Pip on the left half, the rest on the right. */
 @media (max-height: 500px) and (orientation: landscape) {
+  .v2-stage { --top: calc(env(safe-area-inset-top, 0px) + 18px); --h1: clamp(26px, 9svh, 40px); --pip-w: min(36svh, 30vw); }
   .v2-copy { right: 50%; }
   .v2-printer { left: 25%; }
-  .v2-act { left: 50%; bottom: auto; top: 50%; margin-top: -60px; }
+  .v2-act { left: 50%; top: calc(50% - 72px); }
+  .v2-sub b { font-size: 30px; }
+  .v2-act .btn { white-space: normal; height: auto; min-height: 48px; padding: 10px 18px; font-size: 15px; line-height: 1.2; }
 }
 
 /* After the hero, the product. */
@@ -86,7 +107,7 @@
   .v2-hero { height: auto; }
   .v2-stage { position: relative; height: 100svh; min-height: 640px; }
   .v2-card { display: none; }
-  .v2-chip b { transition: none; }
+  .v2-copy h1, .v2-chip, .v2-act > * { animation: none; }
   .v2-end.asleep .v2-z { animation: none; opacity: 1; }
 }
 
@@ -131,7 +152,7 @@ body.v2 { background: #000; }
 .v2 .ds-live { height: 300vh; }
 
 /* Company details: folded under the footer links, one tap to open. */
-.v2-co { flex-basis: 100%; order: 3; font-size: 13px; color: var(--hush); }
+.v2-co { flex-basis: 100%; font-size: 13px; color: var(--hush); }
 .v2-co summary { cursor: pointer; display: inline-flex; align-items: center; min-height: 32px; list-style: none; }
 .v2-co summary::-webkit-details-marker { display: none; }
 .v2-co summary::after { content: "+"; margin-left: 6px; }
@@ -140,6 +161,6 @@ body.v2 { background: #000; }
 .v2-co summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
 
 /* No top bar on the first screen: it slides down once the hero's words step aside. */
-.v2 .topbar { transform: translateY(calc(-100% - 16px)); transition: transform .32s cubic-bezier(.2,.8,.2,1); }
-.v2 .topbar.v2-up { transform: none; }
+.v2 .topbar { transition: transform .32s cubic-bezier(.2,.8,.2,1); }
+.v2 .topbar.v2-hide { transform: translateY(calc(-100% - 16px)); }
 @media (prefers-reduced-motion: reduce) { .v2 .topbar { transition: none; } }

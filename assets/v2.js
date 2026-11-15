@@ -1,7 +1,8 @@
-// Home v2 (preview). The hero's scroll scene is read straight off the scroll position every frame,
-// so it never trails the finger: the words step aside, the printed line goes back into Pip, and
-// Pip prints one long ticket, "One card at a time."; its Done fills and Pip smiles; then the
-// lights go out and only Pip's eyes and the ticket are left. Then a finished day's stubs pile up, and at the end Pip is asleep.
+// Home v2 (preview). The first screen asks the visitor's own question, "Where do I even start?";
+// Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
+// scroll position every frame, so it never trails the finger: the words step aside, the card goes
+// back into Pip, Pip prints one long ticket, "One card at a time.", its Done fills and Pip smiles;
+// then the lights go out. Later a finished day's stubs pile up, and at the end Pip is asleep.
 (() => {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -17,39 +18,27 @@
   const dock = $("[data-dock]");
   // The top bar is not there on the first screen; it comes down once the hero's words step aside.
   const bar = $(".topbar");
-  const showBar = (on) => { if (!bar) return; bar.classList.toggle("v2-up", on); bar.inert = !on; };
-  showBar(false);
-  const pip = window.Pip($(".v2-printer svg", hero));
+  const showBar = (on) => { if (!bar) return; bar.classList.toggle("v2-hide", !on); bar.inert = !on; };
+  if (bar) { bar.style.transition = "none"; showBar(false); requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.transition = ""; })); }
+  const pip = window.Pip($(".v2-printer svg", hero), { sleeping: !still });
 
-  // The printed line: what your AI plans. Pip looks down at each new one as it prints.
-  const lines = $$("b", chip);
-  let at = 0, rolling = 0;
-  const step = () => {
-    const prev = lines[at];
-    prev.classList.remove("on"); prev.classList.add("off");
-    setTimeout(() => prev.classList.remove("off"), 320);
-    at = (at + 1) % lines.length;
-    setTimeout(() => {
-      lines[at].classList.add("on");
-      pip.look(0, 14);
-      if (at === 0) pip.glad(800);
-      setTimeout(() => pip.roam(), 1300);
-    }, 260);
-  };
-  const roll = (on) => {
-    if (on && !rolling && !still && lines.length > 1) rolling = setInterval(step, 3200);
-    if (!on && rolling) { clearInterval(rolling); rolling = 0; }
-  };
-  roll(true);
-  pip.roam();
+  // Arrival, in reading order: the question shows; Pip wakes and looks up at it; then looks down as
+  // the card prints ("Start here. Make the bed."); then looks about. The rest arrives by CSS.
+  let awake = still;
+  if (!still) {
+    setTimeout(() => { pip.wake().look(0, -12); }, 700);
+    setTimeout(() => { pip.look(0, 14); }, 1250);
+    setTimeout(() => { pip.glad(700); awake = true; }, 2200);
+    setTimeout(() => { if (scrollY < innerHeight * 0.1) pip.roam(); }, 3200);
+  } else pip.roam();
 
   addEventListener("pointermove", (e) => {
-    if (scrollY > innerHeight * 0.3) return;
+    if (!awake || scrollY > innerHeight * 0.3) return;
     const r = printer.getBoundingClientRect();
     pip.look(clamp((e.clientX - (r.left + r.width / 2)) / 14, -20, 20), clamp((e.clientY - (r.top + r.height / 2)) / 18, -10, 14));
     clearTimeout(pip._t); pip._t = setTimeout(() => pip.roam(), 2000);
   }, { passive: true });
-  $(".v2-printer svg", hero).addEventListener("click", () => pip.glad(900).pop());
+  $(".v2-printer svg", hero).addEventListener("click", () => { if (!awake) { pip.wake(); awake = true; } pip.glad(900).pop(); });
 
   let printed = false, ticking = false, lift = 0, grow = 1;
   // The floating Download steps away while the page's own Download is in view.
@@ -76,7 +65,6 @@
     act.inert = away > 0.5;
     showBar(away > 0.5);
     if (dock) dock.classList.toggle("on", away > 0.5 && !nearBuy());
-    roll(p < 0.02);
     // The line goes back into Pip; Pip rises to make room; the long ticket prints.
     const back = ease(span(p, 0.06, 0.24));
     chip.style.translate = `0 ${(-104 * back).toFixed(2)}%`;
@@ -85,7 +73,7 @@
     printer.style.scale = String(1 + (grow - 1) * ease(span(p, 0.26, 0.62)));
     const out = ease(span(p, 0.26, 0.62));
     card.style.translate = `0 ${(-101 + out * 101).toFixed(2)}%`;
-    if (p > 0.22 && p < 0.64) pip.look(0, 14);
+    if (awake && p > 0.22 && p < 0.64) pip.look(0, 14);
     // Done fills as the end comes, as a held press fills it in the app.
     const done = span(p, 0.66, 0.8);
     fill.style.transform = `scaleX(${done.toFixed(3)})`;

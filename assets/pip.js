@@ -2,7 +2,7 @@
 // One pair that moves together; the gap changes only as the head turns (the eyes sit on a drum).
 // A blink is the sleep close done quickly (the top down onto the still bottom, a ∪); glad is an
 // eye smile (the eye closes into its lower part and the bottom bows up, ∩); asleep is a ∪.
-// Use: const pip = Pip(svgElement); pip.look(x, y); pip.smile(); pip.sleep(true); pip.wake().
+// Use: const pip = Pip(svgElement, { sleeping }); pip.look(x, y); pip.smile(); pip.sleep(true); pip.wake().
 (() => {
   const NS = "http://www.w3.org/2000/svg";
   const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -24,7 +24,7 @@
   const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
   const easeIn = (t) => t * t * t, easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
-  window.Pip = function Pip(svg, { body = true } = {}) {
+  window.Pip = function Pip(svg, { body = true, sleeping = false } = {}) {
     svg.setAttribute("viewBox", "0 0 120 120");
     if (body && !svg.querySelector(".pip-body")) {
       const r = document.createElementNS(NS, "rect");
@@ -44,6 +44,8 @@
     const to = { gx: 0, gy: 0, smile: 0, shut: 0, size: 1 };
     let blinkAt = -1, blinkTwice = false, nextBlink = performance.now() + 1800, asleep = false, raf = 0, last = 0, wanderAt = 0;
     let wander = true;
+    // Already asleep when it first shows (no closing on arrival).
+    if (sleeping) { asleep = true; s.shut = to.shut = 1; s.gy = to.gy = 4; }
 
     function draw() {
       const drum = 60, spread = Math.asin(25 / drum);
