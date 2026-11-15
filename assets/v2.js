@@ -1,5 +1,5 @@
-// Home v2 (preview). The first screen asks the visitor's own question, "Where do I even start?";
-// Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
+// Home v2 (preview). The first screen names a moment the visitor knows, "You made the list. Then
+// stared at it."; Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
 // scroll position every frame, so it never trails the finger: the words step aside, the card goes
 // back into Pip, Pip prints one long ticket, "One card at a time.", its Done fills and Pip smiles;
 // then the lights go out. Later a finished day's stubs pile up, and at the end Pip is asleep.
@@ -39,6 +39,12 @@
     clearTimeout(pip._t); pip._t = setTimeout(() => pip.roam(), 2000);
   }, { passive: true });
   $(".v2-printer svg", hero).addEventListener("click", () => { if (!awake) { pip.wake(); awake = true; } pip.glad(900).pop(); });
+
+  // The card under Pip holds its room in the column (so long words or another language never overlap).
+  const fitChip = () => stage.style.setProperty("--chip-h", `${chip.offsetHeight}px`);
+  fitChip();
+  if ("ResizeObserver" in window) new ResizeObserver(fitChip).observe(chip);
+  document.fonts && document.fonts.ready.then(fitChip);
 
   let printed = false, ticking = false, lift = 0, grow = 1;
   // The floating Download steps away while the page's own Download is in view.

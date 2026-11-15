@@ -18,25 +18,26 @@
 .v2-hero { position: relative; height: 300vh; height: 300svh; }
 .v2-stage {
   position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; --dark: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(14px, 2.6svh, 30px);
+  padding: calc(env(safe-area-inset-top, 0px) + 24px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(16px, env(safe-area-inset-left, 0px));
   color: #111214; --focus: #111214;
   background: color-mix(in srgb, #000 calc(var(--dark) * 100%), var(--lime-ground));
-  --top: calc(env(safe-area-inset-top, 0px) + clamp(48px, 9svh, 110px));
-  --h1: clamp(38px, min(12.5vw, 7.5svh), 104px);
-  --pip-w: min(66vw, 30svh, 320px);
-  --pip-top: calc(var(--top) + var(--h1) * 1.95 + clamp(18px, 3svh, 36px));
+  --h1: clamp(34px, min(11.5vw, 8svh), 92px);
+  --pip-w: min(62vw, 27svh, 300px);
   --ticket: calc(var(--pip-w) * .12);
 }
-.v2-copy { position: absolute; left: 0; right: 0; top: var(--top); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
-.v2-copy h1 { margin: 0; font-size: var(--h1); line-height: .95; letter-spacing: -.05em; font-weight: 700; }
+/* The column follows its content: the question, Pip with its card under it (--chip-h, measured), the rest. */
+.v2-copy { position: relative; text-align: center; width: 100%; }
+.v2-copy h1 { margin: 0 auto; max-width: 11em; font-size: var(--h1); line-height: .95; letter-spacing: -.05em; font-weight: 700; text-wrap: balance; }
 
-.v2-printer { position: absolute; left: 50%; top: var(--pip-top); width: var(--pip-w); margin-left: calc(var(--pip-w) / -2); z-index: 2; transform-origin: 50% 0; }
+.v2-printer { position: relative; flex: none; width: var(--pip-w); margin-bottom: calc(var(--chip-h, 100px) - 14px); z-index: 2; transform-origin: 50% 0; }
 .v2-printer svg { position: relative; z-index: 2; display: block; width: 100%; height: auto; cursor: pointer; filter: drop-shadow(0 22px 26px rgba(0,0,0,.16)); }
 /* Paper comes out of the slot under Pip's face, a little narrower than Pip. */
 .v2-slot { position: absolute; z-index: 1; left: 6%; right: 6%; top: calc(100% - 14px); height: 72vh; overflow: hidden; pointer-events: none; padding: 0 14px 30px; margin-inline: -14px; }
 .v2-chip, .v2-card { background: var(--paper-w); color: #1a1c20; border-radius: 0 0 16px 16px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.04); }
 /* The answer: one card. */
 .v2-chip { position: absolute; left: 14px; right: 14px; top: 0; display: grid; gap: 4px; padding: 26px 12px 16px; text-align: left; }
-.v2-chip-k { font-size: 13px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
+.v2-chip-k { font-size: 13px; font-weight: 600; color: #5d636b; letter-spacing: .01em; white-space: nowrap; }
 .v2-chip-t { font-size: var(--ticket); line-height: 1.05; font-weight: 700; letter-spacing: -.035em; text-wrap: balance; }
 .v2-card { position: absolute; left: 14px; right: 14px; top: 0; padding: 30px 20px 18px; translate: 0 -101%; }
 .v2-card-k { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
@@ -49,7 +50,7 @@
 .v2-fill { position: absolute; inset: 0; background: var(--done); transform-origin: 0 50%; transform: scaleX(0); }
 
 /* Under the card: what we do, and Download. */
-.v2-act { position: absolute; left: 0; right: 0; top: calc(var(--pip-top) + var(--pip-w) + var(--ticket) * 1.05 + 70px + clamp(16px, 3svh, 34px)); display: grid; justify-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); z-index: 3; }
+.v2-act { position: relative; display: grid; justify-items: center; text-align: center; z-index: 3; }
 .v2-sub { margin: 0 0 clamp(12px, 2.2svh, 22px); line-height: 1; }
 .v2-sub span { display: block; font-size: clamp(17px, min(4.8vw, 2.6svh), 24px); letter-spacing: -.02em; font-weight: 600; opacity: .62; margin-bottom: 6px; }
 .v2-sub b { display: block; font-size: calc(var(--h1) * .72); letter-spacing: -.05em; font-weight: 700; }
@@ -63,13 +64,15 @@
 .v2-chip { animation: v2-print .75s cubic-bezier(.2,.8,.2,1) 1.35s both; }
 .v2-act > * { animation: v2-rise .6s cubic-bezier(.2,.8,.2,1) 2.1s both; }
 .v2-act > * + * { animation-delay: 2.3s; }
+/* Someone who tabs in before the arrival ends sees where they are. */
+.v2-act:focus-within > * { animation: none; }
 
 /* A phone on its side: the question and Pip on the left half, the rest on the right. */
 @media (max-height: 500px) and (orientation: landscape) {
-  .v2-stage { --top: calc(env(safe-area-inset-top, 0px) + 18px); --h1: clamp(26px, 9svh, 40px); --pip-w: min(36svh, 30vw); }
-  .v2-copy { right: 50%; }
-  .v2-printer { left: 25%; }
-  .v2-act { left: 50%; top: calc(50% - 72px); }
+  .v2-stage { display: grid; grid-template-columns: 1fr 1fr; align-content: center; justify-items: center; column-gap: 24px; row-gap: 10px; --h1: clamp(24px, 8svh, 38px); --pip-w: min(34svh, 28vw); }
+  .v2-copy { grid-column: 1; grid-row: 1; }
+  .v2-printer { grid-column: 1; grid-row: 2; }
+  .v2-act { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
   .v2-sub b { font-size: 30px; }
   .v2-act .btn { white-space: normal; height: auto; min-height: 48px; padding: 10px 18px; font-size: 15px; line-height: 1.2; }
 }
