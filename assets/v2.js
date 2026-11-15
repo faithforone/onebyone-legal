@@ -40,17 +40,17 @@
   }, { passive: true });
   $(".v2-printer svg", hero).addEventListener("click", () => { if (!awake) { pip.wake(); awake = true; } pip.glad(900).pop(); });
 
-  let printed = false, ticking = false, lift = 0, grow = 1;
+  let printed = false, ticking = false, lift = 0;
   // The floating Download steps away while the page's own Download is in view.
   const buy = $("[data-v2-buy]");
   const nearBuy = () => { if (!buy) return false; const b = buy.getBoundingClientRect(); return b.bottom > 0 && b.top < innerHeight * 0.9; };
-  // Pip rises under the top bar, and on a big screen grows with its ticket until the two fill the height.
+  // Pip keeps its size (Sam 11-15: growing on scroll is too much); it rises just enough that Pip and
+  // its long ticket sit in the middle of the screen, below the top bar.
   const measure = () => {
-    const top = Math.max(84, innerHeight * 0.1);
-    lift = Math.max(0, printer.offsetTop - top);
     const tall = printer.offsetHeight + card.offsetHeight - 14;
-    const room = innerHeight - top - 28 - (dock && getComputedStyle(dock).display !== "none" ? dock.offsetHeight + 12 : 0);
-    grow = clamp(Math.min(room / tall, (innerWidth - 40) / printer.offsetWidth), 0.6, 1.6);
+    const bottom = dock && getComputedStyle(dock).display !== "none" ? dock.offsetHeight + 12 : 0;
+    const top = Math.max(84, (innerHeight - bottom - tall) / 2);
+    lift = Math.max(0, printer.offsetTop - top);
   };
   function paint() {
     ticking = false;
@@ -70,7 +70,6 @@
     chip.style.translate = `0 ${(-104 * back).toFixed(2)}%`;
     const up = ease(span(p, 0.14, 0.5));
     printer.style.translate = `0 ${(-lift * up).toFixed(1)}px`;
-    printer.style.scale = String(1 + (grow - 1) * ease(span(p, 0.26, 0.62)));
     const out = ease(span(p, 0.26, 0.62));
     card.style.translate = `0 ${(-101 + out * 101).toFixed(2)}%`;
     if (awake && p > 0.22 && p < 0.64) pip.look(0, 14);
@@ -80,7 +79,7 @@
     if (done >= 1 && !printed) { printed = true; pip.glad(1200).pop(1.1); }
     if (done < 0.6) printed = false;
     // Then the lights go out: only Pip's eyes and its ticket are left.
-    stage.style.setProperty("--dark", ease(span(p, 0.84, 0.98)).toFixed(3));
+    stage.style.setProperty("--dark", span(p, 0.88, 0.95).toFixed(3));
   }
   if (still && dock) {
     // Reduce Motion: no scene, but the floating Download still shows only while neither the hero's

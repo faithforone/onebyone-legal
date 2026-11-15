@@ -167,3 +167,15 @@ body.v2 { background: #000; }
 .v2 .topbar { transition: transform .32s cubic-bezier(.2,.8,.2,1); }
 .v2 .topbar.v2-hide { transform: translateY(calc(-100% - 16px)); }
 @media (prefers-reduced-motion: reduce) { .v2 .topbar { transition: none; } }
+
+/* The card scene's words, sized to stand beside the phone on a wide screen. */
+.v2-say p { font-size: 16px; }
+@media (min-width: 701px) {
+  .v2-paper .ds-copy h2 { font-size: clamp(34px, 4.2vw, 54px); line-height: 1.04; letter-spacing: -.04em; font-weight: 650; max-width: 12em; }
+  .v2-say { max-width: 440px; gap: 10px; }
+  .v2-say p { font-size: 19px; padding: 13px 18px; }
+}
+/* Room between the day's pile and the questions. */
+.v2-paper #faq { padding-top: 72px; }
+/* Footer links in one row on a phone. */
+@media (max-width: 420px) { .v2 .footer-inner nav { gap: 6px 14px; } }
