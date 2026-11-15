@@ -208,6 +208,20 @@
     }
   }
 
+  // Nothing left: Pip stays asleep and prints the empty card with a few that fit now.
+  const free = $("[data-v2-free]");
+  if (free) {
+    window.Pip($(".v2-free-pip svg", free)).sleep(true);
+    if (!still) {
+      free.dataset.live = "";
+      new IntersectionObserver((seen, io) => {
+        if (!seen[0].isIntersecting) return;
+        io.disconnect();
+        free.classList.add("on");
+      }, { threshold: 0.5 }).observe($(".v2-free-dev", free));
+    }
+  }
+
   // Today, done: the day's stubs fall into a pile; Pip smiles.
   const yay = $(".v2-yay");
   if (yay) {
