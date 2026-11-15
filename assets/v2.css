@@ -269,4 +269,15 @@ body.v2 { background: #000; }
   .v2-free-head p { margin: 0; }
   .v2 .v2-free-head h2 { font-size: clamp(44px, 4.6vw, 68px); }
 }
+/* Trial line under every download button; the founder places at the end. */
+.v2-trial { margin: 10px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
+.v2-yay .v2-trial { margin: 10px 0 0; font-size: 14px; }
+.v2-hero .v2-trial { color: #3d4a12; }
+.dock .v2-trial { margin: 6px 0 0; font-size: 12px; }
+.v2-founders { margin: 26px auto 6px; max-width: 360px; display: grid; gap: 10px; }
+.v2-yay .v2-f-t { margin: 0; font-size: 17px; line-height: 1.45; color: var(--muted); }
+.v2-f-t b { color: var(--text); font-weight: 650; }
+.v2-f-bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.v2-f-bar i { display: block; height: 100%; width: var(--f, 0%); border-radius: inherit; background: var(--lime-ground); }
+.v2-yay .v2-f-n { margin: 0; font-size: 14px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { .v2 .v2-desk-head > * { transition: none; } }

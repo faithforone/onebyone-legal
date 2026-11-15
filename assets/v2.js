@@ -1,5 +1,5 @@
-// Home v2 (preview). The first screen names a moment the visitor knows, "You made the list. Then
-// stared at it."; Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
+// Home v2 (preview). The first screen names a moment the visitor knows, "Where do I even start?";
+// Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
 // scroll position every frame, so it never trails the finger: the words step aside, the card goes
 // back into Pip, Pip prints one long ticket, "One card at a time.", its Done fills and Pip smiles;
 // then the lights go out. On the black your words fly into Pip; on the sheet Pip prints one card at a
@@ -220,6 +220,21 @@
         free.classList.add("on");
       }, { threshold: 0.5 }).observe($(".v2-free-dev", free));
     }
+  }
+
+  // The first 1,000 keep US$9.99. Real count from the server; the bar shows once 50 places are held.
+  const founders = $("[data-v2-founders]");
+  if (founders) {
+    fetch("https://uaiszwblgrohzwucqbdb.supabase.co/functions/v1/founders")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || !Number.isInteger(d.taken) || d.taken < 50) return;
+        const bar = $(".v2-f-bar", founders);
+        bar.hidden = false;
+        bar.style.setProperty("--f", `${Math.min(100, (d.taken / d.places) * 100)}%`);
+        $(".v2-f-n", founders).textContent = `${d.taken.toLocaleString("en-US")} of ${d.places.toLocaleString("en-US")} taken · ${(d.places - d.taken).toLocaleString("en-US")} left`;
+      })
+      .catch(() => {});
   }
 
   // Today, done: the day's stubs fall into a pile; Pip smiles.
