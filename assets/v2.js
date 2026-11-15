@@ -12,6 +12,9 @@
   const span = (p, a, b) => clamp((p - a) / (b - a));
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
+  // The scenes are built for one motion setting; when it changes while the page is open, start again.
+  matchMedia("(prefers-reduced-motion: reduce)").addEventListener?.("change", () => location.reload());
+
   const hero = $("[data-v2-hero]");
   if (!hero) return;
   const stage = $(".v2-stage", hero), copy = $(".v2-copy", hero), act = $(".v2-act", hero), printer = $(".v2-printer", hero);
@@ -120,6 +123,7 @@
     const listener = window.Pip($("svg", sayPip));
     if (still) listener.roam();
     else {
+      say.dataset.live = "";
       let to = [], ate = 0, heard = false, sayTick = false;
       const aim = () => {
         words.forEach((w) => { w.style.transform = ""; });
@@ -165,6 +169,7 @@
     fit();
     if (still) printerPip.roam();
     else {
+      desk.dataset.live = "";
       let deskTick = false, idle = true;
       const doneSeen = cards.map(() => false);
       const draw = () => {
