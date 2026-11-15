@@ -40,12 +40,6 @@
   }, { passive: true });
   $(".v2-printer svg", hero).addEventListener("click", () => { if (!awake) { pip.wake(); awake = true; } pip.glad(900).pop(); });
 
-  // The card under Pip holds its room in the column (so long words or another language never overlap).
-  const fitChip = () => stage.style.setProperty("--chip-h", `${chip.offsetHeight}px`);
-  fitChip();
-  if ("ResizeObserver" in window) new ResizeObserver(fitChip).observe(chip);
-  document.fonts && document.fonts.ready.then(fitChip);
-
   let printed = false, ticking = false, lift = 0, grow = 1;
   // The floating Download steps away while the page's own Download is in view.
   const buy = $("[data-v2-buy]");
@@ -101,6 +95,18 @@
     addEventListener("resize", () => { measure(); paint(); });
     measure(); paint();
   }
+
+  // The card under Pip holds its room in the column (so long words or another language never overlap);
+  // when that room changes, Pip has moved, so the scene measures again.
+  const fitChip = () => {
+    stage.style.setProperty("--chip-h", `${chip.offsetHeight}px`);
+    if (!still) { measure(); paint(); }
+  };
+  fitChip();
+  if ("ResizeObserver" in window) new ResizeObserver(fitChip).observe(chip);
+  document.fonts && document.fonts.ready.then(fitChip);
+  // Tabbing to Download ends the arrival for good, so it never plays again on leaving.
+  act.addEventListener("focusin", () => stage.classList.add("v2-arrived"), { once: true });
 
   // Today, done: the day's stubs fall into a pile; Pip smiles.
   const yay = $(".v2-yay");

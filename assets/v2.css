@@ -64,8 +64,8 @@
 .v2-chip { animation: v2-print .75s cubic-bezier(.2,.8,.2,1) 1.35s both; }
 .v2-act > * { animation: v2-rise .6s cubic-bezier(.2,.8,.2,1) 2.1s both; }
 .v2-act > * + * { animation-delay: 2.3s; }
-/* Someone who tabs in before the arrival ends sees where they are. */
-.v2-act:focus-within > * { animation: none; }
+/* Someone who tabs in before the arrival ends sees where they are (the script marks it, once). */
+.v2-arrived .v2-act > * { animation: none; }
 
 /* A phone on its side: the question and Pip on the left half, the rest on the right. */
 @media (max-height: 500px) and (orientation: landscape) {
