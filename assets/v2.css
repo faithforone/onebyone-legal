@@ -179,3 +179,18 @@ body.v2 { background: #000; }
 .v2-paper #faq { padding-top: 72px; }
 /* Footer links in one row on a phone. */
 @media (max-width: 420px) { .v2 .footer-inner nav { gap: 6px 14px; } }
+/* Short screens: Pip keeps its size, so the long ticket gets shorter to fit under it — no note line,
+   a smaller button, and (in landscape) never narrower than its words. */
+@media (max-height: 640px) {
+  .v2-card { padding: 22px 14px 12px; }
+  .v2-card-k { font-size: 12px; margin-bottom: 4px; }
+  .v2-card-t { font-size: clamp(18px, calc(var(--pip-w) * .165), 26px); }
+  .v2-card-n { display: none; }
+  .v2-card .v2-go { height: 42px; margin-top: 12px; }
+  .v2-card .v2-go b { width: 32px; height: 32px; }
+}
+@media (max-height: 500px) {
+  /* The slot opens wider than Pip just for the long ticket; the first card keeps Pip's width. */
+  .v2-slot { --o: max(0px, calc((168px - var(--pip-w) * .88) / 2)); margin-inline: calc(-14px - var(--o)); }
+  .v2-chip { left: calc(14px + var(--o)); right: calc(14px + var(--o)); }
+}

@@ -40,16 +40,18 @@
   }, { passive: true });
   $(".v2-printer svg", hero).addEventListener("click", () => { if (!awake) { pip.wake(); awake = true; } pip.glad(900).pop(); });
 
-  let printed = false, ticking = false, lift = 0;
+  let printed = false, ticking = false, lift = 0, dockInScene = true;
   // The floating Download steps away while the page's own Download is in view.
   const buy = $("[data-v2-buy]");
   const nearBuy = () => { if (!buy) return false; const b = buy.getBoundingClientRect(); return b.bottom > 0 && b.top < innerHeight * 0.9; };
   // Pip keeps its size (Sam 11-15: growing on scroll is too much); it rises just enough that Pip and
-  // its long ticket sit in the middle of the screen, below the top bar.
+  // its long ticket sit in the middle of the screen, below the top bar. On a screen too short for both
+  // the ticket and the floating Download, the Download waits until the scene is over.
   const measure = () => {
     const tall = printer.offsetHeight + card.offsetHeight - 14;
-    const bottom = dock && getComputedStyle(dock).display !== "none" ? dock.offsetHeight + 12 : 0;
-    const top = Math.max(84, (innerHeight - bottom - tall) / 2);
+    const dockH = dock && getComputedStyle(dock).display !== "none" ? dock.offsetHeight + 12 : 0;
+    dockInScene = 84 + tall <= innerHeight - dockH;
+    const top = Math.max(dockInScene ? 84 : 72, (innerHeight - (dockInScene ? dockH : 0) - tall) / 2);
     lift = Math.max(0, printer.offsetTop - top);
   };
   function paint() {
@@ -64,7 +66,7 @@
     }
     act.inert = away > 0.5;
     showBar(away > 0.5);
-    if (dock) dock.classList.toggle("on", away > 0.5 && !nearBuy());
+    if (dock) dock.classList.toggle("on", away > 0.5 && (dockInScene || p >= 1) && !nearBuy());
     // The line goes back into Pip; Pip rises to make room; the long ticket prints.
     const back = ease(span(p, 0.06, 0.24));
     chip.style.translate = `0 ${(-104 * back).toFixed(2)}%`;
