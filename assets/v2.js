@@ -2,7 +2,8 @@
 // stared at it."; Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
 // scroll position every frame, so it never trails the finger: the words step aside, the card goes
 // back into Pip, Pip prints one long ticket, "One card at a time.", its Done fills and Pip smiles;
-// then the lights go out. Later a finished day's stubs pile up, and at the end Pip is asleep.
+// then the lights go out. On the black your words fly into Pip; on the sheet Pip prints one card at a
+// time, and each Done tears it off. Then the day's stubs pile up, and at the end Pip is asleep.
 (() => {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -108,6 +109,99 @@
   document.fonts && document.fonts.ready.then(fitChip);
   // Tabbing to Download ends the arrival for good, so it never plays again on leaving.
   act.addEventListener("focusin", () => stage.classList.add("v2-arrived"), { once: true });
+
+  // Pip to the end. Both scenes are read off the scroll like the hero, so they never trail the finger.
+  const progress = (el) => { const r = el.getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - innerHeight)); };
+
+  // On the black: what you tell your AI. Each phrase lights up as it is said, then flies into Pip.
+  const say = $("[data-v2-say]");
+  if (say) {
+    const words = $$(".v2-words span", say), sayPip = $(".v2-say-pip", say), sayT = $(".v2-say-t", say);
+    const listener = window.Pip($("svg", sayPip));
+    if (still) listener.roam();
+    else {
+      let to = [], ate = 0, heard = false, sayTick = false;
+      const aim = () => {
+        words.forEach((w) => { w.style.transform = ""; });
+        const pr = sayPip.getBoundingClientRect();
+        to = words.map((w) => { const r = w.getBoundingClientRect(); return [pr.left + pr.width / 2 - (r.left + r.width / 2), pr.top + pr.height * 0.5 - (r.top + r.height / 2)]; });
+      };
+      const draw = () => {
+        sayTick = false;
+        const p = progress(say);
+        let eaten = 0;
+        words.forEach((w, i) => {
+          const lit = span(p, 0.06 + i * 0.09, 0.12 + i * 0.09);
+          const f = ease(span(p, 0.46 + i * 0.07, 0.6 + i * 0.07));
+          const [dx, dy] = to[i] || [0, 0];
+          w.style.opacity = (0.28 + 0.72 * lit) * (1 - span(f, 0.85, 1));
+          w.style.transform = f ? `translate(${(dx * f).toFixed(1)}px, ${(dy * f - Math.sin(Math.PI * f) * 46).toFixed(1)}px) scale(${(1 - 0.5 * f).toFixed(3)})` : "";
+          if (f >= 1) eaten++;
+        });
+        if (eaten > ate) listener.pop(1.08, 220);
+        ate = eaten;
+        if (p > 0.04 && eaten < words.length) listener.look(0, -10);
+        const end = span(p, 0.8, 0.9);
+        sayT.style.opacity = end;
+        if (end >= 1 && !heard) { heard = true; listener.glad(1100); setTimeout(() => listener.roam(), 1300); }
+        if (end < 0.5) heard = false;
+      };
+      addEventListener("scroll", () => { if (!sayTick) { sayTick = true; requestAnimationFrame(draw); } }, { passive: true });
+      addEventListener("resize", () => { aim(); draw(); });
+      document.fonts && document.fonts.ready.then(() => { aim(); draw(); });
+      aim(); draw();
+    }
+  }
+
+  // On the sheet: Pip prints one card. Its Done fills, the card tears off and falls away, and the next
+  // one prints. Push-ups, Shower, Put the water on, Garlic pasta; the last one stays, done, as the day ends.
+  const desk = $("[data-v2-desk]");
+  if (desk) {
+    const deskStage = $(".v2-desk-stage", desk), cards = $$(".v2-dc", desk), heads = $$(".v2-desk-head > *", desk);
+    const fills = cards.map((c) => $(".v2-fill", c));
+    const printerPip = window.Pip($(".v2-desk-printer svg", desk));
+    let H = 190;
+    const fit = () => { H = Math.max(...cards.map((c) => c.offsetHeight)); deskStage.style.setProperty("--dc-h", `${H}px`); };
+    fit();
+    if (still) printerPip.roam();
+    else {
+      let deskTick = false, idle = true;
+      const doneSeen = cards.map(() => false);
+      const draw = () => {
+        deskTick = false;
+        const p = progress(desk), t = -0.12 + p * 3.9;
+        let printing = false;
+        cards.forEach((c, i) => {
+          const local = t - i;
+          const print = ease(span(local, -0.04, 0.24));
+          const done = span(local, 0.4, 0.62);
+          const tear = i < cards.length - 1 ? span(local, 0.7, 0.92) : 0;
+          if (print > 0 && print < 1) printing = true;
+          fills[i].style.transform = `scaleX(${done.toFixed(3)})`;
+          c.style.opacity = print > 0 && tear < 1 ? "1" : "0";
+          const side = i % 2 ? -1 : 1;
+          if (tear > 0) {
+            c.style.clipPath = "none";
+            c.style.transform = `translate(${(side * 30 * tear).toFixed(1)}px, ${(tear * tear * innerHeight * 0.95).toFixed(1)}px) rotate(${(side * 14 * tear).toFixed(2)}deg)`;
+          } else {
+            const hid = (1 - print) * H;
+            c.style.transform = `translateY(${(-hid).toFixed(1)}px)`;
+            c.style.clipPath = print < 1 ? `inset(${hid.toFixed(1)}px 0 0 0)` : "none";
+          }
+          if (done >= 1 && !doneSeen[i]) { doneSeen[i] = true; printerPip.glad(900).pop(1.08, 260); }
+          if (done < 0.6) doneSeen[i] = false;
+        });
+        heads[0].classList.toggle("on", t < 0.62);
+        heads[1].classList.toggle("on", t >= 0.62);
+        if (printing) { printerPip.look(0, 14); idle = false; }
+        else if (!idle) { idle = true; printerPip.roam(); }
+      };
+      addEventListener("scroll", () => { if (!deskTick) { deskTick = true; requestAnimationFrame(draw); } }, { passive: true });
+      addEventListener("resize", () => { fit(); draw(); });
+      document.fonts && document.fonts.ready.then(() => { fit(); draw(); });
+      draw();
+    }
+  }
 
   // Today, done: the day's stubs fall into a pile; Pip smiles.
   const yay = $(".v2-yay");

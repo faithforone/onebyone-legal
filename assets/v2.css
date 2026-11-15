@@ -114,17 +114,6 @@
   .v2-end.asleep .v2-z { animation: none; opacity: 1; }
 }
 
-/* The scroll scene opens with what you told your AI and its short answer, then the phone does it. */
-.v2-say { display: grid; gap: 8px; margin: 0 0 24px; max-width: 380px; }
-.v2-say p { margin: 0; padding: 11px 15px; border-radius: 20px; font-size: 17px; line-height: 1.35; text-align: left; }
-.v2-me { justify-self: end; max-width: 88%; background: var(--panel); color: var(--text); border-bottom-right-radius: 6px; }
-.v2-ai { justify-self: start; max-width: 88%; color: var(--muted); padding-left: 0 !important; }
-.ds .ds-copy h2 { text-wrap: balance; }
-@media (max-width: 700px) {
-  .v2-say { margin: 2px auto 0; width: min(340px, 100%); gap: 4px; }
-  .v2-say p { font-size: 15px; padding: 8px 13px; }
-  .v2-ai { padding-left: 4px !important; }
-}
 
 /* Today, done, with the price beside the download. */
 .v2-yay .v2-price { margin: 18px 0 6px; font-size: 17px; color: var(--muted); }
@@ -141,9 +130,7 @@ body.v2 { background: #000; }
 .v2-night { background: #000; color: #f5f5f7; min-height: 72vh; min-height: 72svh; display: grid; place-items: center; text-align: center; padding: 80px max(16px, env(safe-area-inset-right, 0px)) 96px max(16px, env(safe-area-inset-left, 0px)); }
 .v2-night h2 { margin: 0; font-size: clamp(50px, 9.5vw, 120px); line-height: .98; letter-spacing: -.05em; font-weight: 650; text-wrap: balance; }
 .v2-paper { background: var(--page); color: var(--text); border-radius: clamp(28px, 4vw, 44px); margin-inline: max(10px, env(safe-area-inset-left, 0px)) max(10px, env(safe-area-inset-right, 0px)); padding-block: clamp(40px, 6vw, 72px) 8px; }
-.v2-paper .ds { margin-top: 0; }
 .v2-paper .v2-yay { background: transparent; }
-.v2-paper .ds-copy h2 { margin-top: 18px; }
 @media (min-width: 900px) { .v2-paper { margin-inline: 16px; } }
 /* The footer sits on the black, under the sheet. */
 .v2 footer { --text: #f5f5f7; --muted: #a1a1a6; --hush: #86868b; --line: rgba(255,255,255,.14); --focus: #c6ef4e; color: var(--muted); }
@@ -151,8 +138,6 @@ body.v2 { background: #000; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v2-paper { box-shadow: 0 0 0 1px rgba(255,255,255,.08); } }
 :root[data-theme="dark"] .v2-paper { box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
 
-/* A shorter walk through the four cards than on the main page. */
-.v2 .ds-live { height: 300vh; }
 
 /* Company details: folded under the footer links, one tap to open. */
 .v2-co { flex-basis: 100%; font-size: 13px; color: var(--hush); }
@@ -168,13 +153,6 @@ body.v2 { background: #000; }
 .v2 .topbar.v2-hide { transform: translateY(calc(-100% - 16px)); }
 @media (prefers-reduced-motion: reduce) { .v2 .topbar { transition: none; } }
 
-/* The card scene's words, sized to stand beside the phone on a wide screen. */
-.v2-say p { font-size: 16px; }
-@media (min-width: 701px) {
-  .v2-paper .ds-copy h2 { font-size: clamp(34px, 4.2vw, 54px); line-height: 1.04; letter-spacing: -.04em; font-weight: 650; max-width: 12em; }
-  .v2-say { max-width: 440px; gap: 10px; }
-  .v2-say p { font-size: 19px; padding: 13px 18px; }
-}
 /* Room between the day's pile and the questions. */
 .v2-paper #faq { padding-top: 72px; }
 /* Footer links in one row on a phone. */
@@ -193,4 +171,60 @@ body.v2 { background: #000; }
   /* The slot opens wider than Pip just for the long ticket; the first card keeps Pip's width. */
   .v2-slot { --o: max(0px, calc((168px - var(--pip-w) * .88) / 2)); margin-inline: calc(-14px - var(--o)); }
   .v2-chip { left: calc(14px + var(--o)); right: calc(14px + var(--o)); }
+}
+
+/* Pip to the end (Sam 11-15): the same Pip carries the rest of the story, a little smaller than on
+   the first screen. Your words go into it on the black; then, on the sheet, it prints one card at a
+   time; each Done tears the card off and it falls out of sight into the day's pile below. */
+.v2 { --dp: min(44vw, 20svh, 190px); }
+.v2-night { display: block; min-height: 0; padding: 0; height: 230vh; height: 230svh; }
+.v2-say-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(14px, 3svh, 30px); padding-block: calc(env(safe-area-inset-top, 0px) + 72px) calc(env(safe-area-inset-bottom, 0px) + 40px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.v2-night h2 { font-size: clamp(38px, min(10vw, 6.6svh), 96px); }
+.v2-words { position: relative; z-index: 1; margin: 0; max-width: 15em; font-size: clamp(20px, min(5.6vw, 3.4svh), 32px); line-height: 1.3; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
+.v2-words span { display: inline-block; opacity: .28; }
+.v2-say-pip { position: relative; z-index: 2; width: var(--dp); flex: none; background: #1c1c1e; border-radius: 26%; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 30px 80px -30px rgba(198,239,78,.35); }
+.v2-say-pip svg { display: block; width: 100%; height: auto; }
+.v2-say-t { margin: 0; color: #a1a1a6; font-size: clamp(16px, 4.2vw, 20px); opacity: 0; }
+
+.v2-desk { position: relative; height: 400vh; height: 400svh; }
+.v2-desk-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(18px, 4svh, 40px); padding-block: calc(env(safe-area-inset-top, 0px) + 72px) calc(env(safe-area-inset-bottom, 0px) + 96px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); text-align: center; }
+.v2-desk-head { display: grid; }
+.v2 .v2-desk-head > * { grid-area: 1 / 1; margin: 0; font-size: clamp(34px, min(9vw, 5.6svh), 64px); line-height: 1; letter-spacing: -.045em; font-weight: 650; text-wrap: balance; transition: opacity .35s ease, translate .35s ease; }
+.v2-desk-head > :not(.on) { opacity: 0; translate: 0 8px; }
+.v2-desk-printer { position: relative; flex: none; width: var(--dp); margin-bottom: calc(var(--dc-h, 190px) - 14px); }
+.v2-desk-printer svg { position: relative; z-index: 2; display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 22px rgba(0,0,0,.14)); }
+.v2-desk-slot { position: absolute; z-index: 1; left: 6%; right: 6%; top: calc(100% - 14px); pointer-events: none; }
+.v2-dc { position: absolute; left: 0; right: 0; top: 0; padding: 24px 14px 12px; text-align: left; background: var(--paper-w); color: #1a1c20; border-radius: 0 0 14px 14px; box-shadow: 0 16px 28px -16px rgba(0,0,0,.35), 0 0 0 1px rgba(0,0,0,.06); }
+.v2-dc:not(:first-child) { opacity: 0; }
+.v2-dc-k { display: flex; justify-content: space-between; margin: 0 0 6px; font-size: 12px; font-weight: 600; color: #8b919a; letter-spacing: .01em; }
+.v2-dc-k span { color: #1a1c20; font-variant-numeric: tabular-nums; }
+.v2-dc-t { margin: 0; font-size: clamp(19px, calc(var(--dp) * .15), 30px); line-height: 1.02; letter-spacing: -.035em; font-weight: 650; text-wrap: balance; }
+.v2-dc-n { margin: 8px 0 14px; font-size: 13px; line-height: 1.35; color: #656c75; }
+.v2-dc .v2-go { height: 42px; padding-left: 14px; font-size: 15px; }
+.v2-dc .v2-go b { width: 32px; height: 32px; }
+@media (min-width: 900px) {
+  .v2 { --dp: min(24svh, 210px); }
+  .v2-desk-stage { flex-direction: row; gap: clamp(48px, 8vw, 120px); }
+  .v2-desk-head { justify-items: start; text-align: left; width: min(520px, 38vw); }
+  .v2 .v2-desk-head > * { font-size: clamp(44px, 4.6vw, 68px); }
+}
+@media (max-height: 640px) {
+  .v2-dc-n { display: none; }
+  .v2-dc-t { margin-bottom: 10px; }
+}
+@media (max-height: 500px) {
+  .v2 { --dp: min(26svh, 120px); }
+  .v2-say-stage { flex-direction: row; flex-wrap: wrap; align-content: center; column-gap: 28px; row-gap: 10px; padding-block: 64px 24px; }
+  .v2-say-stage h2, .v2-say-t { flex-basis: 100%; }
+  .v2-words { max-width: 11em; text-align: left; }
+  .v2-desk-stage { flex-direction: row; gap: 40px; padding-block: 64px 24px; }
+  .v2-desk-slot { left: -26%; right: -26%; }
+  .v2-dc { padding: 20px 12px 10px; }
+  .v2-dc-t { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-night, .v2-desk { height: auto; }
+  .v2-say-stage, .v2-desk-stage { position: relative; height: auto; min-height: 100svh; }
+  .v2-words span, .v2-say-t { opacity: 1; }
+  .v2-desk-head > * { transition: none; }
 }
