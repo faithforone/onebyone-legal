@@ -15,6 +15,10 @@
 /connect/index.md
   Content-Type: text/markdown; charset=utf-8
 
+# Public one-by.one skill for Claude (same SKILL.md as the plugin), served as plain Markdown.
+/skill/*
+  Content-Type: text/markdown; charset=utf-8
+
 # App-directory review material (ChatGPT plugin walkthrough); reachable by link, kept out of search.
 /review/*
   X-Robots-Tag: noindex
