@@ -178,6 +178,17 @@ In Cascade, open the "..." Actions menu > MCPs > Open MCP config file. Merge thi
 
 Use `https://mcp.one-by.one/mcp` with remote Streamable HTTP and OAuth. The client must support OAuth discovery and dynamic client registration. Check the tool's own documentation for its configuration format.
 
+## Teach your AI the habit
+
+After connecting, the person can tell their AI what they did or still need to do, even loosely; the AI updates their cards and tells them what's next.
+
+- Claude: download https://one-by.one/connect/one-by-one-skill.zip, then Customize → Skills → + → Upload a skill. Turn on code execution if asked. Web or desktop app.
+- ChatGPT: paste this into ChatGPT once:
+
+```text
+Please remember this for all our chats: I run my day in one-by.one. Whenever I mention something I did or still need to do, even loosely, update one-by.one right away (done → record it, to do → add or change the card), then tell me my next card in one line.
+```
+
 ## Example prompts
 
 After connecting, try:
