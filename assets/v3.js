@@ -111,10 +111,11 @@
       move(card.node, enter < 1 ? enterFrom * (1 - easeOut(enter)) : leaveTo * easeIn(leave));
 
       const started = card.start === undefined || t >= card.start;
-      const run = seg(t, card.run[0], card.run[1]);
-      setText(card.clock, clockText(card.seconds * (started ? 1 - run : 1)));
+      // The time ticks at its real pace, one second a second: a sped-up countdown pulls the eye off the card.
+      const ran = started ? clamp(t - card.run[0], 0, card.leave[1] - card.run[0]) : 0;
+      setText(card.clock, clockText(card.seconds - Math.floor(ran)));
       setText(card.label, card.labels[started ? 1 : 0]);
-      card.fill.style.clipPath = started ? `inset(0 ${(1 - mix(0.3, 1, run)) * 100}% 0 0 round 99em)` : "none";
+      card.fill.style.clipPath = started ? `inset(0 ${(1 - mix(0.3, 0.34, seg(t, card.run[0], card.leave[1]))) * 100}% 0 0 round 99em)` : "none";
 
       const pressed =
         (card.start !== undefined && t > card.start - 0.2 && t < card.start + 0.04) ||
