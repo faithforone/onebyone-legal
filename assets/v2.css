@@ -281,3 +281,8 @@ body.v2 { background: #000; }
 .v2-f-bar i { display: block; height: 100%; width: var(--f, 0%); border-radius: inherit; background: var(--lime-ground); }
 .v2-yay .v2-f-n { margin: 0; font-size: 14px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { .v2 .v2-desk-head > * { transition: none; } }
+
+.v2:lang(ko) :is(main, footer, .dock) { word-break: keep-all; }
+.v2:lang(ko) :is(.btn, .v2-go em) { white-space: nowrap; }
+.v2:lang(ko) :is(.v2-copy h1, .v2-night h2, .v2-card-t, .v2-dc-t) { line-height: 1.12; }
+.v2:lang(ko) :is(.v2-card-k, .v2-dc-k) { color: #656c75; }

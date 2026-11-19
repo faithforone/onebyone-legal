@@ -1,9 +1,5 @@
-// Home v2 (preview). The first screen names a moment the visitor knows, "Where do I even start?";
-// Pip wakes and prints the answer, one card. The hero's scroll scene is then read straight off the
-// scroll position every frame, so it never trails the finger: the words step aside, the card goes
-// back into Pip, Pip prints one long ticket, "One card at a time.", its Done fills and Pip smiles;
-// then the lights go out. On the black your words fly into Pip; on the sheet Pip prints one card at a
-// time, and each Done tears it off. Then the day's stubs pile up, and at the end Pip is asleep.
+// Home v2 (preview). The page supplies the words and printed tickets. Read each scene straight
+// off the scroll position every frame, so the printer and its cards never trail the finger.
 (() => {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (s, r = document) => r.querySelector(s);
@@ -27,7 +23,7 @@
   const pip = window.Pip($(".v2-printer svg", hero), { sleeping: !still });
 
   // Arrival, in reading order: the question shows; Pip wakes and looks up at it; then looks down as
-  // the card prints ("Start here. Make the bed."); then looks about. The rest arrives by CSS.
+  // the card prints; then looks about. The rest arrives by CSS.
   let awake = still;
   if (!still) {
     setTimeout(() => { pip.wake().look(0, -12); }, 700);
@@ -157,8 +153,8 @@
     }
   }
 
-  // On the sheet: Pip prints one card. Its Done fills, the card tears off and falls away, and the next
-  // one prints. Push-ups, Shower, Put the water on, Garlic pasta; the last one stays, done, as the day ends.
+  // On the sheet: Pip prints one card. Its button fills, the card tears off and falls away, and the
+  // next one prints. The last one stays, done, as the day ends.
   const desk = $("[data-v2-desk]");
   if (desk) {
     const deskStage = $(".v2-desk-stage", desk), cards = $$(".v2-dc", desk), heads = $$(".v2-desk-head > *", desk);
@@ -222,7 +218,7 @@
     }
   }
 
-  // The first 1,000 keep US$9.99. Real count from the server; the bar shows once 50 places are held.
+  // The bar shows the server count once 50 places are held.
   const founders = $("[data-v2-founders]");
   if (founders) {
     fetch("https://uaiszwblgrohzwucqbdb.supabase.co/functions/v1/founders")
@@ -232,7 +228,12 @@
         const bar = $(".v2-f-bar", founders);
         bar.hidden = false;
         bar.style.setProperty("--f", `${Math.min(100, (d.taken / d.places) * 100)}%`);
-        $(".v2-f-n", founders).textContent = `${d.taken.toLocaleString("en-US")} of ${d.places.toLocaleString("en-US")} taken · ${(d.places - d.taken).toLocaleString("en-US")} left`;
+        const count = $(".v2-f-n", founders);
+        const number = new Intl.NumberFormat(count.dataset.numberLocale);
+        count.textContent = count.dataset.countText
+          .replace("{taken}", number.format(d.taken))
+          .replace("{places}", number.format(d.places))
+          .replace("{left}", number.format(d.places - d.taken));
       })
       .catch(() => {});
   }
@@ -242,7 +243,7 @@
   if (yay) {
     const mini = window.Pip($(".v2-mini", yay));
     const pile = $(".v2-pile", yay);
-    const names = ["Push-ups", "Shower", "Put the water on", "Garlic pasta", "Call mom", "Q3 deck outline", "Standup", "Dentist", "Fold the towels", "Stretch", "Read 10 pages", "Water the plants"];
+    const stubs = [...$("[data-v2-stubs]", yay).content.children];
     new IntersectionObserver((seen, io) => {
       if (!seen[0].isIntersecting) return;
       io.disconnect();
@@ -251,10 +252,8 @@
       const W = yay.clientWidth, H = yay.clientHeight;
       const lanes = Math.max(3, Math.floor(W / 190));
       const heights = Array(lanes).fill(0);
-      names.forEach((name, i) => {
-        const s = document.createElement("span");
-        s.className = "v2-stub";
-        s.innerHTML = `<i>✓</i>${name}`;
+      stubs.forEach((stub, i) => {
+        const s = stub.cloneNode(true);
         pile.append(s);
         const lane = i % lanes, w = s.offsetWidth;
         const x = clamp((lane + 0.5) * (W / lanes) - w / 2 + (Math.random() * 40 - 20), 8, W - w - 8);
