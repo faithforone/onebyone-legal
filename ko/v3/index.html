@@ -12,9 +12,20 @@
     <script src="/assets/v3.js" defer></script>
   </head>
   <body>
+    <svg class="scene-symbols" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="scene-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
+      <symbol id="scene-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-9"/></symbol>
+      <symbol id="pip-body" viewBox="0 0 120 120"><rect width="120" height="120" rx="31" fill="#1c1c1e"/></symbol>
+      <symbol id="pip-eyes" viewBox="0 0 120 120">
+        <path fill="#fff" d="M20.5 63v8a14.5 14.5 0 0 0 29 0v-8a14.5 14.5 0 0 0-29 0zM70.5 63v8a14.5 14.5 0 0 0 29 0v-8a14.5 14.5 0 0 0-29 0z"/>
+      </symbol>
+      <symbol id="pip-smile" viewBox="0 0 120 120">
+        <path d="M20.5 71c7.73-8.7 21.27-8.7 29 0m21 0c7.73-8.7 21.27-8.7 29 0" fill="none" stroke="#fff" stroke-width="9.5" stroke-linecap="round"/>
+      </symbol>
+    </svg>
     <header class="topbar">
       <div class="shell topbar-inner">
-        <a class="wordmark" href="/ko/v3/" aria-label="원바이원">one-by.one</a>
+        <a class="wordmark" href="/ko/v3/" aria-label="원바이원"><img src="/assets/icon.svg" width="26" height="26" alt="">one-by.one</a>
         <nav class="topnav" aria-label="메인 메뉴">
           <a class="connect-link" href="/ko/connect/">AI 연결</a>
           <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=home-ko-v3&amp;mt=8">7일 무료 체험</a>
@@ -66,86 +77,139 @@
         </div>
       </section>
 
-      <section class="comparison section-pad" aria-labelledby="comparison-heading">
-        <div class="shell">
-          <h2 id="comparison-heading">목록은 길고, <span>지금 할 수 있는 건 하나.</span></h2>
-          <p class="section-description">뭐부터 할지 다시 고를 필요 없이, 눈앞의 일부터 시작해요.</p>
-          <div class="comparison-grid">
-            <div class="list-panel">
-              <h3>목록</h3>
-              <ul class="task-list" role="list">
-                <li>팀 메일 확인하기</li>
-                <li>발표 자료 만들기</li>
-                <li>택배 보내기</li>
-                <li>회의 일정 잡기</li>
-                <li>치과 가기</li>
-                <li>세탁기 돌리기</li>
-                <li>점심 메뉴 정하기</li>
-                <li>운동하기</li>
-                <li>관리비 납부하기</li>
-                <li>도서관 책 반납하기</li>
-                <li>부모님께 전화하기</li>
-                <li>저녁 장보기</li>
-                <li>재활용품 분리배출하기</li>
-                <li>내일 입을 옷 꺼내기</li>
-              </ul>
-            </div>
-            <div class="current-panel">
-              <div class="preview-ticket">
-                <p class="current-label">지금 할 일</p>
-                <p class="preview-title">발표 자료 만들기</p>
-                <p class="preview-clock">25:00</p>
-                <div class="preview-action">
-                  <span class="go"><span>시작</span><b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span>
-                </div>
-              </div>
-            </div>
+      <section class="scroll-scene focus-scene" aria-labelledby="comparison-heading">
+        <div class="scene-pin">
+          <div class="wall-source" hidden>
+            <span>팀 메일 확인하기</span>
+            <span>택배 보내기</span>
+            <span>회의 일정 잡기</span>
+            <span>치과 가기</span>
+            <span>세탁기 돌리기</span>
+            <span>점심 메뉴 정하기</span>
+            <span>운동하기</span>
+            <span>관리비 납부하기</span>
+            <span>도서관 책 반납하기</span>
+            <span>부모님께 전화하기</span>
+            <span>저녁 장보기</span>
+            <span>재활용품 분리배출하기</span>
+            <span>내일 입을 옷 꺼내기</span>
+            <span>회의록 정리하기</span>
+            <span>동료에게 초안 보내기</span>
+            <span>우산 챙기기</span>
+            <span>화분에 물 주기</span>
+            <span>책상 위 영수증 정리하기</span>
+            <span>정수기 필터 주문하기</span>
+            <span>주말 기차표 예매하기</span>
+            <span>친구 생일 선물 고르기</span>
+            <span>냉장고 비우기</span>
+            <span>견적서 확인하기</span>
+            <span>사진 백업하기</span>
+            <span>안경 닦기</span>
+            <span>계좌 이체하기</span>
+            <span>다음 주 일정 확인하기</span>
+            <span>운동복 빨기</span>
+            <span>프린터 용지 채우기</span>
+            <span>공과금 자동이체 신청하기</span>
+            <span>노트북 충전하기</span>
+            <span>여권 만료일 확인하기</span>
+            <span>안 쓰는 앱 정리하기</span>
+            <span>약국 들르기</span>
+            <span>가스 점검 예약하기</span>
+            <span>고양이 사료 주문하기</span>
+            <span>이불 커버 바꾸기</span>
+            <span>자동차 주유하기</span>
+            <span>보조배터리 챙기기</span>
+            <span>통장 내역 정리하기</span>
+            <span>책상 조명 고치기</span>
+            <span>발표 일정 다시 확인하기</span>
+            <span>신발장 정리하기</span>
+          </div>
+          <div class="list-wall" aria-hidden="true"></div>
+          <div class="list-strip" aria-hidden="true">
+            <span>팀 메일 확인하기</span><span>택배 보내기</span><span>회의 일정 잡기</span>
+          </div>
+          <div class="focus-head">
+            <p class="focus-before" aria-hidden="true">목록은 길고,</p>
+            <h2 id="comparison-heading"><span class="screen-reader">목록은 길고, </span>지금 할 수 있는 건<br class="focus-break"> 하나.</h2>
+            <p class="focus-note">뭐부터 할지 고르지 않아도 돼요.</p>
+          </div>
+          <div class="feature-ticket focus-ticket">
+            <div class="feature-surface" aria-hidden="true"></div>
+            <p class="current-label">지금 할 일</p>
+            <p class="feature-title"><span>발표 자료 만들기</span><span class="focus-row-title" aria-hidden="true">발표 자료 만들기</span></p>
+            <p class="feature-clock">25:00</p>
+            <div class="feature-action"><span class="go"><i class="go-fill"></i><span>시작</span><b aria-hidden="true"><svg><use href="#scene-arrow"/></svg></b></span></div>
           </div>
         </div>
       </section>
 
-      <section class="shell section-pad" aria-labelledby="steps-heading">
-        <h2 id="steps-heading">하루가 카드가 되는 과정</h2>
-        <ol class="steps" role="list">
-          <li class="step">
-            <div class="step-visual chat">
-              <div class="chat-window">
-                <p class="chat-label">내 AI</p>
-                <p class="chat-bubble">내일 오전에 발표 자료 만들어야 하고, 3시에 치과야. 저녁엔 운동도.</p>
-              </div>
+      <section class="scroll-scene story" aria-label="하루가 카드가 되는 과정">
+        <ol class="story-steps shell" role="list">
+          <li class="story-step">
+            <h2>AI에게 말해요</h2>
+            <div class="story-art story-chat">
+              <p class="bubble bubble-person"><span class="screen-reader">나 · </span>내일 오전에 발표 자료 만들어야 하고, 3시에 치과야. 저녁엔 운동도.</p>
+              <p class="bubble bubble-ai"><span class="screen-reader">내 AI · </span>하루를 짜서 폰으로 보냈어요.</p>
             </div>
-            <h3>AI에게 말해요</h3>
           </li>
-          <li class="step">
-            <div class="step-visual plan">
-              <svg class="plan-pip" viewBox="0 0 120 120" aria-hidden="true">
-                <rect width="120" height="120" rx="31" fill="#1c1c1e"/>
-                <path fill="#fff" d="M20.5 63v8a14.5 14.5 0 0 0 29 0v-8a14.5 14.5 0 0 0-29 0zM70.5 63v8a14.5 14.5 0 0 0 29 0v-8a14.5 14.5 0 0 0-29 0z"/>
-              </svg>
-              <ul class="plan-cards" role="list">
-                <li><time datetime="10:00">10:00</time><b>발표 자료 만들기</b></li>
-                <li><time datetime="15:00">15:00</time><b>치과 가기</b></li>
-                <li><time datetime="19:00">19:00</time><b>운동하기</b></li>
-              </ul>
+          <li class="story-step">
+            <h2>하루가 카드로 와요</h2>
+            <div class="story-art story-print">
+              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use class="pip-open" href="#pip-eyes"/><use class="pip-happy" href="#pip-smile"/></svg>
+              <ol class="paper-deck" role="list">
+                <li class="paper-ticket"><time datetime="10:00">10:00</time><span>발표 자료 만들기</span></li>
+                <li class="paper-ticket"><time datetime="15:00">15:00</time><span>치과 가기</span></li>
+                <li class="paper-ticket"><time datetime="19:00">19:00</time><span>운동하기</span></li>
+              </ol>
             </div>
-            <h3>하루가 카드로 와요</h3>
           </li>
-          <li class="step">
-            <div class="step-visual completion">
-              <div class="peek-stack">
-                <div class="preview-ticket compact-ticket">
+          <li class="story-step">
+            <h2>지금은 이 한 장만</h2>
+            <div class="story-art story-current">
+              <div class="ticket-stack">
+                <div class="feature-ticket">
                   <p class="current-label">지금 할 일</p>
-                  <p class="preview-title">발표 자료 만들기</p>
-                  <div class="preview-action">
-                    <span class="go"><span>완료</span><b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></b></span>
-                  </div>
+                  <p class="feature-title">발표 자료 만들기</p>
+                  <p class="feature-clock">25:00</p>
+                  <div class="feature-action"><span class="go"><i class="go-fill"></i><span>완료</span><b aria-hidden="true"><svg><use href="#scene-arrow"/></svg></b></span></div>
                 </div>
-                <p class="next-peek"><span>다음 카드</span><b>치과 가기</b></p>
               </div>
             </div>
-            <h3>완료하면 다음 장</h3>
+          </li>
+          <li class="story-step">
+            <h2>완료하면 다음 장</h2>
+            <div class="story-art story-next">
+              <div class="ticket-stack">
+                <div class="feature-ticket">
+                  <p class="current-label">지금 할 일</p>
+                  <p class="feature-title">치과 가기</p>
+                  <p class="feature-clock">60:00</p>
+                  <div class="feature-action"><span class="go"><i class="go-fill"></i><span>완료</span><b aria-hidden="true"><svg><use href="#scene-arrow"/></svg></b></span></div>
+                </div>
+              </div>
+              <div class="done-pile">
+                <div class="done-stub"><span>발표 자료 만들기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></div>
+              </div>
+            </div>
+          </li>
+          <li class="story-step">
+            <h2>오늘 일 끝.</h2>
+            <div class="story-art story-finish">
+              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use class="pip-open" href="#pip-eyes"/><use class="pip-happy" href="#pip-smile"/></svg>
+              <ol class="done-pile" role="list">
+                <li class="done-stub"><span>발표 자료 만들기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></li>
+                <li class="done-stub"><span>치과 가기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></li>
+                <li class="done-stub"><span>운동하기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></li>
+              </ol>
+            </div>
           </li>
         </ol>
+        <div class="scene-pin story-pin" aria-hidden="true" hidden>
+          <div class="story-layout shell">
+            <div class="story-captions"></div>
+            <div class="story-stage"></div>
+          </div>
+        </div>
       </section>
 
       <section class="shell" aria-labelledby="routine-heading">
@@ -220,9 +284,9 @@
           </div>
         </nav>
         <div class="company">
-          <p>one-by.one 운영 · 대한민국 개인사업자 salad76 (대표 김승은) <span>사업장 · 대한민국 서울특별시 서초구 동광로 173, 302호</span></p>
-          <p>개인정보 보호 책임자 및 퀘벡 개인정보 보호 담당자 · 김승은 <a href="mailto:privacy@one-by.one">privacy@one-by.one</a> <span>지원 · <a href="mailto:support@one-by.one">support@one-by.one</a></span></p>
-          <p>앱은 9개 언어로 제공돼요. 이용 가능 국가는 <a href="/terms/#launch-scope">이용약관의 출시 범위</a>에서, 국가별 결제 금액은 App Store에서 확인해요. <span class="copyright">© 2026 one-by.one</span></p>
+          <p>운영 salad76(개인사업자) · 대표·개인정보 보호책임자 김승은 (퀘벡 포함)</p>
+          <p>사업장 서울특별시 서초구 동광로 173, 302호</p>
+          <p><a href="mailto:privacy@one-by.one">privacy@one-by.one</a> · <a href="mailto:support@one-by.one">support@one-by.one</a> · <span class="copyright">© 2026 one-by.one</span></p>
         </div>
       </div>
     </footer>
