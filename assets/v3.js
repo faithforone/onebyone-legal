@@ -54,23 +54,19 @@
 
   const slot = $(".slot", device);
   const greet = $("[data-greet]", device);
-  const dayline = $("[data-dayline]", device);
   const pip = $("[data-pip]", device);
-  const upnext = $("[data-upnext]", device);
-  const upnextName = $("b", upnext);
   const stubs = $(".stubs", device);
   const greetText = [greet.textContent, greet.dataset.end];
-  const daylineText = [dayline.textContent, dayline.dataset.end];
 
-  // Seconds within one loop.
+  // Seconds within one loop. Unhurried: each card stays about five seconds.
   const times = [
-    { enter: [0.2, 1.1], start: 2.5, run: [2.5, 5.3], leave: [5.55, 6.15] },
-    { enter: [5.75, 6.55], run: [6.55, 8.9], leave: [9.15, 9.75] },
-    { enter: [9.35, 10.15], run: [10.15, 12.2], leave: [12.45, 13.05] },
+    { enter: [0.2, 1.1], start: 3.0, run: [3.0, 7.4], leave: [7.65, 8.25] },
+    { enter: [7.85, 8.65], run: [8.65, 13.4], leave: [13.65, 14.25] },
+    { enter: [13.85, 14.65], run: [14.65, 19.4], leave: [19.65, 20.25] },
   ];
-  const DAY_ENDS = 12.9;
-  const STUBS = { enter: [12.7, 13.5], leave: [17.6, 18.2] };
-  const LOOP = 18.4;
+  const DAY_ENDS = 20.1;
+  const STUBS = { enter: [19.9, 20.7], leave: [26.4, 27.0] };
+  const LOOP = 27.2;
 
   const cards = $$("[data-card]", device).map((node, index) => {
     const label = $(".pill-label", node);
@@ -101,12 +97,10 @@
   };
 
   const draw = (t, first) => {
-    let current = 0;
     cards.forEach((card, index) => {
       // On the very first loop the page's own arrival has already brought the first card in.
       const enter = first && index === 0 ? 1 : seg(t, card.enter[0], card.enter[1]);
       const leave = seg(t, card.leave[0], card.leave[1]);
-      if (enter > 0) current = index;
       card.node.style.visibility = enter <= 0 || leave >= 1 ? "hidden" : "visible";
       move(card.node, enter < 1 ? enterFrom * (1 - easeOut(enter)) : leaveTo * easeIn(leave));
 
@@ -124,10 +118,7 @@
     });
 
     const over = t >= DAY_ENDS && t < STUBS.leave[1];
-    setText(upnextName, cards[current].next || "");
-    upnext.classList.toggle("is-empty", !cards[current].next);
     setText(greet, greetText[over ? 1 : 0]);
-    setText(dayline, daylineText[over ? 1 : 0]);
     pip.classList.toggle("is-smiling", over);
 
     const settle = seg(t, STUBS.enter[0], STUBS.enter[1]);
