@@ -129,16 +129,24 @@
             <span>팀 메일 확인하기</span><span>택배 보내기</span><span>회의 일정 잡기</span>
           </div>
           <div class="focus-head">
-            <p class="focus-before" aria-hidden="true">목록은 길고,</p>
-            <h2 id="comparison-heading"><span class="screen-reader">목록은 길고, </span>지금 할 수 있는 건<br class="focus-break"> 하나.</h2>
-            <p class="focus-note">뭐부터 할지 고르지 않아도 돼요.</p>
+            <h2 id="comparison-heading" class="screen-reader">목록은 길고, 지금 할 수 있는 건 하나.</h2>
+            <div class="focus-plate">
+              <div class="focus-backplate" aria-hidden="true"></div>
+              <div class="focus-lines roll-box" aria-hidden="true">
+                <p class="focus-before">목록은 길고,</p>
+                <p class="focus-after">지금 할 수 있는 건 하나.</p>
+              </div>
+              <div class="focus-note-mask"><p class="focus-note">뭐부터 할지 고르지 않아도 돼요.</p></div>
+            </div>
           </div>
           <div class="feature-ticket focus-ticket">
-            <div class="feature-surface" aria-hidden="true"></div>
-            <p class="current-label">지금 할 일</p>
-            <p class="feature-title"><span>발표 자료 만들기</span><span class="focus-row-title" aria-hidden="true">발표 자료 만들기</span></p>
-            <p class="feature-clock">25:00</p>
-            <div class="feature-action"><span class="go"><i class="go-fill"></i><span>시작</span><b aria-hidden="true"><svg><use href="#scene-arrow"/></svg></b></span></div>
+            <div class="focus-box" aria-hidden="true"><div class="feature-surface"></div></div>
+            <div class="focus-label-mask"><p class="current-label">지금 할 일</p></div>
+            <p class="feature-title">발표 자료 만들기</p>
+            <div class="focus-clock-mask"><p class="feature-clock">25:00</p></div>
+            <div class="focus-action-mask">
+              <div class="feature-action"><span class="go"><span>시작</span><b aria-hidden="true"><svg><use href="#scene-arrow"/></svg></b></span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -148,18 +156,22 @@
           <li class="story-step">
             <h2>AI에게 말해요</h2>
             <div class="story-art story-chat">
-              <p class="bubble bubble-person"><span class="screen-reader">나 · </span>내일 오전에 발표 자료 만들어야 하고, 3시에 치과야. 저녁엔 운동도.</p>
-              <p class="bubble bubble-ai"><span class="screen-reader">내 AI · </span>하루를 짜서 폰으로 보냈어요.</p>
+              <p class="chat-header">내 AI</p>
+              <div class="chat-history">
+                <p class="bubble bubble-person"><span class="screen-reader">나 · </span>내일 오전에 발표 자료 만들어야 하고, 3시에 치과야. 저녁엔 운동도.</p>
+                <p class="bubble bubble-ai"><span class="screen-reader">내 AI · </span>하루를 짜서 폰으로 보냈어요.</p>
+              </div>
+              <div class="chat-composer" aria-hidden="true"><span></span><svg viewBox="0 0 24 24"><path d="M12 18V6m-5 5 5-5 5 5"/></svg></div>
             </div>
           </li>
           <li class="story-step">
             <h2>하루가 카드로 와요</h2>
             <div class="story-art story-print">
-              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use class="pip-open" href="#pip-eyes"/><use class="pip-happy" href="#pip-smile"/></svg>
+              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use href="#pip-eyes"/></svg>
               <ol class="paper-deck" role="list">
-                <li class="paper-ticket"><time datetime="10:00">10:00</time><span>발표 자료 만들기</span></li>
-                <li class="paper-ticket"><time datetime="15:00">15:00</time><span>치과 가기</span></li>
-                <li class="paper-ticket"><time datetime="19:00">19:00</time><span>운동하기</span></li>
+                <li class="paper-ticket"><p class="paper-line"><time datetime="10:00">10:00</time><span>발표 자료 만들기</span></p></li>
+                <li class="paper-ticket"><p class="paper-line"><time datetime="15:00">15:00</time><span>치과 가기</span></p></li>
+                <li class="paper-ticket"><p class="paper-line"><time datetime="19:00">19:00</time><span>운동하기</span></p></li>
               </ol>
             </div>
           </li>
@@ -195,7 +207,7 @@
           <li class="story-step">
             <h2>오늘 일 끝.</h2>
             <div class="story-art story-finish">
-              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use class="pip-open" href="#pip-eyes"/><use class="pip-happy" href="#pip-smile"/></svg>
+              <svg class="story-pip" aria-hidden="true" viewBox="0 0 120 120"><use href="#pip-body"/><use href="#pip-smile"/></svg>
               <ol class="done-pile" role="list">
                 <li class="done-stub"><span>발표 자료 만들기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></li>
                 <li class="done-stub"><span>치과 가기</span><svg aria-label="완료" role="img" viewBox="0 0 24 24"><use href="#scene-check"/></svg></li>
@@ -206,7 +218,7 @@
         </ol>
         <div class="scene-pin story-pin" aria-hidden="true" hidden>
           <div class="story-layout shell">
-            <div class="story-captions"></div>
+            <div class="story-captions roll-box"></div>
             <div class="story-stage"></div>
           </div>
         </div>
@@ -218,10 +230,10 @@
             <h2 id="routine-heading">아직 AI가 없어도</h2>
             <p>일상 루틴을 하나 골라 바로 시작해요.</p>
           </div>
-          <ul class="routine-chips" role="list">
-            <li>아침 준비</li>
-            <li>집안일</li>
-            <li>잠들기 전</li>
+          <ul class="routine-cards" role="list" aria-label="루틴 예시">
+            <li><strong>아침 준비</strong><span>4장</span></li>
+            <li><strong>집안일</strong><span>3장</span></li>
+            <li><strong>잠들기 전</strong><span>4장</span></li>
           </ul>
         </div>
       </section>
@@ -232,7 +244,7 @@
           <p class="annual-price">이후 연 17,000원 <span>한국 App Store 기준</span></p>
           <div class="v2-founders" data-v2-founders>
             <p class="v2-f-t"><strong>첫 구독자 1,000명 출시 가격.</strong> 구독하는 동안 그대로예요.</p>
-            <div class="v2-f-bar" hidden><i></i></div>
+            <div class="v2-f-bar" aria-hidden="true"><i hidden></i></div>
             <p class="v2-f-n" data-number-locale="ko-KR" data-count-text="{places}자리 중 {taken}자리 찼어요 · {left}자리 남았어요">연 17,000원 · 1,000자리</p>
           </div>
           <p class="billing">무료 체험은 App Store가 정한 신규 구독자에게 제공되며, 체험이나 구독 기간이 끝나기 최소 24시간 전에 설정에서 해지하지 않으면 연간 구독이 자동으로 갱신돼요.</p>

@@ -19,7 +19,7 @@
       if (!Number.isInteger(data.places) || data.places < data.taken) return;
 
       const bar = founders.querySelector(".v2-f-bar");
-      bar.hidden = false;
+      bar.firstElementChild.hidden = false;
       bar.style.setProperty("--f", `${(data.taken / data.places) * 100}%`);
 
       const count = founders.querySelector(".v2-f-n");
@@ -47,26 +47,38 @@
   const easing = "cubic-bezier(.25,.55,.45,1)";
 
   // Paused effects use scroll position as their clock, in either direction.
-  function effect(element, frames) {
-    return new Animation(new KeyframeEffect(element, frames, { duration, fill: "both", easing: "linear" }));
-  }
-
-  function move(element, frames) {
-    return effect(element, frames.map(([at, y, opacity, scale = 1]) => ({
+  function track(element, frames, segmentEasing = easing) {
+    const keyframes = frames.map(([at, properties]) => ({
       offset: at / 100,
-      transform: `translateY(${y}px) scale(${scale})`,
-      opacity,
-      easing,
-    })));
+      easing: segmentEasing,
+      ...properties,
+    }));
+    return new Animation(new KeyframeEffect(element, keyframes, { duration, fill: "both" }));
   }
 
-  function fade(element, frames) {
-    return effect(element, frames.map(([at, opacity]) => ({ offset: at / 100, opacity })));
+  function slide(element, frames) {
+    return track(element, frames.map(([at, y]) => [at, { transform: `translateY(${y}px)` }]));
+  }
+
+  function wipe(element, frames) {
+    return track(element, frames.map(([at, inset]) => [at, { clipPath: `inset(${inset})` }]));
+  }
+
+  // A blank slot on the strip separates each line so only one can be in the mask.
+  function roll(box, windows) {
+    const travel = box.clientHeight * 2;
+    return Array.from(box.children, (line, index) => {
+      const enter = windows[index - 1];
+      const exit = windows[index];
+      return slide(line, [
+        ...(enter ? [[0, travel], [enter[0], travel], [enter[1], 0]] : [[0, 0]]),
+        ...(exit ? [[exit[0], 0], [exit[1], -travel], [100, -travel]] : [[100, 0]]),
+      ]);
+    });
   }
 
   function makeWall() {
     const tasks = Array.from(focus.querySelector(".wall-source").children, (row) => row.textContent);
-    // Offset each column so the repeated texture continues beyond the viewport.
     for (let column = 0; column < 5; column++) {
       const list = document.createElement("ul");
       list.className = "wall-column";
@@ -84,6 +96,9 @@
       }
       wall.append(list);
     }
+    const check = document.createElement("span");
+    check.className = "focus-row-check";
+    focus.querySelector(".focus-box").prepend(check);
   }
 
   function makeStage() {
@@ -91,159 +106,235 @@
     for (const heading of story.querySelectorAll(".story-step h2")) {
       captions.append(heading.cloneNode(true));
     }
-    const pile = copy(".story-finish .done-pile");
-    const tickets = document.createElement("div");
-    tickets.className = "story-tickets";
-    const dental = copy(".story-next .feature-ticket");
-    const exercise = dental.cloneNode(true);
-    const finalPaper = story.querySelector(".paper-ticket:last-child");
-    exercise.querySelector(".feature-title").textContent = finalPaper.querySelector("span").textContent;
-    exercise.querySelector(".feature-clock").textContent = "30:00";
-    for (let index = 0; index < 2; index++) {
-      const edge = document.createElement("div");
-      edge.className = "story-edge";
-      tickets.append(edge);
-    }
-    tickets.prepend(copy(".story-current .feature-ticket"), dental, exercise);
-    stage.append(copy(".story-chat"), copy(".story-print .story-pip"), copy(".paper-deck"), tickets, pile);
+
+    const pip = copy(".story-print .story-pip");
+    const eye = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    eye.setAttribute("fill", "#fff");
+    eye.classList.add("story-eyes");
+    pip.lastElementChild.replaceWith(eye);
+
+    const deck = document.createElement("ol");
+    deck.className = "story-deck";
+    const papers = copy(".paper-deck");
+    const stubs = copy(".story-finish .done-pile");
+    const now = [
+      copy(".story-current .feature-ticket"),
+      copy(".story-next .feature-ticket"),
+      copy(".story-next .feature-ticket"),
+    ];
+    now[2].querySelector(".feature-title").textContent = papers.lastElementChild.querySelector("span").textContent;
+    now[2].querySelector(".feature-clock").textContent = "30:00";
+
+    Array.from(papers.children).forEach((paper, index) => {
+      const sheet = document.createElement("li");
+      sheet.className = "story-sheet";
+      const faces = document.createElement("div");
+      faces.className = "story-faces";
+      faces.append(paper, now[index]);
+      sheet.append(faces, stubs.firstElementChild);
+      deck.append(sheet);
+    });
+
+    const cut = document.createElement("div");
+    cut.className = "story-cut";
+    stage.append(copy(".story-chat"), pip, deck, cut);
   }
 
   function focusEffects() {
     const ticket = focus.querySelector(".focus-ticket");
+    const box = ticket.querySelector(".focus-box");
     const title = ticket.querySelector(".feature-title");
-    const surface = ticket.querySelector(".feature-surface");
-    const visibleTitle = title.firstElementChild;
-    const rowTitle = ticket.querySelector(".focus-row-title");
+    const label = ticket.querySelector(".focus-label-mask");
+    const clock = ticket.querySelector(".focus-clock-mask");
+    const action = ticket.querySelector(".focus-action-mask");
+    const note = focus.querySelector(".focus-note-mask");
+    const lines = focus.querySelector(".focus-lines");
+    const backplate = focus.querySelector(".focus-backplate");
+    const gap = wall.querySelector(".is-gap");
     const height = focusPin.clientHeight;
-    const wallFont = parseFloat(getComputedStyle(wall).fontSize);
-    const titleFont = parseFloat(getComputedStyle(title).fontSize);
-    const titleCenter = height * .59 - ticket.offsetHeight / 2 + title.offsetTop + title.offsetHeight / 2;
-    const rowY = height * .56 - titleCenter;
-    const frames = Array.from(wall.querySelectorAll(".wall-row"), (row, index) => {
-      const column = Math.floor(index / 21);
-      const rowIndex = index % 21;
-      const wave = (20 - rowIndex) * 1.12 + ((rowIndex * 7 + column * 13) % 11) * .84;
-      const start = 5 + wave;
-      return move(row, [[0, 0, 1], [start, 0, 1], [start + 30, 33 + column * 5, 0], [100, 54, 0]]);
+    const ticketRect = ticket.getBoundingClientRect();
+    const gapRect = gap.getBoundingClientRect();
+    const rowHeight = gapRect.height;
+    const rowTop = gapRect.top - ticketRect.top;
+    const rowLeft = gapRect.left - ticketRect.left;
+    const titleY = rowTop + rowHeight / 2 - title.offsetTop - title.offsetHeight / 2;
+    const titleScale = parseFloat(getComputedStyle(wall).fontSize) / parseFloat(getComputedStyle(title).fontSize);
+    const startTitle = `translate(${rowLeft}px, ${titleY}px) scale(${titleScale})`;
+    const width = ticket.offsetWidth;
+    const cardHeight = ticket.offsetHeight;
+    const plateRect = backplate.parentElement.getBoundingClientRect();
+    const backplateRect = backplate.getBoundingClientRect();
+    const snap = (y, round) => gapRect.top + round((y - gapRect.top) / rowHeight) * rowHeight;
+    const plateTrim = Math.max(0, (plateRect.width - gapRect.width) / 2);
+    const closedPlate = `${snap(plateRect.top, Math.floor) - backplateRect.top}px ${plateTrim}px ${backplateRect.bottom - snap(plateRect.bottom, Math.ceil)}px`;
+    const openPlate = `${plateRect.top - backplateRect.top}px 0 ${backplateRect.bottom - plateRect.bottom}px`;
+    const frames = Array.from(wall.querySelectorAll(".wall-row:not(.is-gap)"), (row) => {
+      const column = Array.from(wall.children).indexOf(row.parentElement);
+      const index = Array.from(row.parentElement.children).indexOf(row);
+      const start = 5 + (20 - index) * 1.05 + [2, 0, 3, 5, 1][column];
+      const drop = height + rowHeight * 5;
+      return slide(row, [[0, 0], [start, 0], [start + 36, drop], [100, drop]]);
+    });
+
+    const footprint = (x, y, width, height, borderRadius) => ({
+      transform: `translate(${x}px, ${y}px)`,
+      width: `${width}px`,
+      height: `${height}px`,
+      borderRadius,
     });
 
     frames.push(
-      fade(wall, [[0, 1], [55, 1], [65, 0], [100, 0]]),
-      move(focus.querySelector(".focus-before"), [[0, height * .15, 1], [24, height * .15, 1], [48, height * .19, 0], [100, height * .19, 0]]),
-      move(focus.querySelector("#comparison-heading"), [[0, -14, 0], [44, -14, 0], [65, 0, 1], [100, 0, 1]]),
-      move(focus.querySelector(".focus-note"), [[0, -12, 0], [61, -12, 0], [74, 0, 1], [100, 0, 1]]),
-      effect(title, [
-        { offset: 0, transform: `translateY(${rowY}px) scale(${wallFont / titleFont})` },
-        { offset: .34, transform: `translateY(${rowY}px) scale(${wallFont / titleFont})`, easing },
-        { offset: .71, transform: "translateY(0) scale(1)" },
-        { offset: 1, transform: "translateY(0) scale(1)" },
+      ...roll(lines, [[27, 39]]),
+      wipe(backplate, [[0, closedPlate], [24, closedPlate], [39, openPlate], [100, openPlate]]),
+      slide(note.firstElementChild, [[0, note.offsetHeight + 2], [44, note.offsetHeight + 2], [57, 0], [100, 0]]),
+      track(box, [
+        [0, footprint(rowLeft, rowTop, gap.offsetWidth, rowHeight, "0px")],
+        [27, footprint(rowLeft, rowTop, gap.offsetWidth, rowHeight, "0px")],
+        [43, footprint(rowLeft / 2, rowTop - 12, (gap.offsetWidth + width) / 2, rowHeight + 29, "12px")],
+        [65, footprint(0, 0, width, cardHeight, "24px")],
+        [100, footprint(0, 0, width, cardHeight, "24px")],
       ]),
-      fade(rowTitle, [[0, 1], [47, 1], [60, 0], [100, 0]]),
-      fade(visibleTitle, [[0, 0], [50, 0], [64, 1], [100, 1]]),
-      effect(surface, [
-        { offset: 0, transform: `translateY(${height * -.03}px) scale(.88,.19)`, opacity: 0 },
-        { offset: .39, transform: `translateY(${height * -.03}px) scale(.88,.19)`, opacity: 0, easing },
-        { offset: .56, transform: "translateY(-5px) scale(.99,.89)", opacity: 1, easing },
-        { offset: .65, transform: "translateY(0) scale(1,1)", opacity: 1 },
-        { offset: 1, transform: "translateY(0) scale(1,1)", opacity: 1 },
+      wipe(box.querySelector(".feature-surface"), [[0, "0 0 100%"], [37, "0 0 100%"], [62, "0"], [100, "0"]]),
+      slide(box.querySelector(".focus-row-check"), [[0, 0], [32, 0], [48, rowHeight * 2.5], [100, cardHeight]]),
+      track(title, [
+        [0, { transform: startTitle }],
+        [32, { transform: startTitle }],
+        [65, { transform: "translate(0, 0) scale(1)" }],
+        [100, { transform: "translate(0, 0) scale(1)" }],
       ]),
     );
-    for (const selector of [".current-label", ".feature-clock"]) {
-      frames.push(move(ticket.querySelector(selector), [[0, -7, 0], [54, -7, 0], [70, 0, 1], [100, 0, 1]]));
+    for (const [mask, start, end] of [[label, 63, 72], [clock, 65, 77], [action, 71, 84]]) {
+      const hiddenY = -mask.offsetHeight - 2;
+      frames.push(slide(mask.firstElementChild, [[0, hiddenY], [start, hiddenY], [end, 0], [100, 0]]));
     }
-    frames.push(fade(ticket.querySelector(".feature-action"), [[0, 0], [61, 0], [74, 1], [100, 1]]));
     return frames;
   }
 
   function storyEffects() {
     const height = stage.clientHeight;
     const chat = stage.querySelector(".story-chat");
+    const history = chat.querySelector(".chat-history").getBoundingClientRect();
     const pip = stage.querySelector(".story-pip");
-    const papers = Array.from(stage.querySelectorAll(".paper-ticket"));
-    const cards = Array.from(stage.querySelectorAll(".feature-ticket"));
-    const stubs = Array.from(stage.querySelectorAll(".done-stub"));
-    const pile = stage.querySelector(".done-pile");
-    const cardHeight = cards[0].offsetHeight;
-    const pipY = Math.round(height * .11);
     const pipSize = pip.getBoundingClientRect().height;
-    const mouth = Math.round(pipY + pipSize - 4);
-    const cardTop = Math.max(mouth + 14, Math.round((height - cardHeight) * .48));
-    const cardY = cardTop - mouth;
-    const gap = Math.max(47, Math.min(68, height * .10));
-    const stubGap = Math.round(stubs[0].offsetHeight * .85);
-    const pileY = Math.min(height - stubs[0].offsetHeight - stubGap * 2 - 14, Math.max(cardTop + cardHeight + 22, height * .69));
-    const endPip = pileY - pipSize - Math.min(35, height * .055);
+    const deck = stage.querySelector(".story-deck");
+    const sheets = Array.from(deck.children);
+    const paperHeight = sheets[0].offsetHeight;
+    const cardHeight = sheets[0].querySelector(".feature-ticket").offsetHeight;
+    const stubHeight = sheets[0].querySelector(".done-stub").offsetHeight;
+    const stubStep = stubHeight - 7;
+    const cardWidth = sheets[0].offsetWidth;
+    const stubWidth = Math.min(cardWidth * .82, 328);
+    const mobile = matchMedia("(max-width: 760px)").matches;
+    const pipY = Math.max(5, Math.min(height * (mobile ? .065 : .105), height - pipSize - cardHeight - stubHeight - 62));
+    const mouth = pipY + pipSize - 3;
+    const cardY = mouth + 16;
+    const cutY = cardY + cardHeight;
+    const pileY = Math.max(cutY + 10, Math.min(cutY + 56, height - stubHeight - stubStep * 2 - 9));
+    const endPip = mobile ? 12 : (height - pipSize - 15 - stubHeight - stubStep * 2) / 2;
+    const endPile = endPip + pipSize + 15;
+    const layout = stage.parentElement;
+    const paperGap = Math.min(paperHeight - 16, Math.max(55, paperHeight * .71));
+    const presses = [[59, 63, 68], [72, 75.5, 80.5], [84, 87.5, 92.5]];
+    const cut = stage.querySelector(".story-cut");
+    cut.style.top = `${cutY}px`;
 
-    stage.style.setProperty("--mouth", `${mouth}px`);
-    stage.style.setProperty("--edge-height", `${cardHeight}px`);
     const frames = [
-      move(chat, [[0, (height - chat.offsetHeight) * .43, 1], [13, (height - chat.offsetHeight) * .43, 1], [21, (height - chat.offsetHeight) * .43 - 82, 0], [100, -chat.offsetHeight, 0]]),
-      move(pip, [[0, pipY - 32, 0], [16, pipY - 32, 0], [24, pipY, 1], [89, pipY, 1], [96, endPip, 1], [100, endPip, 1]]),
-      fade(pip.querySelector(".pip-open"), [[0, 1], [91, 1], [94, 0], [100, 0]]),
-      fade(pip.querySelector(".pip-happy"), [[0, 0], [91, 0], [94, 1], [100, 1]]),
-      move(pile, [[0, pileY, 1], [100, pileY, 1]]),
+      ...roll(captions, [[18, 23], [49, 54], [63, 68], [92, 97]]),
+      slide(chat, [[0, 0], [16, 0], [24, height + 4], [100, height + 4]]),
+      slide(pip, [[0, -pipSize - 4], [17, -pipSize - 4], [25, pipY], [92.5, pipY], [97, endPip], [100, endPip]]),
+      wipe(deck, [[0, `${mouth}px 0 0`], [92.5, `${mouth}px 0 0`], [97, `${endPip + pipSize - 3}px 0 0`], [100, `${endPip + pipSize - 3}px 0 0`]]),
+      wipe(cut, [
+        [0, "0 50%"],
+        ...presses.flatMap(([press, release, land]) => [[press, "0 50%"], [release, "0"], [land - 1, "0"], [land, "0 50%"]]),
+        [100, "0 50%"],
+      ]),
     ];
 
-    const changes = [0, 18, 47, 62, 92];
-    Array.from(captions.children).forEach((heading, index) => {
-      const start = changes[index];
-      const end = changes[index + 1] ?? 107;
-      frames.push(move(heading, [
-        [0, index ? -8 : 0, index ? 0 : 1],
-        ...(index ? [[start, -8, 0], [start + 3, 0, 1]] : []),
-        [Math.min(end - 3, 100), 0, 1],
-        ...(end <= 100 ? [[end, 8, 0], [100, 8, 0]] : []),
-      ]));
+    if (mobile) {
+      const groupMiddle = (stage.offsetTop + endPile + stubHeight + stubStep * 2 + captions.offsetTop) / 2;
+      const center = Math.max(0, storyPin.clientHeight / 2 - groupMiddle);
+      frames.push(slide(layout, [[0, 0], [91, 0], [98, center], [100, center]]));
+    }
+
+    Array.from(chat.querySelectorAll(".bubble")).forEach((bubble, index) => {
+      const hiddenY = history.bottom - bubble.getBoundingClientRect().top + 2;
+      // The person's message is already sent when the scene arrives; only the reply comes up.
+      frames.push(slide(bubble, index ? [[0, hiddenY], [3, hiddenY], [10, 0], [100, 0]] : [[0, 0], [100, 0]]));
     });
 
-    papers.forEach((paper, index) => {
-      const start = [17, 23, 34][index];
-      const printedY = 10 + index * gap;
-      frames.push(move(paper, [
-        [0, -paper.offsetHeight - 13, 0], [start - 1, -paper.offsetHeight - 13, 0],
-        [start, -paper.offsetHeight - 13, 1], [start + 9, printedY, 1], [44, printedY, 1],
-        [52, cardY + index * 8, index === 0 ? .4 : 1, 1 - index * .045],
-        [55, cardY + index * 8, 0, 1 - index * .045],
-        [100, cardY, 0],
-      ]));
-    });
+    sheets.forEach((sheet, index) => {
+      const visible = [22, 29, 36][index];
+      const printedY = mouth + 9 + index * paperGap;
+      const stackedY = cardY + index * 11;
+      const stackedWidth = cardWidth - index * 18;
+      const [rise, ready] = [[49, 54], [66, 70], [78.5, 82.5]][index];
+      const [press, release, land] = presses[index];
+      const stub = sheet.querySelector(".done-stub");
+      const faces = sheet.querySelector(".story-faces");
+      const card = sheet.querySelector(".feature-ticket");
+      const paperLine = sheet.querySelector(".paper-line");
+      const landingY = pileY + index * stubStep + stubHeight - cardHeight;
+      const finishY = endPile + index * stubStep + stubHeight - cardHeight;
+      const drop = landingY - cardY;
+      const pose = (y, width, height) => ({
+        transform: `translateY(${y}px)`,
+        width: `${width}px`,
+        height: `${height}px`,
+      });
 
-    const presses = [64, 75, 86];
-    cards.forEach((card, index) => {
-      const appear = [47, 69, 80][index];
-      const press = presses[index];
-      const release = press + (index === 0 ? 5 : 4);
       frames.push(
-        move(card, [
-          [0, cardY - 10, 0, .955], [appear, cardY - 10, 0, .955], [appear + 6, cardY, 1],
-          [press, cardY, 1], [release, cardY + 3, 1, .993],
-          [release + 4, height - mouth, .2, .96], [release + 6, height - mouth + cardHeight, 0, .96],
-          [100, height - mouth + cardHeight, 0, .96],
+        track(sheet, [
+          [0, pose(mouth - paperHeight - 2, cardWidth, paperHeight)],
+          [visible, pose(mouth - paperHeight - 2, cardWidth, paperHeight)],
+          [visible + 8, pose(printedY, cardWidth, paperHeight)],
+          [44, pose(printedY, cardWidth, paperHeight)],
+          [52, pose(stackedY, stackedWidth, cardHeight)],
+          ...(index ? [[rise, pose(stackedY, stackedWidth, cardHeight)], [ready, pose(cardY, cardWidth, cardHeight)]] : []),
+          [release, pose(cardY, cardWidth, cardHeight)],
+          [land, pose(landingY, cardWidth, cardHeight)],
+          ...(land < 92.5 ? [[92.5, pose(landingY, cardWidth, cardHeight)]] : []),
+          [97, pose(finishY, cardWidth, cardHeight)],
+          [100, pose(finishY, cardWidth, cardHeight)],
         ]),
-        effect(card.querySelector(".go-fill"), [
-          { offset: 0, opacity: 0, transform: "scaleX(0)" },
-          { offset: press / 100, opacity: 1, transform: "scaleX(0)" },
-          { offset: release / 100, opacity: 1, transform: "scaleX(1)" },
-          { offset: 1, opacity: 1, transform: "scaleX(1)" },
+        wipe(card, [[0, "0 0 100%"], [rise, "0 0 100%"], [ready, "0"], [100, "0"]]),
+        track(card.querySelector(".go-fill"), [
+          [0, { transform: "scaleX(0)" }], [press, { transform: "scaleX(0)" }],
+          [release, { transform: "scaleX(1)" }], [100, { transform: "scaleX(1)" }],
         ]),
-        move(card.querySelector(".go b"), [[0, 0, 1], [press, 0, 1], [release, 2, 1, .9], [100, 2, 1, .9]]),
-        move(stubs[index], [
-          [0, cardTop + cardHeight - pileY - 32, 0, .93],
-          [release, cardTop + cardHeight - pileY - 32, 0, .93],
-          [release + 1.5, index * stubGap - 18, 1, .97],
-          [release + 5, index * stubGap, 1],
-          [100, index * stubGap, 1],
+        // The face passes behind the cut line while its bottom slip falls onto the pile.
+        track(faces, [
+          [0, { transform: "translateY(0)", clipPath: "inset(0)" }],
+          [release, { transform: "translateY(0)", clipPath: "inset(0)" }],
+          [land, { transform: `translateY(${cardHeight - drop}px)`, clipPath: "inset(0 0 100%)" }],
+          [100, { transform: `translateY(${cardHeight - drop}px)`, clipPath: "inset(0 0 100%)" }],
+        ]),
+        track(stub, [
+          [0, { clipPath: "inset(100% 0 0)", width: `${cardWidth}px` }],
+          [release, { clipPath: "inset(100% 0 0)", width: `${cardWidth}px` }],
+          [land, { clipPath: `inset(${stubHeight - drop}px 0 0)`, width: `${stubWidth}px` }],
+          [100, { clipPath: "inset(0)", width: `${stubWidth}px` }],
         ]),
       );
-    });
-
-    Array.from(stage.querySelectorAll(".story-edge")).forEach((edge, index) => {
-      const y = cardY + (index + 1) * 13;
-      const scale = 1 - (index + 1) * .045;
-      const end = index ? 69 : 79;
-      frames.push(move(edge, [[0, y, 0, scale], [50, y, 0, scale], [55, y, 1, scale], [end, y, 1, scale], [end + 4, y, 0, scale], [100, y, 0, scale]]));
+      if (index) {
+        frames.push(slide(paperLine, [[0, 0], [43.5, 0], [51, -40], [100, -40]]));
+      }
     });
     return frames;
+  }
+
+  // Both expressions use the same five cubic segments per eye.
+  const openEye = [20.5, 67, 20.5, 54, 25, 48.5, 35, 48.5, 45, 48.5, 49.5, 54, 49.5, 67, 49.5, 80, 45, 85.5, 35, 85.5, 29, 85.5, 25, 83, 23, 79, 21, 75, 20.5, 72, 20.5, 67];
+  const smilingEye = [15.75, 71, 15.75, 68, 25, 59.5, 35, 59.5, 45, 59.5, 54.25, 68, 54.25, 71, 54.25, 75, 50, 77, 46, 74, 39, 66.5, 31, 66.5, 24, 74, 20, 77, 15.75, 75, 15.75, 71];
+
+  function drawEyes(time) {
+    const position = Math.max(0, Math.min(1, (time / duration - .915) / .045));
+    const progress = position * position * (3 - 2 * position);
+    const points = openEye.map((point, index) => point + (smilingEye[index] - point) * progress);
+    const paths = [0, 50].map((offset) => {
+      const coordinates = points.map((point, index) => (point + (index % 2 ? 0 : offset)).toFixed(2));
+      return `M${coordinates.slice(0, 2).join(" ")}C${coordinates.slice(2).join(" ")}Z`;
+    });
+    stage.querySelector(".story-eyes").setAttribute("d", paths.join(""));
   }
 
   let scenes = [];
@@ -268,6 +359,7 @@
       if (scene.time === times[index]) return;
       scene.time = times[index];
       for (const animation of scene.animations) animation.currentTime = scene.time;
+      scene.update?.(scene.time);
     });
   }
 
@@ -301,7 +393,7 @@
     }
     scenes = [
       { root: focus, pin: focusPin, build: focusEffects, animations: [] },
-      { root: story, pin: storyPin, build: storyEffects, animations: [] },
+      { root: story, pin: storyPin, build: storyEffects, update: drawEyes, animations: [] },
     ];
     storyPin.hidden = false;
     for (const scene of scenes) scene.root.classList.add("is-scrubbed");
