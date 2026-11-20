@@ -7,7 +7,7 @@ Served at https://one-by.one/ (Cloudflare Pages project `onebyone-site`, auto-de
 - `/` — one-by.one product and launch page
 - `/privacy/`, `/terms/`, `/support/` — English
 - `/connect/` — remote HTTP + OAuth connection guide for MCP agents
-- `/blog/` — English blog (index plus one folder per post, `/blog/<slug>/index.html`); uses `assets/blog.css` and `connect.js` for the copy buttons, no other script
+- `/blog/` — English blog (index plus one folder per post, `/blog/<slug>/index.html`); uses `assets/site.css` + `assets/doc.css` and `doc.js` (copy buttons), no other script
 - `/ko/`, `/ko/connect/` — Korean translations, indexable with reciprocal EN/KO/x-default hreflang
 - `/ko/privacy/`, `/ko/terms/`, `/ko/support/` — English fallback mirrors (canonical legal copy)
 - `/ja/privacy/`, `/ja/terms/`, `/ja/support/` — English fallback mirrors (home `/ja/`)
@@ -25,7 +25,18 @@ python3 -c 'import hashlib,pathlib,re;v=hashlib.sha256(pathlib.Path("assets/styl
 
 Language detection runs on the first external visit only, using the first preferred browser language. EN/한국어 links remember an explicit choice with localStorage (try/catch); their query marker also works with storage blocked. Automatic navigation uses location.replace; no-JS and identified crawlers stay on the requested URL.
 
-`home.css`, `home.js`, `connect.css`, `connect.js`, `blog.css` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference. Launch switch: `LAUNCH` and `APP_STORE_URL` near the top of the "Launch switch" block in `home.js` turn every launch-updates button into an App Store link.
+`home.css`, `home.js`, `site.css`, `doc.css`, `doc.js`, `v3.css`, `v3.js` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference.
+
+The blog, the Connect guide and the v3 home (`/ko/v3/`, a `noindex` preview) share one look. `site.css` holds what they all use (colour and size tokens, top bar, buttons, footer). `doc.css` + `doc.js` are for reading pages (blog and Connect): the text column, copy blocks, the app tabs and the "on this page" list on Connect, post cards. `v3.css` + `v3.js` are for the home only. These pages are light only. Without JavaScript every app's steps show and the text can still be selected. After changing any of these files, refresh the hashes in all pages:
+
+```sh
+python3 -c 'import hashlib,pathlib,re
+for n in ["site.css","doc.css","doc.js","v3.css","v3.js"]:
+    v=hashlib.sha256(pathlib.Path("assets/"+n).read_bytes()).hexdigest()[:10]
+    [p.write_text(re.sub(r"(/assets/"+re.escape(n)+r"\?v=)[0-9a-f]+",r"\g<1>"+v,p.read_text())) for p in pathlib.Path(".").rglob("*.html")]'
+```
+
+`styles.css`, `connect.css`, `blog.css` and `connect.js` are the older look, still used by the legal, support, manifesto and welcome pages and the old home. Launch switch: `LAUNCH` and `APP_STORE_URL` near the top of the "Launch switch" block in `home.js` turn every launch-updates button into an App Store link.
 
 Landing A/B: `assets/ab.js` (loaded in the head of `index.html` and `ko/index.html`, not deferred) gives each visitor variant a or b and keeps it in localStorage; `?ab=a` or `?ab=b` shows one. B moves the slogan into the h1 (`data-b` on the h1 and `.lede`). Every App Store link gets `pt=128870540&ct=home-{en|ko}-{a|b}`, so App Store Connect > Analytics > Acquisition > Campaigns shows page views and downloads per variant. To end the test, keep the winner in the HTML and remove ab.js and the `data-b` attributes.
 
@@ -35,7 +46,7 @@ Legal content is currently English-only. Cloudflare redirects ko/ja legal URLs t
 
 Share images: `assets/og.png` (English pages) and `assets/og-ko.png` (Korean home and Connect) are 1200×630 PNGs under 300 KB, rendered from `assets/og-src/template.html`. Regenerate with `node assets/og-src/render.mjs` (needs Google Chrome; Pretendard loads from jsDelivr). Keep key content inside the centre square: chat apps crop to about 2:1 or a square.
 
-Blog: a new post is a folder `blog/<slug>/index.html` copied from an existing post (head tags, Article + BreadcrumbList JSON-LD, visible "Updated" date, end block). Add it to `blog/index.html`, `sitemap.xml` and the Blog list in `llms.txt`, and keep `dateModified`, the visible Updated date and the `article:modified_time` tag in step when a post changes. Blog pages omit `language.js` and the language links so browsers are never redirected away from a post. English posts live under `/blog/`, Korean ones under `/ko/blog/` (real, indexable Korean pages with their own index; add Korean posts to `ko/blog/index.html` too). Only a post that exists in both languages gets hreflang (currently `add-custom-connector-in-claude` and `claude-custom-connector`); the sitemap does not use hreflang. Table styles for the comparison post live in `blog.css`, not inline. At launch, search the blog posts for "coming soon" and for `/#notify` (the launch-updates links) and switch them to the App Store link next to the `LAUNCH` switch in `home.js`; the blog does not load `home.js`.
+Blog: a new post is a folder `blog/<slug>/index.html` copied from an existing post (head tags, Article + BreadcrumbList JSON-LD, the `crumbs` line with its group, visible "Updated" date followed by the reading time, end block, and the "Keep reading" block with three related posts). On the index the newest post is the big one at the top and the rest sit under their group heading (English: Plan with your AI, Find the right app, Reviews); move the old newest post into its group when a new one takes its place. Add it to `blog/index.html`, `sitemap.xml` and the Blog list in `llms.txt`, and keep `dateModified`, the visible Updated date and the `article:modified_time` tag in step when a post changes. Blog pages omit `language.js` and the language links so browsers are never redirected away from a post. English posts live under `/blog/`, Korean ones under `/ko/blog/` (real, indexable Korean pages with their own index; add Korean posts to `ko/blog/index.html` too). Only a post that exists in both languages gets hreflang (currently `add-custom-connector-in-claude` and `claude-custom-connector`); the sitemap does not use hreflang. Table styles for the comparison post live in `doc.css`, not inline. At launch, search the blog posts for "coming soon" and for `/#notify` (the launch-updates links) and switch them to the App Store link next to the `LAUNCH` switch in `home.js`; the blog does not load `home.js`.
 
 Check the blog with `python3 ../fixes/site/check_site.py --site-root .` (without `--site-root` the checker looks at the sibling `legal-site` checkout, not this one).
 

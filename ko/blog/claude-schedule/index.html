@@ -2,16 +2,17 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=fed12e73b9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="/assets/site.css?v=b4a30302d8">
+    <link rel="stylesheet" href="/assets/doc.css?v=d302cf6704">
+    <script src="/assets/doc.js?v=14e15323cf" defer></script>
+    <meta name="color-scheme" content="light">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
     <title>클로드 일정관리 하는법: 프롬프트와 한계 · one-by.one</title>
     <meta name="description" content="클로드와 챗GPT에 일정·할 일·습관을 알려 하루를 계획해요. 복사할 프롬프트와 아이폰에서 한 장씩 실행하는 one-by.one의 기능·비용을 비교해요.">
     <link rel="canonical" href="https://one-by.one/ko/blog/claude-schedule/">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F11">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta property="og:type" content="article">
@@ -33,10 +34,6 @@
     <meta name="twitter:description" content="클로드와 챗GPT에 일정·할 일·습관을 알려 하루를 계획해요. 복사할 프롬프트와 아이폰에서 한 장씩 실행하는 one-by.one의 기능·비용을 비교해요.">
     <meta name="twitter:image" content="https://one-by.one/assets/blog/claude-schedule/og.jpg">
     <meta name="twitter:image:alt" content="왼쪽 말풍선 안의 가로 줄 목록이 위에서 아래로 갈수록 흐려지고, 오른쪽에는 라임색 카드 한 장이 점선으로 이어져 홀로 놓여 있어요.">
-    <link rel="stylesheet" href="/assets/home.css?v=0e62898a63">
-    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
-    <link rel="stylesheet" href="/assets/blog.css?v=eef6cebab7">
-    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,13 +92,24 @@
 </script>
   <script src="/assets/analytics.js?v=b274cd6e08" defer></script>
   </head>
-  <body class="home connect blog">
-    <header class="topbar"><div class="topbar-inner"><a class="brand" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/">홈</a><a href="/ko/blog/">블로그</a><a href="/ko/connect/">AI 연결</a></nav></div></header>
-    <main>
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="/ko/">홈</a><span aria-hidden="true">/</span><a href="/ko/blog/">블로그</a><span aria-hidden="true">/</span><span aria-current="page">클로드 일정관리 하는법</span></nav>
-      <article>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="topnav" aria-label="메인 메뉴">
+          <a class="toplink" href="/ko/connect/">AI 연결</a>
+          <a class="toplink" href="/ko/blog/">블로그</a>
+          <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-ko&amp;mt=8">7일 무료 체험</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell doc">
+      <div class="doc-col">
+        <nav class="crumbs" aria-label="현재 위치"><a href="/ko/blog/">블로그</a></nav>
+        <article class="prose">
         <h1>클로드 일정관리 하는법: 프롬프트와 한계까지</h1>
-        <p class="meta">one-by.one · <time datetime="2026-11-02">2026년 11월 2일</time> 업데이트</p>
+        <p class="meta">one-by.one · <time datetime="2026-11-02">2026년 11월 2일</time> 업데이트 · 3분 읽기</p>
         <p class="lede">고정 일정과 할 일, 습관을 알려 주면 클로드나 챗GPT가 빈 시간에 맞춰 하루를 짜 줘요. 계획을 받은 뒤에는 다음 할 일을 고르고, 끝낸 일을 표시하는 과정도 챙겨야 해요.</p>
         <figure class="post-hero"><img src="/assets/blog/claude-schedule/hero-ko-schedule.jpg" alt="왼쪽 말풍선 안의 가로 줄 목록이 위에서 아래로 갈수록 흐려지고, 오른쪽에는 라임색 카드 한 장이 점선으로 이어져 홀로 놓여 있어요." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
 
@@ -116,7 +124,7 @@
           <li><strong>캘린더 보여 주기.</strong> 일정 화면을 캡처해 붙여 넣거나, 고정 일정의 시간과 제목을 적어요.</li>
           <li><strong>아침마다 프롬프트 붙여 넣기.</strong> 대괄호만 내 상황으로 바꿔 두세요.</li>
         </ol>
-        <div class="copy-block"><div class="prompt-bar"><span>하루 계획 프롬프트</span><button type="button" data-copy="day-prompt" aria-label="하루 계획 프롬프트 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="하루 계획 프롬프트"><code id="day-prompt">오늘 하루를 짜 줘.
+        <div class="copy-block"><div class="prompt-bar"><span>하루 계획 프롬프트</span><button class="copy" type="button" data-copy="day-prompt" aria-label="하루 계획 프롬프트 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="하루 계획 프롬프트"><code id="day-prompt">오늘 하루를 짜 줘.
 - 고정 일정: 캘린더에서 확인해 줘. 안 보이면 [시간, 일정]이야.
 - 할 일: [할 일, 걸리는 시간]
 - 습관: [걷기 20분, 책 10쪽]
@@ -141,7 +149,7 @@
         <figure class="phone"><img src="/assets/blog/claude-schedule/app-wait-returns.jpg" alt="'Nothing to plan. Nothing to remember.' 제목 아래 one-by.one 화면이에요. 'Make sauce' 카드에 9:52 타이머가 돌고, 위에는 'Add pasta comes back in 4 min.' 알림이 떠 있어요." width="506" height="1100" loading="lazy" decoding="async"><figcaption>기다리던 일은 시간이 되면 카드로 돌아와요.</figcaption></figure>
         <p>위젯은 홈 화면(작은·중간 크기)과 잠금 화면에 있어요. 앱을 열지 않고 지금 카드를 시작하거나 끝낼 수 있고, 홈 화면 위젯에선 Skip도 돼요. 작은 위젯은 StandBy에서도 보여요.</p>
         <figure class="phone"><img src="/assets/blog/claude-schedule/app-widget.jpg" alt="'Resume from your Home Screen.' 제목 아래 one-by.one 홈 화면 위젯이에요. 'Dinner' 카드와 1:23 타이머, 라임색 Resume 버튼이 보여요." width="506" height="1100" loading="lazy" decoding="async"><figcaption>홈 화면에서 바로 지금 카드를 이어 가요.</figcaption></figure>
-        <p>대신 한국 App Store 기준 연 17,000원이에요(대상 신규 구독자는 7일 무료 체험). 내 AI가 있어야 하고, 아이폰 전용이에요. 시각적인 타임라인, 주간 보기, 팀 기능은 없어요. 앱은 <a href="https://apps.apple.com/app/id6766732077">App Store</a>에서 받을 수 있어요.</p>
+        <p>대신 한국 App Store 기준 연 17,000원이에요(대상 신규 구독자는 7일 무료 체험). 내 AI가 있어야 하고, 아이폰 전용이에요. 시각적인 타임라인, 주간 보기, 팀 기능은 없어요. 앱은 <a href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-ko&amp;mt=8">App Store</a>에서 받을 수 있어요.</p>
 
         <h2 id="pick">클로드·챗GPT와 one-by.one 중 고르기</h2>
         <ul>
@@ -152,12 +160,48 @@
         <aside class="end" aria-labelledby="end-title">
           <h2 id="end-title">클로드가 짠 하루를 한 장씩 실행해 보세요</h2>
           <p>AI 연결 페이지에 클로드 연결 순서와 AI에게 그대로 붙여 넣을 지시문이 있어요. 앱은 App Store에 나와 있어요.</p>
-          <p class="cta-row"><a class="btn" href="/ko/connect/">AI 연결 페이지 열기</a><a class="btn soft" href="https://apps.apple.com/app/id6766732077">App Store에서 받기</a></p>
+          <p class="cta-row"><a class="btn" href="/ko/connect/">AI 연결 페이지 열기</a><a class="btn soft" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-ko&amp;mt=8">App Store에서 받기</a></p>
           <p class="small">one-by.one은 App Store에서 받을 수 있어요.</p>
         </aside>
       </article>
+        <section class="more" aria-labelledby="more-title">
+          <h2 id="more-title">이어서 읽기</h2>
+          <ul class="cards">
+              <li><a class="card" href="/ko/blog/claude-mcp-connect/"><img src="/assets/blog/claude-mcp-connect/hero-ko-mcp-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>클로드 MCP 연결 방법: 사용법부터 모바일까지</h3><time datetime="2026-11-02">2026년 11월 2일</time></a></li>
+              <li><a class="card" href="/ko/blog/claude-custom-connector/"><img src="/assets/blog/claude-custom-connector/hero-connector-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지</h3><time datetime="2026-11-02">2026년 11월 2일</time></a></li>
+          </ul>
+        </section>
+      </div>
     </main>
-    <footer><div class="shell footer-inner"><nav aria-label="하단 메뉴"><a href="/ko/">홈</a><a href="/ko/blog/">블로그</a><a href="/ko/connect/">AI 연결</a><a href="/privacy/">개인정보 처리방침(영어)</a><a href="/terms/">이용약관(영어)</a><a href="/support/">지원(영어)</a></nav><div class="footer-end"><span>법적 문서는 영어본이 기준입니다. · © 2026 one-by.one</span></div></div>
+
+    <footer class="footer">
+      <div class="shell">
+        <a class="wordmark" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="footer-nav" aria-label="하단 메뉴">
+          <div>
+            <h2>제품</h2>
+            <a href="/ko/connect/">AI 연결</a>
+            <a href="/ko/blog/">블로그</a>
+            <a href="/manifesto/">만드는 이유</a>
+          </div>
+          <div>
+            <h2>지원</h2>
+            <a href="/support/">지원</a>
+            <a href="/privacy/">개인정보 처리방침</a>
+            <a href="/terms/">이용약관</a>
+          </div>
+          <div>
+            <h2>언어</h2>
+            <a href="/blog/" hreflang="en" lang="en">EN</a>
+            <a href="/ko/blog/" hreflang="ko" lang="ko" aria-current="true">한국어</a>
+          </div>
+        </nav>
+        <div class="company">
+          <p>운영 salad76(개인사업자) · 대표·개인정보 보호책임자 김승은 (퀘벡 포함)</p>
+          <p>사업장 서울특별시 서초구 동광로 173, 302호</p>
+          <p><a href="mailto:privacy@one-by.one">privacy@one-by.one</a> · <a href="mailto:support@one-by.one">support@one-by.one</a> · © 2026 one-by.one</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,14 +1,14 @@
 <!doctype html><html lang="en"><head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=fed12e73b9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="/assets/site.css?v=b4a30302d8">
+    <link rel="stylesheet" href="/assets/doc.css?v=d302cf6704">
+    <meta name="color-scheme" content="light">
     <title>Connect your AI · one-by.one</title>
     <meta name="description" content="Use ChatGPT, Claude, Codex, Cursor or any MCP agent with one-by.one. Paste one prompt, sign in, and approve what it can do.">
     <link rel="canonical" href="https://one-by.one/connect/">
     <link rel="alternate" type="text/markdown" href="/connect/index.md" title="Markdown version for AI agents">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F11">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta property="og:type" content="website">
@@ -27,9 +27,7 @@
     <meta name="twitter:description" content="Use ChatGPT, Claude, Codex, Cursor or any MCP agent with one-by.one. Paste one prompt, sign in, and approve what it can do.">
     <meta name="twitter:image" content="https://one-by.one/assets/og.png">
     <meta name="twitter:image:alt" content="one-by.one: one thing at a time. A row of small cards with the current one in front.">
-      <link rel="stylesheet" href="/assets/home.css?v=0e62898a63">
-    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
-    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
+    <script src="/assets/doc.js?v=14e15323cf" defer></script>
     <script src="/assets/language.js?v=154bb27a85"></script>
     <script src="/assets/analytics.js?v=b274cd6e08" defer></script>
   <link rel="alternate" hreflang="en" href="https://one-by.one/connect/">
@@ -87,36 +85,115 @@
  ]
 }</script>
 </head>
-<body class="home connect">
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/" aria-current="page">Connect</a></nav></div></header>
-<main><h1>Connect your AI</h1><p class="lede">Copy this prompt and paste it into ChatGPT or Claude. Your AI shows you where to tap.</p><section aria-label="Prompt"><div class="copy-block"><div class="prompt-bar"><span>Paste into your AI</span><button type="button" data-copy="connect-prompt" aria-label="Prompt Copy" hidden>Copy</button></div><pre class="wrap" tabindex="0" aria-label="Prompt"><code id="connect-prompt">Help me connect one-by.one to you. It&#39;s a custom connector named one-by.one at https://mcp.one-by.one/mcp. Tell me exactly where to tap to add it on this device, one step at a time. I&#39;ll sign in and tap Allow, then go back to the one-by.one app.</code></pre><span role="status" aria-live="polite"></span></div><p class="note">Sign in with the same one-by.one account as on your iPhone and tap Allow. Then go back to the app.</p></section><section aria-labelledby="teach"><h2 id="teach">Teach your AI the habit</h2><p>Paste this into Claude or ChatGPT once.</p><div class="copy-block"><div class="prompt-bar"><span>Paste into your AI</span><button type="button" data-copy="memory-prompt" aria-label="Memory prompt Copy" hidden>Copy</button></div><pre class="wrap" tabindex="0" aria-label="Memory prompt"><code id="memory-prompt">Please remember this for all our chats: I run my day in one-by.one. Whenever I mention something I did or still need to do, even loosely, update one-by.one right away (done → record it, to do → add or change the card), then tell me my next card in one line. If you can add skills, also add the one-by.one skill from https://one-by.one/skill/one-by-one/SKILL.md.</code></pre><span role="status" aria-live="polite"></span></div></section><section aria-labelledby="start"><h2 id="start">How it works</h2><p>Your AI adds one-by.one as a connector; you sign in to your one-by.one account in the browser and approve the access. An AI can’t add a connector by itself, so it tells you where to tap. You can connect up to 3 apps. To disconnect one, tap <strong>Disconnect</strong> in <strong>Settings › AI apps</strong> in the iPhone app.</p></section><section aria-labelledby="permissions"><h2 id="permissions">Permissions</h2><p>The app can:</p><ul><li><code>context:read</code> — read the context you share for planning.</li><li><code>activity:read</code> — read your plans and recorded activity.</li><li><code>activity:write</code> — create or update plans and save activity.</li></ul><p>An app we have not verified shows as <strong>Unverified app</strong> on the approval screen; check it is the one you meant to connect. The <a href="/privacy/#connected-ai">Privacy Policy</a> covers what your AI receives.</p></section><section aria-labelledby="server"><h2 id="server">For developer tools</h2><p>Claude Code, Codex, Cursor and other MCP apps take the server URL directly.</p><div class="copy-block"><div class="url"><pre tabindex="0" aria-label="MCP server URL"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button type="button" data-copy="server-url" aria-label="MCP server URL Copy" hidden>Copy</button></div><span role="status" aria-live="polite"></span></div><p class="note">Streamable HTTP, OAuth sign-in. No API key or token.</p></section><section aria-labelledby="tools"><h2 id="tools">Set up your app</h2><p>Merge only the onebyone entry into your existing settings. No tokens or client secrets are needed. Menus vary by version.</p><nav class="tool-index" aria-label="Setup guides"><a href="#chatgpt">ChatGPT</a> <a href="#claude">Claude</a> <a href="#claude-code">Claude Code</a> <a href="#codex">Codex CLI</a> <a href="#cursor">Cursor</a> <a href="#vscode">VS Code</a> <a href="#gemini">Gemini CLI</a> <a href="#windsurf">Windsurf</a></nav><section class="tool" id="chatgpt"><h3>ChatGPT · Apps / Connectors</h3><ol><li>Turn on Developer mode if your account allows it (Settings → Security and login → Developer mode).</li><li>Open Plugins, select +, name it one-by.one and enter <code>https://mcp.one-by.one/mcp</code>. Older versions call this Apps or Connectors.</li><li>Finish the sign-in, then pick it from the tools menu in a new chat. Availability depends on your plan and workspace policy.</li></ol><p class="src"><a href="https://developers.openai.com/plugins/deploy/connect-chatgpt">Official guide</a></p></section><section class="tool" id="claude"><h3>Claude · claude.ai / Desktop</h3><ol><li>Open Customize → Connectors and add a custom web connector.</li><li>Name it one-by.one and enter <code>https://mcp.one-by.one/mcp</code>.</li><li>Choose sign-in authentication and automatic client registration if shown, finish the sign-in, then enable the connector in your conversation.</li></ol><p>Claude Desktop uses the same connector. Team and Enterprise workspaces may need an owner to add it first.</p><p class="src"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Official guide</a></p></section><section class="tool" id="claude-code"><h3>Claude Code</h3><p>Run in your terminal:</p><pre tabindex="0"><code>claude mcp add --transport http onebyone https://mcp.one-by.one/mcp</code></pre><p>Then run <code>/mcp</code> in a session, select onebyone and authenticate in the browser.</p><p class="src"><a href="https://code.claude.com/docs/en/mcp">Official guide</a></p></section><section class="tool" id="codex"><h3>Codex CLI</h3><p>Add the server and sign in:</p><pre tabindex="0"><code>codex mcp add onebyone --url https://mcp.one-by.one/mcp
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="topnav" aria-label="Main navigation">
+          <a class="toplink" href="/blog/">Blog</a>
+          <a class="toplink" href="/connect/" aria-current="page">Connect</a>
+          <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=connect-en&amp;mt=8">Try free for 7 days</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell doc guide">
+      <div class="guide-body prose">
+        <h1>Connect your AI</h1>
+        <p class="lede">Paste one prompt into ChatGPT or Claude. Your AI shows you where to tap.</p>
+
+        <section id="start" aria-labelledby="start-h">
+          <h2 class="sr" id="start-h">Connect</h2>
+          <ol class="steps">
+            <li>
+              <h3>Paste this into ChatGPT or Claude</h3>
+              <div class="copy-block">
+                <pre class="wrap" tabindex="0" aria-label="Prompt"><code id="connect-prompt">Help me connect one-by.one to you. It&#39;s a custom connector named one-by.one at https://mcp.one-by.one/mcp. Tell me exactly where to tap to add it on this device, one step at a time. I&#39;ll sign in and tap Allow, then go back to the one-by.one app.</code></pre>
+                <button class="copy copy-main" type="button" data-copy="connect-prompt" hidden>Copy the prompt</button>
+                <span role="status" aria-live="polite"></span>
+              </div>
+            </li>
+            <li>
+              <h3>Tap where your AI tells you</h3>
+              <p>An AI can’t add a connector by itself, so it tells you where to tap on this device, one step at a time.</p>
+            </li>
+            <li>
+              <h3>Sign in and tap Allow</h3>
+              <p>Use the same one-by.one account as on your iPhone. Then go back to the app.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section id="teach" aria-labelledby="teach-h">
+          <h2 id="teach-h">Teach your AI the habit</h2>
+          <p>Paste this into Claude or ChatGPT once.</p>
+          <div class="copy-block">
+            <div class="prompt-bar"><span>Paste into your AI</span><button class="copy" type="button" data-copy="memory-prompt" aria-label="Memory prompt Copy" hidden>Copy</button></div>
+            <pre class="wrap" tabindex="0" aria-label="Memory prompt"><code id="memory-prompt">Please remember this for all our chats: I run my day in one-by.one. Whenever I mention something I did or still need to do, even loosely, update one-by.one right away (done → record it, to do → add or change the card), then tell me my next card in one line. If you can add skills, also add the one-by.one skill from https://one-by.one/skill/one-by-one/SKILL.md.</code></pre>
+            <span role="status" aria-live="polite"></span>
+          </div>
+          <h3 id="examples">Then try saying</h3>
+          <ul class="says">
+            <li>“Here is my week: I work 9 to 6 Monday to Friday, and I have a dentist visit Thursday at 4. Plan it, including getting there and back.”</li>
+            <li>“I am behind today. Lighten the rest of the day and move what can wait.”</li>
+            <li>“I just walked for 20 minutes and read for half an hour. Record that.”</li>
+            <li>“Look at what I actually did last week and tell me what to change this week.”</li>
+          </ul>
+        </section>
+
+        <section id="tools" aria-labelledby="tools-h">
+          <h2 id="tools-h">Set it up yourself</h2>
+          <p>Claude Code, Codex, Cursor and other MCP apps take the server URL directly.</p>
+          <div class="copy-block" id="server">
+            <div class="url"><pre tabindex="0" aria-label="MCP server URL"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button class="copy" type="button" data-copy="server-url" aria-label="MCP server URL Copy" hidden>Copy</button></div>
+            <span role="status" aria-live="polite"></span>
+          </div>
+          <p class="note">Streamable HTTP, OAuth sign-in. No API key or token. Merge only the onebyone entry into your existing settings. No tokens or client secrets are needed. Menus vary by version.</p>
+          <nav class="tabs" data-tabs aria-label="Setup guides"><a href="#chatgpt">ChatGPT</a><a href="#claude">Claude</a><a href="#claude-code">Claude Code</a><a href="#codex">Codex CLI</a><a href="#cursor">Cursor</a><a href="#vscode">VS Code</a><a href="#gemini">Gemini CLI</a><a href="#windsurf">Windsurf</a></nav>
+          <section class="tool" id="chatgpt"><h3>ChatGPT · Apps / Connectors</h3><ol><li>Turn on Developer mode if your account allows it (Settings → Security and login → Developer mode).</li><li>Open Plugins, select +, name it one-by.one and enter <code>https://mcp.one-by.one/mcp</code>. Older versions call this Apps or Connectors.</li><li>Finish the sign-in, then pick it from the tools menu in a new chat. Availability depends on your plan and workspace policy.</li></ol><p class="src"><a href="https://developers.openai.com/plugins/deploy/connect-chatgpt">Official guide</a></p></section>
+          <section class="tool" id="claude"><h3>Claude · claude.ai / Desktop</h3><ol><li>Open Customize → Connectors and add a custom web connector.</li><li>Name it one-by.one and enter <code>https://mcp.one-by.one/mcp</code>.</li><li>Choose sign-in authentication and automatic client registration if shown, finish the sign-in, then enable the connector in your conversation.</li></ol><p>Claude Desktop uses the same connector. Team and Enterprise workspaces may need an owner to add it first.</p><p class="src"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Official guide</a></p></section>
+          <section class="tool" id="claude-code"><h3>Claude Code</h3><p>Run in your terminal:</p><pre tabindex="0"><code>claude mcp add --transport http onebyone https://mcp.one-by.one/mcp</code></pre><p>Then run <code>/mcp</code> in a session, select onebyone and authenticate in the browser.</p><p class="src"><a href="https://code.claude.com/docs/en/mcp">Official guide</a></p></section>
+          <section class="tool" id="codex"><h3>Codex CLI</h3><p>Add the server and sign in:</p><pre tabindex="0"><code>codex mcp add onebyone --url https://mcp.one-by.one/mcp
 codex mcp login onebyone</code></pre><p>Or add this to <code>~/.codex/config.toml</code> and run <code>codex mcp login onebyone</code>:</p><pre tabindex="0"><code>[mcp_servers.onebyone]
-url = &quot;https://mcp.one-by.one/mcp&quot;</code></pre><p>Check the connection with <code>/mcp</code> in Codex.</p><p class="src"><a href="https://developers.openai.com/codex/mcp">Official guide</a></p></section><section class="tool" id="cursor"><h3>Cursor</h3><p>Add this to <code>.cursor/mcp.json</code> (project) or <code>~/.cursor/mcp.json</code> (all projects):</p><pre tabindex="0"><code>{
+url = &quot;https://mcp.one-by.one/mcp&quot;</code></pre><p>Check the connection with <code>/mcp</code> in Codex.</p><p class="src"><a href="https://developers.openai.com/codex/mcp">Official guide</a></p></section>
+          <section class="tool" id="cursor"><h3>Cursor</h3><p>Add this to <code>.cursor/mcp.json</code> (project) or <code>~/.cursor/mcp.json</code> (all projects):</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;url&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>Restart Cursor, complete the sign-in prompt and use the tools in Agent.</p><p class="src"><a href="https://cursor.com/docs/mcp">Official guide</a></p></section><section class="tool" id="vscode"><h3>VS Code · GitHub Copilot</h3><p>Add this to <code>.vscode/mcp.json</code>, or open user settings with <code>MCP: Open User Configuration</code>:</p><pre tabindex="0"><code>{
+}</code></pre><p>Restart Cursor, complete the sign-in prompt and use the tools in Agent.</p><p class="src"><a href="https://cursor.com/docs/mcp">Official guide</a></p></section>
+          <section class="tool" id="vscode"><h3>VS Code · GitHub Copilot</h3><p>Add this to <code>.vscode/mcp.json</code>, or open user settings with <code>MCP: Open User Configuration</code>:</p><pre tabindex="0"><code>{
   &quot;servers&quot;: {
     &quot;onebyone&quot;: {
       &quot;type&quot;: &quot;http&quot;,
       &quot;url&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>Start onebyone from the editor, sign in in the browser and enable its tools in Copilot Agent.</p><p class="src"><a href="https://code.visualstudio.com/docs/agents/reference/mcp-configuration">Official guide</a></p></section><section class="tool" id="gemini"><h3>Gemini CLI</h3><p>Add this to <code>~/.gemini/settings.json</code> or the project’s <code>.gemini/settings.json</code>. OAuth is discovered automatically.</p><pre tabindex="0"><code>{
+}</code></pre><p>Start onebyone from the editor, sign in in the browser and enable its tools in Copilot Agent.</p><p class="src"><a href="https://code.visualstudio.com/docs/agents/reference/mcp-configuration">Official guide</a></p></section>
+          <section class="tool" id="gemini"><h3>Gemini CLI</h3><p>Add this to <code>~/.gemini/settings.json</code> or the project’s <code>.gemini/settings.json</code>. OAuth is discovered automatically.</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;httpUrl&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>Then, in a Gemini CLI session:</p><pre tabindex="0"><code>/mcp auth onebyone</code></pre><p class="src"><a href="https://geminicli.com/docs/tools/mcp-server/">Official guide</a></p></section><section class="tool" id="windsurf"><h3>Windsurf / Cascade</h3><p>In Cascade, open the … Actions menu → MCPs → Open MCP config file. Add this to <code>mcp_config.json</code> and sign in when prompted:</p><pre tabindex="0"><code>{
+}</code></pre><p>Then, in a Gemini CLI session:</p><pre tabindex="0"><code>/mcp auth onebyone</code></pre><p class="src"><a href="https://geminicli.com/docs/tools/mcp-server/">Official guide</a></p></section>
+          <section class="tool" id="windsurf"><h3>Windsurf / Cascade</h3><p>In Cascade, open the … Actions menu → MCPs → Open MCP config file. Add this to <code>mcp_config.json</code> and sign in when prompted:</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;serverUrl&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>The official Windsurf guide now redirects to Devin Desktop and covers the legacy Cascade agent. Newer Devin Local tabs use a different setup.</p><p class="src"><a href="https://docs.windsurf.com/windsurf/cascade/mcp">Official guide</a></p></section></section><section aria-labelledby="other"><h2 id="other">Other MCP apps</h2><p>Use the same URL with remote Streamable HTTP and OAuth. The app must support OAuth discovery and dynamic client registration; local tools can use a loopback redirect. Agents can read this page as <a href="/connect/index.md" type="text/markdown">Markdown</a>.</p></section><section aria-labelledby="examples"><h2 id="examples">Example prompts</h2><p>After connecting, try:</p><ul><li>“Here is my week: I work 9 to 6 Monday to Friday, and I have a dentist visit Thursday at 4. Plan it, including getting there and back.”</li><li>“I am behind today. Lighten the rest of the day and move what can wait.”</li><li>“I just walked for 20 minutes and read for half an hour. Record that.”</li><li>“Look at what I actually did last week and tell me what to change this week.”</li></ul></section><section aria-labelledby="troubleshooting"><h2 id="troubleshooting">Troubleshooting</h2><dl><dt>The sign-in page does not open.</dt><dd>Your app must support OAuth sign-in with automatic client registration. Remove the connection, add it again and retry.</dd><dt>The limit of 3 connections is reached.</dt><dd>Disconnect one you no longer use in Settings › AI apps in the iPhone app, then connect again.</dd><dt>The tools do not appear in a chat.</dt><dd>Turn the connector on for that conversation, or start a new chat.</dd><dt>Access is refused after sign-in.</dt><dd>AI connections need your account’s subscription access. Check it in the iPhone app.</dd><dt>Cards do not show on the iPhone.</dt><dd>Make sure the iPhone app and your AI app are signed in to the same one-by.one account.</dd></dl><p>Still stuck? <a href="/support/">Contact support</a>.</p></section><section aria-labelledby="disconnect"><h2 id="disconnect">Disconnecting</h2><p>You can also use <strong>Disconnect</strong> on the connection’s authorization page, or remove it in the AI app. This stops future access; it does not delete your one-by.one records or what the AI already received. AI connections require your account’s applicable subscription entitlement.</p></section><section id="agent"><details><summary>Prompt for your AI agent</summary><p>Paste this into your agent to add the server and start the sign-in.</p><div class="copy-block"><div class="prompt-bar"><span>Instruction for your AI agent</span><button type="button" data-copy="agent-prompt-text" aria-label="Instruction for your AI agent Copy" hidden>Copy</button></div><pre class="wrap" tabindex="0" aria-label="Instruction for your AI agent"><code id="agent-prompt-text">Add the one-by.one MCP server to yourself and connect it.
+}</code></pre><p>The official Windsurf guide now redirects to Devin Desktop and covers the legacy Cascade agent. Newer Devin Local tabs use a different setup.</p><p class="src"><a href="https://docs.windsurf.com/windsurf/cascade/mcp">Official guide</a></p></section>
+          <h3 id="other">Other MCP apps</h3>
+          <p>Use the same URL with remote Streamable HTTP and OAuth. The app must support OAuth discovery and dynamic client registration; local tools can use a loopback redirect. Agents can read this page as <a href="/connect/index.md" type="text/markdown">Markdown</a>.</p>
+          <div class="qa" id="agent">
+            <details>
+              <summary>Prompt for your AI agent</summary>
+              <p>Paste this into your agent to add the server and start the sign-in.</p>
+              <div class="copy-block">
+                <div class="prompt-bar"><span>Instruction for your AI agent</span><button class="copy" type="button" data-copy="agent-prompt-text" aria-label="Instruction for your AI agent Copy" hidden>Copy</button></div>
+                <pre class="wrap" tabindex="0" aria-label="Instruction for your AI agent"><code id="agent-prompt-text">Add the one-by.one MCP server to yourself and connect it.
 
 - Server URL: https://mcp.one-by.one/mcp
 - Transport: remote streamable HTTP. Name the server &quot;onebyone&quot;.
@@ -128,6 +205,80 @@ Steps:
 3. I will sign in to my one-by.one account and approve the permissions: context:read, activity:read and activity:write. The approval screen may label you &quot;Unverified app&quot;; that is normal for unverified clients.
 4. When I am back, confirm that the onebyone tools are listed. Do not create or change any plans until I ask. If the connection is refused because the limit of 3 AI connections is reached, tell me.
 
-Instructions for each client: https://one-by.one/connect/index.md</code></pre><span role="status" aria-live="polite"></span></div></details></section><p class="help"><a href="/support/">Need help? Visit Support.</a></p></main>
-<footer><div class="shell footer-inner"><nav aria-label="Footer"><a href="/">Home</a><a href="/connect/">Connect</a><a href="/blog/">Blog</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav><div class="footer-end"><nav class="language-links" aria-label="Language"><a href="/connect/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/connect/?lang=ko" data-language="ko" lang="ko">한국어</a></nav><span>© 2026 one-by.one</span></div></div>
-</footer></body></html>
+Instructions for each client: https://one-by.one/connect/index.md</code></pre>
+                <span role="status" aria-live="polite"></span>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="permissions" aria-labelledby="permissions-h">
+          <h2 id="permissions-h">Permissions</h2>
+          <p>The app can:</p>
+          <ul class="scopes">
+            <li><code>context:read</code><span>Read the context you share for planning.</span></li>
+            <li><code>activity:read</code><span>Read your plans and recorded activity.</span></li>
+            <li><code>activity:write</code><span>Create or update plans and save activity.</span></li>
+          </ul>
+          <p>An app we have not verified shows as <strong>Unverified app</strong> on the approval screen; check it is the one you meant to connect. The <a href="/privacy/#connected-ai">Privacy Policy</a> covers what your AI receives.</p>
+        </section>
+
+        <section id="troubleshooting" aria-labelledby="troubleshooting-h">
+          <h2 id="troubleshooting-h">Troubleshooting</h2>
+          <div class="qa">
+            <details><summary>The sign-in page does not open.</summary><p>Your app must support OAuth sign-in with automatic client registration. Remove the connection, add it again and retry.</p></details>
+            <details><summary>The limit of 3 connections is reached.</summary><p>Disconnect one you no longer use in Settings › AI apps in the iPhone app, then connect again.</p></details>
+            <details><summary>The tools do not appear in a chat.</summary><p>Turn the connector on for that conversation, or start a new chat.</p></details>
+            <details><summary>Access is refused after sign-in.</summary><p>AI connections need your account’s subscription access. Check it in the iPhone app.</p></details>
+            <details><summary>Cards do not show on the iPhone.</summary><p>Make sure the iPhone app and your AI app are signed in to the same one-by.one account.</p></details>
+          </div>
+          <p>Still stuck? <a href="/support/">Contact support</a>.</p>
+        </section>
+
+        <section id="disconnect" aria-labelledby="disconnect-h">
+          <h2 id="disconnect-h">Disconnecting</h2>
+          <p>You can connect up to 3 apps. To disconnect an app, tap <strong>Disconnect</strong> in <strong>Settings › AI apps</strong> in the iPhone app.</p>
+          <p>You can also use <strong>Disconnect</strong> on the connection’s authorization page, or remove it in the AI app. This stops future access; it does not delete your one-by.one records or what the AI already received. AI connections require your account’s applicable subscription entitlement.</p>
+        </section>
+      </div>
+
+      <nav class="toc" data-toc aria-label="On this page">
+        <b>On this page</b>
+        <a href="#start">Connect</a>
+        <a href="#teach">Teach your AI</a>
+        <a href="#tools">Set it up yourself</a>
+        <a href="#permissions">Permissions</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#disconnect">Disconnecting</a>
+      </nav>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="footer-nav" aria-label="Footer">
+          <div>
+            <h2>Product</h2>
+            <a href="/connect/">Connect</a>
+            <a href="/blog/">Blog</a>
+            <a href="/manifesto/">Why we make it</a>
+          </div>
+          <div>
+            <h2>Support</h2>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+          </div>
+          <div>
+            <h2>Language</h2>
+            <a href="/connect/?lang=en" hreflang="en" lang="en" data-language="en" aria-current="true">EN</a>
+            <a href="/ko/connect/?lang=ko" hreflang="ko" lang="ko" data-language="ko">한국어</a>
+          </div>
+        </nav>
+        <div class="company">
+          <p><a href="mailto:support@one-by.one">support@one-by.one</a> · © 2026 one-by.one</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

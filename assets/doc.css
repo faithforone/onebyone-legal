@@ -1,0 +1,666 @@
+/* Reading pages: the blog and the connect guide. One column of text under the same top bar,
+   buttons and footer as the home (site.css). Nothing fades here either: a copied button cuts
+   to its new label, a picked tab cuts to its steps. */
+
+.doc { padding-block: 26px 72px; }
+.doc-col { width: min(720px, 100%); margin-inline: auto; }
+
+@media (min-width: 760px) {
+  .doc { padding-block: 44px 112px; }
+}
+
+/* The top bar on a phone keeps the first link and the button. */
+@media (max-width: 479px) {
+  .topnav .toplink + .toplink { display: none; }
+  /* The English button is longer: the links wait in the footer. */
+  html:lang(en) .topnav .toplink { display: none; }
+}
+
+@media (max-width: 359px) {
+  .topnav .toplink { display: none; }
+}
+
+/* Head of a page: where you are, the title, one line under it. */
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
+.crumbs a { text-decoration: none; }
+.crumbs [aria-hidden] { color: var(--faint); }
+
+.doc h1 {
+  margin-top: 14px;
+  font-size: clamp(31px, 8vw, 54px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.meta {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 14.5px;
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.lede {
+  margin-top: 20px;
+  font-size: clamp(18px, 4.7vw, 21px);
+  line-height: 1.6;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .crumbs a:hover { text-decoration: underline; }
+}
+
+/* Text. Posts keep their old flat markup: everything is a direct child of the article. */
+
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > dl,
+.prose section > p,
+.prose section > ul,
+.prose section > ol {
+  margin-top: 22px;
+  font-size: 17.5px;
+  line-height: 1.75;
+  letter-spacing: -.015em;
+  overflow-wrap: break-word;
+}
+
+.prose > .lede { margin-top: 20px; font-size: clamp(18px, 4.7vw, 21px); line-height: 1.6; letter-spacing: -.025em; }
+.prose > .meta { margin-top: 16px; font-size: 14.5px; line-height: 1.55; }
+
+.prose h2 {
+  margin-top: 56px;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+
+.prose h3 {
+  margin-top: 34px;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -.03em;
+}
+
+.prose h2 + p, .prose h2 + ul, .prose h2 + ol, .prose h3 + p, .prose h3 + ul, .prose h3 + ol { margin-top: 14px; }
+
+.prose strong { font-weight: 700; }
+
+.prose a:not(.btn, .card, .chip) {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: #b4b9bf;
+  text-underline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .prose a:not(.btn, .card, .chip):hover { text-decoration-color: var(--ink); }
+}
+
+/* Lists: a small ink dot; steps get a numbered disc, the way the app numbers nothing but order. */
+.prose ul > li,
+.prose ol > li { position: relative; margin-top: 10px; padding-left: 24px; }
+
+.prose ul > li::before {
+  position: absolute;
+  top: .78em;
+  left: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  content: "";
+}
+
+.prose ol { counter-reset: step; }
+.prose ol > li { padding-left: 40px; counter-increment: step; }
+
+.prose ol > li::before {
+  position: absolute;
+  top: .2em;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  content: counter(step);
+}
+
+.prose ol > li { margin-top: 14px; }
+.prose li > ul, .prose li > ol { margin-top: 8px; }
+
+.prose .small, .prose .note, .prose .src { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.prose .src { margin-top: 12px; }
+
+.prose dl { margin-top: 18px; }
+.prose dt { margin-top: 18px; font-weight: 700; }
+.prose dd { margin: 4px 0 0; color: var(--muted); }
+
+/* Code and things to copy. */
+
+.prose code {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .86em;
+  letter-spacing: 0;
+}
+
+.prose :not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--paper);
+  overflow-wrap: anywhere;
+}
+
+.prose pre {
+  margin: 14px 0 0;
+  padding: 15px 17px;
+  overflow-x: auto;
+  border-radius: 16px;
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1.65;
+  tab-size: 2;
+  word-break: normal;
+}
+
+.prose pre code { font-size: .92em; }
+.prose pre:focus-visible { outline-offset: 2px; }
+.prose pre.wrap { white-space: pre-wrap; word-break: keep-all; overflow-wrap: anywhere; overflow-x: visible; }
+
+.copy-block {
+  margin-top: 18px;
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--paper);
+}
+
+.copy-block pre,
+.copy-block pre.wrap {
+  margin: 0;
+  border-radius: 16px;
+  background: var(--page);
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -.015em;
+}
+
+.copy-block pre.wrap code { font-family: inherit; font-size: 1em; }
+
+.prompt-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 4px 6px 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
+.copy {
+  flex: none;
+  min-width: 68px;
+  min-height: 40px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 99px;
+  background: var(--ink);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  cursor: pointer;
+  transition: transform 160ms var(--out);
+}
+
+.copy:active { transform: scale(.96); }
+.copy.is-copied { background: var(--lime); color: var(--ink); }
+
+.copy-block .url { display: flex; align-items: center; gap: 6px; }
+.copy-block .url pre { flex: 1; min-width: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15.5px; letter-spacing: 0; }
+.copy-block .url pre code { font-size: 1em; }
+.copy-block .url .copy { margin-right: 4px; }
+
+.copy-block [role="status"] { display: block; color: var(--muted); font-size: 13.5px; }
+.copy-block [role="status"]:not(:empty) { padding: 8px 12px 4px; }
+
+/* A code block with its own copy button (doc.js adds the button). */
+.code { display: flex; align-items: flex-start; gap: 6px; margin-top: 14px; padding: 8px; border-radius: 16px; background: var(--paper); }
+.code pre { flex: 1; min-width: 0; margin: 0; padding: 8px 9px; border-radius: 10px; background: none; }
+.code .copy { flex: none; min-width: 0; padding: 0 13px; font-size: 13px; }
+
+/* Pictures. */
+
+.prose figure { margin: 30px 0 0; }
+.prose figure img { display: block; width: 100%; height: auto; border-radius: 20px; background: var(--paper); }
+.prose figcaption { margin-top: 10px; color: var(--muted); font-size: 14.5px; line-height: 1.5; letter-spacing: -.01em; }
+.prose figure.post-hero { margin-top: 28px; }
+.prose figure.post-hero img { border-radius: 24px; }
+.prose figure.phone { width: min(270px, 78%); margin: 34px auto 0; }
+.prose figure.phone img { border: 7px solid #0c0d0f; border-radius: 40px; box-shadow: 0 30px 60px -34px #17181b80, 0 8px 18px -14px #17181b99; }
+.prose figure.phone figcaption { margin-top: 14px; text-align: center; }
+
+@media (min-width: 900px) {
+  .prose figure.post-hero { margin-inline: -60px; }
+  .prose figure.post-hero img { border-radius: 32px; }
+}
+
+/* Tables scroll inside themselves, never the page. */
+.table-wrap { margin-top: 22px; overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; }
+.table-wrap table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14.5px; line-height: 1.5; letter-spacing: -.01em; }
+.table-wrap caption { padding: 12px 14px; color: var(--muted); font-size: 14px; text-align: left; }
+.table-wrap th, .table-wrap td { padding: 11px 14px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+.table-wrap thead th { background: var(--paper); font-weight: 700; white-space: nowrap; }
+.table-wrap tbody th { font-weight: 700; white-space: nowrap; }
+
+/* Jump links and group links: small pills. */
+.jump, .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 22px; }
+.jump span { margin-right: 2px; color: var(--muted); font-size: 14.5px; font-weight: 650; }
+
+.jump a, .chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 15px;
+  border-radius: 99px;
+  background: var(--paper);
+  font-size: 14.5px;
+  font-weight: 650;
+  letter-spacing: -.02em;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: transform 160ms var(--out);
+}
+
+.jump a:active, .chip:active { transform: scale(.97); }
+
+@media (hover: hover) and (pointer: fine) {
+  .jump a:hover, .chip:hover { background: #e6e8ea; }
+}
+
+/* The end of a post: one dark card, the same as the price card on the home. */
+.end {
+  margin-top: 64px;
+  padding: 32px 26px 28px;
+  border-radius: 32px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.prose .end h2 { margin: 0; font-size: clamp(27px, 7vw, 40px); line-height: 1.16; letter-spacing: -.05em; }
+.prose .end p { margin-top: 10px; color: #c4c7cc; font-size: 17px; line-height: 1.55; }
+.end .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px !important; }
+
+.end .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 99px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 160ms var(--out);
+}
+
+.end .btn:active { transform: scale(.97); }
+.end :focus-visible { outline-color: #fff; }
+.end .btn.soft { background: none; box-shadow: inset 0 0 0 1.5px #5c6068; color: #fff; }
+.prose .end .small { margin-top: 18px; color: #9399a0; font-size: 13.5px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .end .btn:hover { background: #e6e8ea; }
+  .end .btn.soft:hover { background: none; box-shadow: inset 0 0 0 1.5px #fff; }
+}
+
+@media (max-width: 479px) {
+  .end .btn { flex: 1 1 100%; padding-block: 14px; line-height: 1.3; text-align: center; white-space: normal; text-wrap: balance; }
+}
+
+@media (min-width: 760px) {
+  .end { padding: 44px 44px 38px; border-radius: 40px; }
+}
+
+/* Cards for posts: the picture, the title, the date. Used by the index and by "keep reading". */
+
+.cards { display: grid; gap: 28px 18px; margin-top: 22px; }
+
+.card { display: block; text-decoration: none; }
+
+.card img,
+.feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 20px;
+  background: var(--paper);
+  transition: transform 220ms var(--out);
+}
+
+.card h3 {
+  margin-top: 14px;
+  font-size: 19px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.card p { margin-top: 6px; color: var(--muted); font-size: 15px; line-height: 1.5; letter-spacing: -.015em; }
+
+.card time,
+.feature time,
+.kicker {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.card:active img, .feature:active img { transform: scale(.985); }
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover h3, .feature:hover h2 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+}
+
+/* On a phone a post is one row: a small picture and the title beside it. */
+@media (max-width: 619px) {
+  .cards { gap: 0; margin-top: 12px; }
+  .card { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 14px; align-items: center; padding-block: 12px; }
+  .card img { grid-row: 1 / span 2; aspect-ratio: 4 / 3; border-radius: 14px; }
+  .card h3 { align-self: end; margin-top: 0; font-size: 17px; text-wrap: pretty; }
+  .card p { display: none; }
+  .card time { align-self: start; margin-top: 4px; }
+  .more .cards { margin-top: 8px; }
+}
+
+@media (min-width: 620px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 960px) {
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 24px; }
+}
+
+/* Keep reading, under a post. */
+.more { margin-top: 64px; }
+.more > h2 { font-size: 22px; font-weight: 800; letter-spacing: -.04em; }
+.more .cards { margin-top: 18px; }
+.more .card h3 { font-size: 17px; }
+
+@media (min-width: 620px) {
+  .more .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
+/* Blog index. */
+
+.index-head h1 { margin-top: 0; font-size: clamp(40px, 11vw, 76px); letter-spacing: -.055em; }
+.index-head .lede { max-width: 30em; margin-top: 12px; color: var(--muted); }
+
+.feature { display: grid; gap: 18px; margin-top: 30px; text-decoration: none; }
+.feature img { border-radius: 24px; }
+.feature .kicker { margin-top: 0; color: var(--ink); font-weight: 750; }
+.feature .kicker::before { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px #9dc22c; content: ""; }
+
+.feature h2 {
+  margin-top: 10px;
+  font-size: clamp(26px, 6.6vw, 40px);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.feature p:not(.kicker) { margin-top: 10px; color: var(--muted); font-size: 17px; line-height: 1.55; letter-spacing: -.02em; }
+.feature time { margin-top: 14px; }
+
+.group { margin-top: 64px; }
+.group > h2 { font-size: clamp(24px, 6vw, 32px); font-weight: 800; line-height: 1.2; letter-spacing: -.045em; }
+.chips { margin-top: 34px; }
+
+@media (min-width: 900px) {
+  .feature { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 44px; margin-top: 44px; }
+  .feature img { border-radius: 32px; }
+  .group { margin-top: 88px; }
+  .group .cards { margin-top: 28px; }
+}
+
+/* Connect guide. */
+
+.guide { display: grid; gap: 0 56px; }
+.guide-body { min-width: 0; max-width: 720px; }
+.toc { display: none; }
+
+@media (min-width: 1080px) {
+  .guide { grid-template-columns: minmax(0, 720px) 200px; justify-content: center; }
+
+  .toc {
+    position: sticky;
+    top: calc(var(--topbar) + 44px);
+    display: grid;
+    align-self: start;
+    gap: 2px;
+    margin-top: 6px;
+    padding-left: 18px;
+    border-left: 1px solid var(--line);
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+  }
+
+  .toc b { margin-bottom: 6px; color: var(--muted); font-size: 13px; font-weight: 650; }
+  .toc a { display: flex; align-items: center; min-height: 36px; color: var(--muted); text-decoration: none; }
+  .toc a[aria-current="true"] { color: var(--ink); font-weight: 750; }
+  .toc a[aria-current="true"]::before { width: 2px; height: 18px; margin-left: -19px; margin-right: 17px; background: var(--ink); content: ""; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toc a:hover { color: var(--ink); }
+}
+
+.guide .lede { color: var(--muted); }
+
+/* Three steps, the first one holding the thing to copy. */
+.prose .steps { margin-top: 30px; counter-reset: step; }
+
+.prose .steps > li {
+  position: relative;
+  padding: 0 0 30px 50px;
+  counter-increment: step;
+}
+
+.prose .steps > li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  content: counter(step);
+}
+
+/* The line that ties one step to the next. */
+.prose .steps > li:not(:last-child)::after {
+  position: absolute;
+  top: 42px;
+  bottom: 8px;
+  left: 16px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--line);
+  content: "";
+}
+
+.prose .steps > li:last-child { padding-bottom: 0; }
+.prose .steps h3 { margin: 0; padding-top: 3px; font-size: 20px; font-weight: 750; line-height: 1.4; letter-spacing: -.035em; }
+.prose .steps p { margin-top: 6px; color: var(--muted); font-size: 16px; line-height: 1.6; letter-spacing: -.015em; }
+.steps .copy-block { position: relative; z-index: 1; margin-top: 14px; }
+
+/* On a phone the thing to copy takes the full width, over the step line. */
+@media (max-width: 619px) {
+  .steps .copy-block { margin-left: -50px; }
+}
+
+/* The copy button of the first step is the one thing to press on this page. */
+.copy-main { width: 100%; min-height: 54px; margin-top: 6px; border-radius: 16px; font-size: 16.5px; }
+
+/* Things to say afterwards. */
+.prose .says { display: grid; justify-items: start; gap: 10px; margin-top: 18px; }
+
+.prose .says > li {
+  margin: 0;
+  padding: 10px 15px 11px;
+  border: 1.5px solid var(--ink);
+  border-radius: 20px 20px 20px 6px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -.025em;
+}
+
+.prose .says > li::before { content: none; }
+
+/* Pick your app: a row of pills, one set of steps at a time. Without the script every app's steps show. */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin: 22px calc(-1 * var(--gutter)) 0;
+  padding: 2px var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.tabs a,
+.tabs button {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 99px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 650;
+  letter-spacing: -.02em;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tabs [aria-selected="true"] { background: var(--ink); color: #fff; }
+
+@media (min-width: 760px) {
+  .tabs { flex-wrap: wrap; margin-inline: 0; padding-inline: 0; overflow: visible; }
+}
+
+.tool { margin-top: 30px; }
+.tool > h3 { margin-top: 0; }
+.has-tabs .tool { margin-top: 20px; padding: 22px 20px 20px; border-radius: 24px; background: var(--paper); }
+.has-tabs .tool[hidden] { display: none; }
+.has-tabs .tool pre { background: var(--page); }
+.has-tabs .tool :not(pre) > code { background: var(--page); }
+.has-tabs .tool > h3 { font-size: 19px; }
+
+@media (min-width: 760px) {
+  .has-tabs .tool { padding: 28px 28px 24px; border-radius: 28px; }
+}
+
+/* What a connected app may do. */
+.prose .scopes { margin-top: 18px; border-top: 1px solid var(--line); }
+.prose .scopes > li { display: grid; gap: 4px; margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.prose .scopes > li::before { content: none; }
+.scopes code { justify-self: start; }
+.scopes span { color: var(--muted); font-size: 16px; }
+
+@media (min-width: 620px) {
+  .prose .scopes > li { grid-template-columns: 170px 1fr; align-items: baseline; gap: 16px; }
+}
+
+/* Questions that open, here and on the home. */
+.qa { margin-top: 20px; border-top: 1px solid var(--line); }
+.qa details { border-bottom: 1px solid var(--line); }
+
+.qa summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 62px;
+  padding-block: 12px;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.03em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.qa summary::-webkit-details-marker { display: none; }
+
+.qa summary::after {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  background:
+    linear-gradient(var(--ink) 0 0) center / 100% 2px no-repeat,
+    linear-gradient(var(--ink) 0 0) center / 2px 100% no-repeat;
+  content: "";
+}
+
+.qa details[open] summary::after { background-size: 100% 2px, 0 0; }
+.qa details > p, .qa details > .copy-block { margin: 0 0 22px; }
+.qa details > p { color: var(--muted); font-size: 16px; line-height: 1.7; }

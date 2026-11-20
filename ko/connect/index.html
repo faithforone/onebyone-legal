@@ -1,16 +1,16 @@
 <!doctype html><html lang="ko"><head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=fed12e73b9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="/assets/site.css?v=b4a30302d8">
+    <link rel="stylesheet" href="/assets/doc.css?v=d302cf6704">
+    <meta name="color-scheme" content="light">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" crossorigin="anonymous">
     <title>AI 연결하기 · one-by.one</title>
     <meta name="description" content="ChatGPT, Claude, Codex, Cursor 등 MCP 에이전트를 연결해요. 프롬프트를 붙여 넣고 로그인한 뒤, 허용할 권한을 승인하세요.">
     <link rel="canonical" href="https://one-by.one/ko/connect/">
     <link rel="alternate" type="text/markdown" href="/connect/index.md" title="AI 에이전트용 Markdown 버전(영어)">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F11">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta property="og:type" content="website">
@@ -29,9 +29,7 @@
     <meta name="twitter:description" content="ChatGPT, Claude, Codex, Cursor 등 MCP 에이전트를 연결해요. 프롬프트를 붙여 넣고 로그인한 뒤, 허용할 권한을 승인하세요.">
     <meta name="twitter:image" content="https://one-by.one/assets/og-ko.png">
     <meta name="twitter:image:alt" content="one-by.one: 계획은 AI가, 실행은 당신이. 작은 카드가 나란히 놓이고 지금 할 카드가 가운데에 있어요.">
-      <link rel="stylesheet" href="/assets/home.css?v=0e62898a63">
-    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
-    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
+    <script src="/assets/doc.js?v=14e15323cf" defer></script>
     <script src="/assets/language.js?v=154bb27a85"></script>
     <script src="/assets/analytics.js?v=b274cd6e08" defer></script>
   <link rel="alternate" hreflang="en" href="https://one-by.one/connect/">
@@ -89,36 +87,115 @@
  ]
 }</script>
 </head>
-<body class="home connect">
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="메인 메뉴"><a href="/ko/">홈</a><a href="/ko/blog/">블로그</a><a href="/ko/connect/" aria-current="page">AI 연결</a></nav></div></header>
-<main><h1>AI 연결하기</h1><p class="lede">이 프롬프트를 복사해서 ChatGPT나 Claude에 붙여 넣으세요. 어디를 누르면 되는지 AI가 알려 줘요.</p><section aria-label="프롬프트"><div class="copy-block"><div class="prompt-bar"><span>AI에 붙여 넣기</span><button type="button" data-copy="connect-prompt" aria-label="프롬프트 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="프롬프트"><code id="connect-prompt">one-by.one을 너에게 연결하는 걸 도와줘. 이름이 one-by.one인 사용자 지정 커넥터이고 주소는 https://mcp.one-by.one/mcp 야. 지금 이 기기에서 어디를 눌러 추가하는지 한 단계씩 정확히 알려 줘. 내가 로그인하고 허용(Allow)을 누른 다음 one-by.one 앱으로 돌아갈게.</code></pre><span role="status" aria-live="polite"></span></div><p class="note">iPhone과 같은 one-by.one 계정으로 로그인하고 허용을 누르세요. 그다음 앱으로 돌아가면 돼요.</p></section><section aria-labelledby="teach"><h2 id="teach">AI에게 습관 가르치기</h2><p>Claude나 ChatGPT에 한 번 붙여 넣으세요.</p><div class="copy-block"><div class="prompt-bar"><span>AI에 붙여 넣기</span><button type="button" data-copy="memory-prompt" aria-label="기억할 내용 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="기억할 내용"><code id="memory-prompt">앞으로 모든 대화에서 이걸 기억해 줘: 나는 하루를 one-by.one으로 실행해. 내가 한 일이나 해야 할 일을 대충이라도 말하면 바로 one-by.one에 반영하고(한 일은 기록, 할 일은 카드 추가·수정), 다음 카드를 한 줄로 알려 줘. 스킬을 추가할 수 있다면 https://one-by.one/skill/one-by-one/SKILL.md 의 one-by.one 스킬도 추가해 줘.</code></pre><span role="status" aria-live="polite"></span></div></section><section aria-labelledby="start"><h2 id="start">연결 방법</h2><p>AI가 one-by.one을 커넥터로 추가하고, 브라우저에서 one-by.one 계정으로 로그인해 권한을 승인해요. AI가 커넥터를 직접 추가할 수는 없어서 어디를 누르면 되는지 알려 줘요. 앱은 3개까지 연결할 수 있어요. 연결을 끊으려면 iPhone 앱의 <strong>설정 › AI 앱</strong>에서 <strong>연결 해제</strong>를 누르세요.</p></section><section aria-labelledby="permissions"><h2 id="permissions">권한</h2><p>앱이 할 수 있는 일이에요.</p><ul><li><code>context:read</code> — 계획에 필요한 공유 정보를 읽어요.</li><li><code>activity:read</code> — 계획과 활동 기록을 읽어요.</li><li><code>activity:write</code> — 계획을 만들거나 바꾸고 활동을 기록해요.</li></ul><p>확인되지 않은 앱은 승인 화면에 <strong>Unverified app</strong>으로 표시돼요. 연결하려던 앱이 맞는지 확인하세요. AI에 공유되는 정보는 <a href="/privacy/#connected-ai">개인정보 처리방침(영어)</a>에 있어요.</p></section><section aria-labelledby="server"><h2 id="server">개발자 도구용</h2><p>Claude Code, Codex, Cursor 같은 MCP 앱에는 서버 주소를 바로 넣어요.</p><div class="copy-block"><div class="url"><pre tabindex="0" aria-label="MCP 서버 주소"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button type="button" data-copy="server-url" aria-label="MCP 서버 주소 복사" hidden>복사</button></div><span role="status" aria-live="polite"></span></div><p class="note">Streamable HTTP, OAuth 로그인. API 키나 토큰은 필요 없어요.</p></section><section aria-labelledby="tools"><h2 id="tools">앱별 설정</h2><p>기존 설정은 두고 onebyone 항목만 추가하세요. 토큰이나 클라이언트 비밀 값은 필요 없어요. 메뉴 이름은 버전마다 달라요.</p><nav class="tool-index" aria-label="도구별 설정 안내"><a href="#chatgpt">ChatGPT</a> <a href="#claude">Claude</a> <a href="#claude-code">Claude Code</a> <a href="#codex">Codex CLI</a> <a href="#cursor">Cursor</a> <a href="#vscode">VS Code</a> <a href="#gemini">Gemini CLI</a> <a href="#windsurf">Windsurf</a></nav><section class="tool" id="chatgpt"><h3>ChatGPT · Apps / Connectors</h3><ol><li>계정에서 허용하면 Developer mode를 켜세요(Settings → Security and login → Developer mode).</li><li>Plugins에서 +를 눌러 이름을 one-by.one으로 정하고 <code>https://mcp.one-by.one/mcp</code>을 입력하세요. 이전 버전에서는 Apps 또는 Connectors로 표시돼요.</li><li>로그인을 마친 뒤 새 대화의 도구 메뉴에서 선택하세요. 요금제와 워크스페이스 정책에 따라 사용 가능 여부가 달라져요.</li></ol><p class="src"><a href="https://developers.openai.com/plugins/deploy/connect-chatgpt">공식 문서</a></p></section><section class="tool" id="claude"><h3>Claude · claude.ai / Desktop</h3><ol><li>Customize → Connectors에서 커스텀 웹 커넥터를 추가하세요.</li><li>이름은 one-by.one, 주소는 <code>https://mcp.one-by.one/mcp</code>로 입력하세요.</li><li>로그인 인증을 선택하고, 클라이언트 등록 방법이 보이면 자동 등록(Register automatically)을 선택하세요. 로그인을 마친 뒤 대화에서 커넥터를 켜세요.</li></ol><p>Claude Desktop도 같은 커넥터를 써요. Team·Enterprise에서는 관리자가 먼저 추가해야 할 수 있어요.</p><p class="src"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">공식 문서</a></p></section><section class="tool" id="claude-code"><h3>Claude Code</h3><p>터미널에서 실행하세요.</p><pre tabindex="0"><code>claude mcp add --transport http onebyone https://mcp.one-by.one/mcp</code></pre><p>그다음 대화에서 <code>/mcp</code>를 입력하고 onebyone을 선택해 브라우저에서 로그인하세요.</p><p class="src"><a href="https://code.claude.com/docs/en/mcp">공식 문서</a></p></section><section class="tool" id="codex"><h3>Codex CLI</h3><p>터미널에서 서버를 추가하고 로그인하세요.</p><pre tabindex="0"><code>codex mcp add onebyone --url https://mcp.one-by.one/mcp
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="topnav" aria-label="메인 메뉴">
+          <a class="toplink" href="/ko/blog/">블로그</a>
+          <a class="toplink" href="/ko/connect/" aria-current="page">AI 연결</a>
+          <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=connect-ko&amp;mt=8">7일 무료 체험</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell doc guide">
+      <div class="guide-body prose">
+        <h1>AI 연결하기</h1>
+        <p class="lede">프롬프트 하나만 ChatGPT나 Claude에 붙여 넣으세요. 어디를 누르면 되는지 AI가 알려 줘요.</p>
+
+        <section id="start" aria-labelledby="start-h">
+          <h2 class="sr" id="start-h">연결하기</h2>
+          <ol class="steps">
+            <li>
+              <h3>이 프롬프트를 ChatGPT나 Claude에 붙여 넣어요</h3>
+              <div class="copy-block">
+                <pre class="wrap" tabindex="0" aria-label="프롬프트"><code id="connect-prompt">one-by.one을 너에게 연결하는 걸 도와줘. 이름이 one-by.one인 사용자 지정 커넥터이고 주소는 https://mcp.one-by.one/mcp 야. 지금 이 기기에서 어디를 눌러 추가하는지 한 단계씩 정확히 알려 줘. 내가 로그인하고 허용(Allow)을 누른 다음 one-by.one 앱으로 돌아갈게.</code></pre>
+                <button class="copy copy-main" type="button" data-copy="connect-prompt" hidden>프롬프트 복사</button>
+                <span role="status" aria-live="polite"></span>
+              </div>
+            </li>
+            <li>
+              <h3>AI가 알려 주는 대로 눌러요</h3>
+              <p>AI가 커넥터를 직접 추가할 수는 없어서, 지금 기기에서 어디를 누르면 되는지 한 단계씩 알려 줘요.</p>
+            </li>
+            <li>
+              <h3>로그인하고 허용을 눌러요</h3>
+              <p>iPhone과 같은 one-by.one 계정으로 로그인하세요. 그다음 앱으로 돌아가면 돼요.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section id="teach" aria-labelledby="teach-h">
+          <h2 id="teach-h">AI에게 습관 가르치기</h2>
+          <p>Claude나 ChatGPT에 한 번 붙여 넣으세요.</p>
+          <div class="copy-block">
+            <div class="prompt-bar"><span>AI에 붙여 넣기</span><button class="copy" type="button" data-copy="memory-prompt" aria-label="기억할 내용 복사" hidden>복사</button></div>
+            <pre class="wrap" tabindex="0" aria-label="기억할 내용"><code id="memory-prompt">앞으로 모든 대화에서 이걸 기억해 줘: 나는 하루를 one-by.one으로 실행해. 내가 한 일이나 해야 할 일을 대충이라도 말하면 바로 one-by.one에 반영하고(한 일은 기록, 할 일은 카드 추가·수정), 다음 카드를 한 줄로 알려 줘. 스킬을 추가할 수 있다면 https://one-by.one/skill/one-by-one/SKILL.md 의 one-by.one 스킬도 추가해 줘.</code></pre>
+            <span role="status" aria-live="polite"></span>
+          </div>
+          <h3 id="examples">연결한 뒤 이렇게 말해 보세요</h3>
+          <ul class="says">
+            <li>“이번 주 일정이야. 월~금 9시부터 6시까지 일하고, 목요일 4시에 치과 예약이 있어. 오가는 시간까지 넣어서 짜줘.”</li>
+            <li>“오늘 많이 밀렸어. 남은 하루를 가볍게 하고 미뤄도 되는 건 옮겨줘.”</li>
+            <li>“방금 20분 걷고 30분 책 읽었어. 기록해줘.”</li>
+            <li>“지난주에 실제로 한 걸 보고 이번 주에 뭘 바꾸면 좋을지 알려줘.”</li>
+          </ul>
+        </section>
+
+        <section id="tools" aria-labelledby="tools-h">
+          <h2 id="tools-h">직접 설정하기</h2>
+          <p>Claude Code, Codex, Cursor 같은 MCP 앱에는 서버 주소를 바로 넣어요.</p>
+          <div class="copy-block" id="server">
+            <div class="url"><pre tabindex="0" aria-label="MCP 서버 주소"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button class="copy" type="button" data-copy="server-url" aria-label="MCP 서버 주소 복사" hidden>복사</button></div>
+            <span role="status" aria-live="polite"></span>
+          </div>
+          <p class="note">Streamable HTTP, OAuth 로그인. API 키나 토큰은 필요 없어요. 기존 설정은 두고 onebyone 항목만 추가하세요. 토큰이나 클라이언트 비밀 값은 필요 없어요. 메뉴 이름은 버전마다 달라요.</p>
+          <nav class="tabs" data-tabs aria-label="도구별 설정 안내"><a href="#chatgpt">ChatGPT</a><a href="#claude">Claude</a><a href="#claude-code">Claude Code</a><a href="#codex">Codex CLI</a><a href="#cursor">Cursor</a><a href="#vscode">VS Code</a><a href="#gemini">Gemini CLI</a><a href="#windsurf">Windsurf</a></nav>
+          <section class="tool" id="chatgpt"><h3>ChatGPT · Apps / Connectors</h3><ol><li>계정에서 허용하면 Developer mode를 켜세요(Settings → Security and login → Developer mode).</li><li>Plugins에서 +를 눌러 이름을 one-by.one으로 정하고 <code>https://mcp.one-by.one/mcp</code>을 입력하세요. 이전 버전에서는 Apps 또는 Connectors로 표시돼요.</li><li>로그인을 마친 뒤 새 대화의 도구 메뉴에서 선택하세요. 요금제와 워크스페이스 정책에 따라 사용 가능 여부가 달라져요.</li></ol><p class="src"><a href="https://developers.openai.com/plugins/deploy/connect-chatgpt">공식 문서</a></p></section>
+          <section class="tool" id="claude"><h3>Claude · claude.ai / Desktop</h3><ol><li>Customize → Connectors에서 커스텀 웹 커넥터를 추가하세요.</li><li>이름은 one-by.one, 주소는 <code>https://mcp.one-by.one/mcp</code>로 입력하세요.</li><li>로그인 인증을 선택하고, 클라이언트 등록 방법이 보이면 자동 등록(Register automatically)을 선택하세요. 로그인을 마친 뒤 대화에서 커넥터를 켜세요.</li></ol><p>Claude Desktop도 같은 커넥터를 써요. Team·Enterprise에서는 관리자가 먼저 추가해야 할 수 있어요.</p><p class="src"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">공식 문서</a></p></section>
+          <section class="tool" id="claude-code"><h3>Claude Code</h3><p>터미널에서 실행하세요.</p><pre tabindex="0"><code>claude mcp add --transport http onebyone https://mcp.one-by.one/mcp</code></pre><p>그다음 대화에서 <code>/mcp</code>를 입력하고 onebyone을 선택해 브라우저에서 로그인하세요.</p><p class="src"><a href="https://code.claude.com/docs/en/mcp">공식 문서</a></p></section>
+          <section class="tool" id="codex"><h3>Codex CLI</h3><p>터미널에서 서버를 추가하고 로그인하세요.</p><pre tabindex="0"><code>codex mcp add onebyone --url https://mcp.one-by.one/mcp
 codex mcp login onebyone</code></pre><p>설정 파일을 쓴다면 <code>~/.codex/config.toml</code>에 아래를 추가하고 <code>codex mcp login onebyone</code>을 실행하세요.</p><pre tabindex="0"><code>[mcp_servers.onebyone]
-url = &quot;https://mcp.one-by.one/mcp&quot;</code></pre><p>Codex에서 <code>/mcp</code>로 연결 상태를 확인하세요.</p><p class="src"><a href="https://developers.openai.com/codex/mcp">공식 문서</a></p></section><section class="tool" id="cursor"><h3>Cursor</h3><p><code>.cursor/mcp.json</code>(프로젝트) 또는 <code>~/.cursor/mcp.json</code>(모든 프로젝트)에 추가하세요.</p><pre tabindex="0"><code>{
+url = &quot;https://mcp.one-by.one/mcp&quot;</code></pre><p>Codex에서 <code>/mcp</code>로 연결 상태를 확인하세요.</p><p class="src"><a href="https://developers.openai.com/codex/mcp">공식 문서</a></p></section>
+          <section class="tool" id="cursor"><h3>Cursor</h3><p><code>.cursor/mcp.json</code>(프로젝트) 또는 <code>~/.cursor/mcp.json</code>(모든 프로젝트)에 추가하세요.</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;url&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>Cursor를 다시 열고 로그인 안내를 따르면 Agent에서 도구를 쓸 수 있어요.</p><p class="src"><a href="https://cursor.com/docs/mcp">공식 문서</a></p></section><section class="tool" id="vscode"><h3>VS Code · GitHub Copilot</h3><p><code>.vscode/mcp.json</code>에 추가하세요. 사용자 설정은 <code>MCP: Open User Configuration</code>으로 열 수 있어요.</p><pre tabindex="0"><code>{
+}</code></pre><p>Cursor를 다시 열고 로그인 안내를 따르면 Agent에서 도구를 쓸 수 있어요.</p><p class="src"><a href="https://cursor.com/docs/mcp">공식 문서</a></p></section>
+          <section class="tool" id="vscode"><h3>VS Code · GitHub Copilot</h3><p><code>.vscode/mcp.json</code>에 추가하세요. 사용자 설정은 <code>MCP: Open User Configuration</code>으로 열 수 있어요.</p><pre tabindex="0"><code>{
   &quot;servers&quot;: {
     &quot;onebyone&quot;: {
       &quot;type&quot;: &quot;http&quot;,
       &quot;url&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>편집기에서 onebyone의 Start를 누르고 브라우저에서 로그인한 뒤 Copilot Agent에서 도구를 켜세요.</p><p class="src"><a href="https://code.visualstudio.com/docs/agents/reference/mcp-configuration">공식 문서</a></p></section><section class="tool" id="gemini"><h3>Gemini CLI</h3><p><code>~/.gemini/settings.json</code> 또는 프로젝트의 <code>.gemini/settings.json</code>에 추가하세요. OAuth 정보는 자동으로 감지해요.</p><pre tabindex="0"><code>{
+}</code></pre><p>편집기에서 onebyone의 Start를 누르고 브라우저에서 로그인한 뒤 Copilot Agent에서 도구를 켜세요.</p><p class="src"><a href="https://code.visualstudio.com/docs/agents/reference/mcp-configuration">공식 문서</a></p></section>
+          <section class="tool" id="gemini"><h3>Gemini CLI</h3><p><code>~/.gemini/settings.json</code> 또는 프로젝트의 <code>.gemini/settings.json</code>에 추가하세요. OAuth 정보는 자동으로 감지해요.</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;httpUrl&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>그다음 Gemini CLI 대화에서 실행하세요.</p><pre tabindex="0"><code>/mcp auth onebyone</code></pre><p class="src"><a href="https://geminicli.com/docs/tools/mcp-server/">공식 문서</a></p></section><section class="tool" id="windsurf"><h3>Windsurf / Cascade</h3><p>Cascade의 … Actions 메뉴 → MCPs → Open MCP config file을 열고 <code>mcp_config.json</code>에 추가한 뒤 로그인 안내를 따르세요.</p><pre tabindex="0"><code>{
+}</code></pre><p>그다음 Gemini CLI 대화에서 실행하세요.</p><pre tabindex="0"><code>/mcp auth onebyone</code></pre><p class="src"><a href="https://geminicli.com/docs/tools/mcp-server/">공식 문서</a></p></section>
+          <section class="tool" id="windsurf"><h3>Windsurf / Cascade</h3><p>Cascade의 … Actions 메뉴 → MCPs → Open MCP config file을 열고 <code>mcp_config.json</code>에 추가한 뒤 로그인 안내를 따르세요.</p><pre tabindex="0"><code>{
   &quot;mcpServers&quot;: {
     &quot;onebyone&quot;: {
       &quot;serverUrl&quot;: &quot;https://mcp.one-by.one/mcp&quot;
     }
   }
-}</code></pre><p>Windsurf 공식 문서는 현재 Devin Desktop으로 연결되며 기존 Cascade 에이전트용이에요. 새 Devin Local 탭은 설정 방식이 달라요.</p><p class="src"><a href="https://docs.windsurf.com/windsurf/cascade/mcp">공식 문서</a></p></section></section><section aria-labelledby="other"><h2 id="other">다른 MCP 앱</h2><p>같은 주소로 원격 Streamable HTTP와 OAuth를 사용하세요. 앱이 OAuth 정보 감지와 동적 클라이언트 등록을 지원해야 하고, 로컬 도구는 loopback 주소를 쓸 수 있어요. 에이전트는 이 페이지를 <a href="/connect/index.md" type="text/markdown">Markdown(영어)</a>으로 읽을 수 있어요.</p></section><section aria-labelledby="examples"><h2 id="examples">예시 프롬프트</h2><p>연결한 뒤 이렇게 말해 보세요.</p><ul><li>“이번 주 일정이야. 월~금 9시부터 6시까지 일하고, 목요일 4시에 치과 예약이 있어. 오가는 시간까지 넣어서 짜줘.”</li><li>“오늘 많이 밀렸어. 남은 하루를 가볍게 하고 미뤄도 되는 건 옮겨줘.”</li><li>“방금 20분 걷고 30분 책 읽었어. 기록해줘.”</li><li>“지난주에 실제로 한 걸 보고 이번 주에 뭘 바꾸면 좋을지 알려줘.”</li></ul></section><section aria-labelledby="troubleshooting"><h2 id="troubleshooting">문제 해결</h2><dl><dt>로그인 페이지가 열리지 않아요.</dt><dd>AI 앱이 OAuth 로그인과 자동 클라이언트 등록을 지원해야 해요. 연결을 지우고 다시 추가해 보세요.</dd><dt>연결 3개 제한에 걸렸어요.</dt><dd>iPhone 앱의 설정 › AI 앱에서 쓰지 않는 연결을 끊고 다시 연결하세요.</dd><dt>대화에 도구가 보이지 않아요.</dt><dd>그 대화에서 커넥터를 켜거나 새 대화를 시작하세요.</dd><dt>로그인 후 접근이 거부돼요.</dt><dd>AI 연결에는 계정의 구독 이용 권한이 필요해요. iPhone 앱에서 확인하세요.</dd><dt>iPhone에 카드가 안 보여요.</dt><dd>iPhone 앱과 AI 앱이 같은 one-by.one 계정으로 로그인했는지 확인하세요.</dd></dl><p>그래도 안 되면 <a href="/ko/support/">지원 페이지</a>로 문의하세요.</p></section><section aria-labelledby="disconnect"><h2 id="disconnect">연결 해제</h2><p>연결의 승인 페이지에서 <strong>연결 해제</strong>를 누르거나 AI 앱에서 설정을 삭제해도 돼요. 이후 접근은 차단되지만 one-by.one 기록이나 AI가 이미 받은 정보는 삭제되지 않아요. AI 연결에는 계정의 해당 구독 이용 권한이 필요해요.</p></section><section id="agent"><details><summary>AI 에이전트에게 전달할 지시문</summary><p>에이전트에게 붙여 넣으면 서버를 추가하고 로그인을 시작해요.</p><div class="copy-block"><div class="prompt-bar"><span>AI 에이전트에게 전달할 지시문</span><button type="button" data-copy="agent-prompt-text" aria-label="AI 에이전트에게 전달할 지시문 복사" hidden>복사</button></div><pre class="wrap" tabindex="0" aria-label="AI 에이전트에게 전달할 지시문"><code id="agent-prompt-text">one-by.one MCP 서버를 당신(AI 에이전트)에 추가하고 연결해 주세요.
+}</code></pre><p>Windsurf 공식 문서는 현재 Devin Desktop으로 연결되며 기존 Cascade 에이전트용이에요. 새 Devin Local 탭은 설정 방식이 달라요.</p><p class="src"><a href="https://docs.windsurf.com/windsurf/cascade/mcp">공식 문서</a></p></section>
+          <h3 id="other">다른 MCP 앱</h3>
+          <p>같은 주소로 원격 Streamable HTTP와 OAuth를 사용하세요. 앱이 OAuth 정보 감지와 동적 클라이언트 등록을 지원해야 하고, 로컬 도구는 loopback 주소를 쓸 수 있어요. 에이전트는 이 페이지를 <a href="/connect/index.md" type="text/markdown">Markdown(영어)</a>으로 읽을 수 있어요.</p>
+          <div class="qa" id="agent">
+            <details>
+              <summary>AI 에이전트에게 전달할 지시문</summary>
+              <p>에이전트에게 붙여 넣으면 서버를 추가하고 로그인을 시작해요.</p>
+              <div class="copy-block">
+                <div class="prompt-bar"><span>AI 에이전트에게 전달할 지시문</span><button class="copy" type="button" data-copy="agent-prompt-text" aria-label="AI 에이전트에게 전달할 지시문 복사" hidden>복사</button></div>
+                <pre class="wrap" tabindex="0" aria-label="AI 에이전트에게 전달할 지시문"><code id="agent-prompt-text">one-by.one MCP 서버를 당신(AI 에이전트)에 추가하고 연결해 주세요.
 
 - 서버 주소: https://mcp.one-by.one/mcp
 - 방식: 원격 Streamable HTTP. 서버 이름은 &quot;onebyone&quot;으로 해 주세요.
@@ -130,6 +207,82 @@ url = &quot;https://mcp.one-by.one/mcp&quot;</code></pre><p>Codex에서 <code>/m
 3. 저는 one-by.one 계정으로 로그인하고 권한(context:read, activity:read, activity:write)을 승인하겠습니다. 승인 화면에 &quot;Unverified app&quot;으로 표시될 수 있는데, 확인되지 않은 클라이언트에는 정상적인 표시입니다.
 4. 제가 돌아오면 onebyone 도구가 보이는지 확인해 주세요. 제가 요청하기 전에는 계획을 만들거나 바꾸지 마세요. AI 연결 3개 한도 때문에 거절되면 알려 주세요.
 
-클라이언트별 안내: https://one-by.one/connect/index.md</code></pre><span role="status" aria-live="polite"></span></div></details></section><p class="help"><a href="/support/">연결에 문제가 있나요? 지원 페이지(영어)에서 도움을 받으세요.</a></p></main>
-<footer><div class="shell footer-inner"><nav aria-label="하단 메뉴"><a href="/ko/">홈</a><a href="/ko/connect/">AI 연결</a><a href="/ko/blog/">블로그</a><a href="/privacy/">개인정보 처리방침(영어)</a><a href="/terms/">이용약관(영어)</a><a href="/support/">지원(영어)</a></nav><div class="footer-end"><nav class="language-links" aria-label="언어"><a href="/connect/?lang=en" data-language="en" lang="en">EN</a><a href="/ko/connect/?lang=ko" data-language="ko" lang="ko">한국어</a></nav><span>법적 문서는 영어본이 기준입니다. · © 2026 one-by.one</span></div></div>
-</footer></body></html>
+클라이언트별 안내: https://one-by.one/connect/index.md</code></pre>
+                <span role="status" aria-live="polite"></span>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="permissions" aria-labelledby="permissions-h">
+          <h2 id="permissions-h">권한</h2>
+          <p>앱이 할 수 있는 일이에요.</p>
+          <ul class="scopes">
+            <li><code>context:read</code><span>계획에 필요한 공유 정보를 읽어요.</span></li>
+            <li><code>activity:read</code><span>계획과 활동 기록을 읽어요.</span></li>
+            <li><code>activity:write</code><span>계획을 만들거나 바꾸고 활동을 기록해요.</span></li>
+          </ul>
+          <p>확인되지 않은 앱은 승인 화면에 <strong>Unverified app</strong>으로 표시돼요. 연결하려던 앱이 맞는지 확인하세요. AI에 공유되는 정보는 <a href="/privacy/#connected-ai">개인정보 처리방침(영어)</a>에 있어요.</p>
+        </section>
+
+        <section id="troubleshooting" aria-labelledby="troubleshooting-h">
+          <h2 id="troubleshooting-h">문제 해결</h2>
+          <div class="qa">
+            <details><summary>로그인 페이지가 열리지 않아요.</summary><p>AI 앱이 OAuth 로그인과 자동 클라이언트 등록을 지원해야 해요. 연결을 지우고 다시 추가해 보세요.</p></details>
+            <details><summary>연결 3개 제한에 걸렸어요.</summary><p>iPhone 앱의 설정 › AI 앱에서 쓰지 않는 연결을 끊고 다시 연결하세요.</p></details>
+            <details><summary>대화에 도구가 보이지 않아요.</summary><p>그 대화에서 커넥터를 켜거나 새 대화를 시작하세요.</p></details>
+            <details><summary>로그인 후 접근이 거부돼요.</summary><p>AI 연결에는 계정의 구독 이용 권한이 필요해요. iPhone 앱에서 확인하세요.</p></details>
+            <details><summary>iPhone에 카드가 안 보여요.</summary><p>iPhone 앱과 AI 앱이 같은 one-by.one 계정으로 로그인했는지 확인하세요.</p></details>
+          </div>
+          <p>그래도 안 되면 <a href="/ko/support/">지원 페이지</a>로 문의하세요.</p>
+        </section>
+
+        <section id="disconnect" aria-labelledby="disconnect-h">
+          <h2 id="disconnect-h">연결 해제</h2>
+          <p>앱은 3개까지 연결할 수 있어요. 연결을 끊으려면 iPhone 앱의 <strong>설정 › AI 앱</strong>에서 <strong>연결 해제</strong>를 누르세요.</p>
+          <p>연결의 승인 페이지에서 <strong>연결 해제</strong>를 누르거나 AI 앱에서 설정을 삭제해도 돼요. 이후 접근은 차단되지만 one-by.one 기록이나 AI가 이미 받은 정보는 삭제되지 않아요. AI 연결에는 계정의 해당 구독 이용 권한이 필요해요.</p>
+        </section>
+      </div>
+
+      <nav class="toc" data-toc aria-label="이 페이지">
+        <b>이 페이지</b>
+        <a href="#start">연결하기</a>
+        <a href="#teach">AI에게 습관 가르치기</a>
+        <a href="#tools">직접 설정하기</a>
+        <a href="#permissions">권한</a>
+        <a href="#troubleshooting">문제 해결</a>
+        <a href="#disconnect">연결 해제</a>
+      </nav>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <a class="wordmark" href="/ko/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="footer-nav" aria-label="하단 메뉴">
+          <div>
+            <h2>제품</h2>
+            <a href="/ko/connect/">AI 연결</a>
+            <a href="/ko/blog/">블로그</a>
+            <a href="/manifesto/">만드는 이유</a>
+          </div>
+          <div>
+            <h2>지원</h2>
+            <a href="/support/">지원</a>
+            <a href="/privacy/">개인정보 처리방침</a>
+            <a href="/terms/">이용약관</a>
+          </div>
+          <div>
+            <h2>언어</h2>
+            <a href="/connect/?lang=en" hreflang="en" lang="en" data-language="en">EN</a>
+            <a href="/ko/connect/?lang=ko" hreflang="ko" lang="ko" data-language="ko" aria-current="true">한국어</a>
+          </div>
+        </nav>
+        <div class="company">
+          <p>운영 salad76(개인사업자) · 대표·개인정보 보호책임자 김승은 (퀘벡 포함)</p>
+          <p>사업장 서울특별시 서초구 동광로 173, 302호</p>
+          <p><a href="mailto:privacy@one-by.one">privacy@one-by.one</a> · <a href="mailto:support@one-by.one">support@one-by.one</a> · © 2026 one-by.one</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
