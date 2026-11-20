@@ -38,9 +38,9 @@
 .doc h1 {
   margin-top: 14px;
   font-size: clamp(31px, 8vw, 54px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.14;
-  letter-spacing: -.045em;
+  letter-spacing: -.035em;
   text-wrap: balance;
   overflow-wrap: break-word;
 }
@@ -87,9 +87,9 @@
 .prose h2 {
   margin-top: 56px;
   font-size: clamp(24px, 6vw, 32px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.22;
-  letter-spacing: -.04em;
+  letter-spacing: -.032em;
   text-wrap: balance;
 }
 
@@ -318,7 +318,7 @@
   color: #fff;
 }
 
-.prose .end h2 { margin: 0; font-size: clamp(27px, 7vw, 40px); line-height: 1.16; letter-spacing: -.05em; }
+.prose .end h2 { margin: 0; font-size: clamp(27px, 7vw, 40px); line-height: 1.16; letter-spacing: -.038em; }
 .prose .end p { margin-top: 10px; color: #c4c7cc; font-size: 17px; line-height: 1.55; }
 .end .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px !important; }
 
@@ -425,7 +425,7 @@
 
 /* Keep reading, under a post. */
 .more { margin-top: 64px; }
-.more > h2 { font-size: 22px; font-weight: 800; letter-spacing: -.04em; }
+.more > h2 { font-size: 22px; font-weight: 700; letter-spacing: -.032em; }
 .more .cards { margin-top: 18px; }
 .more .card h3 { font-size: 17px; }
 
@@ -435,7 +435,7 @@
 
 /* Blog index. */
 
-.index-head h1 { margin-top: 0; font-size: clamp(40px, 11vw, 76px); letter-spacing: -.055em; }
+.index-head h1 { margin-top: 0; font-size: clamp(40px, 11vw, 76px); letter-spacing: -.032em; }
 .index-head .lede { max-width: 30em; margin-top: 12px; color: var(--muted); }
 
 .feature { display: grid; gap: 18px; margin-top: 30px; text-decoration: none; }
@@ -446,9 +446,9 @@
 .feature h2 {
   margin-top: 10px;
   font-size: clamp(26px, 6.6vw, 40px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.16;
-  letter-spacing: -.045em;
+  letter-spacing: -.035em;
   text-wrap: balance;
 }
 
@@ -456,7 +456,7 @@
 .feature time { margin-top: 14px; }
 
 .group { margin-top: 64px; }
-.group > h2 { font-size: clamp(24px, 6vw, 32px); font-weight: 800; line-height: 1.2; letter-spacing: -.045em; }
+.group > h2 { font-size: clamp(24px, 6vw, 32px); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; }
 .chips { margin-top: 34px; }
 
 @media (min-width: 900px) {
