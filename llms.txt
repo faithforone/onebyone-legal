@@ -57,6 +57,7 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 
 ## Blog
 - [Blog](https://one-by.one/blog/): Guides to planning your day with an AI assistant and running the plan on iPhone.
+- [Claude To Do List: Artifact, Skill, Connector and Prompt (2026)](https://one-by.one/blog/claude-to-do-list/): Claude to do list options: a prompt in a Project, a saved artifact, the task-management skill, Todoist or Notion connectors, Apple Reminders and Claude Code.
 - [AI Daily Planner 2026: Best AI Day Planner Apps, Free and Paid](https://one-by.one/blog/ai-daily-planner/): AI daily planner apps compared: Motion, Reclaim, Morgen, Tiimo, Structured and free ChatGPT or Claude planning, with prices, free plans and Reddit picks.
 - [Routinery Alternative 2026: Free and Cheaper Apps Like Routinery](https://one-by.one/blog/routinery-alternative/): Routinery alternative picks from Reddit: Intervals Pro, Streaks, Finch and Structured, with free plans, one-time prices, and an AI-planned routine option.
 - [Motion App Alternative 2026: 7 Picks, Free, Cheaper and Open Source](https://one-by.one/blog/motion-app-alternative/): Motion app alternative picks from Reddit: Reclaim, SkedPal, Morgen and TickTick, plus free and open-source auto-schedulers, and an AI-planned option.
