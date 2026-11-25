@@ -1330,10 +1330,8 @@
 
   // Phones: the dock shows the sign-up button whenever the hero's own button is off screen (below the phone at first, or scrolled away).
   {
-    const dock = $("[data-dock]"), heroRow = $("[data-hero-cta]") || $(".hero .cta-row");
-    // The v2 preview runs its dock itself (assets/v2.js), with or without motion.
-    const v2Page = document.querySelector("[data-v2-hero]");
-    if (dock && heroRow && !v2Page && "IntersectionObserver" in window) {
+    const dock = $("[data-dock]"), heroRow = $(".hero .cta-row");
+    if (dock && heroRow && "IntersectionObserver" in window) {
       new IntersectionObserver(([e]) => dock.classList.toggle("on", !e.isIntersecting)).observe(heroRow);
     }
   }

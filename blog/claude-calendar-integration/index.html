@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=fed12e73b9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="/assets/site.css?v=a51c29e9e1">
+    <link rel="stylesheet" href="/assets/doc.css?v=6b204657fe">
+    <script src="/assets/doc.js?v=14e15323cf" defer></script>
+    <meta name="color-scheme" content="light">
     <title>Claude Calendar Integration: Google, Apple and Outlook Calendar · one-by.one</title>
     <meta name="description" content="Claude calendar integration for Google, Apple, Outlook and Notion Calendar: how to connect each, what Claude can change, and fixes when it is not working.">
     <link rel="canonical" href="https://one-by.one/blog/claude-calendar-integration/">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F11">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta property="og:type" content="article">
@@ -31,10 +32,6 @@
     <meta name="twitter:description" content="Claude calendar integration for Google, Apple, Outlook and Notion Calendar: how to connect each, what Claude can change, and fixes when it is not working.">
     <meta name="twitter:image" content="https://one-by.one/assets/blog/claude-calendar-integration/og.jpg">
     <meta name="twitter:image:alt" content="A blank wall calendar with one lime square, joined by a dark cable and plug to a round grey speech bubble.">
-    <link rel="stylesheet" href="/assets/home.css?v=0e62898a63">
-    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
-    <link rel="stylesheet" href="/assets/blog.css?v=eef6cebab7">
-    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,15 +88,26 @@
   ]
 }
 </script>
-  <script src="/assets/analytics.js?v=b274cd6e08" defer></script>
+  <script src="/assets/analytics.js?v=a84cb8cc17" defer></script>
   </head>
-      <body class="home connect blog">
-    <header class="topbar"><div class="topbar-inner"><a class="brand" href="/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a></nav></div></header>
-    <main>
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Claude Calendar Integration: Google, Apple and Outlook Calendar</span></nav>
-      <article>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="topnav" aria-label="Main navigation">
+          <a class="toplink" href="/connect/">Connect</a>
+          <a class="toplink" href="/blog/">Blog</a>
+          <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">Try free for 7 days</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell doc">
+      <div class="doc-col">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span aria-hidden="true">/</span><a href="/blog/#plan">Plan with your AI</a></nav>
+        <article class="prose">
         <h1>Claude Calendar Integration: Google, Apple and Outlook Calendar</h1>
-        <p class="meta">By one-by.one · Updated <time datetime="2026-11-21">November 21, 2026</time></p>
+        <p class="meta">By one-by.one · Updated <time datetime="2026-11-21">November 21, 2026</time> · 3 min read</p>
         <p class="lede">Claude calendar integration comes in three official forms: the Google Calendar connector, the Microsoft 365 connector for Outlook, and Calendar access in the Claude iPhone app for Apple Calendar. Anthropic&rsquo;s Help Center lists all three for every plan, Free included, and each reads your events.</p>
         <figure class="post-hero"><img src="/assets/blog/claude-calendar-integration/hero.jpg" alt="A blank wall calendar with one lime square, joined by a dark cable and plug to a round grey speech bubble." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
 
@@ -120,7 +128,7 @@
           <li>In a chat, select <strong>+</strong>, then <strong>Connectors</strong>, and <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">turn Google Calendar on</a>.</li>
         </ol>
         <p>Claude can then <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">view shared calendars, create, update and delete events, find mutual availability and answer invitations</a>. On Team and Enterprise plans, <a href="https://claude.com/docs/connectors/google/calendar">an Owner enables the connector first</a>.</p>
-        <p>Want the day on your iPhone, one card at a time? <a href="https://apps.apple.com/app/id6766732077">Get one-by.one on the App Store</a>.</p>
+        <p>Want the day on your iPhone, one card at a time? <a href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">Get one-by.one on the App Store</a>.</p>
 
         <figure class="figure"><img src="/assets/blog/claude-calendar-integration/body-google.jpg" alt="A finger slides a large lime toggle switch to the on position on a grey panel, next to a small blank desk calendar." width="1200" height="675" loading="lazy" decoding="async"><figcaption>Connected once, then switched on in each chat.</figcaption></figure>
 
@@ -158,17 +166,52 @@
         <h2 id="management">Claude calendar management: running the plan</h2>
         <p>one-by.one, our app, runs the plan: Claude (<a href="/connect/">connected once</a>) plans the day, and your iPhone shows one card at a time. With calendar sharing on in the app, Claude also gets <a href="/privacy/#calendar">the next seven days of event titles and times</a>.</p>
         <figure class="phone"><img src="/assets/blog/claude-calendar-integration/app-card-running.jpg" alt="The one-by.one iPhone app showing a single card, Boil water, with a 0:53 timer, a short note and a Done slider. The next card, Make sauce, is named above it." width="600" height="1304" loading="lazy" decoding="async"><figcaption>The plan on iPhone, one card at a time.</figcaption></figure>
-        <p>Where it is not better: one-by.one <a href="/privacy/#calendar">never writes to your calendar</a>, it is <a href="https://apps.apple.com/app/id6766732077">iPhone only</a> and new, AI planning needs your own assistant connected, and it costs <a href="/terms/">US$9.99 a year</a>. The prompt is in <a href="/blog/plan-your-day-with-claude/">how to use Claude to plan your day</a>.</p>
+        <p>Where it is not better: one-by.one <a href="/privacy/#calendar">never writes to your calendar</a>, it is <a href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">iPhone only</a> and new, AI planning needs your own assistant connected, and it costs <a href="/terms/">US$9.99 a year</a>. The prompt is in <a href="/blog/plan-your-day-with-claude/">how to use Claude to plan your day</a>.</p>
 
         <aside class="end" aria-labelledby="end-title">
           <h2 id="end-title">Your AI plans. You just do.</h2>
           <p>one-by.one runs the day your AI plans, one card at a time on iPhone.</p>
-          <p class="cta-row"><a class="btn" href="/connect/">See how to connect your AI</a><a class="btn soft" href="https://apps.apple.com/app/id6766732077">Download on the App Store</a></p>
+          <p class="cta-row"><a class="btn" href="/connect/">See how to connect your AI</a><a class="btn soft" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">Download on the App Store</a></p>
           <p class="small">one-by.one is on the App Store for iPhone.</p>
         </aside>
       </article>
+        <section class="more" aria-labelledby="more-title">
+          <h2 id="more-title">Keep reading</h2>
+          <ul class="cards">
+              <li><a class="card" href="/blog/plan-your-day-with-claude/"><img src="/assets/blog/plan-your-day-with-claude/hero-claude-day-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>How to use Claude to plan your day</h3><time datetime="2026-11-02">November 2, 2026</time></a></li>
+              <li><a class="card" href="/blog/add-custom-connector-in-claude/"><img src="/assets/blog/add-custom-connector-in-claude/hero-connector-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>How to add a custom connector in Claude</h3><time datetime="2026-11-02">November 2, 2026</time></a></li>
+              <li><a class="card" href="/blog/claude-to-do-list/"><img src="/assets/blog/claude-to-do-list/thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>Claude To Do List: Artifact, Skill, Connector and Prompt (2026)</h3><time datetime="2026-11-22">November 22, 2026</time></a></li>
+          </ul>
+        </section>
+      </div>
     </main>
-    <footer><div class="shell footer-inner"><nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav><div class="footer-end"><span>© 2026 one-by.one</span></div></div>
+
+    <footer class="footer">
+      <div class="shell">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="footer-nav" aria-label="Footer">
+          <div>
+            <h2>Product</h2>
+            <a href="/connect/">Connect</a>
+            <a href="/blog/">Blog</a>
+            <a href="/manifesto/">Why we make it</a>
+          </div>
+          <div>
+            <h2>Support</h2>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+          </div>
+          <div>
+            <h2>Language</h2>
+            <a href="/blog/" hreflang="en" lang="en" aria-current="true">EN</a>
+            <a href="/ko/blog/" hreflang="ko" lang="ko">한국어</a>
+          </div>
+        </nav>
+        <div class="company">
+          <p><a href="mailto:support@one-by.one">support@one-by.one</a> · © 2026 one-by.one</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

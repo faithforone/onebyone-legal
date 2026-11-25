@@ -63,8 +63,9 @@
     const a = event.target.closest && event.target.closest('a[href^="https://apps.apple.com/"]');
     if (!a) return;
     const section = a.closest("section");
-    const place = a.closest(".site-nav") ? "nav" : a.closest("[data-dock]") ? "dock"
-      : section ? section.id || section.classList[0] || "section" : "page";
+    const named = section && [...section.classList].find((name) => name !== "shell");
+    const place = a.closest(".site-nav, .topnav") ? "nav" : a.closest("[data-dock]") ? "dock"
+      : section ? section.id || named || "section" : a.closest("footer") ? "footer" : "page";
     live().capture("app_store_click", {
       hero_variant: html.dataset.ab || null,
       place,

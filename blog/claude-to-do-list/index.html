@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="/assets/styles.css?v=fed12e73b9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="/assets/site.css?v=a51c29e9e1">
+    <link rel="stylesheet" href="/assets/doc.css?v=6b204657fe">
+    <script src="/assets/doc.js?v=14e15323cf" defer></script>
+    <meta name="color-scheme" content="light">
     <title>Claude To Do List: Artifact, Skill, Connector and Prompt (2026) · one-by.one</title>
     <meta name="description" content="Claude to do list options: a prompt in a Project, a saved artifact, the task-management skill, Todoist or Notion connectors, Apple Reminders and Claude Code.">
     <link rel="canonical" href="https://one-by.one/blog/claude-to-do-list/">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F11">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta property="og:type" content="article">
@@ -31,10 +32,6 @@
     <meta name="twitter:description" content="Claude to do list options: a prompt in a Project, a saved artifact, the task-management skill, Todoist or Notion connectors, Apple Reminders and Claude Code.">
     <meta name="twitter:image" content="https://one-by.one/assets/blog/claude-to-do-list/og.jpg">
     <meta name="twitter:image:alt" content="A round speech bubble on a desk with a long paper checklist unrolling from its tail; one tick box on the list is lime and checked.">
-    <link rel="stylesheet" href="/assets/home.css?v=0e62898a63">
-    <link rel="stylesheet" href="/assets/connect.css?v=610050435a">
-    <link rel="stylesheet" href="/assets/blog.css?v=eef6cebab7">
-    <script src="/assets/connect.js?v=fdbef95b32" defer></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,15 +88,26 @@
   ]
 }
 </script>
-  <script src="/assets/analytics.js?v=b274cd6e08" defer></script>
+  <script src="/assets/analytics.js?v=a84cb8cc17" defer></script>
   </head>
-      <body class="home connect blog">
-    <header class="topbar"><div class="topbar-inner"><a class="brand" href="/" aria-label="one by one"><img src="/assets/icon.svg" alt=""><span class="wordmark">one-by.one</span></a><nav class="site-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a></nav></div></header>
-    <main>
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Claude To Do List: Artifact, Skill, Connector and Prompt (2026)</span></nav>
-      <article>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="topnav" aria-label="Main navigation">
+          <a class="toplink" href="/connect/">Connect</a>
+          <a class="toplink" href="/blog/">Blog</a>
+          <a class="button button-small" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">Try free for 7 days</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell doc">
+      <div class="doc-col">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span aria-hidden="true">/</span><a href="/blog/#plan">Plan with your AI</a></nav>
+        <article class="prose">
         <h1>Claude To Do List: Artifact, Skill, Connector and Prompt (2026)</h1>
-        <p class="meta">By one-by.one · Updated <time datetime="2026-11-22">November 22, 2026</time></p>
+        <p class="meta">By one-by.one · Updated <time datetime="2026-11-22">November 22, 2026</time> · 3 min read</p>
         <p class="lede">A Claude to do list can live in five places: a chat inside a Project, a saved artifact you tick off, a <code>TASKS.md</code> file kept by a skill, a task app connected to Claude, or Apple Reminders on iPhone. Claude Code keeps its own list for coding steps.</p>
         <figure class="post-hero"><img src="/assets/blog/claude-to-do-list/hero.jpg" alt="A round speech bubble on a desk with a long paper checklist unrolling from its tail; one tick box on the list is lime and checked." width="1200" height="675" loading="eager" fetchpriority="high"></figure>
 
@@ -114,7 +122,7 @@
             <tr><td><a href="#integration">Reminders on iPhone</a></td><td>Apple Reminders</td><td><a href="https://support.claude.com/en/articles/11869619-use-claude-with-ios-apps">All plans</a></td></tr>
           </tbody>
         </table>
-        <p>For a list Claude plans and your iPhone hands you one task at a time, <a href="https://apps.apple.com/app/id6766732077">get one-by.one on the App Store</a>.</p>
+        <p>For a list Claude plans and your iPhone hands you one task at a time, <a href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">get one-by.one on the App Store</a>.</p>
 
         <h2 id="prompt">Claude to do list prompt</h2>
         <p>Make a Project called To-do and paste this:</p>
@@ -159,18 +167,53 @@
         <p>In one-by.one, our app, Claude plans your day and saves it to your iPhone, after you add one-by.one in Claude with the <a href="/connect/">Connect guide</a> (<a href="/blog/plan-your-day-with-claude/">how to plan your day with Claude</a>).</p>
         <p>Your phone then shows one card at a time.</p>
         <figure class="phone"><img src="/assets/blog/claude-to-do-list/app-card-running.jpg" alt="The one-by.one iPhone app showing a single card, Boil water, with a 0:53 timer, a short note and a Done slider. The next card, Make sauce, is named above it." width="600" height="1304" loading="lazy" decoding="async"><figcaption>Then just the next card.</figcaption></figure>
-        <p>Where it is not better: it is <a href="https://apps.apple.com/app/id6766732077">iPhone only</a>, AI planning needs your own AI connected, it is a new app, and it costs <a href="/terms/">US$9.99 a year</a>, the <a href="/#notify">launch price for the first 1,000 subscribers</a>.</p>
+        <p>Where it is not better: it is <a href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">iPhone only</a>, AI planning needs your own AI connected, it is a new app, and it costs <a href="/terms/">US$9.99 a year</a>, the <a href="/#notify">launch price for the first 1,000 subscribers</a>.</p>
 
 
         <aside class="end" aria-labelledby="end-title">
           <h2 id="end-title">Your AI plans. You just do.</h2>
           <p>one-by.one runs the day your AI plans, one card at a time on iPhone.</p>
-          <p class="cta-row"><a class="btn" href="/connect/">See how to connect your AI</a><a class="btn soft" href="https://apps.apple.com/app/id6766732077">Download on the App Store</a></p>
+          <p class="cta-row"><a class="btn" href="/connect/">See how to connect your AI</a><a class="btn soft" href="https://apps.apple.com/app/apple-store/id6766732077?pt=128870540&amp;ct=blog-en&amp;mt=8">Download on the App Store</a></p>
           <p class="small">one-by.one is on the App Store for iPhone.</p>
         </aside>
       </article>
+        <section class="more" aria-labelledby="more-title">
+          <h2 id="more-title">Keep reading</h2>
+          <ul class="cards">
+              <li><a class="card" href="/blog/chatgpt-to-do-list/"><img src="/assets/blog/chatgpt-to-do-list/thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>ChatGPT To Do List: Tasks, Prompt, Integrations and Apps (2026)</h3><time datetime="2026-11-23">November 23, 2026</time></a></li>
+              <li><a class="card" href="/blog/plan-your-day-with-claude/"><img src="/assets/blog/plan-your-day-with-claude/hero-claude-day-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>How to use Claude to plan your day</h3><time datetime="2026-11-02">November 2, 2026</time></a></li>
+              <li><a class="card" href="/blog/todo-apps-that-work-with-claude-and-chatgpt/"><img src="/assets/blog/todo-apps-that-work-with-claude-and-chatgpt/hero-mcp-todo-thumb.jpg" alt="" width="600" height="338" loading="lazy" decoding="async"><h3>Todo app with MCP for Claude and ChatGPT (2026)</h3><time datetime="2026-11-02">November 2, 2026</time></a></li>
+          </ul>
+        </section>
+      </div>
     </main>
-    <footer><div class="shell footer-inner"><nav aria-label="Footer"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/connect/">Connect</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a></nav><div class="footer-end"><span>© 2026 one-by.one</span></div></div>
+
+    <footer class="footer">
+      <div class="shell">
+        <a class="wordmark" href="/" aria-label="one by one"><img src="/assets/icon.svg" width="28" height="28" alt="">one-by.one</a>
+        <nav class="footer-nav" aria-label="Footer">
+          <div>
+            <h2>Product</h2>
+            <a href="/connect/">Connect</a>
+            <a href="/blog/">Blog</a>
+            <a href="/manifesto/">Why we make it</a>
+          </div>
+          <div>
+            <h2>Support</h2>
+            <a href="/support/">Support</a>
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+          </div>
+          <div>
+            <h2>Language</h2>
+            <a href="/blog/" hreflang="en" lang="en" aria-current="true">EN</a>
+            <a href="/ko/blog/" hreflang="ko" lang="ko">한국어</a>
+          </div>
+        </nav>
+        <div class="company">
+          <p><a href="mailto:support@one-by.one">support@one-by.one</a> · © 2026 one-by.one</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

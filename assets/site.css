@@ -133,6 +133,17 @@ i { font-style: normal; }
 
 .topnav { display: flex; align-items: center; gap: clamp(14px, 3vw, 28px); }
 
+/* The top bar on a phone keeps the first link and the button. */
+@media (max-width: 479px) {
+  .topnav .toplink + .toplink { display: none; }
+  /* The English button is longer: the links wait in the footer. */
+  html:lang(en) .topnav .toplink { display: none; }
+}
+
+@media (max-width: 359px) {
+  .topnav .toplink { display: none; }
+}
+
 .toplink {
   padding-block: 10px;
   font-size: 15px;
