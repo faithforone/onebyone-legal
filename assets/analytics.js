@@ -1,5 +1,5 @@
 // Site analytics (PostHog, 2026-11-05): page views, how far people scroll, and clicks on
-// App Store links, split by the landing A/B variant (ab.js) and language.
+// App Store links, with the place on the page and the campaign, split by language.
 // Visitors in the EEA, UK and Switzerland (told by the time zone) get no cookies or stored
 // ids until they press Accept on the small bar; everyone else is counted with a cookie and
 // can turn it off on /privacy/#cookies. The choice itself is kept in local storage.
@@ -55,19 +55,19 @@
   });
   if (choice === "no") ph.opt_out_capturing();
   const props = { site_lang: lang, page_path: location.pathname };
-  if (html.dataset.ab) props.hero_variant = html.dataset.ab;
   ph.register(props);
+  // The landing A/B test ended on 2026-11-26; drop the variant older visits saved.
+  ph.unregister("hero_variant");
 
   // Clicks on App Store links, with where on the page they were.
   document.addEventListener("click", (event) => {
-    const a = event.target.closest && event.target.closest('a[href^="https://apps.apple.com/"]');
+    const a = event.target.closest && event.target.closest('a[href^="https://apps.apple.com/"][href*="id6766732077"]');
     if (!a) return;
     const section = a.closest("section");
     const named = section && [...section.classList].find((name) => name !== "shell");
     const place = a.closest(".site-nav, .topnav") ? "nav" : a.closest("[data-dock]") ? "dock"
       : section ? section.id || named || "section" : a.closest("footer") ? "footer" : "page";
     live().capture("app_store_click", {
-      hero_variant: html.dataset.ab || null,
       place,
       campaign: (/[?&]ct=([^&]+)/.exec(a.href) || [])[1] || null,
     }, { send_instantly: true });
@@ -87,8 +87,6 @@
   };
   const accept = () => {
     choice = "yes"; write("yes");
-    // Keep the home version already shown, so the next visit shows the same one.
-    if (html.dataset.ab) { try { localStorage.setItem("one-by.one-ab-hero", html.dataset.ab); } catch (_) {} }
     live().opt_in_capturing();
     live().set_config({ persistence: "localStorage+cookie", disable_session_recording: false });
     live().startSessionRecording();

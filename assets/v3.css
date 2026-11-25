@@ -166,6 +166,12 @@ h1 {
 .is-smiling .pip-smile { display: block; }
 .is-smiling { animation: boing 520ms var(--out); }
 
+@media (prefers-reduced-motion: reduce) {
+  .pip-eyes { animation: none; }
+}
+
+.is-paused .pip-eyes { animation-play-state: paused; }
+
 @keyframes blink {
   0%, 94.5%, 100% { transform: none; }
   96.5% { transform: scaleY(.12); }
@@ -328,6 +334,50 @@ h1 {
 .device:not(.is-playing) .ticket + .ticket { display: none; }
 .device.is-playing .ticket { display: flex; will-change: transform; }
 .device.is-playing .stubs { position: absolute; inset: 0; display: block; will-change: transform; }
+
+/* Pause and play for the hero phone (shown by v3.js only while it plays by itself). */
+.demo-pause {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.demo-pause::before,
+.demo-pause::after {
+  position: absolute;
+  top: 12px;
+  width: 4px;
+  height: 12px;
+  border-radius: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.demo-pause::before { left: 12.5px; }
+.demo-pause::after { right: 12.5px; }
+
+.demo-pause[aria-pressed="true"]::before {
+  left: 14px;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent currentColor;
+  background: none;
+}
+
+.demo-pause[aria-pressed="true"]::after { display: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  .demo-pause:hover { background: var(--line); }
+}
 
 /* Why it is not a to-do list: six small scenes. */
 

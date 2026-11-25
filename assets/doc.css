@@ -284,7 +284,8 @@
 .prose > table td, .prose > table tbody th { border-top: 1px solid var(--line); }
 .prose > table thead th { background: var(--paper); font-weight: 700; }
 @media (max-width: 479px) {
-  .prose > table { font-size: 13.5px; }
+  /* On a phone a wide table scrolls sideways inside its frame instead of pushing the page. */
+  .prose > table { display: block; overflow-x: auto; font-size: 13.5px; }
   .prose > table th, .prose > table td { padding: 9px 8px; }
 }
 

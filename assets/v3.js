@@ -149,11 +149,27 @@
   };
 
   let onScreen = false;
+  let paused = false;
+  const update = () => setRunning(onScreen && !document.hidden && !paused);
   new IntersectionObserver((entries) => {
     onScreen = entries[0].isIntersecting;
-    setRunning(onScreen && !document.hidden);
+    update();
   }, { threshold: 0.2 }).observe(device);
-  document.addEventListener("visibilitychange", () => setRunning(onScreen && !document.hidden));
+  document.addEventListener("visibilitychange", update);
+
+  // Anything that moves by itself for this long gets a pause button.
+  const pause = $(".demo-pause");
+  if (pause) {
+    pause.setAttribute("aria-pressed", "false");
+    pause.hidden = false;
+    pause.addEventListener("click", () => {
+      paused = !paused;
+      pause.setAttribute("aria-pressed", String(paused));
+      pause.setAttribute("aria-label", paused ? pause.dataset.play : pause.dataset.pause);
+      device.classList.toggle("is-paused", paused);
+      update();
+    });
+  }
   addEventListener("resize", measure);
 
   device.classList.add("is-playing");
