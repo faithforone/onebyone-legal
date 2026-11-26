@@ -25,3 +25,9 @@
 
 # MCP Registry domain key (Pages does not serve the .well-known folder from git builds).
 /.well-known/mcp-registry-auth /mcp-registry-auth.txt 200
+
+# Removed 2026-11-26: the Japanese page (an English copy) and the launch welcome page.
+/ja / 301
+/ja/ / 301
+/welcome / 301
+/welcome/ / 301

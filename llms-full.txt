@@ -287,7 +287,7 @@ salad76, a Korean sole proprietorship represented by Seungeun Kim and doing busi
 
 - Overseas transfers: the international-transfer notice specifies recipients and contacts, data, countries, purposes, transfer timing and method, retention and how to refuse, with the consequences for the relevant feature. Supabase hosting is in the United States; Cloudflare, Apple, Google and chosen AI providers use the United States and other provider locations as described there. Contractual safeguards do not replace a lawful transfer basis. Where PIPA requires separate transfer consent, we obtain it before transfer; necessary contract-related entrusted processing or storage must meet the applicable notice and safeguard requirements.
 
-- Privacy officer: Seungeun Kim, privacy@one-by.one; postal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. This is also the contact for privacy complaints.
+- Privacy officer: Seungeun Kim, privacy@one-by.one. This is also the contact for privacy complaints.
 
 - Exercising rights: you or an authorized representative may email privacy@one-by.one to request access, correction or deletion, suspension of processing or withdrawal of consent, and applicable explanations or review of qualifying automated decisions, subject to PIPA's exceptions. Use the common request procedure; we verify only the information necessary and explain any legal refusal. You may seek help from the Personal Information Protection Commission (PIPC), the Personal Information Dispute Mediation Committee or KISA's privacy complaint center.
 
@@ -301,7 +301,7 @@ India's Digital Personal Data Protection Act, 2023 and implementing rules have a
 
 ## Privacy officer and Data Protection Officer
 
-Seungeun Kim is our privacy officer and Data Protection Officer (DPO), responsible for privacy questions and complaints, including as the Korean privacy officer, Quebec privacy responsible person and Singapore DPO. Contact: privacy@one-by.one. Postal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea.
+Seungeun Kim is our privacy officer and Data Protection Officer (DPO), responsible for privacy questions and complaints, including as the Korean privacy officer, Quebec privacy responsible person and Singapore DPO. Contact: privacy@one-by.one.
 
 ## Contact
 
@@ -342,7 +342,7 @@ Per-tool commands (name onebyone, source = official documentation):
 - Claude web and Desktop (https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp): Customize > Connectors > add a custom web connector, name it one-by.one, paste the server URL, choose sign-in authentication and automatic client registration if shown, complete OAuth, then enable it in the conversation.
 
 ## Publisher, age and help
-Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Legal address: 302, 173 Donggwang-ro, Seocho-gu, Seoul, Republic of Korea. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
+Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
 
 Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu, tap Account, then Delete account and confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
 

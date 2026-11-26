@@ -5,12 +5,11 @@ Static legal and support pages for OneByOne App Store submission.
 Served at https://one-by.one/ (Cloudflare Pages project `onebyone-site`, auto-deploys from `main`).
 
 - `/` — one-by.one product and launch page
-- `/privacy/`, `/terms/`, `/support/` — English
+- `/privacy/`, `/terms/`, `/support/` — English only, in the doc frame (`site.css` + `doc.css`); the operator's postal address appears only in the Apple EULA clause of `/terms/`
 - `/connect/` — remote HTTP + OAuth connection guide for MCP agents
 - `/blog/` — English blog (index plus one folder per post, `/blog/<slug>/index.html`); uses `assets/site.css` + `assets/doc.css` and `doc.js` (copy buttons), no other script
 - `/ko/`, `/ko/connect/` — Korean translations, indexable with reciprocal EN/KO/x-default hreflang
-- `/ko/privacy/`, `/ko/terms/`, `/ko/support/` — English fallback mirrors (canonical legal copy)
-- `/ja/privacy/`, `/ja/terms/`, `/ja/support/` — English fallback mirrors (home `/ja/`)
+- `/ko/privacy|terms|support` and `/ja/…` redirect to the English pages; `/ja/` and `/welcome/` redirect home (`_redirects`)
 - `/en/*` redirects to the English root paths (`_redirects`, Cloudflare only)
 
 GitHub Pages (https://faithforone.github.io/onebyone-legal/) serves the same files but ignores `_redirects`.

@@ -22,8 +22,10 @@
   const path = location.pathname.replace(/\/index\.html$/, "/");
   const korean = path === "/ko" || path.startsWith("/ko/");
   try { sessionStorage.setItem(visitedKey, "1"); } catch (_) {}
-  if (!bot && !saved && !visited && !internal && !korean && /^ko(?:-|$)/i.test(firstLanguage)) {
-    const corresponding = path === "/" ? "/ko/" : /^\/(connect|privacy|terms|support)\/?$/.test(path) ? "/ko/" + path.split("/")[1] + "/" : null;
+  // Privacy, terms and support are English-only: they stay where the link pointed.
+  const legal = /^\/(privacy|terms|support)\/?$/.test(path);
+  if (!bot && !saved && !visited && !internal && !korean && !legal && /^ko(?:-|$)/i.test(firstLanguage)) {
+    const corresponding = path === "/" ? "/ko/" : /^\/connect\/?$/.test(path) ? "/ko/connect/" : null;
     location.replace((corresponding || "/ko/") + location.search + (corresponding ? location.hash : ""));
   }
   // The query marker also protects deliberate navigation when storage is blocked,
