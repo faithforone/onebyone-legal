@@ -685,3 +685,21 @@
 .qa details[open] summary::after { background-size: 100% 2px, 0 0; }
 .qa details > p, .qa details > .copy-block { margin: 0 0 22px; }
 .qa details > p { color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+/* Privacy, terms and support (2026-11-26): the old document pages in the doc frame. */
+.legal > .kicker { margin: 0 0 6px; font-weight: 650; }
+.legal .glance { margin: 28px 0 8px; padding: 20px 22px; border-radius: 20px; background: var(--paper); }
+.legal .glance h2 { margin: 0 0 8px; font-size: 18px; }
+.legal .glance ul { margin: 0; }
+.legal .glance > p { margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
+.legal details { margin: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.legal summary { padding: 14px 0; font-weight: 650; cursor: pointer; }
+.legal details[open] summary { margin-bottom: 4px; }
+.legal [data-analytics] {
+  min-height: 36px; margin: 4px 4px 0 0; padding: 0 14px; border: 0; border-radius: 999px;
+  background: var(--paper); color: var(--ink); font: inherit; font-size: 14.5px; font-weight: 650; cursor: pointer;
+}
+.legal [data-analytics]:active { transform: scale(.97); }
+@media (hover: hover) { .legal [data-analytics]:hover { background: var(--line); } }
+.legal .publisher { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.legal .publisher p { margin: 4px 0; }
