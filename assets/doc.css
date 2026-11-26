@@ -703,3 +703,11 @@
 @media (hover: hover) { .legal [data-analytics]:hover { background: var(--line); } }
 .legal .publisher { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 .legal .publisher p { margin: 4px 0; }
+
+/* Manifesto (2026-11-26): one quiet column, big type, no scroll scenes. */
+.manifesto { padding: 24px 0 40px; }
+.manifesto h1 { margin: 0 0 36px; font-size: clamp(34px, 7vw, 56px); line-height: 1.08; letter-spacing: -.02em; }
+.manifesto p { margin: 0 0 26px; color: var(--muted); font-size: clamp(19px, 3.2vw, 24px); line-height: 1.5; }
+.manifesto .beat { color: var(--ink); font-weight: 650; }
+.manifesto .answer { margin-top: 44px; color: var(--ink); font-size: clamp(28px, 5.6vw, 44px); line-height: 1.15; letter-spacing: -.01em; }
+.manifesto .cta { margin-top: 32px; }

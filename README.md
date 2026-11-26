@@ -24,18 +24,18 @@ python3 -c 'import hashlib,pathlib,re;v=hashlib.sha256(pathlib.Path("assets/styl
 
 Language detection runs on the first external visit only, using the first preferred browser language. EN/한국어 links remember an explicit choice with localStorage (try/catch); their query marker also works with storage blocked. Automatic navigation uses location.replace; no-JS and identified crawlers stay on the requested URL.
 
-`home.css`, `home.js`, `site.css`, `doc.css`, `doc.js`, `v3.css`, `v3.js`, `analytics.js` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference.
+`site.css`, `doc.css`, `doc.js`, `v3.css`, `v3.js`, `analytics.js` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference.
 
 The home (`/` and `/ko/`, since 2026-11-26), the blog and the Connect guide share one look. `site.css` holds what they all use (colour and size tokens, top bar, buttons, footer). `doc.css` + `doc.js` are for reading pages (blog and Connect): the text column, copy blocks, the app tabs and the "on this page" list on Connect, post cards. `v3.css` + `v3.js` are for the home only. These pages are light only. Without JavaScript every app's steps show and the text can still be selected. After changing any of these files, refresh the hashes in all pages:
 
 ```sh
 python3 -c 'import hashlib,pathlib,re
-for n in ["site.css","doc.css","doc.js","v3.css","v3.js","analytics.js","home.js","language.js"]:
+for n in ["site.css","doc.css","doc.js","v3.css","v3.js","analytics.js","language.js"]:
     v=hashlib.sha256(pathlib.Path("assets/"+n).read_bytes()).hexdigest()[:10]
     [p.write_text(re.sub(r"(/assets/"+re.escape(n)+r"\?v=)[0-9a-f]+",r"\g<1>"+v,p.read_text())) for p in pathlib.Path(".").rglob("*.html")]'
 ```
 
-`styles.css`, `connect.css`, `home.css` and `home.js` are the older look, still used by the legal, support, manifesto, welcome, 404 and ja pages. `blog.css` and `connect.js` are no longer used by any page; they stay only so an old-look post copied from an older checkout still renders. Copy new posts from a current new-look post.
+`styles.css` is the older look, used only by the pocketkaraoke pages. Every one-by.one page uses `site.css` (+ `doc.css` for documents, `v3.css` for the homes).
 
 App Store links carry `pt=128870540&ct=<campaign>` written straight into the HTML, so App Store Connect > Analytics > Acquisition > Campaigns shows page views and downloads per place: `home-en-v3` and `home-ko-v3` on the homes (since 2026-11-26; the earlier A/B test used `home-{en|ko}-{a|b}` and ended then), `blog-en` / `blog-ko` on the blog, `connect-*` on Connect. `analytics.js` sends `app_store_click` with `place` (`nav`, the section id or class such as `hero`, `notify` for the price card, or `footer`) and `campaign`. The home keeps the ids older links use: `#try` (the phone), `#faq` and `#notify` (the price card). Its JSON-LD FAQPage is built from the visible questions; change both together. The hero phone and the tiles take every word from the HTML (`v3.js` reads `data-*`), so the English and Korean homes are the same markup in two languages.
 
