@@ -74,9 +74,9 @@
   });
 
   const words = {
-    en: ["We use cookies to see which version of this site helps people.", "Accept", "Decline", "Details"],
-    ko: ["어떤 화면이 더 도움이 되는지 보려고 쿠키를 써요.", "허용", "거부", "자세히"],
-    ja: ["どのページがより役立つかを見るためにクッキーを使います。", "許可", "拒否", "詳細"],
+    en: ["We use cookies to see how people use this site.", "Accept", "Decline", "Details"],
+    ko: ["사이트를 어떻게 쓰는지 보려고 쿠키를 써요.", "허용", "거부", "자세히"],
+    ja: ["サイトの使われ方を知るためにクッキーを使います。", "許可", "拒否", "詳細"],
   }[lang];
 
   // After any choice: the bar goes and the privacy page shows the new state.
