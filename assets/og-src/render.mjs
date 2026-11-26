@@ -23,7 +23,7 @@ const base = `http://127.0.0.1:${server.address().port}/`;
 const chrome = spawn(CHROME, ["--headless=new", `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
   "--no-first-run", "--hide-scrollbars", "--force-device-scale-factor=1", "about:blank"], { stdio: "ignore" });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-await sleep(2500);
+for (let k = 0; k < 40; k++) { try { await fetch(`http://127.0.0.1:${port}/json/version`); break; } catch { await sleep(250); } }
 const tabs = await (await fetch(`http://127.0.0.1:${port}/json`)).json();
 const ws = new WebSocket(tabs.find((t) => t.type === "page").webSocketDebuggerUrl);
 await new Promise((r) => (ws.onopen = r));
