@@ -1,9 +1,8 @@
 # one-by.one — factual product and policy overview
 
-Available on the App Store for iPhone: https://apps.apple.com/app/id6766732077. For users aged 16 and over; the app is available in nine languages. This overview summarizes product facts and the English legal pages dated November 7, 2026. The privacy policy and terms contain the full legal wording.
+Last updated: November 27, 2026.
 
-## Launch scope and language
-Last updated: November 18, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The app interface is available in English, Korean, Japanese, Simplified Chinese, Traditional Chinese, French, German, Spanish and Brazilian Portuguese; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+one-by.one is on the [App Store for iPhone](https://apps.apple.com/app/id6766732077). For users aged 16 and over; the app is available in nine languages. This overview summarizes product facts first, then the current English privacy policy and terms; those pages contain the full legal wording.
 
 ## Product and workflow
 one-by.one is an iPhone app for people who use AI assistants such as ChatGPT, Claude and MCP-capable personal assistants. You tell your AI what you want to do. With an approved MCP connection, it plans your day as an ordered queue of cards. The phone shows one card at a time: Start, Done, Later, Remove and Undo for mistaken taps. There is no Android version yet.
@@ -15,13 +14,45 @@ Results can be recorded with units: weight, repetitions, distance, duration, vol
 Interests hold ongoing practices, such as guitar, and recurring duties as plain schedule lines, such as “Mondays: ...” or “Last day of month: ...”. Saved context, memories, corrections and retained originals can be included in tool replies. Reads may be limited or paginated and do not establish a complete lifetime history.
 
 ## AI connection and changes
-The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is https://one-by.one/connect/ (Korean: https://one-by.one/ko/connect/). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is https://connect.one-by.one. The iPhone app signs in with Apple or Google; follow Settings › AI apps there. Existing email accounts can also sign in on the web authorization page; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
+The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide is [Connect your AI](https://one-by.one/connect/) (Korean: [연결 안내](https://one-by.one/ko/connect/)). Any remote HTTP MCP agent with OAuth discovery and dynamic client registration can connect. Local loopback redirects are supported. Up to three AI connections are allowed per account. Unverified clients are labelled Unverified app on the approval screen. The authorization web is [connect.one-by.one](https://connect.one-by.one). The iPhone app signs in with Apple or Google; follow Settings › AI apps there. Existing email accounts can also sign in on the web authorization page; email account creation is not offered. When a directory listing becomes available, search for one-by.one in the AI service’s apps or connectors directory. A listing is not assumed to be available now.
 
 OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can save and change the day, save a day note, save interests and memories, and correct a recorded result within approved permissions.
 
 Start, Done, Later, Remove and Undo are tapped on the phone; no tool starts, finishes or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
 
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
+
+## Connect instructions for AI agents
+Machine-readable copy: [connect/index.md](https://one-by.one/connect/index.md). Human pages: [Connect your AI](https://one-by.one/connect/) and [연결 안내](https://one-by.one/ko/connect/). Commands were checked against each tool's official documentation on October 5, 2026; menus can vary by version.
+
+Server URL: https://mcp.one-by.one/mcp. Transport: remote streamable HTTP. Authentication: OAuth sign-in in the browser with dynamic client registration; local loopback redirects are allowed; no API key, token or client secret. Suggested server name: onebyone. Permissions: context:read, activity:read, activity:write. Limit: 3 AI connections per account. Clients that are not verified appear as Unverified app on the approval screen. Do not ask the user for a token. Merge the entry into existing settings. Do not create or change plans until the user asks.
+
+Instruction a user can paste into an agent:
+```text
+Add the one-by.one MCP server to yourself and connect it.
+
+- Server URL: https://mcp.one-by.one/mcp
+- Transport: remote streamable HTTP. Name the server "onebyone".
+- Auth: OAuth sign-in with dynamic client registration. There is no API key or token, so do not ask me for one.
+
+Steps:
+1. Add the server to your MCP configuration and keep my existing servers. If you cannot change your own configuration, give me the exact command or setting for this client.
+2. Start the OAuth sign-in. If you cannot open a browser, show me the sign-in link.
+3. I will sign in to my one-by.one account and approve the permissions: context:read, activity:read and activity:write. The approval screen may label you "Unverified app"; that is normal for unverified clients.
+4. When I am back, confirm that the onebyone tools are listed. Do not create or change any plans until I ask. If the connection is refused because the limit of 3 AI connections is reached, tell me.
+
+Instructions for each client: https://one-by.one/connect/index.md
+```
+
+Per-tool commands (name onebyone, source = official documentation):
+- [Claude Code](https://code.claude.com/docs/en/mcp): `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`; then run `/mcp` inside a session and authenticate.
+- [Codex CLI](https://developers.openai.com/codex/mcp): `codex mcp add onebyone --url https://mcp.one-by.one/mcp` then `codex mcp login onebyone`. TOML alternative in ~/.codex/config.toml: [mcp_servers.onebyone] with url = "https://mcp.one-by.one/mcp".
+- [Cursor](https://cursor.com/docs/mcp): in .cursor/mcp.json or ~/.cursor/mcp.json, {"mcpServers": {"onebyone": {"url": "https://mcp.one-by.one/mcp"}}}. Save, restart, complete OAuth.
+- [VS Code with GitHub Copilot](https://code.visualstudio.com/docs/agents/reference/mcp-configuration): in .vscode/mcp.json, {"servers": {"onebyone": {"type": "http", "url": "https://mcp.one-by.one/mcp"}}}. Start the server in the editor and sign in.
+- [Gemini CLI](https://geminicli.com/docs/tools/mcp-server/): in ~/.gemini/settings.json or .gemini/settings.json, {"mcpServers": {"onebyone": {"httpUrl": "https://mcp.one-by.one/mcp"}}}; then run `/mcp auth onebyone` inside a Gemini CLI session.
+- [Windsurf / Cascade](https://docs.windsurf.com/windsurf/cascade/mcp): Cascade "..." Actions > MCPs > Open MCP config file; in mcp_config.json, {"mcpServers": {"onebyone": {"serverUrl": "https://mcp.one-by.one/mcp"}}}. The official guide covers the legacy Cascade agent.
+- [ChatGPT](https://developers.openai.com/plugins/deploy/connect-chatgpt): enable Developer mode if the account allows it, open Plugins, select +, name it one-by.one, enter the server URL, finish the OAuth sign-in, then select it in a new chat. Availability depends on plan and workspace policy.
+- [Claude web and Desktop](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp): Customize > Connectors > add a custom web connector, name it one-by.one, paste the server URL, choose sign-in authentication and automatic client registration if shown, complete OAuth, then enable it in the conversation.
 
 ## Subscription, trial and cancellation
 The product is a paid subscription from launch, with no free tier. The United States price is US$9.99/year, the launch price for the first 1,000 subscribers, kept while subscribed. 7-day free trial for eligible new subscribers, as determined by the App Store. There is no monthly plan. The App Store purchase screen shows local pricing, eligibility and renewal terms. The introductory offer requires an App Store payment method; Apple handles payment and one-by.one does not receive payment-card details.
@@ -33,15 +64,24 @@ After the trial, paid features and AI connections require a subscription. When a
 ## Privacy stance
 No sale of data, advertising use or cross-app tracking. Text entered into plans, tasks, memories or reports may contain sensitive information; share only what you want stored and available to a connected AI. AI provider policies and settings govern chats and tool data they receive.
 
+## Canonical sources
+- [Product and FAQ](https://one-by.one/): product overview and frequently asked questions.
+- [Connect your AI](https://one-by.one/connect/): setup for web connectors, CLI tools and editors.
+- [Connect instructions (Markdown)](https://one-by.one/connect/index.md): server URL, permissions, limits and per-tool commands.
+- [MCP custom connector](https://mcp.one-by.one/mcp): the server URL to add in an AI client.
+- [About](https://one-by.one/about/): who makes one-by.one and how the blog posts are written.
+- [Blog](https://one-by.one/blog/): guides to planning a day with an AI assistant and running it on iPhone.
+- [Concise overview](https://one-by.one/llms.txt): the short version of this file.
+- [Support](https://one-by.one/support/): connection, subscription and deletion help.
+- [Privacy Policy](https://one-by.one/privacy/): the full privacy wording.
+- [Terms of Use](https://one-by.one/terms/): accounts, subscriptions, trial eligibility, cancellation and launch scope.
+
+The Korean home page (/ko/) and Korean Connect page (/ko/connect/) are translated. The legal pages (privacy, terms, support) stay in English: their ko/ja paths redirect to the English pages. Use the canonical English pages above.
+
+## Privacy policy (current English wording)
 The following sections reproduce the current English privacy wording as readable text.
 
 This policy covers the one-by.one website, iPhone app and MCP connection service, provided by salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. The launch scope is worldwide except the countries and territories listed in our terms. The app interface is available in nine languages.
-
-## Launch waitlist
-
-If you ask to be notified at launch, we store your email address, signup time and signup page, plus an email hash to prevent duplicate signups. We use this to send one launch email, with no further marketing unless you opt in later. We also use a hashed IP address to limit abusive submissions; these rate-limit records expire after two days of inactivity.
-
-We keep your signup until the launch notice is sent, then delete it after 30 days. If you unsubscribe, it is eligible for deletion immediately by our scheduled cleanup. To remove your signup before then, email privacy@one-by.one.
 
 ## What we collect
 
@@ -78,8 +118,6 @@ Plan: $9.99 per year in the United States; the App Store shows the price for you
 - Support and privacy requests: we use the messages and diagnostics you choose to send to answer your request; we process privacy requests to meet applicable legal obligations. Please avoid including health or other sensitive information that is unnecessary for your request.
 
 - Security and service operation: we use access, request-limit and technical records as needed to protect accounts, prevent abuse and operate the service, subject to applicable law and any consent it requires.
-
-- Launch waitlist: your voluntary signup authorizes one launch email. You can withdraw by unsubscribing or emailing us; rate-limit records are used only to prevent abusive submissions.
 
 ## Consumer health data and explicit consent
 
@@ -277,9 +315,9 @@ Where the LGPD applies, you may request confirmation and access, correction, ano
 
 salad76, a Korean sole proprietorship represented by Seungeun Kim and doing business as one-by.one, is the personal information controller. The following PIPA notice applies to our processing as a Korean operator, together with the detailed sections above.
 
-- Purposes and data: the purposes and consent section and collection list describe account sign-in, plans and results, synchronization, approved AI access, subscription verification, security, support and the launch waitlist. Storing health-related records is a condition of use and requires explicit consent. Sharing them with an AI app is approved per AI app. Calendar sharing is optional.
+- Purposes and data: the purposes and consent section and collection list describe account sign-in, plans and results, synchronization, approved AI access, subscription verification, security and support. Storing health-related records is a condition of use and requires explicit consent. Sharing them with an AI app is approved per AI app. Calendar sharing is optional.
 
-- Retention and destruction: account data is held while the account exists and removed from the live database upon accepted deletion; server backups expire within 30 days. Bug reports are retained for 180 days unless deleted earlier with the account. Support and privacy email is kept for 12 months after the last message. Waitlist records are deleted 30 days after the launch notice, or made eligible for cleanup on unsubscribe; hashed IP rate-limit records expire after two days of inactivity. Unlinked purchase notifications expire after seven days and undergo scheduled cleanup. Other record-specific periods and deletion limits are in Retention and Deletion and disconnection. If law requires a record to be retained longer, only the required information is retained for that obligation, with access limited to that purpose. Electronic records are deleted or made unreadable under the deletion and backup process described above.
+- Retention and destruction: account data is held while the account exists and removed from the live database upon accepted deletion; server backups expire within 30 days. Bug reports are retained for 180 days unless deleted earlier with the account. Support and privacy email is kept for 12 months after the last message. Unlinked purchase notifications expire after seven days and undergo scheduled cleanup. Other record-specific periods and deletion limits are in Retention and Deletion and disconnection. If law requires a record to be retained longer, only the required information is retained for that obligation, with access limited to that purpose. Electronic records are deleted or made unreadable under the deletion and backup process described above.
 
 - Third-party provision: when you approve an AI connection and its permissions, OpenAI (ChatGPT), Anthropic (Claude) or another provider you choose receives the requested plans, results, memories, retained originals and selected calendar data for your requested planning and changes. Health-data sharing requires separate explicit consent. That provider retains its independently received copies under its own policy and settings. Declining or withdrawing approval prevents the corresponding future AI tool access. Disclosures required by law are limited to the applicable legal basis; we do not sell personal data or disclose it for targeted advertising.
 
@@ -309,37 +347,8 @@ Support messages are accessed by the service operator for support and privacy re
 
 We keep support and privacy email for 12 months after the last message in the conversation, then delete it. You can ask us to delete your messages sooner. If a specific legal obligation requires longer retention, we limit the retained information to what that obligation requires and explain the applicable exception when responding to your request. Server backup copies follow the maximum 30-day backup period above; independently held provider copies are subject to the provider's policy and applicable law.
 
-## Connect instructions for AI agents
-Machine-readable copy: https://one-by.one/connect/index.md. Human pages: https://one-by.one/connect/ and https://one-by.one/ko/connect/. Commands were checked against each tool's official documentation on October 5, 2026; menus can vary by version.
-
-Server URL: https://mcp.one-by.one/mcp. Transport: remote streamable HTTP. Authentication: OAuth sign-in in the browser with dynamic client registration; local loopback redirects are allowed; no API key, token or client secret. Suggested server name: onebyone. Permissions: context:read, activity:read, activity:write. Limit: 3 AI connections per account. Clients that are not verified appear as Unverified app on the approval screen. Do not ask the user for a token. Merge the entry into existing settings. Do not create or change plans until the user asks.
-
-Instruction a user can paste into an agent:
-```text
-Add the one-by.one MCP server to yourself and connect it.
-
-- Server URL: https://mcp.one-by.one/mcp
-- Transport: remote streamable HTTP. Name the server "onebyone".
-- Auth: OAuth sign-in with dynamic client registration. There is no API key or token, so do not ask me for one.
-
-Steps:
-1. Add the server to your MCP configuration and keep my existing servers. If you cannot change your own configuration, give me the exact command or setting for this client.
-2. Start the OAuth sign-in. If you cannot open a browser, show me the sign-in link.
-3. I will sign in to my one-by.one account and approve the permissions: context:read, activity:read and activity:write. The approval screen may label you "Unverified app"; that is normal for unverified clients.
-4. When I am back, confirm that the onebyone tools are listed. Do not create or change any plans until I ask. If the connection is refused because the limit of 3 AI connections is reached, tell me.
-
-Instructions for each client: https://one-by.one/connect/index.md
-```
-
-Per-tool commands (name onebyone, source = official documentation):
-- Claude Code (https://code.claude.com/docs/en/mcp): `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`; then run `/mcp` inside a session and authenticate.
-- Codex CLI (https://developers.openai.com/codex/mcp): `codex mcp add onebyone --url https://mcp.one-by.one/mcp` then `codex mcp login onebyone`. TOML alternative in ~/.codex/config.toml: [mcp_servers.onebyone] with url = "https://mcp.one-by.one/mcp".
-- Cursor (https://cursor.com/docs/mcp): in .cursor/mcp.json or ~/.cursor/mcp.json, {"mcpServers": {"onebyone": {"url": "https://mcp.one-by.one/mcp"}}}. Save, restart, complete OAuth.
-- VS Code with GitHub Copilot (https://code.visualstudio.com/docs/agents/reference/mcp-configuration): in .vscode/mcp.json, {"servers": {"onebyone": {"type": "http", "url": "https://mcp.one-by.one/mcp"}}}. Start the server in the editor and sign in.
-- Gemini CLI (https://geminicli.com/docs/tools/mcp-server/): in ~/.gemini/settings.json or .gemini/settings.json, {"mcpServers": {"onebyone": {"httpUrl": "https://mcp.one-by.one/mcp"}}}; then run `/mcp auth onebyone` inside a Gemini CLI session.
-- Windsurf / Cascade (https://docs.windsurf.com/windsurf/cascade/mcp): Cascade "..." Actions > MCPs > Open MCP config file; in mcp_config.json, {"mcpServers": {"onebyone": {"serverUrl": "https://mcp.one-by.one/mcp"}}}. The official guide covers the legacy Cascade agent.
-- ChatGPT (https://developers.openai.com/plugins/deploy/connect-chatgpt): enable Developer mode if the account allows it, open Plugins, select +, name it one-by.one, enter the server URL, finish the OAuth sign-in, then select it in a new chat. Availability depends on plan and workspace policy.
-- Claude web and Desktop (https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp): Customize > Connectors > add a custom web connector, name it one-by.one, paste the server URL, choose sign-in authentication and automatic client registration if shown, complete OAuth, then enable it in the conversation.
+## Launch scope and language
+Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The app interface is available in English, Korean, Japanese, Simplified Chinese, Traditional Chinese, French, German, Spanish and Brazilian Portuguese; App Store availability and prices are country-specific. See [Terms: launch scope](https://one-by.one/terms/#launch-scope).
 
 ## Publisher, age and help
 Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). The minimum age is 16. Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved.
@@ -347,14 +356,3 @@ Publisher: salad76, a sole proprietorship in the Republic of Korea represented b
 Support: support@one-by.one. Privacy and deletion help: privacy@one-by.one. To request in-app account deletion, open the menu, tap Account, then Delete account and confirm. Support has no promised response time for ordinary requests. Privacy-rights requests are handled within periods required by applicable law.
 
 To disconnect an AI, tap Disconnect in the iPhone app under Settings › AI apps, use Disconnect on its one-by.one authorization page, or remove the connector through the AI service’s controls. Revocation blocks future tool calls but does not delete records or copies the AI has already received.
-
-## Canonical sources
-- Product and FAQ: https://one-by.one/
-- Privacy Policy: https://one-by.one/privacy/
-- Terms of Use: https://one-by.one/terms/
-- Support: https://one-by.one/support/
-- Concise overview: https://one-by.one/llms.txt
-- MCP custom connector: https://mcp.one-by.one/mcp
-- Connect instructions (Markdown): https://one-by.one/connect/index.md
-
-The Korean home page (/ko/) and Korean Connect page (/ko/connect/) are translated. The legal pages (privacy, terms, support) stay in English: their ko/ja paths are English fallback mirrors, not translated versions. Use the canonical English pages above.

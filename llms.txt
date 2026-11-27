@@ -1,22 +1,20 @@
 # one-by.one
 
-> An iPhone app for people who plan with AI assistants: an ordered day plan, one doable action at a time, and results recorded with units. Available on the App Store for iPhone: https://apps.apple.com/app/id6766732077. For ages 16+.
+> An iPhone app for people who plan with AI assistants: an ordered day plan, one doable action at a time, and results recorded with units. On the [App Store for iPhone](https://apps.apple.com/app/id6766732077). For ages 16+.
 
-## Launch scope and language
-Last updated: November 14, 2026. Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The app interface is available in English, Korean, Japanese, Simplified Chinese, Traditional Chinese, French, German, Spanish and Brazilian Portuguese; App Store availability and prices are country-specific. See https://one-by.one/terms/#launch-scope.
+Last updated: November 27, 2026.
 
 ## How it works
 Tell ChatGPT, Claude or an MCP-capable personal assistant what you want to do. With your approval, the AI reads planning context and saves a queue of action cards through MCP. Your iPhone shows one card at a time with Start, Done, Later, Remove and Undo for mistaken taps. AI changes require your explicit request and approved permissions.
 
-Custom MCP connector: https://mcp.one-by.one/mcp. Setup: https://one-by.one/connect/. Any agent with remote HTTP, OAuth discovery and dynamic client registration can connect, including local loopback callbacks. Up to three AI connections per account; unverified clients are labelled Unverified app on approval. OAuth sign-in and separate product permissions: context:read, activity:read, activity:write. Connector availability depends on the AI service; a directory listing is not assumed to be available.
-
 ## Connect an AI agent (read this to connect)
-Full machine-readable instructions with per-tool commands: https://one-by.one/connect/index.md (human page: https://one-by.one/connect/).
-- Server: https://mcp.one-by.one/mcp
-- Transport: remote streamable HTTP. OAuth sign-in with dynamic client registration; no API key or token.
+Any agent with remote HTTP, OAuth discovery and dynamic client registration can connect, including local loopback callbacks. Up to three AI connections per account; unverified clients are labelled Unverified app on approval. OAuth sign-in and separate product permissions: context:read, activity:read, activity:write. Connector availability depends on the AI service; a directory listing is not assumed to be available.
+- [MCP server](https://mcp.one-by.one/mcp): remote streamable HTTP. OAuth sign-in with dynamic client registration; no API key or token.
+- [Connect instructions (Markdown)](https://one-by.one/connect/index.md): machine-readable steps and per-tool commands.
+- [Connect your AI](https://one-by.one/connect/): the same guide for people.
 - Permissions: context:read, activity:read, activity:write. Limit: 3 AI connections per account. Unverified clients show "Unverified app" on approval.
-- Claude Code: `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`, then `/mcp` in a session.
-- Codex CLI: `codex mcp add onebyone --url https://mcp.one-by.one/mcp`, then `codex mcp login onebyone`.
+- [Claude Code](https://code.claude.com/docs/en/mcp): `claude mcp add --transport http onebyone https://mcp.one-by.one/mcp`, then `/mcp` in a session.
+- [Codex CLI](https://developers.openai.com/codex/mcp): `codex mcp add onebyone --url https://mcp.one-by.one/mcp`, then `codex mcp login onebyone`.
 - Cursor, VS Code, Gemini CLI, Windsurf, ChatGPT and Claude web/Desktop use a config entry or UI steps; see the index.md file above.
 Instruction a user can paste into an agent:
 ```text
@@ -41,51 +39,56 @@ Pricing in the United States: US$9.99/year, the launch price for the first 1,000
 ## Privacy
 No sale of data, advertising use or cross-app tracking. Optional calendar sharing is off until you choose calendars; the connected AI can receive the next seven days of selected event titles and times. Hide event names substitutes “Busy” for event names. Connected AI clients receive saved content requested by tools under the permissions you approve; their own policies and settings apply. See the privacy policy for encryption, operator access, retention, deletion and sharing limits.
 
-Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). Contact: support@one-by.one; privacy@one-by.one.
-
-Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved. Support and privacy email is routed by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other provider data-center countries. Transfer safeguards are each provider's data processing agreement and standard contractual safeguards; no particular certification is claimed.
-
 ## Sources and details
 - [Product and FAQ](https://one-by.one/): Product overview and frequently asked questions.
 - [ADHD planner app](https://one-by.one/adhd-planner-app/): How one-by.one helps when a long list makes starting hard: one card, a timer, replanning by one line to your AI.
 - [One task at a time app](https://one-by.one/one-task-at-a-time-app/): How the one-card flow works: tell your AI the day, see one card, Done brings the next.
-- [Privacy Policy](https://one-by.one/privacy/): Data collection, connected AI, optional calendar sharing, encryption and deletion.
-- [Terms of Use](https://one-by.one/terms/): Accounts, subscriptions, trial eligibility and cancellation.
 - [Connect your AI](https://one-by.one/connect/): Official-documentation-based setup for web connectors, CLI tools and editors.
 - [Connect instructions (Markdown)](https://one-by.one/connect/index.md): Server URL, permissions, limits, per-tool commands and a paste-in agent instruction.
+- [About](https://one-by.one/about/): Sam, who makes one-by.one, and how the blog posts are written.
 - [한국어 홈](https://one-by.one/ko/) and [한국어 연결 안내](https://one-by.one/ko/connect/): Korean product pages; the authoritative legal documents remain English.
 - [Support](https://one-by.one/support/): Connection, subscription and deletion help.
 - [Full factual overview](https://one-by.one/llms-full.txt): More detailed product and policy context.
+- [Privacy Policy](https://one-by.one/privacy/): Data collection, connected AI, optional calendar sharing, encryption and deletion.
+- [Terms of Use](https://one-by.one/terms/): Accounts, subscriptions, trial eligibility and cancellation.
 
 ## Blog
 - [Blog](https://one-by.one/blog/): Guides to planning your day with an AI assistant and running the plan on iPhone.
-- [ChatGPT Calendar Integration: Google, Apple (iCloud) and Outlook](https://one-by.one/blog/chatgpt-calendar-integration/): ChatGPT calendar integration for Google Calendar, iCloud and Outlook: how to connect each in Settings, Plugins, which plans have it, and fixes.
-- [Body Doubling App 2026: 7 Picks, Free Plans and Reddit Reviews](https://one-by.one/blog/body-doubling-app/): Body doubling app picks for 1:1 video, groups or cleaning: Focusmate, dubbii, Flow Club, FLOWN, Deepwrk, Crews and Caveday, with free plans and prices.
-- [Visual Schedule App for Adults 2026: 6 Picks, Free and Paid](https://one-by.one/blog/visual-schedule-app-for-adults/): Visual schedule app picks for adults with ADHD or autism: Tiimo, Structured, Routinery, Brili, Choiceworks and First Then, with free plans and prices.
-- [Time Blocking App for ADHD: 7 Picks, Free Options and Reddit Tips (2026)](https://one-by.one/blog/time-blocking-app-for-adhd/): Time blocking app for ADHD picks: Structured, Tiimo, TickTick, Motion and free Google or Apple Calendar, with prices and how to leave time between tasks.
-- [ChatGPT To Do List: Tasks, Prompt, Integrations and Apps (2026)](https://one-by.one/blog/chatgpt-to-do-list/): ChatGPT to do list options: a prompt in a Project, scheduled Tasks for reminders, and Todoist, Any.do, Asana, Notion or ClickUp inside ChatGPT.
-- [Claude To Do List: Artifact, Skill, Connector and Prompt (2026)](https://one-by.one/blog/claude-to-do-list/): Claude to do list options: a prompt in a Project, a saved artifact, the task-management skill, Todoist or Notion connectors, Apple Reminders and Claude Code.
-- [Claude Calendar Integration: Google, Apple and Outlook Calendar](https://one-by.one/blog/claude-calendar-integration/): Claude calendar integration for Google, Apple, Outlook and Notion Calendar: how to connect each, what Claude can change, and fixes when it is not working.
-- [Task Paralysis ADHD: Why You Freeze and How to Get Out of It](https://one-by.one/blog/task-paralysis-adhd/): Task paralysis ADHD tips: why you freeze at the start of a task you want to do, task paralysis vs procrastination, what Reddit tries, and apps for it.
-- [AI Daily Planner 2026: Best AI Day Planner Apps, Free and Paid](https://one-by.one/blog/ai-daily-planner/): AI daily planner apps compared: Motion, Reclaim, Morgen, Tiimo, Structured and free ChatGPT or Claude planning, with prices, free plans and Reddit picks.
-- [Routinery Alternative 2026: Free and Cheaper Apps Like Routinery](https://one-by.one/blog/routinery-alternative/): Routinery alternative picks from Reddit: Intervals Pro, Streaks, Finch and Structured, with free plans, one-time prices, and an AI-planned routine option.
-- [Motion App Alternative 2026: 7 Picks, Free, Cheaper and Open Source](https://one-by.one/blog/motion-app-alternative/): Motion app alternative picks from Reddit: Reclaim, SkedPal, Morgen and TickTick, plus free and open-source auto-schedulers, and an AI-planned option.
-- [Sunsama Alternative 2026: 7 Apps Like Sunsama, Free and Cheaper](https://one-by.one/blog/sunsama-alternative/): Sunsama alternative picks from Reddit: TickTick, Todoist, Morgen, Akiflow and Motion, plus free, cheaper and open-source apps, and an AI-planned one.
-- [Best planner app 2026: what Reddit recommends](https://one-by.one/blog/best-planner-app/): Planner apps Reddit users recommend in 2026, from TickTick to Structured: the complaints they repeat, what they wish existed, and which to pick.
+- [ChatGPT Calendar Integration: Google, iCloud, Outlook](https://one-by.one/blog/chatgpt-calendar-integration/): ChatGPT calendar integration for Google Calendar, iCloud and Outlook: how to connect each in Settings, Plugins, which plans have it, and fixes.
+- [Body Doubling App 2026: 7 Picks and Free Plans](https://one-by.one/blog/body-doubling-app/): Body doubling app picks for 1:1 video, groups or cleaning: Focusmate, dubbii, Flow Club, FLOWN, Deepwrk, Crews and Caveday, with free plans and prices.
+- [Visual Schedule App for Adults: 6 Free and Paid Picks](https://one-by.one/blog/visual-schedule-app-for-adults/): Visual schedule app picks for adults with ADHD or autism: Tiimo, Structured, Routinery, Brili, Choiceworks and First Then, with free plans and prices.
+- [Time Blocking App for ADHD: 7 Picks and Reddit Tips](https://one-by.one/blog/time-blocking-app-for-adhd/): Time blocking app for ADHD picks: Structured, Tiimo, TickTick, Motion and free Google or Apple Calendar, with prices and how to leave time between tasks.
+- [ChatGPT To Do List: Tasks, Prompts and Apps](https://one-by.one/blog/chatgpt-to-do-list/): ChatGPT to do list options: a prompt in a Project, scheduled Tasks for reminders, and Todoist, Any.do, Asana, Notion or ClickUp inside ChatGPT.
+- [Claude To Do List: Artifact, Skill or Connector](https://one-by.one/blog/claude-to-do-list/): Claude to do list options: a prompt in a Project, a saved artifact, the task-management skill, Todoist or Notion connectors, Apple Reminders and Claude Code.
+- [Claude Calendar Integration: Google, Apple, Outlook](https://one-by.one/blog/claude-calendar-integration/): Claude calendar integration for Google, Apple, Outlook and Notion Calendar: how to connect each, what Claude can change, and fixes when it is not working.
+- [Task Paralysis ADHD: Why You Freeze and How to Start](https://one-by.one/blog/task-paralysis-adhd/): Task paralysis ADHD tips: why you freeze at the start of a task you want to do, task paralysis vs procrastination, what Reddit tries, and apps for it.
+- [AI Daily Planner 2026: Best AI Day Planner Apps](https://one-by.one/blog/ai-daily-planner/): AI daily planner apps compared: Motion, Reclaim, Morgen, Tiimo, Structured and free ChatGPT or Claude planning, with prices, free plans and Reddit picks.
+- [Routinery Alternative 2026: Free and Cheaper Apps](https://one-by.one/blog/routinery-alternative/): Routinery alternative picks from Reddit: Intervals Pro, Streaks, Finch and Structured, with free plans, one-time prices, and an AI-planned routine option.
+- [Motion App Alternative 2026: 7 Cheaper and Free Picks](https://one-by.one/blog/motion-app-alternative/): Motion app alternative picks from Reddit: Reclaim, SkedPal, Morgen and TickTick, plus free and open-source auto-schedulers, and an AI-planned option.
+- [Sunsama Alternative 2026: 7 Cheaper and Free Apps](https://one-by.one/blog/sunsama-alternative/): Sunsama alternative picks from Reddit: TickTick, Todoist, Morgen, Akiflow and Motion, plus free, cheaper and open-source apps, and an AI-planned one.
+- [Best Planner App 2026: What Reddit Recommends](https://one-by.one/blog/best-planner-app/): Planner apps Reddit users recommend in 2026, from TickTick to Structured: the complaints they repeat, what they wish existed, and which to pick.
 - [Tiimo Review 2026: What Reddit Users Say](https://one-by.one/blog/tiimo-review/): Tiimo review from Reddit threads: users love the calm visual day and timers, but report removed routines, missed alerts and an AI that needs fixing.
-- [Tiimo Alternatives 2026: 5 Apps Like Tiimo Reddit Recommends](https://one-by.one/blog/tiimo-alternatives/): Tiimo alternatives Reddit recommends: Structured, Routinery, Todoist, Amazing Marvin and Focusmate, with free plans, Android apps and an AI-planned option.
+- [Tiimo Alternatives 2026: 5 Apps Reddit Recommends](https://one-by.one/blog/tiimo-alternatives/): Tiimo alternatives Reddit recommends: Structured, Routinery, Todoist, Amazing Marvin and Focusmate, with free plans, Android apps and an AI-planned option.
 - [Structured App Review 2026: What Reddit Says](https://one-by.one/blog/structured-app-review/): Structured app review from Reddit threads: users love the visual timeline, but report blank widgets and dragging every block forward after a slip.
-- [Structured App Alternative 2026: 5 Apps Like Structured, Free and Android](https://one-by.one/blog/structured-app-alternative/): Structured app alternative picks: TickTick, Google Calendar and TimeTune from Reddit, plus Tiimo, Sunsama, free and Android options and an AI-planned app.
+- [Structured App Alternative: 5 Apps, Free and Android](https://one-by.one/blog/structured-app-alternative/): Structured app alternative picks: TickTick, Google Calendar and TimeTune from Reddit, plus Tiimo, Sunsama, free and Android options and an AI-planned app.
 - [Motion App Review 2026: What Reddit Users Say](https://one-by.one/blog/motion-app-review/): Motion app review from Reddit: users love the AI auto-scheduling but report tasks moving, price changes and slow support. Plus a phone-first alternative.
 - [Sunsama Review 2026: What Reddit Users Say](https://one-by.one/blog/sunsama-review/): Sunsama review from Reddit: users love the calm daily ritual but report the price, a weaker phone app and planning still left to you. Plus an alternative.
-- [ADHD to-do list app: what Reddit recommends](https://one-by.one/blog/adhd-to-do-list-app/): ADHD to-do list apps Reddit recommends, the complaints users repeat, why preferences clash, and an iPhone app that shows one card at a time.
-- [Daily routine app for iPhone: Routinery, Tiimo and Structured reviews](https://one-by.one/blog/daily-routine-app-iphone/): Routinery, Tiimo and Structured on iPhone: what users report, from removed routines to blank widgets, and a routine app where your own AI plans the day.
+- [ADHD To-Do List App: What Reddit Recommends](https://one-by.one/blog/adhd-to-do-list-app/): ADHD to-do list apps Reddit recommends, the complaints users repeat, why preferences clash, and an iPhone app that shows one card at a time.
+- [Daily routine app for iPhone: real user reviews](https://one-by.one/blog/daily-routine-app-iphone/): Routinery, Tiimo and Structured on iPhone: what users report, from removed routines to blank widgets, and a routine app where your own AI plans the day.
 - [How to use Claude to plan your day](https://one-by.one/blog/plan-your-day-with-claude/): Three steps, connecting your calendar, a copyable prompt to plan your day with Claude, and what happens after the plan.
-- [The ChatGPT daily planner prompt (and why plans fall apart by 11 AM)](https://one-by.one/blog/chatgpt-daily-planner-prompt/): A ChatGPT daily planner prompt to copy, plus daily schedule and routine prompts (habits, travel and prep, student, shift worker) and why a chat plan drifts by late morning.
-- [Todo app with MCP for Claude and ChatGPT (2026)](https://one-by.one/blog/todo-apps-that-work-with-claude-and-chatgpt/): Todo apps with MCP compared (Todoist, TickTick, Sunsama, Asana, Notion, Things, Reminders, Salta, one-by.one): which connect to Claude and ChatGPT, Claude Todoist, and Claude with Apple Reminders.
+- [ChatGPT daily planner prompt (5 to copy)](https://one-by.one/blog/chatgpt-daily-planner-prompt/): A ChatGPT daily planner prompt to copy, plus daily schedule and routine prompts (habits, travel and prep, student, shift worker) and why a chat plan drifts by late morning.
+- [Todo app with MCP for Claude and ChatGPT](https://one-by.one/blog/todo-apps-that-work-with-claude-and-chatgpt/): Todo apps with MCP compared (Todoist, TickTick, Sunsama, Asana, Notion, Things, Reminders, Salta, one-by.one): which connect to Claude and ChatGPT, Claude Todoist, and Claude with Apple Reminders.
 - [How to add a custom connector in Claude](https://one-by.one/blog/add-custom-connector-in-claude/): Steps on web, desktop and mobile, the Free plan limit of one, OAuth sign-in and fixes for common errors, with one-by.one as the example.
 - [How to use AI to plan your day](https://one-by.one/blog/use-ai-to-plan-your-day/): Four steps and a short prompt, which AI to use (Claude, ChatGPT, Motion, Reclaim), what AI cannot do alone, and how one-by.one covers it.
 - [한국어 블로그](https://one-by.one/ko/blog/) (Korean): Korean guides to connecting Claude to one-by.one.
 - [클로드 MCP 연결 방법: 사용법부터 모바일까지](https://one-by.one/ko/blog/claude-mcp-connect/) (Korean): What Claude MCP means, how to connect and use it on web, desktop and mobile, and what to check when it will not connect.
 - [클로드 커넥터 추가방법: 무료 플랜 제한과 사용법까지](https://one-by.one/ko/blog/claude-custom-connector/) (Korean): Korean version of the custom connector guide: how to add and use a connector, Free plan limit, OAuth sign-in and common errors.
 - [클로드 일정관리 하는법: 프롬프트와 한계까지](https://one-by.one/ko/blog/claude-schedule/) (Korean): 클로드와 챗GPT에 일정·할 일·습관을 알려 하루를 계획해요. 복사할 프롬프트와 아이폰에서 한 장씩 실행하는 one-by.one의 기능·비용을 비교해요.
+
+## Launch scope and language
+Worldwide launch except the entire EU/EEA (the 27 EU member states: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden; plus Iceland, Liechtenstein and Norway), the United Kingdom, Switzerland, mainland China, Hong Kong, Macao (Macau), Russia, Belarus, Iran, North Korea, Syria, Cuba, Türkiye (Turkey) and Vietnam. These exclusions reflect representative requirements in the EU/EEA, United Kingdom and Switzerland, and ChatGPT/Claude availability, sanctions, registration or localization requirements in the other excluded markets. The app interface is available in English, Korean, Japanese, Simplified Chinese, Traditional Chinese, French, German, Spanish and Brazilian Portuguese; App Store availability and prices are country-specific. See [Terms: launch scope](https://one-by.one/terms/#launch-scope).
+
+## Publisher and legal
+Publisher: salad76, a sole proprietorship in the Republic of Korea represented by Seungeun Kim, doing business as one-by.one. Privacy officer, DPO and Quebec privacy responsible person: Seungeun Kim (privacy@one-by.one). Contact: support@one-by.one; privacy@one-by.one.
+
+Governing law is the Republic of Korea; disputes are subject to the Seoul Central District Court except where mandatory law provides otherwise. Mandatory consumer protections in the user's country or state of residence and the right to bring a claim in the courts of the user's country under those protections are preserved. Support and privacy email is routed by Cloudflare Email Routing to Google (Gmail), with processing in the United States and other provider data-center countries. Transfer safeguards are each provider's data processing agreement and standard contractual safeguards; no particular certification is claimed.
