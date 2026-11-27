@@ -239,6 +239,28 @@ Transfer safeguards are each provider's data processing agreement and standard c
 
 We do not sell personal data or share it for cross-context behavioral advertising within the meaning of applicable US state privacy laws. We do not use personal data for targeted advertising or track users across other companies' apps or websites. Authorized disclosures to service providers and the AI you choose are described above; health-data sharing requires separate explicit consent.
 
+## Onboarding analytics in the app
+
+From version 1.1, the iPhone app counts how people move through onboarding so we can see where it gets hard: which onboarding screen was shown and for how long (time in the background is not counted), which of a fixed set of buttons was tapped (such as a sign-in method, a purchase, the AI choice or a skip), and when onboarding finished. Each batch also carries the app version and build, the device language and whether it is an iPhone or iPad. These events use only a random id made on that install: they carry no account id, name, email, answers or anything you type, and are not linked to your account. Once onboarding is complete, no screen is counted again. From version 1.5, the same random id counts only four moments of the first days with your AI, each at most once: your AI's first plan arrived, the next day came with your AI's cards, the one next-morning reminder was set, and it was tapped. The events go to our server (Supabase, United States), are used only to improve onboarding and those first days, are never used for advertising or tracking, and are deleted after 400 days.
+
+## Cookies, analytics and browser storage
+
+We use PostHog, an analytics service, to learn how people use this website: which pages they open, how far they scroll, and what they click (including App Store links). Session recordings replay clicks and scrolling with typed text hidden. PostHog Inc. processes this data in the United States on our behalf. We do not use it for advertising or share it with advertisers.
+
+- In the EEA, the UK and Switzerland (told by your device's time zone): no analytics cookies, stored ids or recordings until you press Accept on the bar at the bottom of the page. Until then each page view is counted without remembering your browser. Decline stops analytics.
+
+- Elsewhere: a first-party cookie and a local-storage entry (named ph_…_posthog) remember your browser for up to one year so repeat visits are counted once. You can turn this off on the privacy page.
+
+- Your choices: the site keeps your analytics choice (obo-analytics, with a copy named __ph_opt_in_out_… once you accept or decline) and the language you picked (obo-language) in local storage until you clear them. A note (obo-language-visited) in session storage makes the site pick your language for you only on your first arrival; it is gone when you close the tab.
+
+- App Store links carry a campaign name such as home-en-v3, which tells Apple which page the link was on. It is not a visitor identifier.
+
+- Fonts: Korean pages load the Pretendard font from cdn.jsdelivr.net, which receives your IP address to deliver it.
+
+The privacy page has a switch that turns analytics on or off for that browser.
+
+To delete stored values, clear this site's data in your browser (Safari on iPhone: Settings › Apps › Safari › Advanced › Website Data; in other browsers, the site settings for one-by.one). To prevent them, block site data for one-by.one; in a private window they are erased when you close it. The site works either way.
+
 ## Retention
 
 Account content is kept while the account exists. Corrections preserve originals and history; a correction or withdrawal of an activity record is not a privacy deletion request. Deleting the account removes its content from the live database immediately. Server backup copies, including any account encryption key in a backup made before deletion, are retained for a maximum of 30 days and then expire; this can leave backup copies for up to 30 days after account deletion.
