@@ -1,5 +1,7 @@
 // Site analytics (PostHog, 2026-11-05): page views, how far people scroll, and clicks on
 // App Store links, with the place on the page and the campaign, split by language.
+// Since 2026-11-27 the PostHog library loads after the page has loaded and the browser is idle,
+// without surveys, dead-click capture or web vitals; calls made before that wait in the queue.
 // Visitors in the EEA, UK and Switzerland (told by the time zone) get no cookies or stored
 // ids until they press Accept on the small bar; everyone else is counted with a cookie and
 // can turn it off on /privacy/#cookies. The choice itself is kept in local storage.
@@ -21,38 +23,59 @@
   const remembered = () => choice === "yes" || (choice === null && !askFirst);
 
   // posthog-js's queue stub: calls made before the library loads are replayed by it.
+  // Every method this file calls must be in METHODS (a missing one throws and stops the script).
+  const METHODS = ["capture", "register", "unregister", "set_config", "opt_in_capturing", "opt_out_capturing",
+    "startSessionRecording", "stopSessionRecording", "reset"];
   const ph = (window.posthog = window.posthog || []);
+  const stub = (target) => METHODS.forEach((m) => {
+    target[m] = function () { target.push([m].concat(Array.prototype.slice.call(arguments))); };
+  });
+  let fresh = false;
   if (!ph.__SV) {
+    fresh = true;
     ph._i = [];
+    stub(ph);
     ph.init = function (key, config, name) {
-      const target = name ? (ph[name] = []) : ph;
-      ["capture", "register", "set_config", "opt_in_capturing", "opt_out_capturing", "startSessionRecording", "stopSessionRecording", "reset", "unregister"].forEach((m) => {
-        target[m] = function () { target.push([m].concat(Array.prototype.slice.call(arguments))); };
-      });
+      if (name) stub((ph[name] = []));
       ph._i.push([key, config, name]);
     };
     ph.__SV = 1;
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = ASSETS + "/static/array.js";
-    document.head.appendChild(s);
   }
   // array.js swaps window.posthog for the real library, so later calls look it up each time.
   const live = () => window.posthog;
 
-  const on = remembered();
-  ph.init(KEY, {
-    api_host: API,
-    person_profiles: "identified_only",
-    persistence: on ? "localStorage+cookie" : "memory",
-    disable_session_recording: !on,
-    capture_pageview: true,
-    capture_pageleave: true,
-    autocapture: true,
-    mask_all_text: false,
-    // The home demo copies what people type into its cards, so its text is hidden too.
-    session_recording: { maskAllInputs: true, maskTextSelector: '[data-deck="jobs"]' },
-  });
+  // The library (about 130 KB) and its init wait for the load event and an idle moment, so they
+  // never compete with the page itself. The queued calls below run when it arrives.
+  const start = () => {
+    if (!fresh || start.done) return;
+    start.done = true;
+    const on = remembered(); // a choice made before this point is already in effect
+    ph.init(KEY, {
+      api_host: API,
+      person_profiles: "identified_only",
+      persistence: on ? "localStorage+cookie" : "memory",
+      disable_session_recording: !on,
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: true,
+      disable_surveys: true,
+      capture_dead_clicks: false,
+      capture_performance: { web_vitals: false },
+      mask_all_text: false,
+      // The home demo copies what people type into its cards, so its text is hidden too.
+      session_recording: { maskAllInputs: true, maskTextSelector: '[data-deck="jobs"]' },
+    });
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = ASSETS + "/static/array.js";
+    document.head.appendChild(s);
+  };
+  const whenIdle = () => {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(start, { timeout: 3000 });
+    else setTimeout(start, 1500);
+  };
+  if (document.readyState === "complete") whenIdle();
+  else window.addEventListener("load", whenIdle, { once: true });
   if (choice === "no") ph.opt_out_capturing();
   const props = { site_lang: lang, page_path: location.pathname };
   ph.register(props);
