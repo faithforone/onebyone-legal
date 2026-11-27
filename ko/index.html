@@ -34,6 +34,47 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://one-by.one/#organization",
+          "name": "one-by.one",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "support",
+              "email": "support@one-by.one",
+              "availableLanguage": "English"
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "privacy",
+              "email": "privacy@one-by.one",
+              "availableLanguage": "English"
+            }
+          ],
+          "url": "https://one-by.one/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://one-by.one/assets/pip-logo-512-rounded.png",
+            "width": 512,
+            "height": 512
+          },
+          "email": "support@one-by.one",
+          "alternateName": "one by one",
+          "sameAs": [
+            "https://apps.apple.com/app/id6766732077"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://one-by.one/ko/#website",
+          "name": "one-by.one",
+          "url": "https://one-by.one/ko/",
+          "inLanguage": "ko",
+          "publisher": {
+            "@id": "https://one-by.one/#organization"
+          }
+        },
+        {
           "@type": "MobileApplication",
           "@id": "https://one-by.one/ko/#app",
           "name": "one-by.one",
@@ -50,15 +91,19 @@
             "name": "연간 구독",
             "price": "17000",
             "priceCurrency": "KRW",
-            "url": "https://one-by.one/terms/",
+            "url": "https://apps.apple.com/app/id6766732077",
             "description": "한국 App Store 기준. 첫 구독자 1,000명 출시 가격, 구독하는 동안 그대로. App Store가 정한 신규 구독자는 7일 무료 체험.",
             "priceSpecification": {
               "@type": "UnitPriceSpecification",
               "price": "17000",
               "priceCurrency": "KRW",
               "billingDuration": "P1Y"
-            }
-          }
+            },
+            "availability": "https://schema.org/InStock"
+          },
+          "downloadUrl": "https://apps.apple.com/app/id6766732077",
+          "installUrl": "https://apps.apple.com/app/id6766732077",
+          "sameAs": "https://apps.apple.com/app/id6766732077"
         },
         {
           "@type": "FAQPage",
