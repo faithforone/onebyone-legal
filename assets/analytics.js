@@ -71,11 +71,15 @@
     document.head.appendChild(s);
   };
   const whenIdle = () => {
-    if ("requestIdleCallback" in window) window.requestIdleCallback(start, { timeout: 3000 });
-    else setTimeout(start, 1500);
+    // Safari has no requestIdleCallback, so most iPhone visits take the short timer.
+    if ("requestIdleCallback" in window) window.requestIdleCallback(start, { timeout: 2000 });
+    else setTimeout(start, 300);
   };
   if (document.readyState === "complete") whenIdle();
   else window.addEventListener("load", whenIdle, { once: true });
+  // A first touch, click or key starts it at once, so a quick App Store tap is not lost.
+  ["pointerdown", "keydown"].forEach((type) =>
+    window.addEventListener(type, start, { once: true, passive: true, capture: true }));
   if (choice === "no") ph.opt_out_capturing();
   const props = { site_lang: lang, page_path: location.pathname };
   ph.register(props);

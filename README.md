@@ -24,13 +24,13 @@ python3 -c 'import hashlib,pathlib,re;v=hashlib.sha256(pathlib.Path("assets/styl
 
 Language detection runs on the first external visit only, using the first preferred browser language. EN/한국어 links remember an explicit choice with localStorage (try/catch); their query marker also works with storage blocked. Automatic navigation uses location.replace; no-JS and identified crawlers stay on the requested URL.
 
-`site.css`, `doc.css`, `doc.js`, `v3.css`, `v3.js`, `analytics.js` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference.
+`site.css`, `doc.css`, `doc.js`, `v3.css`, `v3.js`, `lp.css`, `analytics.js` and `language.js` use SHA-256 prefixes (10 hex characters) in every HTML reference.
 
 The home (`/` and `/ko/`, since 2026-11-26), the blog and the Connect guide share one look. `site.css` holds what they all use (colour and size tokens, top bar, buttons, footer). `doc.css` + `doc.js` are for reading pages (blog and Connect): the text column, copy blocks, the app tabs and the "on this page" list on Connect, post cards. `v3.css` + `v3.js` are for the home only. These pages are light only. Without JavaScript every app's steps show and the text can still be selected. After changing any of these files, refresh the hashes in all pages:
 
 ```sh
 python3 -c 'import hashlib,pathlib,re
-for n in ["site.css","doc.css","doc.js","v3.css","v3.js","analytics.js","language.js"]:
+for n in ["site.css","doc.css","doc.js","v3.css","v3.js","lp.css","analytics.js","language.js"]:
     v=hashlib.sha256(pathlib.Path("assets/"+n).read_bytes()).hexdigest()[:10]
     [p.write_text(re.sub(r"(/assets/"+re.escape(n)+r"\?v=)[0-9a-f]+",r"\g<1>"+v,p.read_text())) for p in pathlib.Path(".").rglob("*.html")]'
 ```
