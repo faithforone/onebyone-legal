@@ -22,3 +22,14 @@
 # App-directory review material (ChatGPT plugin walkthrough); reachable by link, kept out of search.
 /review/*
   X-Robots-Tag: noindex
+
+# Long browser cache for the site's CSS and JS (2026-11-27). Every HTML reference carries
+# ?v=<SHA-256 prefix> (README), so a changed file gets a new URL; refresh the hashes after any edit.
+# Images are not covered: blog images, icons, the Pip logo and share images are referenced without
+# a version (or by outside sites) and may be replaced in place, so they keep the default short cache.
+# Only one rule sets Cache-Control for a path; Cloudflare joins the values of overlapping rules.
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
