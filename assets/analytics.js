@@ -26,7 +26,7 @@
     ph._i = [];
     ph.init = function (key, config, name) {
       const target = name ? (ph[name] = []) : ph;
-      ["capture", "register", "set_config", "opt_in_capturing", "opt_out_capturing", "startSessionRecording", "stopSessionRecording", "reset"].forEach((m) => {
+      ["capture", "register", "set_config", "opt_in_capturing", "opt_out_capturing", "startSessionRecording", "stopSessionRecording", "reset", "unregister"].forEach((m) => {
         target[m] = function () { target.push([m].concat(Array.prototype.slice.call(arguments))); };
       });
       ph._i.push([key, config, name]);
