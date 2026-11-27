@@ -1,0 +1,83 @@
+/* Landing pages (/adhd-planner-app/, /one-task-at-a-time-app/): the home's parts (v3.css)
+   plus a lede under the hero headline, a row of three paper cards and a maker's note. */
+
+.hero-lede {
+  order: 1;
+  max-width: 30em;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: clamp(17px, 4.6vw, 21px);
+  line-height: 1.5;
+  letter-spacing: -.025em;
+}
+.hero h1 { font-size: clamp(29px, 8.4vw, 58px); }
+
+.three { padding-block: 8px 64px; }
+.three h2 {
+  font-size: clamp(30px, 8.6vw, 60px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.03em;
+}
+.three-list { display: grid; gap: 10px; margin-top: 26px; counter-reset: step; }
+.three-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border-radius: 28px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px #17181b08;
+}
+.three-list .said {
+  align-self: flex-start;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+}
+.three-list .said::before { content: "\201C"; }
+.three-list .said::after { content: "\201D"; }
+.three-list h3 { font-size: 21px; font-weight: 700; line-height: 1.25; letter-spacing: -.038em; }
+.three-list p { color: var(--muted); font-size: 15.5px; line-height: 1.45; letter-spacing: -.025em; }
+.three-list.is-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.maker { padding-block: 0 64px; }
+.maker figure, .maker blockquote { margin: 0; }
+.maker blockquote {
+  max-width: 34em;
+  font-size: clamp(22px, 6vw, 34px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -.03em;
+}
+.maker figcaption { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
+
+/* No plan tile on these pages: the shift tile and the two small tiles share the first row. */
+@media (min-width: 900px) {
+  .three { padding-block: 24px 96px; }
+  .three-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 44px; }
+  .three-list li { padding: 30px; border-radius: 36px; }
+  .three-list h3 { font-size: 24px; }
+  .three-list p, .three-list .said { font-size: 17px; }
+  .maker { padding-bottom: 96px; }
+  .lp .tile-shift { grid-row: auto; }
+}
+
+/* Each page shows only the tiles that fit its search, so it does not repeat the home. */
+@media (min-width: 900px) {
+  .lp-adhd .tile-pace { grid-column: span 6; }
+  .lp-one .tile-shift, .lp-one .tile-anywhere { grid-column: span 6; }
+}

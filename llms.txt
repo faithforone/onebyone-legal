@@ -47,6 +47,8 @@ Governing law is the Republic of Korea; disputes are subject to the Seoul Centra
 
 ## Sources and details
 - [Product and FAQ](https://one-by.one/): Product overview and frequently asked questions.
+- [ADHD planner app](https://one-by.one/adhd-planner-app/): How one-by.one helps when a long list makes starting hard: one card, a timer, replanning by one line to your AI.
+- [One task at a time app](https://one-by.one/one-task-at-a-time-app/): How the one-card flow works: tell your AI the day, see one card, Done brings the next.
 - [Privacy Policy](https://one-by.one/privacy/): Data collection, connected AI, optional calendar sharing, encryption and deletion.
 - [Terms of Use](https://one-by.one/terms/): Accounts, subscriptions, trial eligibility and cancellation.
 - [Connect your AI](https://one-by.one/connect/): Official-documentation-based setup for web connectors, CLI tools and editors.
