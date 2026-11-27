@@ -123,7 +123,7 @@
         <div class="copy-block"><div class="url"><pre tabindex="0" aria-label="MCP server URL"><code id="server-url">https://mcp.one-by.one/mcp</code></pre><button class="copy" type="button" data-copy="server-url" aria-label="MCP server URL Copy" hidden>Copy</button></div><span role="status" aria-live="polite"></span></div>
         <p>One more fact explains most failures later. Claude connects to the server from Anthropic&rsquo;s cloud, not from your device, and that includes the mobile apps. So the server has to be reachable from the public internet.</p>
 
-        <h2 id="web">How to add a custom connector in Claude on the web</h2>
+        <h2 id="web">Add it on the web</h2>
         <p>These steps are for the Free, Pro and Max plans. <a href="https://claude.com/docs/connectors/custom/add-unlisted">Anthropic notes</a> that the dialog varies by organization: some show a name, a URL and Advanced settings on one screen, others take two steps.</p>
         <ol>
           <li>Go to <strong>Customize</strong>, then <strong>Connectors</strong>.</li>
@@ -136,12 +136,12 @@
         </ol>
         <figure class="figure"><img src="/assets/blog/add-custom-connector-in-claude/body-connector-steps.webp" alt="Three panels joined by arrows: a lime link dropping into an open box, a lime key turning in a lock, and a check mark beside a switched-on toggle." width="1200" height="675" loading="lazy" decoding="async"><figcaption>Add the link, sign in, switch it on.</figcaption></figure>
         <p>When Claude wants to use one of the connector&rsquo;s tools it may ask first. <strong>Allow once</strong> is the cautious choice. <strong>Always allow</strong> skips the prompt for that tool from then on.</p>
-        <h2 id="desktop">How to add a custom connector in Claude desktop</h2>
+        <h2 id="desktop">Add it in Claude Desktop</h2>
         <p>Claude Desktop uses the same Customize and Connectors screen as the web, so the steps above apply.</p>
         <h3>Team and Enterprise plans</h3>
         <p>On Team and Enterprise plans a member cannot add a custom connector. An Owner does it under <strong>Organization settings</strong>, then <strong>Connectors</strong> (<strong>Add</strong>, <strong>Custom</strong>, then <strong>Web</strong> if asked). On Enterprise, a custom role that manages the organization&rsquo;s libraries can do it too. Each member then opens <strong>Customize</strong>, <strong>Connectors</strong>, finds the connector labeled <strong>Custom</strong> and clicks <strong>Connect</strong>.</p>
 
-        <h2 id="mobile">How to add a custom connector in Claude app or mobile (iPhone and Android)</h2>
+        <h2 id="mobile">Use it in the Claude app on iPhone and Android</h2>
         <p>Add it on the web or in Claude Desktop first.</p>
         <p>After that it should follow you. <a href="https://claude.com/docs/connectors/getting-started">Anthropic says</a> connected connectors are available in your conversations on web, desktop and mobile, and that the mobile app supports remote connectors. Its <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">help article</a> says a connector you set up on the web shows up the next time you log in on Claude for iOS or Android. Open a chat and look for the connector in the message box&rsquo;s <strong>+</strong> menu.</p>
         <p>Do not mix this up with the one-by.one app. The cards live in that app. The Claude connector is only how Claude sends plans to it.</p>
@@ -151,7 +151,7 @@
         <p>A Free account can add <strong>one</strong> custom connector. Claude itself costs nothing for this, but one-by.one is a subscription (with a 7-day free trial for eligible new subscribers), and AI connections need it. Existing data stays readable.</p>
         <p>To swap connectors, go to <strong>Customize</strong>, <strong>Connectors</strong>, open the three-dot menu and select <strong>Remove</strong>, then add the new one. You can edit a connector&rsquo;s name or URL, but not its authentication settings. To change those, remove the connector and add it again.</p>
 
-        <h2 id="oauth">Claude custom connector OAuth: what the sign-in does</h2>
+        <h2 id="oauth">What the OAuth sign-in does</h2>
         <p>Most connectors use OAuth. You sign in to the service and grant permissions, and <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Anthropic says</a> Claude never sees your password. one-by.one needs no API key or token. It asks for three permissions: <code>context:read</code> (the context you share for planning), <code>activity:read</code> (your plans and recorded activity) and <code>activity:write</code> (create or update plans and save activity). You can connect up to three AI apps to one account.</p>
         <p>To disconnect, select the connector under <strong>Customize</strong>, <strong>Connectors</strong> and choose <strong>Disconnect</strong>, or tap Disconnect in Settings, AI apps in the iPhone app. This stops future access. It does not delete your one-by.one records or what the AI already received.</p>
 
@@ -168,7 +168,7 @@
           <li><strong>one-by.one refuses the connection.</strong> Three AI apps are already connected, so disconnect one. Or the subscription has lapsed, which makes AI connections return SUBSCRIPTION_REQUIRED. Or you do not have an account yet.</li>
         </ul>
 
-        <h2 id="trust">Before you trust any custom connector</h2>
+        <h2 id="trust">Before you trust a server you add yourself</h2>
         <p>Anthropic does not verify custom connectors. A remote server can give Claude tools that read, change or delete data. So connect only to organizations you trust, read the permissions on the approval screen, review tool requests, use <strong>Always allow</strong> only for servers you trust, and turn off connectors you are not using. Our <a href="/privacy/">privacy policy</a> says what your AI receives from one-by.one.</p>
         <p>Once it works, you can <a href="/blog/plan-your-day-with-claude/">plan your day with Claude</a> and send the plan to your iPhone. For Google, Apple and Outlook calendars, see <a href="/blog/claude-calendar-integration/">Claude calendar integration</a>.</p>
 
