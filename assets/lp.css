@@ -75,3 +75,9 @@
   .maker { padding-bottom: 96px; }
   .lp .tile-shift { grid-row: auto; }
 }
+
+/* Each page shows only the tiles that fit its search, so it does not repeat the home. */
+@media (min-width: 900px) {
+  .lp-adhd .tile-pace { grid-column: span 6; }
+  .lp-one .tile-shift, .lp-one .tile-anywhere { grid-column: span 6; }
+}
