@@ -25,6 +25,15 @@ h1 {
   letter-spacing: -.03em;
 }
 
+.hero-lede {
+  max-width: 30em;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: clamp(16px, 4.3vw, 20px);
+  line-height: 1.45;
+  letter-spacing: -.02em;
+}
+
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
