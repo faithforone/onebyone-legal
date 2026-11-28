@@ -2,7 +2,7 @@
 
 > An iPhone app for people who plan with AI assistants: an ordered day plan, one doable action at a time, and results recorded with units. On the [App Store for iPhone](https://apps.apple.com/app/id6766732077). For ages 16+.
 
-Last updated: November 27, 2026.
+Last updated: November 28, 2026.
 
 ## How it works
 Tell ChatGPT, Claude or an MCP-capable personal assistant what you want to do. With your approval, the AI reads planning context and saves a queue of action cards through MCP. Your iPhone shows one card at a time with Start, Done, Later, Remove and Undo for mistaken taps. AI changes require your explicit request and approved permissions.
