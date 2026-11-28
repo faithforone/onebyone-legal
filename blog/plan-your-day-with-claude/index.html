@@ -193,6 +193,18 @@ Then give the plan as one line per step: start time, short action, minutes.</cod
         <p>one-by.one is an iPhone app that plans nothing itself. It never calls an AI model. Your Claude, or ChatGPT, or another assistant that supports MCP, does the planning and saves the day to the app as cards. The app shows one card at a time: Start, Done, Later or Remove, and Undo if you mis-tap. A wait gets a timer, and when it ends the follow-up card comes back, so the pasta is not forgotten. Records show what you did, and widgets, including Lock Screen and StandBy, show the current card without opening the app.</p>
         <figure class="phone"><img src="/assets/blog/plan-your-day-with-claude/app-card-running.webp" alt="The one-by.one iPhone app showing a single card, Boil water, with a 0:53 timer, a short note and a Done slider. The next card, Make sauce, is named above it." width="600" height="1304" loading="lazy" decoding="async"><figcaption>The one-by.one app: one card at a time, with a timer and a Done slider.</figcaption></figure>
         <p>When the day changes, tell Claude and it updates the cards. That is the whole idea: your AI plans, you just do.</p>
+        <h2 id="iphone">Can Claude plan your day and send it to an app on your iPhone?</h2>
+        <p>Yes. Claude can save the plan to one-by.one through a custom connector (MCP), and the app on your iPhone then walks you through it one card at a time. Set it up once; Claude&rsquo;s Free plan can add one custom connector:</p>
+        <ol>
+          <li><strong>Install one-by.one</strong> on your iPhone and sign in with Apple or Google.</li>
+          <li><strong>Add the connector to Claude.</strong> In the app, tap Open your AI, or add <code>https://mcp.one-by.one/mcp</code> as a custom connector in Claude&rsquo;s settings. The <a href="/connect/">Connect guide</a> has each step.</li>
+          <li><strong>Allow access</strong> on the page that opens, then go back to Claude.</li>
+          <li><strong>Tell Claude your day</strong> in plain words: &ldquo;Gym at 7, dentist at 3. Fit in reading and laundry.&rdquo;</li>
+        </ol>
+        <figure class="phone"><img src="/assets/blog/add-custom-connector-in-claude/app-connect-screen.webp" alt="The one-by.one iPhone app on the step Add one-by.one to your AI, with an Open your AI button and the choices On a computer, Skip AI today and More." width="600" height="1304" loading="lazy" decoding="async"><figcaption>Step 2 starts from this screen in the app.</figcaption></figure>
+        <p>Claude orders the day, adds what each thing needs, such as travel time, and saves it. Your phone gets the cards: the first one is on screen with a Start button, and the rest wait out of sight.</p>
+        <figure class="phone"><img src="/assets/blog/ai-daily-planner/app-ai-plans.webp" alt="A chat line, Gym at 7, dentist at 3, fit in reading and laundry, and the AI's answer that the day is on the phone with travel time included. Below it the day as cards: Gym 7:00, Shower and leave 8:10, Read 9:00, Leave for the dentist 14:30, Laundry in 17:40." width="600" height="1304" loading="lazy" decoding="async"><figcaption>One sentence to Claude becomes the day&rsquo;s cards.</figcaption></figure>
+        <p>Without a connector, Claude on iPhone can still add events and reminders to Apple Calendar and Reminders. That gives you a list and alerts. It does not give you one card at a time with a timer.</p>
         <p>It is not for everyone. It is iPhone and Apple Watch only, and it is a paid subscription: US$9.99 a year, with a 7-day free trial for eligible new subscribers. There is no free tier.</p>
 
         <aside class="end" aria-labelledby="end-title">
