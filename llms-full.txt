@@ -18,7 +18,7 @@ The custom MCP connector address is https://mcp.one-by.one/mcp. The setup guide 
 
 OAuth authenticates identity. Separate product approvals are recorded on the consent page: context:read, activity:read and activity:write. These control planning context, activity reads and changes. The AI can save and change the day, save a day note, save interests and memories, and correct a recorded result within approved permissions.
 
-Start, Done, Later, Remove and Undo are tapped on the phone; no tool starts, finishes or undoes a card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
+Start, Later and Undo are tapped on the phone; no tool starts a card or undoes a tap. When you tell your AI you did something, it can record that card as done or record an activity that had no card. Every change requires the user’s explicit request. Some changes cannot be undone, and corrections can preserve originals. The server checks granted permissions but cannot prove what the user agreed to in chat.
 
 Personal assistants are a core audience. MCP capability, OAuth support and the AI service’s own connector access requirements determine whether a client can connect. This overview does not confirm individual compatibility with ChatGPT Dots, Meta Muse or Grok Bot. ChatGPT and Claude are separate services with their own terms and privacy settings; review those before connecting.
 
@@ -161,6 +161,14 @@ Save and change the day
 
 change_day (write): add, move, edit, send to another date or drop cards; the server walks the clock and returns each card's times. save_day_note (write): save one short note on a date, shown in Records. correct_recorded_result (write): correct or withdraw a finished record's result while retaining its original.
 
+Record what was done
+
+complete_work (write): record a card as done when you say you did it. record_past_result (write): record something you say you did that had no card. correct_work_time (write): fix a finished record's start or finish time, or mark it not done, when you say it is wrong.
+
+To-dos, routines and recipes
+
+save_todo (write), remove_todo (write): add, change or delete an item on your to-do list. list_routines (read), get_routine (read): read your routines and their change history. save_routine (write), remove_routine (write): create, replace or delete a routine after your OK. save_recipe (write): save a recipe as step-by-step cards after your OK.
+
 Read interests and memories
 
 list_interests (read), get_interest (read): read saved interests, context and memories, including retained originals.
@@ -173,7 +181,7 @@ Connection and support
 
 get_connection_info (read): read permissions and supported features, and receive a write token when available. submit_bug_report (write): send an approved report to one-by.one support and receive a receipt.
 
-Start, Done, Later, Remove and Undo are tapped on the phone; no tool starts, finishes or undoes a card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
+Start, Later and Undo are tapped on the phone; no tool starts a card or undoes a tap. When you tell your AI you did something, it can record that card as done or record an activity that had no card. When relative waits are enabled on the server, get_day_node (read) is also offered to read one retained day card.
 
 Reads may be limited or paginated; they do not establish a complete lifetime history.
 
